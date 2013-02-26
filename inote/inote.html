@@ -1,0 +1,267 @@
+<!doctype html>
+<html>
+
+    <head>
+        <meta charset=utf-8>
+        <meta name=description content="">
+        <meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>iNote</title>
+        <link rel=stylesheet href="css/inote.css">
+
+        <!--<link href='http://fonts.googleapis.com/css?family=Cousine' rel='stylesheet' type='text/css'>-->
+        <!-- Head JS -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/headjs/0.99/head.min.js"></script> 
+        <!--  <script src="https://github.com/headjs/headjs/raw/v0.99/dist/head.load.min.js"></script> -->
+
+        <!-- jQuery -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+        <!-- codemirror begin-->
+
+            <script type="text/javascript" src="libs/codemirror-3.0/lib/codemirror.js"></script>
+            <link rel="stylesheet" type="text/css" href="libs/codemirror-3.0/lib/codemirror.css"/>
+
+            <!-- autosize  -->
+            <link rel=stylesheet href="css/mycodemirror.css">
+
+
+            <!-- autocompletion -->
+            <script type="text/javascript" src="libs/codemirror-3.0/lib/util/simple-hint.js"></script>
+            <link rel="stylesheet" type="text/css" href="libs/codemirror-3.0/lib/util/simple-hint.css"/>
+            <script type="text/javascript" src="libs/codemirror-3.0/lib/util/javascript-hint.js"></script>
+
+
+            <!-- modes -->
+
+            <script src="libs/codemirror-3.0/mode/xml/xml.js"></script>
+            <script src="libs/codemirror-3.0/mode/javascript/javascript.js"></script>
+            <script src="libs/codemirror-3.0/mode/css/css.js"></script>
+            <script src="libs/codemirror-3.0/mode/htmlmixed/htmlmixed.js"></script>
+            <script src="libs/codemirror-3.0/mode/coffeescript/coffeescript.js"></script>
+        
+        
+            <!-- themes -->
+
+        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/ambiance-mobile.css">-->
+        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/ambiance.css">-->
+        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/blackboard.css">-->
+        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/cobalt.css">-->
+        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/eclipse.css">-->
+        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/elegant.css">-->
+        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/erlang-dark.css">-->
+        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/lesser-dark.css">-->
+        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/monokai.css">-->
+        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/neat.css">-->
+        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/night.css">-->
+        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/rubyblue.css">-->
+        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/solarized.css">-->
+        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/twilight.css">-->
+        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/vibrant-ink.css">-->
+        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/xq-dark.css">-->
+
+
+        <!-- addons -->
+        <script src="libs/codemirror-3.0/lib/util/matchbrackets.js"></script>
+        <script src="libs/codemirror-3.0/lib/util/formatting.js"></script>
+        <script src="libs/codemirror-3.0/lib/util/closetag.js"></script>
+        <script src="libs/codemirror-3.0/lib/util/foldcode.js"></script>
+        <script src="libs/codemirror-3.0/lib/util/collapserange.js"></script>
+
+        <!-- codemirror end-->
+
+        <!-- additional functionality -->
+        <script type="text/javascript" src="libs/coffee-script.js"></script>
+        <script type="text/javascript" src="libs/json2.min.js"></script>
+        <script type="text/javascript" src="libs/showdown.js"></script>
+
+
+        <script type="text/javascript" src="js/cdmirror.js"></script>
+        <script type="text/javascript" src="js/cell.js"></script>
+        <script type="text/javascript" src="js/inote.js"></script>
+        <!--<script type="text/javascript" src="js/debug.js"></script>-->
+        <script type="text/javascript" src="js/notebookstorage.js"></script>
+        <script type="text/javascript">
+
+
+
+
+
+
+
+        /**
+         * Press Shift-F11 to step put of this function
+         */
+        function debug(){ try{var a=_sdfsdf.prop;} catch(e){}}
+
+
+
+
+
+
+
+
+
+
+        var storage=new NoteBookStorage();
+
+
+        var saveNotebookTimeout;
+        function saveNotebookLater(){
+            clearTimeout(saveNotebookTimeout);
+            saveNotebookTimeout=setTimeout(saveNotebook,2000);
+            $("#saveIndicator").text("");
+            $("#btnSave").css("color","#777");
+
+        }
+
+
+        function saveNotebook()
+        {
+            var notebookName=$("#notebookName").val();
+            var notebookOwner=$(".notebookOwner").text();
+            var notebookAaccess=$("#notebookAccess").val();
+
+            xmlText=inote.getXmlText(notebookName);
+            //console.log(xmlText);
+            console.log("saveNotebook");
+
+            //localStorage.setItem("inote_"+bookName, xmlText);
+
+
+            storage.put(notebookAaccess,notebookName, xmlText);
+            $("#saveIndicator").text("(saved)");
+            $("#btnSave").css("color","silver");
+        }
+
+        function openNotebook(notebookOwner , notebookAccess, notebookName)
+        {
+            clearAndInit();
+            if (!notebookName) return;
+
+            $(".notebookOwner").text(notebookOwner);
+            $("#notebookName").val(notebookName);
+            $("#notebookAccess").val(notebookAccess);
+
+            storage.get(notebookOwner, notebookName, restoreNotebookFromXml);
+        }
+
+        function restoreNotebookFromXml(xmlText)
+        {
+            if (! xmlText)
+            {
+                //inote.init();
+                return;
+            }
+            inote.clear();
+            inote.setXmlText(xmlText);
+
+            if ($(".cell").length==0)
+                inote.init();
+        }
+
+        function getNotebookAccessFromUrl()
+        {
+            var notebook_access="";
+            try {
+                notebook_access=location.href.match(/notebook_access=([^&]*)/)[1];
+            } catch(e){}
+            notebook_access=decodeURIComponent(notebook_access);
+            return notebook_access;
+        }
+
+
+
+        function getNotebookNameFromUrl()
+        {
+            var notebook_name="";
+            try {
+                notebook_name=location.href.match(/notebook_name=([^&]*)/)[1];
+            } catch(e){}
+            notebook_name=decodeURIComponent(notebook_name);
+            return notebook_name;
+        }
+        function getNotebookOwnerFromUrl()
+        {
+            var notebook_owner="";
+            try {
+                notebook_owner=location.href.match(/notebook_owner=([^&]*)/)[1];
+            } catch(e){}
+            notebook_owner=decodeURIComponent(notebook_owner);
+            return notebook_owner;
+        }
+
+        function clearAndInit(){
+            inote.clear();
+            inote.init();
+        }
+
+        var inote;
+        $(function(){
+            $(".loginHolder").load("/getloginlink");
+//            inote=new iNote($("#page"));
+            inote=new iNote($(document.body));
+            //clearAndInit();
+            openNotebook(getNotebookOwnerFromUrl(), getNotebookAccessFromUrl(), getNotebookNameFromUrl());
+
+            //handlers
+            //$("#btnClear").click(clearAndInit);
+            $("#btnSave").click(saveNotebook);
+//            $("#btnOpen").click(function(){
+//                openNotebook($(".notebookOwner").text(), $("#notebookAccess").val(),  $("#notebookName").val() );
+//            });
+        });
+
+        </script>
+    </head>
+    <body>
+
+
+        <div id="divHeader" class="header lr_padded">
+            <!--<div id="divMenu" >-->
+                <table cellspacing="0" cellpadding="0" style="width: 100%">
+                    <tr>
+                        <td style="width:100%">
+                            <input type="text" id="notebookName" class="notebookName" value="New notebook"/>
+                        </td>
+                        <td style="text-align: right; white-space: nowrap">
+                            You: <span class="loginHolder"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:100%">
+                            <a href="index.html"  class="toolButton">Home</a>
+                            <!--<span id="btnClear" class="toolButton" >clear</span>-->
+                            <span id="btnSave" class="toolButton" >save</span>
+                            <!--<span id="btnOpen" class="toolButton" >restore</span>-->
+                            <select id="notebookAccess" title="Access" class="selectButton">
+                                <option value="public">public</option>
+                                <option value="private">private</option>
+                            </select>
+
+                        </td>
+                       <td style="text-align: right; white-space: nowrap">
+
+                            Author:
+                           <span class="notebookOwner" title="Notebook creator"></span>
+                           <span id="saveIndicator"></span>
+
+                        </td>
+                    </tr>
+
+                </table>
+            <!--</div>-->
+
+            <!--<div >-->
+                <!--<table cellspacing="0" cellpadding="0" style="width: 100%">-->
+
+                <!--</table>-->
+            <!--</div>-->
+        </div>
+
+
+        <div id="page" class="page"></div>
+
+
+
+    </body>
+</html>

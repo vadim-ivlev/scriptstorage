@@ -1,0 +1,368 @@
+/* GENERAL ------------------------------*/
+
+body
+{
+	/*background-color: #f2f2f2;*/
+    margin-left:0px;
+    margin-right:0px;
+    padding-left:0px;
+    padding-right:0px;
+    padding-bottom: 200px;;
+
+	/*font-size: x-large;*/
+}
+
+
+
+
+
+
+#notebookList
+{
+    font-family: sans-serif;
+}
+
+
+/*.lr_padded*/
+/*{*/
+    /*padding-left: 10px;*/
+    /*padding-right: 10px;;*/
+/*}*/
+
+/*------------Notebook----------------------*/
+.page
+{
+	border:1px none #CCC;
+	background-color: white;
+	padding:10px;
+}
+
+/*------------cell----------------------*/
+.cell
+{
+	position:relative;
+	border: 0px dotted transparent;
+	margin-top:10px;
+	overflow:visible;
+	padding:0px;
+    width:100%;
+    border-radius: 10px;
+	
+}
+
+.cell:hover
+{
+    border-color:  blue;
+}
+
+.cell:hover .hidable
+{
+    /*border:1px solid red;*/
+    visibility: visible;
+}
+
+
+
+.cell>table
+{
+	width: 100%;
+}
+.inputTitle, .outputTitle
+{
+	color:black;
+	display:inline-block;
+	font-family: sans-serif;
+	border: 1px dotted #FFF;
+	cursor: default;
+	background-color: #FFF;
+	vertical-align: middle;
+	padding-right: 4px;
+    /*width: 30px;*/
+}
+
+
+
+.inputCell
+{
+    width:100%;
+    border-top: 1px solid #DDD;
+    border-bottom: 1px solid #DDD;
+    border-left-style: none;
+    border-right-style: none;
+    /*border-radius: 10px;;*/
+    position: relative;
+    background-color: #EBEBEB;
+}
+
+.outputCell
+{
+    width:100%;
+    padding-left: 10px;
+
+}
+
+.inputCell .showJavascriptButton
+{
+    position:absolute;
+    bottom:0px;
+    right:0px;
+    z-index: 1000;
+}
+
+.inputCell .formatSelectionButton
+{
+    color: black;
+    border-color: transparent;
+    background-color: transparent;
+    position:absolute;
+    top:3px;
+    left:0px;
+    z-index: 999;
+}
+
+.error
+{
+	color:red;
+    white-space: normal;
+    font-family: Cousine, monospace;
+}
+
+.noerror
+{
+	color:#0000C0;
+    white-space: normal;
+    font-family: Cousine, monospace;
+}
+
+
+
+.javascriptText
+{
+    border-top:1px solid #888;
+    border-bottom:1px solid #DDD;
+    /*color: #00008b;*/
+    /*font-family: Cousine, monospace;*/
+    margin:0px;
+    width:100%;
+    background-color: #EBEBEB;
+}
+/*.javascriptText .CodeMirror*/
+/*{*/
+    /*background-color: #f0f0f0;*/
+/*}*/
+/*--------------Header--------------------*/
+
+
+.header
+{
+    font-family: sans-serif;
+    color:#AAA;
+    border-bottom: 1px solid #888;
+    background-color: white;
+    padding-bottom: 16px;
+    /*position: relative;*/
+    /*box-shadow: 0px 10px 20px #DDD;*/
+
+}
+
+.header:hover .hidable
+{
+	visibility:visible;
+}
+
+
+.notebookName{
+	border:1px solid #FFF;
+	font-family: sans-serif;
+	font-size: medium;
+    width:100%;
+    vertical-align: middle;
+    -webkit-appearance: none;
+
+    /*margin:0px;*/
+}
+
+.notebookName:hover
+{
+    border-color:#AAA;
+
+}
+
+.loginHolder
+{
+    /*float: right;*/
+    /*padding-top: 2px;*/
+    white-space: nowrap;
+
+}
+
+
+#btnSave
+{
+    position: fixed;
+    z-index: 1000;
+    right: 20px;
+    bottom: 10px;
+    color: #777;
+    font-weight: normal;
+    padding: 7px;
+    width:60px;
+    border-radius: 20px;
+    vertical-align: middle;
+    /*border-style:none;*/
+    border-color: silver;
+    border-bottom-style: none;
+    border-right-style: none;
+    text-align: center;
+    box-shadow: 3px 3px 3px #888888;
+
+    background: #ffffff;
+    background: -moz-linear-gradient(top,  #ffffff 0%, #dbdbdb 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#dbdbdb));
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#dbdbdb 100%);
+    background: -o-linear-gradient(top,  #ffffff 0%,#dbdbdb 100%);
+    background: -ms-linear-gradient(top,  #ffffff 0%,#dbdbdb 100%);
+    background: linear-gradient(to bottom,  #ffffff 0%,#dbdbdb 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dbdbdb',GradientType=0 );
+
+
+}
+
+.hidable
+{
+	
+	visibility:hidden;
+}
+
+
+
+/*----------------Small Buttons -----------------*/
+.smallButton
+{
+	width:14px;
+	height:14px;
+	color:#AAA;
+	font-family: sans-serif;
+	/*font-size: small;*/
+	display:inline-block;
+	text-align: center;
+	border: 1px dotted #DDD;
+	cursor: pointer;
+	background-color: #FFF;
+	vertical-align: middle;
+    border: 1px solid white;
+
+}
+
+.insertBefore
+{
+	position:absolute;
+	left:48%;
+	top:0px;
+	border-style: none;
+}
+
+.insertAfter
+{
+	position:absolute;
+	left:48%;
+	bottom:0px;
+	border-style: none;	
+}
+
+
+.deleteButton
+{
+    float:right;
+}
+
+.runButton
+{
+	color:#F66;
+    font-family: sans-serif;
+    cursor: pointer;
+    background-color: #FFF;
+    vertical-align: middle;
+    padding-left: 4px;
+    padding-right: 4px;
+    border: 1px solid #FFF;
+}
+.runButton:hover
+{
+    /*background-color: #EEE;*/
+    border: 1px solid #F66;
+}
+
+
+
+.toolButton
+{
+	color:#AAA;
+	font-family: sans-serif;
+	cursor: pointer;
+	/*background-color: #FFF;*/
+	vertical-align: middle;
+	padding-left: 4px;
+	padding-right: 4px;
+    border: 1px solid transparent;
+}
+
+.selectButton
+{
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    -webkit-appearance: none;
+    -moz-appearance: window;
+    appearance: none;
+
+    font-size: medium ;
+
+    color:#AAA;
+    font-family: sans-serif;
+    cursor: pointer;
+    background-color: #FFF;
+    vertical-align: middle;
+    padding-left: 10px;
+    padding-right: 4px;
+
+
+
+}
+
+
+
+.toolButton:hover
+{
+	/*background-color: #EEE;*/
+    border: 1px solid #CCC;
+}
+
+
+.markdown
+{
+	font-family: sans-serif;
+}
+
+.markdown h1,h2,h3, h4,h5,h6
+{
+    /*color:#2e8b57;*/
+}
+
+.markdown hr
+{
+    border-style: none;
+    border-bottom: 1px dotted silver;
+}
+
+
+.clearInputButton, .clearOutputButton
+{
+    float: right;
+}
+
+.hideInputButton, .hideOutputButton
+{
+    /*float: right;*/
+    font-size: small;
+    color: black;
+}

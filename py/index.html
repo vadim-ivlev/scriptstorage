@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Index</title>
+</head>
+<body>
+<a href="{{ url }}">{{ url_linktext }}</a>
+
+<hr>
+<a href="/login">login</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/logout">logout</a>
+
+<form action="/write" method="post">
+    notebook name:<br>
+    <input type="text" name="notebook_name"><br>
+    content:<br>
+
+    <input id="radioPublic" type="radio" name="access" value="public" checked><label for="radioPublic">public</label>
+    <input id="radioPrivate" type="radio" name="access" value="private"><label for="radioPrivate">private</label>
+
+    <br>
+    <textarea name="content" style="width: 300px; height: 200px;"></textarea>
+
+    <br>
+    <input type="submit">
+
+</form>
+<br>
+
+    {{notebook_list}}
+
+</body>
+</html>

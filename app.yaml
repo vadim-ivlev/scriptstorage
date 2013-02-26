@@ -1,0 +1,55 @@
+application: script-note
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+
+#- url: /pages
+#  static_dir: pages
+
+
+
+
+- url: /(login|logout|getusername|getloginlink)
+  script: py.login.app
+
+- url: /proxy/.*
+  script: py.proxy.app
+
+- url: /list.*
+  script: py.list.app
+
+- url: /read.*
+  script: py.read.app
+
+- url: /write.*
+  script: py.write.app
+
+- url: /delete.*
+  script: py.delete.app
+
+- url: /main
+  script: py.main.app
+
+
+- url: /inote
+  static_dir: inote
+
+
+- url: /
+  static_files: inote/index.html
+  upload: inote/index.html
+
+- url: /(.*)
+  static_files: inote/\1
+  upload: inote/(.*)
+
+
+libraries:
+- name: jinja2
+  version: latest
+
+builtins:
+- remote_api: on

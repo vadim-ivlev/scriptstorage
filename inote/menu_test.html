@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu test</title>
+    <!-- jQuery -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="js/vmenu.js"></script>
+    <link rel=stylesheet href="css/menu.css">
+
+    <script>
+        function menu_handler(event)
+        {
+            var v=event.target.getAttribute("value");
+            var t=event.target.innerText;
+
+            var m=document.querySelector("#menu0");
+            var textSpan=document.querySelector("#menu0 .textSpan");
+            m.setAttribute("value",v);
+            textSpan.innerText=t;
+            console.log (v);
+
+        }
+
+    $(function(){
+        Vmenu($("#menuSpan"),[
+            {value:"val", text:"text",
+                submenu:
+                [
+                {value:"val1", text:"Javascript"},
+                {value:"val2", text:"CoffeeScript"},
+                {value:"val3", text:"HTML"},
+                {value:"val4", text:"MurkUp"},
+                {value:"val5", text:"Text"}
+                ]
+            }
+        ]);
+    });
+    </script>
+</head>
+<body>
+sdds
+<span id="menu0" class="menu_level_0" value="m0"><span class="textSpan">menu0</span>
+    <div class="menu_level_1" onclick="menu_handler(event)">
+        <div class="menu_level_0" value="m1" >menu1</div>
+        <div class="menu_level_0" value="m2">menu2</div>
+        <div class="menu_level_0" value="m3">menu3</div>
+        <div class="menu_level_0" value="m4">menu item 4
+        </div>
+    </div>
+</span>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<span id="menuSpan">menu</span>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+.CodeMirror {
+  border: 0px solid #ccc;/*#eee;*/
+  /*border-radius: 10px;*/
+  height: auto;
+  width:100%;
+  background-color: transparent; /*#f0f0f0;*/ /*#f5f5f5;*/
+  /*font-size: large;*/
+    font-family: Cousine, monospace;
+    line-height: 120%;
+  /*position: relative;*/
+}
+.CodeMirror-scroll {
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+
+.CodeMirror-gutters
+{
+    /*border-radius: 10px;*/
+}
+.CodeMirror-cursor
+{
+    border-width: 2px  !important;
+}
+
+.CodeMirror-matchingbracket
+{
+    color: red !important;
+}
+
+.CodeMirror-foldmarker {
+    color: red;
+    /*text-shadow: #b9f 1px 1px 2px, #b9f -1px -1px 2px, #b9f 1px -1px 2px, #b9f -1px 1px 2px;*/
+    font-family: arial;
+    font-weight: bold;
+    line-height: .3;
+    cursor: pointer;
+}
+
+.CodeMirror-collapserange { width: 14px; }
+
+/*.activeline {background: #FFF !important;}*/
