@@ -1,3 +1,6 @@
 #iNote
 
-Code scrap book
+Code scrap book repository
+
+Google app engine app
+<http://inote.vadimivlev.com>
