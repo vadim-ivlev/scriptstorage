@@ -51,7 +51,7 @@ function Cell(cellNumber)
             '<div >'+
                 '<span class="hideOutputButton toolButton hidable">&#x25BC</span>'+ //Hide output
                 '<span class="outputTitle hidable"></span>'+
-                '<span class="clearOutputButton toolButton hidable">Clear output</span>'+
+                '<span class="clearOutputButton toolButton hidable">Clear</span>'+
                 '<span class="runButton hidable" title="<Ctrl-Ent> to Run.  <Shift-Ent> to run and go to the next cell. ">Run &#x25BA;</span>'+
 		    '</div>'+
 

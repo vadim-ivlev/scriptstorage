@@ -6,3 +6,6 @@ Google app engine app
 <http://inote.vadimivlev.com>
 
 ...
+...
+
+changed colors

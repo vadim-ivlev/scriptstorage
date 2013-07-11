@@ -44,14 +44,14 @@ function createCodeMirror(parentDomObject)
 
 
     editor.on("focus", function(instance) {
-        $(parentDomObject).css("border-color","#222");
+        $(parentDomObject).css("border-color","#DDD");
         //if (console) console.log("focus event");
         editor.setOption("readOnly",false);
 
     });
 
     editor.on("blur", function(instance) {
-        $(parentDomObject).css("border-color","#DDD");
+        $(parentDomObject).css("border-color","#f0f0f0");
         editor.setOption("readOnly",true);
 
     });

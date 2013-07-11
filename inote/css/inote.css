@@ -35,25 +35,31 @@ body
 	border:1px none #CCC;
 	background-color: white;
 	padding:10px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 /*------------cell----------------------*/
 .cell
 {
 	position:relative;
-	border: 0px dotted transparent;
+	border: 0px solid transparent;
 	margin-top:10px;
 	overflow:visible;
 	padding:0px;
+    padding-right: 5px;
+    padding-left: 5px;
     width:100%;
-    border-radius: 10px;
+    border-radius: 6px;
 	
 }
 
 .cell:hover
 {
-    border-color:  blue;
+    border-color:  #f0f0f0;
 }
+
+
 
 .cell:hover .hidable
 {
@@ -85,13 +91,16 @@ body
 .inputCell
 {
     width:100%;
-    border-top: 1px solid #DDD;
-    border-bottom: 1px solid #DDD;
-    border-left-style: none;
-    border-right-style: none;
-    /*border-radius: 10px;;*/
+
+    /*border-top: 1px solid #DDD;*/
+    /*border-bottom: 1px solid #DDD;*/
+    /*border-left-style: solid;*/
+    /*border-right-style: solid;*/
+    border: 1px solid #F0F0F0;
+
+    border-radius: 5px;;
     position: relative;
-    background-color: #EBEBEB;
+    /*background-color: #EBEBEB;*/
 }
 
 .outputCell
@@ -357,7 +366,7 @@ body
 
 .clearInputButton, .clearOutputButton
 {
-    float: right;
+    /*float: right;*/
 }
 
 .hideInputButton, .hideOutputButton
