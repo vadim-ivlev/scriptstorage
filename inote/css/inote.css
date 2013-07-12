@@ -75,7 +75,7 @@ body
 }
 .inputTitle, .outputTitle
 {
-	color:black;
+	color:#CCC;
 	display:inline-block;
 	font-family: sans-serif;
 	border: 1px dotted #FFF;
@@ -120,7 +120,7 @@ body
 
 .inputCell .formatSelectionButton
 {
-    color: black;
+    color: #CCC;
     border-color: transparent;
     background-color: transparent;
     position:absolute;
@@ -147,13 +147,13 @@ body
 
 .javascriptText
 {
-    border-top:1px solid #888;
-    border-bottom:1px solid #DDD;
+    border-top:1px solid #EEE;
+    border-bottom:1px solid #EEE;
     /*color: #00008b;*/
     /*font-family: Cousine, monospace;*/
     margin:0px;
     width:100%;
-    background-color: #EBEBEB;
+    /*background-color: #EBEBEB;*/
 }
 /*.javascriptText .CodeMirror*/
 /*{*/
@@ -165,8 +165,8 @@ body
 .header
 {
     font-family: sans-serif;
-    color:#AAA;
-    border-bottom: 1px solid #888;
+    color:#CCC;
+    border-bottom: 1px solid #EEE;
     background-color: white;
     padding-bottom: 16px;
     /*position: relative;*/
@@ -250,12 +250,12 @@ body
 {
 	width:14px;
 	height:14px;
-	color:#AAA;
+	color:#EEE;
 	font-family: sans-serif;
 	/*font-size: small;*/
 	display:inline-block;
 	text-align: center;
-	border: 1px dotted #DDD;
+	border: 1px dotted #EEE;
 	cursor: pointer;
 	background-color: #FFF;
 	vertical-align: middle;
@@ -306,7 +306,7 @@ body
 
 .toolButton
 {
-	color:#AAA;
+	color:#CCC;
 	font-family: sans-serif;
 	cursor: pointer;
 	/*background-color: #FFF;*/
@@ -314,19 +314,20 @@ body
 	padding-left: 4px;
 	padding-right: 4px;
     border: 1px solid transparent;
+    text-decoration: none;
 }
 
 .selectButton
 {
-    border: 1px solid #ccc;
-    border-radius: 10px;
+    border: 0px solid #ccc;
+    border-radius: 0px;
     -webkit-appearance: none;
     -moz-appearance: window;
     appearance: none;
 
     font-size: medium ;
 
-    color:#AAA;
+    color:#CCC;
     font-family: sans-serif;
     cursor: pointer;
     background-color: #FFF;
@@ -373,5 +374,5 @@ body
 {
     /*float: right;*/
     font-size: small;
-    color: black;
+    color: CCC;
 }

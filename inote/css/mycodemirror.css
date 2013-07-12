@@ -19,7 +19,9 @@
 {
     /*border-radius: 5px;*/
     background-color: transparent;
-    border-color: #f0f0f0;
+    border-color: #EEE;
+   
+
 }
 .CodeMirror-cursor
 {
@@ -42,4 +44,4 @@
 
 .CodeMirror-collapserange { width: 14px; }
 
-/*.activeline {background: #FFF !important;}*/
+.activeline {background: #F5F5F5 !important;}

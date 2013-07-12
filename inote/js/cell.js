@@ -35,7 +35,7 @@ function Cell(cellNumber)
                     '<option value="markdown">Markdown</option>'+
                 '</select>'+
                 //'<span class="showJavascriptButton toolButton hidable" >Show Javascript</span>'+
-                '<span class="deleteButton toolButton  hidable" title="delete cell">Delete cell <span style="color:black">x</span></span>'+
+                '<span class="deleteButton toolButton  hidable" title="delete cell">&nbsp;x&nbsp;</span>'+
             '</div>'+
 
             //input
@@ -52,7 +52,7 @@ function Cell(cellNumber)
                 '<span class="hideOutputButton toolButton hidable">&#x25BC</span>'+ //Hide output
                 '<span class="outputTitle hidable"></span>'+
                 '<span class="clearOutputButton toolButton hidable">Clear</span>'+
-                '<span class="runButton hidable" title="<Ctrl-Ent> to Run.  <Shift-Ent> to run and go to the next cell. ">Run &#x25BA;</span>'+
+                '<span class="runButton hidable" title="<Ctrl-Ent> to Run.  <Shift-Ent> to run and go to the next cell. ">&#x25BA;</span>'+
 		    '</div>'+
 
             //output

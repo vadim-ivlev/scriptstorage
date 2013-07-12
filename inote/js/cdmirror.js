@@ -51,7 +51,7 @@ function createCodeMirror(parentDomObject)
     });
 
     editor.on("blur", function(instance) {
-        $(parentDomObject).css("border-color","#f0f0f0");
+        $(parentDomObject).css("border-color","#EEE");
         editor.setOption("readOnly",true);
 
     });
