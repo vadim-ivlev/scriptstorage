@@ -20,7 +20,7 @@
     /*border-radius: 5px;*/
     background-color: transparent;
     border-color: #EEE;
-   
+   display: none;
 
 }
 .CodeMirror-cursor

@@ -34,13 +34,14 @@ function Cell(cellNumber)
                     '<option value="text/html">HTML</option>'+
                     '<option value="markdown">Markdown</option>'+
                 '</select>'+
+                '<span class="formatSelectionButton toolButton hidable">Format</span>'+ //Format selection
                 //'<span class="showJavascriptButton toolButton hidable" >Show Javascript</span>'+
-                '<span class="deleteButton toolButton  hidable" title="delete cell">&nbsp;x&nbsp;</span>'+
+                '<span class="deleteButton toolButton  hidable" title="delete cell" style="font-size: 16px;">&nbsp;&#x00D7&nbsp;</span>'+
             '</div>'+
 
             //input
             '<div id="in_" class="inputCell" >'+
-                '<span class="formatSelectionButton toolButton hidable">F</span>'+ //Format selection
+
                 '<span class="showJavascriptButton toolButton hidable" >Show Javascript</span>'+
             '</div>'+
 
