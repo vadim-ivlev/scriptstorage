@@ -55,11 +55,12 @@ body
 	
 }
 
+/*
 .cell:hover
 {
     border-color:  #f0f0f0;
 }
-
+*/
 
 
 .cell:hover .hidable
@@ -99,7 +100,7 @@ body
     /*border-bottom: 1px solid #DDD;*/
     /*border-left-style: solid;*/
     /*border-right-style: solid;*/
-    border: 1px solid #F0F0F0;
+    border: 1px solid #DDD;
 
     border-radius: 5px;;
     position: relative;
@@ -137,6 +138,7 @@ body
 	color:red;
     white-space: normal;
     font-family: Cousine, monospace;
+    font-size: 85%;
 }
 
 .noerror
@@ -144,14 +146,15 @@ body
 	color:#0000C0;
     white-space: normal;
     font-family: Cousine, monospace;
+    font-size: 85%;
 }
 
 
 
 .javascriptText
 {
-    border-top:1px solid #EEE;
-    border-bottom:1px solid #EEE;
+    border-top:1px solid #DDD;
+    border-bottom:1px solid #DDD;
     /*color: #00008b;*/
     /*font-family: Cousine, monospace;*/
     margin:0px;
@@ -172,7 +175,7 @@ body
 {
     font-family: sans-serif;
     color:#CCC;
-    border-bottom: 1px solid #EEE;
+    border-bottom: 1px solid #DDD;
     background-color: white;
     padding-bottom: 16px;
     /*position: relative;*/
@@ -192,8 +195,8 @@ body
 
 
 .notebookName{
-	border:1px solid #FFF;
-	font-family: sans-serif;
+	border:1px solid transparent;
+	font-family: 'Roboto Condensed', sans-serif;
 	font-size: medium;
     width:100%;
     vertical-align: middle;
@@ -204,7 +207,7 @@ body
 
 .notebookName:hover
 {
-    border-color:#AAA;
+    border-bottom: 1px dotted #CCC;
 
 }
 
@@ -263,12 +266,12 @@ body
 {
 	width:14px;
 	height:14px;
-	color:#EEE;
+	color:#DDD;
 	font-family:  sans-serif;
 	/*font-size: small;*/
 	display:inline-block;
 	text-align: center;
-	border: 1px dotted #EEE;
+	border: 1px dotted #DDD;
 	cursor: pointer;
 	background-color: #FFF;
 	vertical-align: middle;
@@ -311,7 +314,7 @@ body
 }
 .runButton:hover
 {
-    /*background-color: #EEE;*/
+    /*background-color: #DDD;*/
     border: 1px solid #F66;
 }
 
@@ -336,7 +339,7 @@ body
 
 .selectButton
 {
-    border: 0px solid #ccc;
+    border: 1px solid transparent;
     border-radius: 0px;
     -webkit-appearance: none;
     -moz-appearance: window;
@@ -356,13 +359,12 @@ body
 
 }
 
-
-
-.toolButton:hover
+.selectButton:hover, .toolButton:hover
 {
-	/*background-color: #EEE;*/
-    border: 1px solid #CCC;
+    border: 1px dotted #CCC;
 }
+
+
 
 
 .markdown

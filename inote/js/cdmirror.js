@@ -14,6 +14,7 @@ function createCodeMirror(parentDomObject)
         matchBrackets: true,
         autoCloseTags: true,
         collapseRange: true,
+        theme: "eclipse",
 		extraKeys: {
 			"Ctrl-Space": "autocomplete",
             "F2":     function (ed){
@@ -44,14 +45,14 @@ function createCodeMirror(parentDomObject)
 
 
     editor.on("focus", function(instance) {
-        $(parentDomObject).css("border-color","#DDD");
+        $(parentDomObject).css("border-color","#CCC");
         //if (console) console.log("focus event");
         editor.setOption("readOnly",false);
 
     });
 
     editor.on("blur", function(instance) {
-        $(parentDomObject).css("border-color","#EEE");
+        $(parentDomObject).css("border-color","#DDD");
         editor.setOption("readOnly",true);
 
     });
