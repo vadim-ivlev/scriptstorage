@@ -65,7 +65,6 @@ body
 
 .cell:hover .hidable
 {
-    /*border:1px solid red;*/
     visibility: visible;
 }
 

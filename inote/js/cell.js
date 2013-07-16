@@ -44,6 +44,7 @@ function Cell(cellNumber)
 
                 '<span class="showJavascriptButton toolButton hidable" >Show Javascript</span>'+
             '</div>'+
+            '<div id="expander" class="hidable" style="height:8px;border: 1px solid #DDD; cursor: pointer; background-color: transparent; border-radius: 5px;"/>'+
 
             //javascript text
             '<div  class="javascriptText"></div>'+
@@ -139,11 +140,13 @@ function Cell(cellNumber)
 		if (collapsed)
 		{
 			_jQueryCell.find(".inputCell").hide();
+            _jQueryCell.find("#expander").show();
 			_jQueryCell.find(".hideInputButton").html("&#x25BA");//Show input
 		}
 		else
 		{
 			_jQueryCell.find(".inputCell").show();
+            _jQueryCell.find("#expander").hide();
 			_jQueryCell.find(".hideInputButton").html("&#x25BC");//Hide input
 		}
 	}
@@ -169,6 +172,7 @@ function Cell(cellNumber)
 		$(".clearOutputButton",_jQueryCell).click( function(){_outputCell.html("");} );
 		$(".hideOutputButton",_jQueryCell).click( function(){ _setOutputCollapsed(!_outCollapsed);} );
         $(".hideInputButton",_jQueryCell).click( function(){ _setInputCollapsed(!_inCollapsed);} );
+        $("#expander",_jQueryCell).click( function(){ _setInputCollapsed(!_inCollapsed);} );
 
         $(".formatSelectionButton",_jQueryCell).click( _autoFormatSelection);
         $(".showJavascriptButton",_jQueryCell).click( _switchJavascriptText);
