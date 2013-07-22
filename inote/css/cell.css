@@ -28,10 +28,10 @@
 
 
 
-.cell>table
-{
-	width: 100%;
-}
+/*.cell>table*/
+/*{*/
+	/*width: 100%;*/
+/*}*/
 .inputTitle, .outputTitle
 {
 	color:#CCC;
@@ -57,9 +57,9 @@
     /*border-bottom: 1px solid #DDD;*/
     /*border-left-style: solid;*/
     /*border-right-style: solid;*/
-    border: 1px solid #DDD;
+    border-left: 3px solid #DDD;
 
-    border-radius: 5px;;
+    /*border-radius: 5px; */
     position: relative;
     /*background-color: #EBEBEB;*/
 }
@@ -110,8 +110,8 @@
 
 .javascriptText
 {
-    border-top:0px solid #DDD;
-    border-bottom:1px solid #DDD;
+    border-top:1px solid #DDD;
+    border-left:3px solid #DDD;
     /*color: #00008b;*/
     /*font-family: Cousine, monospace;*/
     margin:0px;
@@ -169,8 +169,8 @@
 .insertBefore
 {
 	position:absolute;
-	left:48%;
-	top:-15px;
+	left:-2px;
+	top:-14px;
 	border-style: none;
     background-color: transparent;
 }
@@ -178,8 +178,8 @@
 .insertAfter
 {
 	position:absolute;
-	left:48%;
-	bottom:-10px;
+	left:-2px;
+	bottom:-9px;
 	border-style: none;
     background-color: transparent;
 }
