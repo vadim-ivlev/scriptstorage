@@ -24,7 +24,7 @@ function Cell(cellNumber)
 		_jQueryCell = $(
 		'<div class="cell" collapsed="no" outCollapsed="no" inCollapsed="no" access="public">'+
             //input header
-            '<div >'+
+            '<div class="input_header">'+
                 '<span class="hideInputButton toolButton hidable">&#x25BC</span>'+ //Hide input
                 '<span class="inputTitle hidable"></span>'+
 //                '<span class="formatSelectionButton toolButton hidable">F</span>'+ //Format selection
@@ -36,21 +36,20 @@ function Cell(cellNumber)
                 '</select>'+
                 '<span class="formatSelectionButton toolButton hidable">Format</span>'+ //Format selection
                 //'<span class="showJavascriptButton toolButton hidable" >Show Javascript</span>'+
-                '<span class="deleteButton toolButton  hidable" title="delete cell" style="font-size: 16px;">&nbsp;&#x00D7&nbsp;</span>'+
+                '<span class="deleteButton toolButton  hidable" title="delete cell" >&nbsp;&#x00D7&nbsp;</span>'+
             '</div>'+
 
             //input
             '<div id="in_" class="inputCell" >'+
-
                 '<span class="showJavascriptButton toolButton hidable" >Show Javascript</span>'+
             '</div>'+
-            '<div id="expander" class="hidable" style="height:8px;border: 1px solid #DDD; cursor: pointer; background-color: transparent; border-radius: 5px;"/>'+
+            '<div class="input_expander hidable"></div>'+
 
             //javascript text
             '<div  class="javascriptText"></div>'+
 
             //output header
-            '<div >'+
+            '<div class="output_header">'+
                 '<span class="hideOutputButton toolButton hidable">&#x25BC</span>'+ //Hide output
                 '<span class="outputTitle hidable"></span>'+
                 '<span class="clearOutputButton toolButton hidable">Clear</span>'+
@@ -59,7 +58,7 @@ function Cell(cellNumber)
 
             //output
             '<div id="out_" class="outputCell lr_padded"></div>'+
-
+            '<div class="output_expander hidable"></div>'+
 
             // add cell buttons
             '<div class="insertBefore smallButton  hidable" title="add cell">+</div>'+
@@ -125,11 +124,15 @@ function Cell(cellNumber)
 		if (collapsed)
 		{
 			_jQueryCell.find(".outputCell").hide();
+            _jQueryCell.find(".output_expander").show();
+			_jQueryCell.find(".output_header").hide();
 			_jQueryCell.find(".hideOutputButton").html("&#x25BA");//Show output
 		}
 		else
 		{
 			_jQueryCell.find(".outputCell").show();
+            _jQueryCell.find(".output_expander").hide();
+			_jQueryCell.find(".output_header").show();
 			_jQueryCell.find(".hideOutputButton").html("&#x25BC");//Hide output
 		}
 	}
@@ -140,13 +143,15 @@ function Cell(cellNumber)
 		if (collapsed)
 		{
 			_jQueryCell.find(".inputCell").hide();
-            _jQueryCell.find("#expander").show();
+            _jQueryCell.find(".input_expander").show();
+			_jQueryCell.find(".input_header").hide();
 			_jQueryCell.find(".hideInputButton").html("&#x25BA");//Show input
 		}
 		else
 		{
 			_jQueryCell.find(".inputCell").show();
-            _jQueryCell.find("#expander").hide();
+            _jQueryCell.find(".input_expander").hide();
+			_jQueryCell.find(".input_header").show();
 			_jQueryCell.find(".hideInputButton").html("&#x25BC");//Hide input
 		}
 	}
@@ -172,7 +177,8 @@ function Cell(cellNumber)
 		$(".clearOutputButton",_jQueryCell).click( function(){_outputCell.html("");} );
 		$(".hideOutputButton",_jQueryCell).click( function(){ _setOutputCollapsed(!_outCollapsed);} );
         $(".hideInputButton",_jQueryCell).click( function(){ _setInputCollapsed(!_inCollapsed);} );
-        $("#expander",_jQueryCell).click( function(){ _setInputCollapsed(!_inCollapsed);} );
+        $(".input_expander",_jQueryCell).click( function(){ _setInputCollapsed(!_inCollapsed);} );
+        $(".output_expander",_jQueryCell).click( function(){ _setOutputCollapsed(!_outCollapsed);} );
 
         $(".formatSelectionButton",_jQueryCell).click( _autoFormatSelection);
         $(".showJavascriptButton",_jQueryCell).click( _switchJavascriptText);
