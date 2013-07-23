@@ -1,5 +1,5 @@
 .CodeMirror {
-  border: 0px solid #ccc;/*#eee;*/
+  border: 0px dotted #F00;/*#eee;*/
   border-radius: 5px;
   height: auto;
   width:100%;
@@ -19,7 +19,7 @@
     /*border-radius: 5px;*/
     background-color: transparent;
     border-color: #DDD;
-
+    border-right: 1px dotted #DDD;
    /*display: none;*/
 
 }
