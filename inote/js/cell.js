@@ -26,7 +26,7 @@ function Cell(cellNumber)
             //input header
             '<div class="input_header">'+
                 '<span class="hideInputButton toolButton hidable" >&#x25BC</span>'+ //Hide input
-                '<span class="inputTitle hidable"></span>'+
+                //'<span class="inputTitle hidable"></span>'+
                 '<select class="selectButton hidable">'+
                     '<option value="javascript">JavaScript</option>'+
                     '<option value="text/x-coffeescript">CoffeeScript</option>'+
@@ -51,7 +51,7 @@ function Cell(cellNumber)
             //output header
             '<div class="output_header">'+
                 '<span class="hideOutputButton toolButton hidable">&#x25BC</span>'+ //Hide output
-                '<span class="outputTitle hidable"></span>'+
+                //'<span class="outputTitle hidable"></span>'+
                 '<span class="clearOutputButton toolButton hidable">Clear</span>'+
                 '<span class="runButton hidable" title="<Ctrl-Ent> to Run.  <Shift-Ent> to run and go to the next cell. ">&#x25BA;</span>'+
 		    '</div>'+
@@ -129,14 +129,14 @@ function Cell(cellNumber)
 			_jQueryCell.find(".outputCell").hide();
             _jQueryCell.find(".output_expander").show();
 			_jQueryCell.find(".output_header").hide();
-			_jQueryCell.find(".hideOutputButton").html("&#x25BA");//Show output
+			_jQueryCell.find(".hideOutputButton").html("[out"+_n+"] &#x25BA");//Show output
 		}
 		else
 		{
 			_jQueryCell.find(".outputCell").show();
             _jQueryCell.find(".output_expander").hide();
 			_jQueryCell.find(".output_header").show();
-			_jQueryCell.find(".hideOutputButton").html("&#x25BC");//Hide output
+			_jQueryCell.find(".hideOutputButton").html("[out"+_n+"] &#x25BC");//Hide output
 		}
         if (saveNotebookLater) saveNotebookLater();
 	}
@@ -149,14 +149,14 @@ function Cell(cellNumber)
 			_jQueryCell.find(".inputCell").hide();
             _jQueryCell.find(".input_expander").show();
 			_jQueryCell.find(".input_header").hide();
-			_jQueryCell.find(".hideInputButton").html("&#x25BA");//Show input
+			_jQueryCell.find(".hideInputButton").html("[in"+_n+"] &#x25BA");//Show input
 		}
 		else
 		{
 			_jQueryCell.find(".inputCell").show();
             _jQueryCell.find(".input_expander").hide();
 			_jQueryCell.find(".input_header").show();
-			_jQueryCell.find(".hideInputButton").html("&#x25BC");//Hide input
+			_jQueryCell.find(".hideInputButton").html("[in"+_n+"] &#x25BC");//Hide input
 		}
         if (saveNotebookLater) saveNotebookLater();
 	}
@@ -301,6 +301,8 @@ function Cell(cellNumber)
 		_outputCell.attr("id","out" + _n );
 		_inputTitle.text(_inputCell.attr("id"));
 		_outputTitle.text(_outputCell.attr("id"));
+        _jQueryCell.find(".output_expander").html("[out"+_n+"] &#x25BA");
+        _jQueryCell.find(".input_expander").html("[in"+_n+"] &#x25BA");
 		return this;
 	}
 
