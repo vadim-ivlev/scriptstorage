@@ -9,7 +9,7 @@ function createCodeMirror(parentDomObject)
 		value: "",//function myScript(){return 100;}
 		mode: "javascript",
         lineWrapping: true,
-		lineNumbers: false,
+		lineNumbers: true,
 		autofocus: false,
         matchBrackets: true,
         autoCloseTags: true,

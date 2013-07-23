@@ -25,7 +25,6 @@ function Cell(cellNumber)
 		'<div class="cell" collapsed="no" outCollapsed="no" inCollapsed="no" access="public">'+
             //input header
             '<div class="input_header">'+
-                '<span class="hideInputButton toolButton hidable">&#x25BC</span>'+ //Hide input
                 '<span class="inputTitle hidable"></span>'+
 //                '<span class="formatSelectionButton toolButton hidable">F</span>'+ //Format selection
                 '<select class="selectButton hidable">'+
@@ -36,6 +35,8 @@ function Cell(cellNumber)
                 '</select>'+
                 '<span class="formatSelectionButton toolButton hidable">Format</span>'+ //Format selection
                 //'<span class="showJavascriptButton toolButton hidable" >Show Javascript</span>'+
+                '<span class="hideInputButton toolButton hidable" >&#x25BCsss</span>'+ //Hide input
+
                 '<span class="deleteButton toolButton  hidable" title="delete cell" >&nbsp;&#x00D7&nbsp;</span>'+
             '</div>'+
 
@@ -43,22 +44,22 @@ function Cell(cellNumber)
             '<div id="in_" class="inputCell" >'+
                 '<span class="showJavascriptButton toolButton hidable" >Show Javascript</span>'+
             '</div>'+
-            '<div class="input_expander hidable"></div>'+
+            '<div class="input_expander toolButton hidable">&#x25BC</div>'+
 
             //javascript text
             '<div  class="javascriptText"></div>'+
 
             //output header
             '<div class="output_header">'+
-                '<span class="hideOutputButton toolButton hidable">&#x25BC</span>'+ //Hide output
                 '<span class="outputTitle hidable"></span>'+
                 '<span class="clearOutputButton toolButton hidable">Clear</span>'+
                 '<span class="runButton hidable" title="<Ctrl-Ent> to Run.  <Shift-Ent> to run and go to the next cell. ">&#x25BA;</span>'+
+                '<span class="hideOutputButton toolButton hidable">&#x25BC</span>'+ //Hide output
 		    '</div>'+
 
             //output
             '<div id="out_" class="outputCell lr_padded"></div>'+
-            '<div class="output_expander hidable"></div>'+
+            '<div class="output_expander toolButton hidable">&#x25BC</div>'+
 
             // add cell buttons
             '<div class="insertBefore smallButton  hidable" title="add cell">+</div>'+
@@ -135,6 +136,7 @@ function Cell(cellNumber)
 			_jQueryCell.find(".output_header").show();
 			_jQueryCell.find(".hideOutputButton").html("&#x25BC");//Hide output
 		}
+        if (saveNotebookLater) saveNotebookLater();
 	}
 
 	function _setInputCollapsed(collapsed)
@@ -154,6 +156,7 @@ function Cell(cellNumber)
 			_jQueryCell.find(".input_header").show();
 			_jQueryCell.find(".hideInputButton").html("&#x25BC");//Hide input
 		}
+        if (saveNotebookLater) saveNotebookLater();
 	}
 
 
@@ -174,7 +177,7 @@ function Cell(cellNumber)
 
 
 		$(".runButton",_jQueryCell).click( _executeCode );
-		$(".clearOutputButton",_jQueryCell).click( function(){_outputCell.html("");} );
+		$(".clearOutputButton",_jQueryCell).click( function(){_outputCell.html(""); if (saveNotebookLater) saveNotebookLater();} );
 		$(".hideOutputButton",_jQueryCell).click( function(){ _setOutputCollapsed(!_outCollapsed);} );
         $(".hideInputButton",_jQueryCell).click( function(){ _setInputCollapsed(!_inCollapsed);} );
         $(".input_expander",_jQueryCell).click( function(){ _setInputCollapsed(!_inCollapsed);} );
@@ -218,7 +221,7 @@ function Cell(cellNumber)
         {
             _jQueryCell.find('.formatSelectionButton').hide();
         }
-
+        if (saveNotebookLater) saveNotebookLater();
     }
 
 
@@ -374,10 +377,15 @@ function Cell(cellNumber)
 		}
 		else
 		{
+            try {
 			s=JSON.stringify(o,function (key, value) {
 	                return this[key] instanceof Function ?
 	                    value.toString() : value;
 	            }," ");
+           }
+            catch (e){
+                return;
+            }
 		}
 		box.text(s);
 		_outputCell.html(box);
@@ -441,13 +449,22 @@ function Cell(cellNumber)
         return data.xml ? data.xml : (new XMLSerializer()).serializeToString(data);
     }
 
+    function _compileCoffeToJava(){
+        if (_mode!="text/x-coffeescript") return;
 
+        var code = _codemirror.getValue();
+        var compiledCode=CoffeeScript.compile(code, {bare: true});
+        _javascriptTextViewer.setValue("//Compiled CoffeScript\n\n"+compiledCode);
+        _javascriptTextViewer.refresh();
+
+    }
 
 
 
 
 	//EXECUTION **************************************
 	_create(cellNumber);
+    _jQueryCell._cell=this;
 
 	//RETURN *****************************************
 	return {

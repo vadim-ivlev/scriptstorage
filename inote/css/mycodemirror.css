@@ -4,11 +4,9 @@
   height: auto;
   width:100%;
   background-color: transparent; /*#f0f0f0;*/ /*#f5f5f5;*/
-  /*font-size: large;*/
-    font-family: Cousine, monospace;
-    line-height: 120%;
-    font-size: 85%;
-  /*position: relative;*/
+  font-family: Cousine, monospace;
+  line-height: 120%;
+  font-size: 85%;
 }
 .CodeMirror-scroll {
   overflow-y: hidden;
@@ -21,7 +19,8 @@
     /*border-radius: 5px;*/
     background-color: transparent;
     border-color: #DDD;
-   display: none;
+
+   /*display: none;*/
 
 }
 .CodeMirror-cursor
