@@ -294,7 +294,12 @@
 }
 
 
-.input_header, .output_header
+.input_header
 {
     border-bottom: 1px dotted #DDD;
+}
+
+.output_header
+{
+    border-top: 1px dotted #DDD;
 }
