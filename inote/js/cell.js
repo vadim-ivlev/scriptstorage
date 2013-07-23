@@ -25,8 +25,8 @@ function Cell(cellNumber)
 		'<div class="cell" collapsed="no" outCollapsed="no" inCollapsed="no" access="public">'+
             //input header
             '<div class="input_header">'+
+                '<span class="hideInputButton toolButton hidable" >&#x25BC</span>'+ //Hide input
                 '<span class="inputTitle hidable"></span>'+
-//                '<span class="formatSelectionButton toolButton hidable">F</span>'+ //Format selection
                 '<select class="selectButton hidable">'+
                     '<option value="javascript">JavaScript</option>'+
                     '<option value="text/x-coffeescript">CoffeeScript</option>'+
@@ -34,32 +34,31 @@ function Cell(cellNumber)
                     '<option value="markdown">Markdown</option>'+
                 '</select>'+
                 '<span class="formatSelectionButton toolButton hidable">Format</span>'+ //Format selection
-                //'<span class="showJavascriptButton toolButton hidable" >Show Javascript</span>'+
-                '<span class="hideInputButton toolButton hidable" >&#x25BCsss</span>'+ //Hide input
+                '<span class="showJavascriptButton toolButton hidable" >Show Javascript</span>'+
 
                 '<span class="deleteButton toolButton  hidable" title="delete cell" >&nbsp;&#x00D7&nbsp;</span>'+
             '</div>'+
 
             //input
             '<div id="in_" class="inputCell" >'+
-                '<span class="showJavascriptButton toolButton hidable" >Show Javascript</span>'+
+                //'<span class="showJavascriptButton toolButton hidable" >Show Javascript</span>'+
             '</div>'+
-            '<div class="input_expander toolButton hidable">&#x25BC</div>'+
+            '<div class="input_expander toolButton hidable">&#x25BA</div>'+
 
             //javascript text
             '<div  class="javascriptText"></div>'+
 
             //output header
             '<div class="output_header">'+
+                '<span class="hideOutputButton toolButton hidable">&#x25BC</span>'+ //Hide output
                 '<span class="outputTitle hidable"></span>'+
                 '<span class="clearOutputButton toolButton hidable">Clear</span>'+
                 '<span class="runButton hidable" title="<Ctrl-Ent> to Run.  <Shift-Ent> to run and go to the next cell. ">&#x25BA;</span>'+
-                '<span class="hideOutputButton toolButton hidable">&#x25BC</span>'+ //Hide output
 		    '</div>'+
 
             //output
             '<div id="out_" class="outputCell lr_padded"></div>'+
-            '<div class="output_expander toolButton hidable">&#x25BC</div>'+
+            '<div class="output_expander toolButton hidable">&#x25BA</div>'+
 
             // add cell buttons
             '<div class="insertBefore smallButton  hidable" title="add cell">+</div>'+
@@ -71,6 +70,7 @@ function Cell(cellNumber)
 
 
 		_inputCell = _jQueryCell.find(".inputCell");
+        _inputCell[0]._compile=_compileLater;
 		_outputCell = _jQueryCell.find(".outputCell");
 		_inputTitle = _jQueryCell.find(".inputTitle");
 		_outputTitle = _jQueryCell.find(".outputTitle");
@@ -78,15 +78,16 @@ function Cell(cellNumber)
         _codemirror = createCodeMirror(_inputCell[0]);
         _javascriptTextViewer = createCodeMirror(_jQueryCell.find(".javascriptText")[0]);
         _javascriptTextViewer.setOption("readOnly","nocursor");
-        _javascriptTextViewer.setValue("//Compiles to Javascript when you press [Run ►]");
+        _javascriptTextViewer.setValue("");
 
 		_attachEvents();
 		_setNumber(celNum);
 		_setMode(_mode);
 		_setOutputCollapsed(_outCollapsed);
 		_setInputCollapsed(_outCollapsed);
-
 	}
+
+
 
 //    function _selectTheme() {
 //        var theme = _jQueryCell.find(".selectThemeButton").val();
@@ -104,6 +105,7 @@ function Cell(cellNumber)
         _jQueryCell.find(".showJavascriptButton").text("Hide Javascript");
         _jQueryCell.find(".javascriptText").show();
         _javascriptTextViewer.refresh();
+        _compile_CoffeeScript();
     }
 
     function _hideJavascriptText(){
@@ -449,22 +451,61 @@ function Cell(cellNumber)
         return data.xml ? data.xml : (new XMLSerializer()).serializeToString(data);
     }
 
-    function _compileCoffeToJava(){
-        if (_mode!="text/x-coffeescript") return;
+    var _compileTimeout;
+
+    function _compileLater() {
+        clearTimeout(_compileTimeout);
+        if (_mode == "text/x-coffeescript") {
+            _compileTimeout = setTimeout(_compile_CoffeeScript, 500);
+        }
+        else if (_mode == "markdown") {
+            _compileTimeout = setTimeout(_compile_Markdown, 500);
+        }
+   }
+
+    /**
+     * Compiles markdown and writes it into output
+     * @private
+     */
+    function _compile_Markdown() {
+        if (_outCollapsed) return;
 
         var code = _codemirror.getValue();
-        var compiledCode=CoffeeScript.compile(code, {bare: true});
-        _javascriptTextViewer.setValue("//Compiled CoffeScript\n\n"+compiledCode);
-        _javascriptTextViewer.refresh();
+        var converter = new Showdown.converter();
+        var html = converter.makeHtml(code);
+        _outputCell.html("<div class='markdown'>" + html + "</div>");
+        //if (saveNotebookLater) saveNotebookLater();
 
     }
 
 
+    /**
+     * Compiles CoffesScript and writes it into output
+     * @private
+     */
+    function _compile_CoffeeScript() {
+        var javaScriptText=_jQueryCell.find(".javascriptText");
+        if (javaScriptText.is(":visible"))
+        {
+            var code = _codemirror.getValue();
+            var compiledCode = "";
+            try {
+                compiledCode = CoffeeScript.compile(code, {bare: true});
+            }
+            catch(e) {
+                compiledCode = e.toString();
+            }
+
+            _javascriptTextViewer.setValue(compiledCode);
+            _javascriptTextViewer.refresh();
+            //if (saveNotebookLater) saveNotebookLater();
+
+        }
+    }
 
 
-	//EXECUTION **************************************
+    //EXECUTION **************************************
 	_create(cellNumber);
-    _jQueryCell._cell=this;
 
 	//RETURN *****************************************
 	return {

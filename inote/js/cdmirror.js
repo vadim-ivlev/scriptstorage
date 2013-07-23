@@ -41,6 +41,8 @@ function createCodeMirror(parentDomObject)
     editor.on("change", function(instance, changeObj) {
         if (saveNotebookLater) saveNotebookLater();
         //if (console) console.log("change event");
+        if (parentDomObject._compile)
+            parentDomObject._compile();
     });
 
 
