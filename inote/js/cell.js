@@ -354,9 +354,9 @@ function Cell(cellNumber)
 			}
             else if (_mode=="text/x-coffeescript")
             {
-                _javascriptTextViewer.setValue("//Compiles to Javascript when you press [Run ►]");
+                _javascriptTextViewer.setValue("");
                 var compiledCode=CoffeeScript.compile(code, {bare: true});
-                _javascriptTextViewer.setValue("//Compiles to Javascript when you press [Run ►]\n\n"+compiledCode);
+                _javascriptTextViewer.setValue(compiledCode);
                 _javascriptTextViewer.refresh();
                 result = eval.call(window, compiledCode);
                 _print(result);
