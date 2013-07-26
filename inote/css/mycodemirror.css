@@ -1,6 +1,5 @@
 .CodeMirror {
-  border: 0px dotted #F00;/*#eee;*/
-  border-radius: 5px;
+  /*border-radius: 5px;*/
   height: auto;
   width:100%;
   background-color: transparent; /*#f0f0f0;*/ /*#f5f5f5;*/
@@ -18,8 +17,7 @@
 {
     /*border-radius: 5px;*/
     background-color: transparent;
-    border-color: #DDD;
-    border-right: 1px dotted #DDD;
+    border-right: 1px none #DDD;
    /*display: none;*/
 
 }
@@ -44,4 +42,4 @@
 
 .CodeMirror-collapserange { width: 14px; }
 
-/*.activeline {background: #F5F5F5 !important;}*/
+.activeline {background: #F5F5F5 !important;}

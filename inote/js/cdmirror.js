@@ -47,7 +47,7 @@ function createCodeMirror(parentDomObject)
 
 
     editor.on("focus", function(instance) {
-        $(parentDomObject).css("border-color","#CCC");
+        $(parentDomObject).css("border-color","#AAA");
         //if (console) console.log("focus event");
         editor.setOption("readOnly",false);
 

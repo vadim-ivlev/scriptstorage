@@ -6,6 +6,9 @@
         <meta name=description content="">
         <meta name=viewport content="width=device-width, initial-scale=1">
         <title>i Note Book list</title>
+        <link href='http://fonts.googleapis.com/css?family=Cousine' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+
         <link rel=stylesheet href="css/inote.css">
 
         <!-- jQuery -->
@@ -46,7 +49,7 @@
                 }
 
                 if (last_access!=notebook_access){
-                    s+="<div  style='padding-left: 25px; color:"+(notebook_access=="private"?"green":"red")+"; font-size: small; '>"+notebook_access+"</div>";
+                    s+="<div  style='padding-left: 25px; color:"+(notebook_access=="private"?"black":"")+";  '>"+notebook_access+"</div>";
                     last_access=notebook_access;
                 }
 
@@ -57,7 +60,7 @@
                         "&notebook_name="+encodeURIComponent(notebook_name)+
                           "'>"+notebook_name+"</a>&nbsp;&nbsp;&nbsp;"+
 
-                        "<span class='toolButton' title='delete' onclick='deleteNotebook(\""+key_name+"\")'>x</span>"+
+                        "<span class='toolButton' title='delete' onclick='deleteNotebook(\""+key_name+"\")'>&#x00D7</span>"+
 
                    "</div>";
 
@@ -108,7 +111,7 @@
                     <table cellspacing="0" cellpadding="0" style="width: 100%">
                         <tr>
                             <td style="width:100%">
-                                <span id="notebookName" class="notebookName" style="border-style: none; color:#888" >iNotebooks</span>
+                                <span id="notebookName" class="notebookName" style="font-size: 70px; font-weight: normal;"  >iNote</span>
                                 <span id="btnCreate" class="toolButton" >Create new notebook</span>
                             </td>
                             <td>
