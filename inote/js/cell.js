@@ -43,11 +43,9 @@ function Cell(cellNumber)
             '<div id="in_" class="inputCell" >'+
                 //'<span class="showJavascriptButton toolButton hidable" >Show Javascript</span>'+
             '</div>'+
-            '<div class="input_expander toolButton hidable">&#x25BA</div>'+
-
-            //javascript text
+           //javascript text
             '<div  class="javascriptText"></div>'+
-
+            '<div class="input_expander toolButton hidable">&#x25BA</div>'+
             //output header
             '<div class="output_header">'+
                 '<span class="hideOutputButton toolButton hidable">&#x25BC</span>'+ //Hide output
