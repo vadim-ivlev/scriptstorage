@@ -70,12 +70,14 @@ function Cell(cellNumber)
 
 
 		_inputCell = _jQueryCell.find(".inputCell");
+//        _inputCell.resizable();
         _inputCell[0]._compile=_compileLater;
 		_outputCell = _jQueryCell.find(".outputCell");
 		_inputTitle = _jQueryCell.find(".inputTitle");
 		_outputTitle = _jQueryCell.find(".outputTitle");
 
         _codemirror = createCodeMirror(_inputCell[0]);
+//        _codemirror.resizable();
         _javascriptTextViewer = createCodeMirror(_jQueryCell.find(".javascriptText")[0]);
         _javascriptTextViewer.setOption("readOnly","nocursor");
         _javascriptTextViewer.setValue("");

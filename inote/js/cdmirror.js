@@ -9,7 +9,7 @@ function createCodeMirror(parentDomObject)
 		value: "",//function myScript(){return 100;}
 		mode: "javascript",
         lineWrapping: true,
-		lineNumbers: false,
+		lineNumbers: true,
 		autofocus: false,
         matchBrackets: true,
         autoCloseTags: true,
@@ -17,6 +17,10 @@ function createCodeMirror(parentDomObject)
         theme: "eclipse",
 		extraKeys: {
 			"Ctrl-Space": "autocomplete",
+            "Tab": function(cm) {
+                var spaces = Array(cm.getOption("indentUnit") + 1).join(" ");
+                cm.replaceSelection(spaces, "end", "+input");
+              },
             "F2":     function (ed){
                 if (ed.getMode().name=="javascript")
                     foldFunc_brace(ed, ed.getCursor().line);
@@ -28,14 +32,14 @@ function createCodeMirror(parentDomObject)
 
     var editor = CodeMirror(parentDomObject, config);
 
-//    var hlLine = editor.addLineClass(0, "background", "activeline");
-//    editor.on("cursorActivity", function() {
-//        var cur = editor.getLineHandle(editor.getCursor().line);
-//        if (cur != hlLine) {
-//            editor.removeLineClass(hlLine, "background", "activeline");
-//            hlLine = editor.addLineClass(cur, "background", "activeline");
-//        }
-//    });
+    var hlLine = editor.addLineClass(0, "background", "activeline");
+    editor.on("cursorActivity", function() {
+        var cur = editor.getLineHandle(editor.getCursor().line);
+        if (cur != hlLine) {
+            editor.removeLineClass(hlLine, "background", "activeline");
+            hlLine = editor.addLineClass(cur, "background", "activeline");
+        }
+    });
 
 
     editor.on("change", function(instance, changeObj) {
