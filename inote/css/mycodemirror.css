@@ -6,6 +6,7 @@
   font-family: Cousine, monospace;
   /*line-height: 120%;*/
   font-size: 85%;
+
 }
 .CodeMirror-scroll {
   overflow-y: hidden;
@@ -32,15 +33,42 @@
     /*color: red !important;*/
 }
 
+/*
 .CodeMirror-foldmarker {
     color: red;
-    /*text-shadow: #b9f 1px 1px 2px, #b9f -1px -1px 2px, #b9f 1px -1px 2px, #b9f -1px 1px 2px;*/
+    text-shadow: #b9f 1px 1px 2px, #b9f -1px -1px 2px, #b9f 1px -1px 2px, #b9f -1px 1px 2px;
+
     font-family: arial;
     font-weight: bold;
     line-height: .3;
     cursor: pointer;
 }
+*/
 
-.CodeMirror-collapserange { width: 14px; }
+/*.CodeMirror-collapserange { width: 14px; }*/
 
 .activeline {background: #F5F5F5 !important;}
+
+
+/* folding */
+     .CodeMirror-foldmarker {
+        color: crimson;
+        /*text-shadow: #b9f 1px 1px 2px, #b9f -1px -1px 2px, #b9f 1px -1px 2px, #b9f -1px 1px 2px;*/
+        font-family: arial;
+        line-height: .3;
+        cursor: pointer;
+      }
+      .CodeMirror-foldgutter {
+        width: .7em;
+      }
+      .CodeMirror-foldgutter-open,
+      .CodeMirror-foldgutter-folded {
+        color: crimson;
+        cursor: pointer;
+      }
+      .CodeMirror-foldgutter-open:after {
+        content: "\25BE";
+      }
+      .CodeMirror-foldgutter-folded:after {
+        content: "\25B8";
+      }

@@ -10,15 +10,21 @@
     padding-left: 5px;
     width:100%;
     /*border-radius: 6px;*/
+    /*box-shadow: 2px 2px 16px #EEE;*/
+    border-radius: 12px;
+    padding: 10px;
 
 }
 
-/*
+
 .cell:hover
 {
-    border-color:  #f0f0f0;
+    /*border-color:  #f0f0f0;*/
+    box-shadow: 2px 2px 8px #BBB;
+
+
 }
-*/
+
 
 
 .cell:hover .hidable
@@ -85,7 +91,7 @@
     margin: 0;
     padding: 0 ;
     /*width:50%;*/
-    background-color: #f5f5f5;
+    /*background-color: #f5f5f5;*/
     /*float: left;*/
     /*display: table-cell;*/
     vertical-align: top;

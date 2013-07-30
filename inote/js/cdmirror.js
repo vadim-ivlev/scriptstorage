@@ -1,9 +1,5 @@
 // Codemirror autocompletion
 
-//CodeMirror.commands.autocomplete = function(cm) {
-//	CodeMirror.simpleHint(cm, CodeMirror.javascriptHint);
-//}
-
 CodeMirror.commands.autocomplete = function(cm) {
 CodeMirror.showHint(cm, CodeMirror.hint.javascript);
 }
@@ -21,6 +17,9 @@ function createCodeMirror(parentDomObject)
         autoCloseTags: true,
         collapseRange: true,
         theme: "eclipse",
+        foldGutter: true,
+        gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+
 		extraKeys: {
 			"Ctrl-Space": "autocomplete",
             "Tab": function(cm) {
@@ -32,7 +31,8 @@ function createCodeMirror(parentDomObject)
                     foldFunc_brace(ed, ed.getCursor().line);
                 else
                     foldFunc_tag(ed, ed.getCursor().line);
-            }
+                },
+            "Ctrl-Q": function(cm){ cm.foldCode(cm.getCursor()); }
 		}
 	};
 
@@ -69,8 +69,8 @@ function createCodeMirror(parentDomObject)
 
     });
 
-    var foldFunc_brace = CodeMirror.newFoldFunction(CodeMirror.braceRangeFinder,"...");
-    var foldFunc_tag = CodeMirror.newFoldFunction(CodeMirror.tagRangeFinder,"...");
+//    var foldFunc_brace = CodeMirror.newFoldFunction(CodeMirror.braceRangeFinder,"...");
+//    var foldFunc_tag = CodeMirror.newFoldFunction(CodeMirror.tagRangeFinder,"...");
 
    // editor.on("gutterClick", fold);
 

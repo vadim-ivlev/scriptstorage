@@ -114,10 +114,13 @@ function Cell(cellNumber)
         _jQueryCell.find(".codeArea").colResizable();
     }
 
+
+
     function _hideJavascriptText(){
         _jQueryCell.find(".showJavascriptButton").text("Show Javascript");
         _jQueryCell.find(".javascriptText").hide();
     }
+
 
     function _switchJavascriptText()
     {
@@ -126,6 +129,8 @@ function Cell(cellNumber)
         else
             _hideJavascriptText();
     }
+
+
 
 	function _setOutputCollapsed(collapsed)
 	{
