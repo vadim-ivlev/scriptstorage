@@ -39,12 +39,15 @@ function Cell(cellNumber)
                 '<span class="deleteButton toolButton  hidable" title="delete cell" >&nbsp;&#x00D7&nbsp;</span>'+
             '</div>'+
 
-            //input
-            '<div id="in_" class="inputCell" >'+
-                //'<span class="showJavascriptButton toolButton hidable" >Show Javascript</span>'+
-            '</div>'+
-           //javascript text
-            '<div  class="javascriptText"></div>'+
+            // Code area
+            '<table class="codeArea" ><tr>'+
+                //input
+                '<td id="in_" class="inputCell" ></td>'+
+               //javascript text
+                '<td  class="javascriptText"></td>'+
+            '</tr></table>'+
+
+
             '<div class="input_expander toolButton hidable">&#x25BA</div>'+
             //output header
             '<div class="output_header">'+
@@ -146,14 +149,14 @@ function Cell(cellNumber)
 		_inCollapsed=collapsed;
 		if (collapsed)
 		{
-			_jQueryCell.find(".inputCell").hide();
+			_jQueryCell.find(".codeArea").hide();
             _jQueryCell.find(".input_expander").show();
 			_jQueryCell.find(".input_header").hide();
 			_jQueryCell.find(".hideInputButton").html("[in"+_n+"] &#x25BA");//Show input
 		}
 		else
 		{
-			_jQueryCell.find(".inputCell").show();
+			_jQueryCell.find(".codeArea").show();
             _jQueryCell.find(".input_expander").hide();
 			_jQueryCell.find(".input_header").show();
 			_jQueryCell.find(".hideInputButton").html("[in"+_n+"] &#x25BC");//Hide input

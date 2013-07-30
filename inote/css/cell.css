@@ -28,10 +28,20 @@
 
 
 
-/*.cell>table*/
-/*{*/
-	/*width: 100%;*/
-/*}*/
+
+.input_header
+{
+    /*border-bottom: 1px dotted #DDD;*/
+    width:100%;
+}
+
+.output_header
+{
+    border-top: 1px dotted #DDD;
+    width:100%;
+}
+
+
 .inputTitle, .outputTitle
 {
 	color:#CCC;
@@ -48,16 +58,40 @@
 }
 
 
+.codeArea
+{
+    border: 0px solid crimson;
+    border-spacing: 0;
+    margin: 0;
+    padding: 0 ;
+    width:100%;
+
+}
 
 .inputCell
 {
-    width:100%;
-    /*border:1px dotted #DDD;*/
-    border-left: 3px solid #DDD;
-    /*position: relative;*/
-    /*padding-left: 10px;*/
-    /*float: left;*/
+    margin: 0;
+    padding: 0 ;
+    vertical-align: top;
 }
+
+
+.javascriptText
+{
+    /*border-top:1px solid #DDD;*/
+    /*border-left:3px solid #DDD;*/
+    /*color: #00008b;*/
+    /*font-family: Cousine, monospace;*/
+    margin: 0;
+    padding: 0 ;
+    /*width:50%;*/
+    background-color: #f5f5f5;
+    /*float: left;*/
+    /*display: table-cell;*/
+    vertical-align: top;
+}
+
+
 
 .outputCell
 {
@@ -66,26 +100,7 @@
 
 }
 
-/*.inputCell */
-.showJavascriptButton
-{
-    /*position:absolute;*/
-    /*bottom:0px;*/
-    /*right:0px;*/
-    /*z-index: 1000;*/
-}
 
-/*.inputCell */
-.formatSelectionButton
-{
-   color: #BBB;
-    border-color: transparent;
-    background-color: transparent;
-    /*position:absolute;*/
-    /*top:3px;*/
-    /*left:0px;*/
-    /*z-index: 999;*/
-}
 
 .error
 {
@@ -104,18 +119,6 @@
 }
 
 
-
-.javascriptText
-{
-    /*border-top:1px solid #DDD;*/
-    /*border-left:3px solid #DDD;*/
-    /*color: #00008b;*/
-    /*font-family: Cousine, monospace;*/
-    margin:0px;
-    width:100%;
-    background-color: #f5f5f5;
-    /*float: left;*/
-}
 
 
 .input_expander, .output_expander
@@ -150,7 +153,31 @@
 
 
 
-/*----------------Small Buttons -----------------*/
+/*----------------Buttons -----------------*/
+
+
+.showJavascriptButton
+{
+    /*position:absolute;*/
+    /*bottom:0px;*/
+    /*right:0px;*/
+    /*z-index: 1000;*/
+}
+
+/*.inputCell */
+.formatSelectionButton
+{
+   color: #BBB;
+    border-color: transparent;
+    background-color: transparent;
+    /*position:absolute;*/
+    /*top:3px;*/
+    /*left:0px;*/
+    /*z-index: 999;*/
+}
+
+
+
 .smallButton
 {
 	width:14px;
@@ -272,14 +299,3 @@
 }
 
 
-.input_header
-{
-    /*border-bottom: 1px dotted #DDD;*/
-    width:100%;
-}
-
-.output_header
-{
-    border-top: 1px dotted #DDD;
-    width:100%;
-}
