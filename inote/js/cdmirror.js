@@ -1,7 +1,13 @@
-// Codemirror autocompletion	
+// Codemirror autocompletion
+
+//CodeMirror.commands.autocomplete = function(cm) {
+//	CodeMirror.simpleHint(cm, CodeMirror.javascriptHint);
+//}
+
 CodeMirror.commands.autocomplete = function(cm) {
-	CodeMirror.simpleHint(cm, CodeMirror.javascriptHint);
+CodeMirror.showHint(cm, CodeMirror.hint.javascript);
 }
+
 
 function createCodeMirror(parentDomObject)
 {

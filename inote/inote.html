@@ -25,17 +25,21 @@
 
         <!-- codemirror begin-->
 
-            <script type="text/javascript" src="libs/codemirror-3.0/lib/codemirror.js"></script>
             <link rel="stylesheet" type="text/css" href="libs/codemirror-3.0/lib/codemirror.css"/>
+            <script type="text/javascript" src="libs/codemirror-3.0/lib/codemirror.js"></script>
 
             <!-- autosize  -->
             <link rel=stylesheet href="css/mycodemirror.css">
 
 
             <!-- autocompletion -->
-            <link rel="stylesheet" type="text/css" href="libs/codemirror-3.0/lib/util/simple-hint.css"/>
-            <script type="text/javascript" src="libs/codemirror-3.0/lib/util/simple-hint.js"></script>
-            <script type="text/javascript" src="libs/codemirror-3.0/lib/util/javascript-hint.js"></script>
+            <!--<link rel="stylesheet" type="text/css" href="libs/codemirror-3.0/lib/util/simple-hint.css"/>-->
+            <!--<script type="text/javascript" src="libs/codemirror-3.0/lib/util/simple-hint.js"></script>-->
+            <!--<script type="text/javascript" src="libs/codemirror-3.0/lib/util/javascript-hint.js"></script>-->
+
+            <link rel="stylesheet" type="text/css" href="libs/codemirror-3.0/addon/hint/show-hint.css"/>
+            <script type="text/javascript" src="libs/codemirror-3.0/addon/hint/show-hint.js"></script>
+            <script type="text/javascript" src="libs/codemirror-3.0/addon/hint/javascript-hint.js"></script>
 
 
             <!-- modes -->
@@ -68,11 +72,17 @@
 
 
         <!-- addons -->
-        <script src="libs/codemirror-3.0/lib/util/matchbrackets.js"></script>
-        <script src="libs/codemirror-3.0/lib/util/formatting.js"></script>
-        <script src="libs/codemirror-3.0/lib/util/closetag.js"></script>
-        <script src="libs/codemirror-3.0/lib/util/foldcode.js"></script>
-        <script src="libs/codemirror-3.0/lib/util/collapserange.js"></script>
+        <!--<script src="libs/codemirror-3.0/lib/util/matchbrackets.js"></script>-->
+        <!--<script src="libs/codemirror-3.0/lib/util/formatting.js"></script>-->
+        <!--<script src="libs/codemirror-3.0/lib/util/closetag.js"></script>-->
+        <!--<script src="libs/codemirror-3.0/lib/util/foldcode.js"></script>-->
+        <!--<script src="libs/codemirror-3.0/lib/util/collapserange.js"></script>-->
+
+        <script src="libs/codemirror-3.0/addon/edit/matchbrackets.js"></script>
+        <!--<script src="libs/codemirror-3.0/lib/util/formatting.js"></script>-->
+        <script src="libs/codemirror-3.0/addon/edit/closetag.js"></script>
+        <script src="libs/codemirror-3.0/addon/fold/foldcode.js"></script>
+        <!--<script src="libs/codemirror-3.0/lib/util/collapserange.js"></script>-->
 
         <!-- codemirror end-->
 
