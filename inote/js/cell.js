@@ -83,6 +83,8 @@ function Cell(cellNumber)
         _javascriptTextViewer.setOption("readOnly","nocursor");
         _javascriptTextViewer.setValue("");
 
+
+
 		_attachEvents();
 		_setNumber(celNum);
 		_setMode(_mode);
@@ -109,6 +111,7 @@ function Cell(cellNumber)
         _jQueryCell.find(".javascriptText").show();
         _javascriptTextViewer.refresh();
         _compile_CoffeeScript();
+        _jQueryCell.find(".codeArea").colResizable();
     }
 
     function _hideJavascriptText(){
