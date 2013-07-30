@@ -3,9 +3,9 @@
   height: auto;
   width:100%;
   /*background-color: transparent; *//*#f0f0f0;*//* *//*#f5f5f5;*/
-  /*font-family: Cousine, monospace;*/
+  font-family: Cousine, monospace;
   /*line-height: 120%;*/
-  /*font-size: 85%;*/
+  font-size: 85%;
 }
 .CodeMirror-scroll {
   overflow-y: hidden;
