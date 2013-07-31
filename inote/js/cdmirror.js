@@ -38,7 +38,9 @@ function createCodeMirror(parentDomObject)
 
     var editor = CodeMirror(parentDomObject, config);
 
+    /*
     var hlLine = editor.addLineClass(0, "background", "activeline");
+
     editor.on("cursorActivity", function() {
         var cur = editor.getLineHandle(editor.getCursor().line);
         if (cur != hlLine) {
@@ -46,7 +48,7 @@ function createCodeMirror(parentDomObject)
             hlLine = editor.addLineClass(cur, "background", "activeline");
         }
     });
-
+    */
 
     editor.on("change", function(instance, changeObj) {
         if (saveNotebookLater) saveNotebookLater();
