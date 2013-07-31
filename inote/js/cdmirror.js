@@ -20,21 +20,32 @@ function createCodeMirror(parentDomObject)
         foldGutter: true,
         gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
 
-		extraKeys: {
-			"Ctrl-Space": "autocomplete",
-            "Tab": function(cm) {
+        extraKeys: {
+            "Ctrl-Space": "autocomplete",
+            "Tab": function (cm) {
                 var spaces = Array(cm.getOption("indentUnit") + 1).join(" ");
                 cm.replaceSelection(spaces, "end", "+input");
-              },
-            "F2":     function (ed){
-                if (ed.getMode().name=="javascript")
+            },
+            "F2": function (ed) {
+                if (ed.getMode().name == "javascript")
                     foldFunc_brace(ed, ed.getCursor().line);
                 else
                     foldFunc_tag(ed, ed.getCursor().line);
-                },
-            "Ctrl-Q": function(cm){ cm.foldCode(cm.getCursor()); }
-		}
-	};
+            },
+            "Ctrl-Q": function (cm) {
+                cm.foldCode(cm.getCursor());
+            },
+            //FULL SCREEN keys
+            "F11": function (cm) {
+                setFullScreen(cm, !isFullScreen(cm));
+            },
+            //FULL SCREEN keys
+            "Esc": function (cm) {
+                if (isFullScreen(cm)) setFullScreen(cm, false);
+            }
+
+        }
+    };
 
     var editor = CodeMirror(parentDomObject, config);
 
@@ -76,6 +87,35 @@ function createCodeMirror(parentDomObject)
 
    // editor.on("gutterClick", fold);
 
+    //FULL SCREEN functions//////////////BEGIN
+    function isFullScreen(cm) {
+        return /\bCodeMirror-fullscreen\b/.test(cm.getWrapperElement().className);
+    }
+
+    function winHeight() {
+        return window.innerHeight || (document.documentElement || document.body).clientHeight;
+    }
+
+    function setFullScreen(cm, full) {
+        var wrap = cm.getWrapperElement();
+        if (full) {
+            wrap.className += " CodeMirror-fullscreen";
+            wrap.style.height = winHeight() + "px";
+            document.documentElement.style.overflow = "hidden";
+        } else {
+            wrap.className = wrap.className.replace(" CodeMirror-fullscreen", "");
+            wrap.style.height = "";
+            document.documentElement.style.overflow = "";
+        }
+        cm.refresh();
+    }
+
+    CodeMirror.on(window, "resize", function () {
+        var showing = document.body.getElementsByClassName("CodeMirror-fullscreen")[0];
+        if (!showing) return;
+        showing.CodeMirror.getWrapperElement().style.height = winHeight() + "px";
+    });
+    //FULL SCREEN functions//////////////END
 
     return editor;
 }
