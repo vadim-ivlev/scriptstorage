@@ -53,22 +53,33 @@
 
             <!-- themes -->
 
-        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/ambiance-mobile.css">-->
-        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/ambiance.css">-->
-        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/blackboard.css">-->
-        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/cobalt.css">-->
         <link rel="stylesheet" href="libs/codemirror-3.0/theme/eclipse.css">
-        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/elegant.css">-->
-        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/erlang-dark.css">-->
-        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/lesser-dark.css">-->
-        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/monokai.css">-->
-        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/neat.css">-->
-        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/night.css">-->
-        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/rubyblue.css">-->
-        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/solarized.css">-->
-        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/twilight.css">-->
-        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/vibrant-ink.css">-->
-        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/xq-light.css">-->
+
+        
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/neat.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/elegant.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/erlang-dark.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/night.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/monokai.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/cobalt.css">
+        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/eclipse.css">-->
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/rubyblue.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/lesser-dark.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/xq-dark.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/xq-light.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/ambiance.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/blackboard.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/vibrant-ink.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/solarized.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/twilight.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/midnight.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/3024-day.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/3024-night.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/base16-light.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/base16-dark.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/tomorrow-night-eighties.css">
+        
+        
 
 
         <!-- addons -->
@@ -109,13 +120,18 @@
 
 
 
+       function selectTheme() {
+            var input = document.getElementById("selectTheme_button");
+            var theme = input.options[input.selectedIndex].innerHTML;
+            inote.setOption("theme", theme);
+        }
 
 
 
-        /**
-         * Press Shift-F11 to step put of this function
-         */
-        function debug(){ try{var a=_sdfsdf.prop;} catch(e){}}
+//        /**
+//         * Press Shift-F11 to step put of this function
+//         */
+//        function debug(){ try{var a=_sdfsdf.prop;} catch(e){}}
 
 
 
@@ -235,6 +251,8 @@
 //            });
         });
 
+
+
         </script>
     </head>
     <body>
@@ -260,6 +278,32 @@
                             <select id="notebookAccess" title="Access" class="selectButton">
                                 <option value="public">public</option>
                                 <option value="private">private</option>
+                            </select>
+                            <select class="selectButton" onchange="selectTheme()" id="selectTheme_button">
+                                <option selected>default</option>
+                                <option>3024-day</option>
+                                <option>3024-night</option>
+                                <option>ambiance</option>
+                                <option>base16-dark</option>
+                                <option>base16-light</option>
+                                <option>blackboard</option>
+                                <option>cobalt</option>
+                                <option>eclipse</option>
+                                <option>elegant</option>
+                                <option>erlang-dark</option>
+                                <option>lesser-dark</option>
+                                <option>midnight</option>
+                                <option>monokai</option>
+                                <option>neat</option>
+                                <option>night</option>
+                                <option>rubyblue</option>
+                                <option>solarized dark</option>
+                                <option>solarized light</option>
+                                <option>tomorrow-night-eighties</option>
+                                <option>twilight</option>
+                                <option>vibrant-ink</option>
+                                <option>xq-dark</option>
+                                <option>xq-light</option>
                             </select>
 
                         </td>

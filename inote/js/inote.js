@@ -204,6 +204,12 @@ function clear(){
 	CELLS=[];
 }
 
+function setOption(optionName, optionValue){
+	for (var i = 0; i < CELLS.length; i++) {
+		var editor=CELLS[i].getEditor();
+        editor.setOption(optionName, optionValue);
+	}
+}
 
 //PUBLIC
 
@@ -211,6 +217,7 @@ this.setXmlText=setXmlText;
 this.getXmlText=getXmlText;
 this.clear=clear;
 this.init=_init;
+this.setOption=setOption;
 
 }
 

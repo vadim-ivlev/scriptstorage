@@ -523,6 +523,7 @@ function Cell(cellNumber)
 	//RETURN *****************************************
 	return {
 		getJQueryCell: function(){return _jQueryCell;},
+        getEditor: function(){return _codemirror;},
 
 		getInputValue: function(){return _codemirror.getValue();},
 		setInputValue: function(code){_codemirror.setValue(code); return this;},
