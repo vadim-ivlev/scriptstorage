@@ -190,7 +190,11 @@ function Cell(cellNumber, themeName)
 
 
 		$(".runButton",_jQueryCell).click( _executeCode );
-		$(".clearOutputButton",_jQueryCell).click( function(){_outputCell.html(""); if (saveNotebookLater) saveNotebookLater();} );
+		$(".clearOutputButton",_jQueryCell).click( function(){
+            _outputCell.html("");
+            if (saveNotebook)
+                saveNotebook();
+        } );
 		$(".hideOutputButton",_jQueryCell).click( function(){ _setOutputCollapsed(!_outCollapsed);} );
         $(".hideInputButton",_jQueryCell).click( function(){ _setInputCollapsed(!_inCollapsed);} );
         $(".input_expander",_jQueryCell).click( function(){ _setInputCollapsed(!_inCollapsed);} );
