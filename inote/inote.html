@@ -123,10 +123,8 @@
         var saveNotebookTimeout;
         function saveNotebookLater(){
             clearTimeout(saveNotebookTimeout);
-            saveNotebookTimeout=setTimeout(saveNotebook,2000);
+            ($("#autoSave").is(":checked")) ? saveNotebookTimeout=setTimeout(saveNotebook,2000) : null;
             $("#saveIndicator").text("");
-//            $("#btnSave").css("color","#777");
-
         }
 
 
@@ -224,7 +222,7 @@
 
             //handlers
             //$("#btnClear").click(clearAndInit);
-//            $("#btnSave").click(saveNotebook);
+            $("#btnSave").click(saveNotebook);
 //            $("#btnOpen").click(function(){
 //                openNotebook($(".notebookOwner").text(), $("#notebookAccess").val(),  $("#notebookName").val() );
 //            });
@@ -234,12 +232,12 @@
 
         </script>
     </head>
-    <body>
+    <body onkeydown="return false;">
 
 
         <div id="divHeader" class="header lr_padded">
             <!--<div id="divMenu" >-->
-                <table cellspacing="0" cellpadding="0" style="width: 100%">
+                <table style="width: 100%">
                     <tr>
                         <td style="width:100%">
                             <input type="text" id="notebookName" class="notebookName" value="New notebook"/>
@@ -252,7 +250,8 @@
                         <td style="width:100%">
                             <a href="index.html"  class="toolButton">Home</a>
                             <!--<span id="btnClear" class="toolButton" >clear</span>-->
-                            <!--<span id="btnSave" class="toolButton" >save</span>-->
+                            <span id="btnSave" class="toolButton" >save</span>
+                            <span class="toolButton"><input id="autoSave" type="checkbox" style="vertical-align: text-top"><label for="autoSave"  >autosave</label></span>
                             <!--<span id="btnOpen" class="toolButton" >restore</span>-->
                             <select id="notebookAccess" title="Access" class="selectButton">
                                 <option value="public">public</option>
