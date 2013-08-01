@@ -77,10 +77,10 @@ function Cell(cellNumber, themeName)
 		_outputTitle = _jQueryCell.find(".outputTitle");
 
         _codemirror = createCodeMirror(_inputCell[0]);
-        _codemirror.setOption("theme",theme);
+        _codemirror.setOption("theme",theme || "eclipse");
         _javascriptTextViewer = createCodeMirror(_jQueryCell.find(".javascriptText")[0]);
         _javascriptTextViewer.setOption("readOnly","nocursor");
-        _javascriptTextViewer.setOption("theme",theme);
+        _javascriptTextViewer.setOption("theme",theme || "eclipse");
         _javascriptTextViewer.setValue("");
 
 
