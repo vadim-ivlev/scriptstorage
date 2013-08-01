@@ -141,8 +141,8 @@
             //localStorage.setItem("inote_"+bookName, xmlText);
 
 
-            storage.put(notebookAaccess,notebookName, xmlText);
-            $("#saveIndicator").text("(saved)");
+            storage.put(notebookAaccess,notebookName, xmlText, function(d){$("#saveIndicator").text("(saved)");});
+
 //            $("#btnSave").css("color","silver");
         }
 
@@ -221,6 +221,13 @@
             openNotebook(getNotebookOwnerFromUrl(), getNotebookAccessFromUrl(), getNotebookNameFromUrl());
 
             //handlers
+            $('body').keydown(function(event){
+                if (event.ctrlKey && event.keyCode==83) //Ctrl-S
+                {
+                    saveNotebook();
+                    return false;
+                }
+            })
             //$("#btnClear").click(clearAndInit);
             $("#btnSave").click(saveNotebook);
 //            $("#btnOpen").click(function(){
@@ -232,7 +239,7 @@
 
         </script>
     </head>
-    <body onkeydown="return false;">
+    <body>
 
 
         <div id="divHeader" class="header lr_padded">
