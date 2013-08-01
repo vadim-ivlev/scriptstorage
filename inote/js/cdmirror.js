@@ -42,7 +42,10 @@ function createCodeMirror(parentDomObject)
             //FULL SCREEN keys
             "Esc": function (cm) {
                 if (isFullScreen(cm)) setFullScreen(cm, false);
-            }
+            },
+            'Cmd-/' : 'toggleComment',
+            'Ctrl-/' : 'toggleComment'
+
 
         }
     };
