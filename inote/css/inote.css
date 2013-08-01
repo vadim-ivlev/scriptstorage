@@ -2,15 +2,20 @@
 
 body
 {
-	/*background-color: #f2f2f2;*/
+	background-color: white;
     margin-left:0px;
     margin-right:0px;
     padding-left:0px;
     padding-right:0px;
     padding-bottom: 200px;;
-
+    /*color:#AAA;*/
 	/*font-size: x-large;*/
 
+}
+
+input, select
+{
+    background: transparent;
 }
 
 
@@ -41,7 +46,7 @@ body
 .page
 {
 	/*border:1px none #CCC;*/
-	background-color: white;
+	/*background-color: white;*/
 	padding:10px;
     padding-left: 30px;
     padding-right: 50px;
@@ -58,11 +63,11 @@ body
 {
     font-family: sans-serif;
     /*color: #BBB;*/
-    border-bottom: 1px solid #DDD;
-    background-color: white;
+    border-bottom: 1px solid #AAA;
+    /*background-color: white;*/
     padding-bottom: 16px;
     /*position: relative;*/
-    /*box-shadow: 0px 10px 20px #DDD;*/
+    /*box-shadow: 0px 10px 20px #AAA;*/
     padding-left: 30px;
     padding-right: 30px;
 
@@ -90,7 +95,7 @@ body
 
 .notebookName:hover
 {
-    border-bottom: 1px dotted #CCC;
+    border-bottom: 1px dotted #BBB;
 }
 
 .loginHolder
@@ -104,6 +109,8 @@ body
 }
 
 
+/*
+
 #btnSave
 {
     position: fixed;
@@ -114,9 +121,6 @@ body
     font-weight: normal;
     padding: 7px;
     width:60px;
-    border-radius: 20px;
-    vertical-align: middle;
-    /*border-style:none;*/
     border-color: silver;
     border-bottom-style: none;
     border-right-style: none;
@@ -132,12 +136,9 @@ body
     background: linear-gradient(to bottom,  #ffffff 0%,#dbdbdb 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dbdbdb',GradientType=0 );
 
-
-    /*display: none;*/
-
-
 }
 
+*/
 
 
 
@@ -146,7 +147,7 @@ body
 
 .toolButton
 {
-	color:#CCC;
+	color:#BBB;
 	font-family: sans-serif;
 	cursor: pointer;
 	/*background-color: #FFF;*/
@@ -175,7 +176,7 @@ body
    color: #BBB;
     font-family: sans-serif;
     cursor: pointer;
-    background-color: #FFF;
+    /*background-color: #FFF;*/
     vertical-align: middle;
     padding-left: 10px;
     padding-right: 10px;

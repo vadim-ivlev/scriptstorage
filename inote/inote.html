@@ -12,9 +12,6 @@
         <link rel=stylesheet href="css/inote.css">
         <link rel=stylesheet href="css/cell.css">
 
-        <!-- Head JS -->
-        <!--<script src="//cdnjs.cloudflare.com/ajax/libs/headjs/0.99/head.min.js"></script> -->
-        <!--  <script src="https://github.com/headjs/headjs/raw/v0.99/dist/head.load.min.js"></script> -->
 
         <!-- jQuery -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -33,9 +30,6 @@
 
 
             <!-- autocompletion -->
-            <!--<link rel="stylesheet" type="text/css" href="libs/codemirror-3.0/lib/util/simple-hint.css"/>-->
-            <!--<script type="text/javascript" src="libs/codemirror-3.0/lib/util/simple-hint.js"></script>-->
-            <!--<script type="text/javascript" src="libs/codemirror-3.0/lib/util/javascript-hint.js"></script>-->
 
             <link rel="stylesheet" type="text/css" href="libs/codemirror-3.0/addon/hint/show-hint.css"/>
             <script type="text/javascript" src="libs/codemirror-3.0/addon/hint/show-hint.js"></script>
@@ -53,16 +47,13 @@
 
             <!-- themes -->
 
-        <link rel="stylesheet" href="libs/codemirror-3.0/theme/eclipse.css">
-
-        
         <link rel="stylesheet" href="libs/codemirror-3.0/theme/neat.css">
         <link rel="stylesheet" href="libs/codemirror-3.0/theme/elegant.css">
         <link rel="stylesheet" href="libs/codemirror-3.0/theme/erlang-dark.css">
         <link rel="stylesheet" href="libs/codemirror-3.0/theme/night.css">
         <link rel="stylesheet" href="libs/codemirror-3.0/theme/monokai.css">
         <link rel="stylesheet" href="libs/codemirror-3.0/theme/cobalt.css">
-        <!--<link rel="stylesheet" href="libs/codemirror-3.0/theme/eclipse.css">-->
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/eclipse.css">
         <link rel="stylesheet" href="libs/codemirror-3.0/theme/rubyblue.css">
         <link rel="stylesheet" href="libs/codemirror-3.0/theme/lesser-dark.css">
         <link rel="stylesheet" href="libs/codemirror-3.0/theme/xq-dark.css">
@@ -83,11 +74,6 @@
 
 
         <!-- addons -->
-        <!--<script src="libs/codemirror-3.0/lib/util/matchbrackets.js"></script>-->
-        <!--<script src="libs/codemirror-3.0/lib/util/formatting.js"></script>-->
-        <!--<script src="libs/codemirror-3.0/lib/util/closetag.js"></script>-->
-        <!--<script src="libs/codemirror-3.0/lib/util/foldcode.js"></script>-->
-        <!--<script src="libs/codemirror-3.0/lib/util/collapserange.js"></script>-->
 
         <script src="libs/codemirror-3.0/addon/edit/matchbrackets.js"></script>
         <!--<script src="libs/codemirror-3.0/lib/util/formatting.js"></script>-->
@@ -123,21 +109,10 @@
        function selectTheme() {
             var input = document.getElementById("selectTheme_button");
             var theme = input.options[input.selectedIndex].innerHTML;
-            inote.setOption("theme", theme);
+            inote.setTheme(theme);
+            saveNotebookLater();
+
         }
-
-
-
-//        /**
-//         * Press Shift-F11 to step put of this function
-//         */
-//        function debug(){ try{var a=_sdfsdf.prop;} catch(e){}}
-
-
-
-
-
-
 
 
 
@@ -150,7 +125,7 @@
             clearTimeout(saveNotebookTimeout);
             saveNotebookTimeout=setTimeout(saveNotebook,2000);
             $("#saveIndicator").text("");
-            $("#btnSave").css("color","#777");
+//            $("#btnSave").css("color","#777");
 
         }
 
@@ -170,7 +145,7 @@
 
             storage.put(notebookAaccess,notebookName, xmlText);
             $("#saveIndicator").text("(saved)");
-            $("#btnSave").css("color","silver");
+//            $("#btnSave").css("color","silver");
         }
 
         function openNotebook(notebookOwner , notebookAccess, notebookName)
@@ -189,11 +164,16 @@
         {
             if (! xmlText)
             {
-                //inote.init();
                 return;
             }
             inote.clear();
             inote.setXmlText(xmlText);
+
+            var notebook = $(xmlText);
+            var themeName=notebook.attr("theme");
+            $("#selectTheme_button").val(themeName);
+
+
 
             if ($(".cell").length==0)
                 inote.init();
@@ -240,12 +220,11 @@
             $(".loginHolder").load("/getloginlink");
             inote=new iNote($("#page"));
 //            inote=new iNote($(document.body));
-            //clearAndInit();
             openNotebook(getNotebookOwnerFromUrl(), getNotebookAccessFromUrl(), getNotebookNameFromUrl());
 
             //handlers
             //$("#btnClear").click(clearAndInit);
-            $("#btnSave").click(saveNotebook);
+//            $("#btnSave").click(saveNotebook);
 //            $("#btnOpen").click(function(){
 //                openNotebook($(".notebookOwner").text(), $("#notebookAccess").val(),  $("#notebookName").val() );
 //            });

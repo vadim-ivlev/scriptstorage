@@ -1,5 +1,5 @@
 
-function Cell(cellNumber)
+function Cell(cellNumber, themeName)
 {
 
 	var _n;
@@ -20,7 +20,7 @@ function Cell(cellNumber)
 	var _outCollapsed=false;
 
 
-	function _create(celNum) {
+	function _create(celNum,theme) {
 		_jQueryCell = $(
 		'<div class="cell" collapsed="no" outCollapsed="no" inCollapsed="no" access="public">'+
             //input header
@@ -46,9 +46,9 @@ function Cell(cellNumber)
                //javascript text
                 '<td  class="javascriptText"></td>'+
             '</tr></table>'+
-
-
             '<div class="input_expander toolButton hidable">&#x25BA</div>'+
+
+
             //output header
             '<div class="output_header">'+
                 '<span class="hideOutputButton toolButton hidable">&#x25BC</span>'+ //Hide output
@@ -71,16 +71,16 @@ function Cell(cellNumber)
 
 
 		_inputCell = _jQueryCell.find(".inputCell");
-//        _inputCell.resizable();
-        _inputCell[0]._compile=_compileLater;
+        _inputCell[0]._compileLater=_compileLater;
 		_outputCell = _jQueryCell.find(".outputCell");
 		_inputTitle = _jQueryCell.find(".inputTitle");
 		_outputTitle = _jQueryCell.find(".outputTitle");
 
         _codemirror = createCodeMirror(_inputCell[0]);
-//        _codemirror.resizable();
+        _codemirror.setOption("theme",theme);
         _javascriptTextViewer = createCodeMirror(_jQueryCell.find(".javascriptText")[0]);
         _javascriptTextViewer.setOption("readOnly","nocursor");
+        _javascriptTextViewer.setOption("theme",theme);
         _javascriptTextViewer.setValue("");
 
 
@@ -444,16 +444,7 @@ function Cell(cellNumber)
 		_codemirror.setCursor({line:0});//, ch:charPos});
 	}
 
-	 
-//	function _compile(mode,text) {
-//		var compiledText ="";
-//			if(mode=="text/x-coffeescript")
-//				compiledText=CoffeeScript.compile(text, {bare: true});
-//			else
-//				compiledText=text;
-//	//	console.log ("mode="+mode+"\n"+compiledText);
-//		return compiledText;
-//	}
+
 
 
     /**
@@ -518,12 +509,13 @@ function Cell(cellNumber)
 
 
     //EXECUTION **************************************
-	_create(cellNumber);
+	_create(cellNumber, themeName);
 
 	//RETURN *****************************************
 	return {
 		getJQueryCell: function(){return _jQueryCell;},
         getEditor: function(){return _codemirror;},
+        getJavascriptTextViewer: function(){return _javascriptTextViewer;},
 
 		getInputValue: function(){return _codemirror.getValue();},
 		setInputValue: function(code){_codemirror.setValue(code); return this;},

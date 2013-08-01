@@ -36,7 +36,7 @@ function createCodeMirror(parentDomObject)
                 cm.foldCode(cm.getCursor());
             },
             //FULL SCREEN keys
-            "F11": function (cm) {
+            "Alt-F11": function (cm) {
                 setFullScreen(cm, !isFullScreen(cm));
             },
             //FULL SCREEN keys
@@ -64,8 +64,8 @@ function createCodeMirror(parentDomObject)
     editor.on("change", function(instance, changeObj) {
         if (saveNotebookLater) saveNotebookLater();
         //if (console) console.log("change event");
-        if (parentDomObject._compile)
-            parentDomObject._compile();
+        if (parentDomObject._compileLater)
+            parentDomObject._compileLater();
     });
 
 
@@ -86,6 +86,14 @@ function createCodeMirror(parentDomObject)
 //    var foldFunc_tag = CodeMirror.newFoldFunction(CodeMirror.tagRangeFinder,"...");
 
    // editor.on("gutterClick", fold);
+
+
+
+
+
+    return editor;
+}
+
 
     //FULL SCREEN functions//////////////BEGIN
     function isFullScreen(cm) {
@@ -116,8 +124,5 @@ function createCodeMirror(parentDomObject)
         showing.CodeMirror.getWrapperElement().style.height = winHeight() + "px";
     });
     //FULL SCREEN functions//////////////END
-
-    return editor;
-}
 
 
