@@ -3,9 +3,9 @@
     height: auto;
     width: 100%;
     /*background-color: transparent; *//*#f0f0f0;*//* *//*#f5f5f5;*/
-    font-family: Cousine, monospace;
+    /*font-family: Cousine, monospace;*/
     /*line-height: 120%;*/
-    font-size: 85%;
+    /*font-size: 85%;*/
 
 }
 
@@ -51,7 +51,7 @@
 
 /* folding */
 .CodeMirror-foldmarker {
-    color: crimson;
+    color: #AAA;
     /*text-shadow: #b9f 1px 1px 2px, #b9f -1px -1px 2px, #b9f 1px -1px 2px, #b9f -1px 1px 2px;*/
     font-family: arial;
     line-height: .3;
@@ -64,7 +64,7 @@
 
 .CodeMirror-foldgutter-open,
 .CodeMirror-foldgutter-folded {
-    color: crimson;
+    color: #AAA;
     cursor: pointer;
 }
 
