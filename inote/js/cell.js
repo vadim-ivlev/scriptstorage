@@ -274,6 +274,7 @@ function Cell(cellNumber, themeName)
     function _autoFormatSelection() {
         var range = _getSelectedRange();
         _codemirror.autoFormatRange(range.from, range.to);
+
     }
 
     function _commentSelection(isComment) {
