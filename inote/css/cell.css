@@ -2,7 +2,8 @@
 .cell
 {
 	position:relative;
-	border: 1px solid transparent;
+	border-top: 1px solid transparent;
+	border-bottom: 1px solid transparent;
 	margin-top:10px;
 	overflow:visible;
 	padding:0px;

@@ -5,7 +5,8 @@
     /*background-color: transparent; *//*#f0f0f0;*//* *//*#f5f5f5;*/
     /*font-family: Cousine, monospace;*/
     /*line-height: 120%;*/
-    /*font-size: 85%;*/
+    /*font-size: 90%;*/
+    letter-spacing: 0px;
 
 }
 
@@ -94,3 +95,4 @@
          background-position: right;
          background-repeat: no-repeat;
       }
+
