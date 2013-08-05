@@ -22,10 +22,10 @@ function createCodeMirror(parentDomObject)
 
         extraKeys: {
             "Ctrl-Space": "autocomplete",
-            "Tab": function (cm) {
-                var spaces = Array(cm.getOption("indentUnit") + 1).join(" ");
-                cm.replaceSelection(spaces, "end", "+input");
-            },
+//            "Tab": function (cm) {
+//                var spaces = Array(cm.getOption("indentUnit") + 1).join(" ");
+//                cm.replaceSelection(spaces, "end", "+input");
+//            },
             "F2": function (ed) {
                 if (ed.getMode().name == "javascript")
                     foldFunc_brace(ed, ed.getCursor().line);
