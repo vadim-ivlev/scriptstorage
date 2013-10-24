@@ -371,7 +371,7 @@ function Cell(cellNumber, themeName)
             else if (_mode=="text/x-coffeescript")
             {
                 _javascriptTextViewer.setValue("");
-                var compiledCode=CoffeeScript.compile(code, {bare: true});
+                var compiledCode=CoffeeScript.compile(code, {bare: false});
                 _javascriptTextViewer.setValue(compiledCode);
                 _javascriptTextViewer.refresh();
                 result = eval.call(window, compiledCode);
@@ -499,7 +499,7 @@ function Cell(cellNumber, themeName)
             var code = _codemirror.getValue();
             var compiledCode = "";
             try {
-                compiledCode = CoffeeScript.compile(code, {bare: true});
+                compiledCode = CoffeeScript.compile(code, {bare: false});
             }
             catch(e) {
                 compiledCode = e.toString();
