@@ -12,6 +12,8 @@ function Cell(cellNumber, themeName)
 	var _outputTitle;
 	var _mode="javascript";
 
+    var _lockButton;
+
 	var _deleteCallback=null;
 	var _insertBeforeCallback=null;
 	var _insertAfterCallback=null;
@@ -25,18 +27,18 @@ function Cell(cellNumber, themeName)
 		'<div class="cell" collapsed="no" outCollapsed="no" inCollapsed="no" access="public">'+
             //input header
             '<div class="input_header">'+
-                '<span class="hideInputButton toolButton hidable" >&#x25BC</span>'+ //Hide input
-                //'<span class="inputTitle hidable"></span>'+
-                '<select class="selectButton hidable">'+
+                '<span class="hideInputButton toolButton hidable000" >&#x25BC</span>'+ //Hide input
+                //'<span class="inputTitle hidable000"></span>'+
+                '<select class="selectButton hidable000">'+
                     '<option value="javascript">JavaScript</option>'+
                     '<option value="text/x-coffeescript">CoffeeScript</option>'+
                     '<option value="text/html">HTML</option>'+
                     '<option value="markdown">Markdown</option>'+
                 '</select>'+
-                '<span class="formatSelectionButton toolButton hidable">Format</span>'+ //Format selection
-                '<span class="showJavascriptButton toolButton hidable" >Show Javascript</span>'+
+                '<span class="formatSelectionButton toolButton hidable000">Format</span>'+ //Format selection
+                '<span class="showJavascriptButton toolButton hidable000" >Show Javascript</span>'+
 
-                '<span class="deleteButton toolButton  hidable" title="delete cell" >&nbsp;&#x00D7&nbsp;</span>'+
+                '<span class="deleteButton toolButton  hidable000" title="delete cell" >&nbsp;&#x00D7&nbsp;</span>'+
             '</div>'+
 
             // Code area
@@ -46,24 +48,27 @@ function Cell(cellNumber, themeName)
                //javascript text
                 '<td  class="javascriptText"></td>'+
             '</tr></table>'+
-            '<div class="input_expander toolButton hidable">&#x25BA</div>'+
+            '<div class="input_expander toolButton hidable000">&#x25BA</div>'+
 
 
             //output header
             '<div class="output_header">'+
-                '<span class="hideOutputButton toolButton hidable">&#x25BC</span>'+ //Hide output
-                //'<span class="outputTitle hidable"></span>'+
-                '<span class="clearOutputButton toolButton hidable">Clear</span>'+
-                '<span class="runButton hidable" title="<Ctrl-Ent> to Run.  <Shift-Ent> to run and go to the next cell. ">&#x25BA;</span>'+
+                '<span class="hideOutputButton toolButton hidable000">&#x25BC</span>'+ //Hide output
+                //'<span class="outputTitle hidable000"></span>'+
+                '<span class="clearOutputButton toolButton hidable00">Clear output</span>'+
+                '<span class="runButton toolButton hidable00" title="<Ctrl-Ent> to Run.  <Shift-Ent> to run and go to the next cell. ">Run the code &#x25BA;</span>'+
 		    '</div>'+
 
             //output
             '<div id="out_" class="outputCell lr_padded"></div>'+
-            '<div class="output_expander toolButton hidable">&#x25BA</div>'+
+            '<div class="output_expander toolButton hidable000">&#x25BA</div>'+
+
+            // add lock buttons
+            '<div class="lockButton smallButton" title="lock/unlock" style="position:absolute;top:7px;left:-19px;">*</div>'+
 
             // add cell buttons
-            '<div class="insertBefore smallButton  hidable" title="add cell">+</div>'+
-            '<div class="insertAfter smallButton  hidable" title="add cell">+</div>'+
+            '<div class="insertBefore smallButton  hidable000" title="add cell">+</div>'+
+            '<div class="insertAfter smallButton  hidable000" title="add cell">+</div>'+
 
 		'</div>'
 		);
@@ -76,13 +81,15 @@ function Cell(cellNumber, themeName)
 		_inputTitle = _jQueryCell.find(".inputTitle");
 		_outputTitle = _jQueryCell.find(".outputTitle");
 
+        _lockButton  = _jQueryCell.find('.lockButton');
+
         _codemirror = createCodeMirror(_inputCell[0]);
         _codemirror.setOption("theme",theme || "eclipse");
         _javascriptTextViewer = createCodeMirror(_jQueryCell.find(".javascriptText")[0]);
         _javascriptTextViewer.setOption("readOnly","nocursor");
         _javascriptTextViewer.setOption("theme",theme || "eclipse");
         _javascriptTextViewer.setValue("");
-
+        
 
 
 		_attachEvents();
@@ -160,14 +167,14 @@ function Cell(cellNumber, themeName)
 			_jQueryCell.find(".codeArea").hide();
             _jQueryCell.find(".input_expander").show();
 			_jQueryCell.find(".input_header").hide();
-			_jQueryCell.find(".hideInputButton").html("[in"+_n+"] &#x25BA");//Show input
+			_jQueryCell.find(".hideInputButton").html("[in"+_n+"] &nbsp;&nbsp;&#x25BA");//Show input
 		}
 		else
 		{
 			_jQueryCell.find(".codeArea").show();
             _jQueryCell.find(".input_expander").hide();
 			_jQueryCell.find(".input_header").show();
-			_jQueryCell.find(".hideInputButton").html("[in"+_n+"] &#x25BC");//Hide input
+			_jQueryCell.find(".hideInputButton").html("[in"+_n+"] &nbsp;&nbsp;&#x25BC");//Hide input
 		}
         if (saveNotebookLater) saveNotebookLater();
 	}
@@ -175,6 +182,22 @@ function Cell(cellNumber, themeName)
 
 	function _attachEvents(){
 		_inputCell.keydown(_keyHandler);
+
+		_lockButton.click(function(){
+            if (_lockButton.text()=='*')
+            {
+                _lockButton.text('.');
+                _jQueryCell.find('.hidable000').addClass('visible');
+			    _jQueryCell.find(".codeArea").css('border-color','#DDD');
+            }
+            else
+            {
+                _lockButton.text('*');
+                _jQueryCell.find('.hidable000').removeClass('visible');
+			    _jQueryCell.find(".codeArea").css('border-color','transparent');
+            }
+
+		});
 
 		$(".deleteButton",_jQueryCell).click(function(){
 			_call( _deleteCallback, _n);
@@ -214,7 +237,7 @@ function Cell(cellNumber, themeName)
 
 	}
 
-	 
+
 
 	function _setMode (mode) {
 		_mode=mode;
@@ -318,7 +341,7 @@ function Cell(cellNumber, themeName)
 		_inputTitle.text(_inputCell.attr("id"));
 		_outputTitle.text(_outputCell.attr("id"));
         _jQueryCell.find(".output_expander").html("[out"+_n+"] &#x25BA");
-        _jQueryCell.find(".input_expander").html("[in"+_n+"] &#x25BA");
+        _jQueryCell.find(".input_expander").html( "[in"+_n+"]&nbsp; &nbsp;&#x25BA");
 		return this;
 	}
 
@@ -556,7 +579,7 @@ function Cell(cellNumber, themeName)
 		setDeleteCallback: function(f) { _deleteCallback=f;},
 
 
-		
+
 		setFocus: _setFocus,
 		removeFocus: _removeFocus
 	};
