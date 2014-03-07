@@ -19,7 +19,7 @@
 .CodeMirror-gutters {
     /*border-radius: 5px;*/
     background-color: transparent;
-    border-right: 0px solid  #DDD;
+    border-right: 2px solid  #CCC;
     /*border-left: 3px solid #DDD;*/
     /*display: none;*/
 
