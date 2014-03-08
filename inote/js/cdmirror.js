@@ -72,18 +72,18 @@ function createCodeMirror(parentDomObject)
     });
 
 
-    editor.on("focus", function(instance) {
-        $(parentDomObject).css("border-color","#AAA");
+   // editor.on("focus", function(instance) {
+        //$(parentDomObject).css("border-color","#AAA");
         //if (console) console.log("focus event");
-        editor.setOption("readOnly",false);
+        //editor.setOption("readOnly",false);
 
-    });
+   // });
 
-    editor.on("blur", function(instance) {
-        $(parentDomObject).css("border-color","#DDD");
-        editor.setOption("readOnly",true);
+//    editor.on("blur", function(instance) {
+       // $(parentDomObject).css("border-color","#DDD");
+  //      editor.setOption("readOnly",true);
 
-    });
+  //  });
 
 //    var foldFunc_brace = CodeMirror.newFoldFunction(CodeMirror.braceRangeFinder,"...");
 //    var foldFunc_tag = CodeMirror.newFoldFunction(CodeMirror.tagRangeFinder,"...");
