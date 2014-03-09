@@ -109,7 +109,9 @@
 .outputCell
 {
     width:100%;
-    padding-left: 10px;
+    border:1px dotted silver;
+    border-radius: 8px;
+    padding:0;
 
 }
 
@@ -255,12 +257,18 @@
 .markdown
 {
     /*font-family: 'Roboto Condensed', sans-serif;*/
-    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-family:Roboto, "Helvetica Neue", Helvetica, sans-serif;
+    color: #333;
+
 }
 
-.markdown h1,h2,h3, h4,h5,h6
+.markdown > *
 {
+    margin-left:10px;
+    margin-right:10px;
 }
+
+
 
 .markdown hr
 {
