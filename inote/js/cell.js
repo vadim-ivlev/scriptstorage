@@ -56,7 +56,7 @@ function Cell(cellNumber, themeName)
                 '<span class="hideOutputButton toolButton hidable000">&#x25BC</span>'+ //Hide output
                 //'<span class="outputTitle hidable000"></span>'+
                 '<span class="clearOutputButton toolButton hidable000">Clear output</span>'+
-                '<span class="runButton toolButton hidable000" title="<Ctrl-Ent> to Run.  <Shift-Ent> to run and go to the next cell. ">Run the code &#x25BA;</span>'+
+                '<span class="runButton toolButton hidable000" title="<Ctrl-Ent> to Run.  <Shift-Ent> to run and go to the next cell. ">Run<span style="font-family:icomoon;font-size:100%; position:relative; top:2px;">&#xE603;</span></span>'+
 		    '</div>'+
 
             //output
@@ -64,7 +64,9 @@ function Cell(cellNumber, themeName)
             '<div class="output_expander toolButton hidable000">&#x25BA</div>'+
 
             // add lock buttons
-            '<div class="lockButton smallButton" title="lock/unlock" style="position:absolute;top:10px;left:-19px;width:auto;">un</div>'+
+            '<div class="lockButton smallButton" title="lock/unlock" style="position:absolute;top:10px;left:-19px;width:20px;">&#xE601;</div>'+
+            // add run  button
+            '<div class="runButton smallButton"  style="position:absolute;top:36px;left:-21px;width:20px;font-family:icomoon;opacity:0.4;">&#xE603;</div>'+
 
             // add cell buttons
             '<div class="insertBefore smallButton  hidable000" title="add cell">+</div>'+
@@ -185,16 +187,16 @@ function Cell(cellNumber, themeName)
 		_inputCell.keydown(_keyHandler);
 
 		_lockButton.click(function(){
-            if (_lockButton.text()=='un')
+            if (_lockButton.html().charCodeAt(0)==0xE601)
             {
-                _lockButton.text('lo');
+                _lockButton.html('&#xE602;');
                 _jQueryCell.find('.hidable000').addClass('visible');
 			    _jQueryCell.find(".codeArea").css('border-color','#DDD');
                 _codemirror.setOption("readOnly",false);
             }
             else
             {
-                _lockButton.text('un');
+                _lockButton.html('&#xE601;');
                 _jQueryCell.find('.hidable000').removeClass('visible');
 			    _jQueryCell.find(".codeArea").css('border-color','transparent');
                 _codemirror.setOption("readOnly","nocursor");

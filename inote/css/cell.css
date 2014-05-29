@@ -1,4 +1,15 @@
 /*------------cell----------------------*/
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon.eot?c52rba');
+	src:url('../fonts/icomoon.eot?#iefixc52rba') format('embedded-opentype'),
+		url('../fonts/icomoon.woff?c52rba') format('woff'),
+		url('../fonts/icomoon.ttf?c52rba') format('truetype'),
+		url('../fonts/icomoon.svg?c52rba#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
 .cell
 {
 	position:relative;
@@ -237,20 +248,8 @@
 .runButton
 {
 	color:#F66;
-    /*
-    font-family: sans-serif;
-    cursor: pointer;
-    padding-left: 4px;
-    padding-right: 4px;
-    position: relative;
-    font-size: 14px;
-    top:3px;
-    */
+	cursor: pointer;
 }
-.runButton:hover
-{
-}
-
 
 
 
@@ -299,4 +298,10 @@
 .visible
 {
     visibility:visible;
+}
+
+.lockButton
+{
+    font-family: icomoon;
+    font-size:80%;
 }

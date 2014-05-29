@@ -1,4 +1,5 @@
 # implement console log to avoid ie fail
+#
 if typeof window.console == 'undefined'
     window.console = {};
 if !window.console.log

@@ -1,286 +1,68 @@
 ###*
 
- Конфигурационный файл для процесса разработки.
-
- Использование:
-
  `cake` - просмотр списка задач
  `cake <имяЗадачи>` - запуск задачи
 
-  О процессе разработке читайте README.md в папке workflow/
 ###
 
 
 fs = require "fs"
 {exec, spawn} = require 'child_process'
 
-# order of files in `inFiles` is important
-config =
-    srcDir: 'coffee'
-    outDir: 'production'
-    jsDir: 'js'
-    outFile: 'podvig'
-    genSourceMap: true
 
-isWin = /^win/.test(process.platform)
-PARTIALS_PLACEHOLDER = "<!--@CAKE:Replace with html partials-->"
-outJS = "#{config.outDir}/#{config.outFile}"
-outMinMap = "#{config.outFile}.min.map"
-
-# deal with errors from child processes
-exerr  = (err, sout,  serr)->
-    process.stdout.write err  if err
-    process.stdout.write sout if sout
-    process.stdout.write serr if serr
-
-
-
-task "test", "Запустить Karma server для TDD проекта. (npm install -g karma)", ->
-    curDirname = fs.realpathSync '.'
-    console.log "Current directory: " + curDirname
-    confFilename = "config/karma.conf.js"
-    if fs.existsSync(confFilename)
-        console.log "Karma config found!"
-        if isWin
-            exec "start scripts\\test.bat"
-        else
-            execOut "sh scripts/tests.bat"
-    else
-        console.error "ERROR: Karma config NOT found!"
-
-
-task "server", "Запустить HTTP server. (npm install -g http-server)", ->
+task "server", "start HTTP server. (npm install -g http-server)", ->
     execOut "http-server"
 
 
-task 'joinCoffeeToSingleJS', 'join *.js files', ->
-    joinCoffeeToSingleJS()
-
-
-task 'min', 'minify compiled *.js file', (o, done) ->
-    minifyAllInOneJS()
-
-
-task 'test2', 'runs Karma jasmine e2e tests', ->
-    exec("start scripts/e2e-test.bat")
-
-
-###*
- * Генерирует index_debug.html.
- * Использует index_raw.html в качестве шаблона куда
- * Добавляет ссылки на скрипты из js в хвост файла и вставляет partials.
- *
-###
-task "html_debug", "Создает index.html = head (index_raw.html) + partials/ + tail (index_raw.html)", ->
-    indexTpl = getTemplate "debug"
-    partialPlace = indexTpl.indexOf(PARTIALS_PLACEHOLDER)
-    if(partialPlace < 0)
-        console.warn "index_raw.html is invalid: PARTIALS_PLACEHOLDER not found!"
-        return false
-
-    scripts = getScriptTags('js')
-    indexTpl = indexTpl.replace "</body>", scripts + "</body>"
-
-    # Объединенный текст файлов в partials/
-    dirText = getDirText('partials')
-    indexTpl = indexTpl.replace PARTIALS_PLACEHOLDER, dirText
-    fs.writeFileSync "index_debug.html", indexTpl, "utf8"
-    console.log getTime() + " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> index_debug.html"
-
-
-###*
- * Генерирует index.html.
- * index_raw.htm складывает с суммарным текстом файлов директории partials/ и
- * Добавляет ссылки на скрипты из минифицированного js в хвост файла.
- *
-###
-task "html_production", "Создает index.html = head (index_raw.html) + partials/ + tail (index_raw.html)", ->
-    indexTpl = getTemplate "production"
-    partialPlace = indexTpl.indexOf(PARTIALS_PLACEHOLDER)
-    if(partialPlace < 0)
-        console.warn "index_raw.html is invalid: PARTIALS_PLACEHOLDER not found!"
-        return false
-
-    indexTpl = indexTpl.replace "</body>", """
-<script src='#{outJS}.min.js'></script>
-</body>
-"""
-
-    # Объединенный текст файлов в partials/
-    dirText = getDirText('partials')
-    indexTpl = indexTpl.replace PARTIALS_PLACEHOLDER, dirText
-    fs.writeFileSync "index.html", indexTpl, "utf8"
-    console.log getTime() + " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> index.html"
-
-
-task "html", "index.html and index_debug.html", ->
-    invoke 'html_debug'
-    invoke 'html_production'
-
-
-#task "sass", "generate CSS from SASS files", ->
-#    scss2css()
-
-task "less", "generate CSS from LESS files", ->
-    less2css()
-
-task "rebuild", "rebuild all js, maps, minified, html", ->
+task "rebuild", "rebuild all", ->
     rebuild()
 
 
-task "watch", "Следит за файлами и создает js, css и html.", ->
-
-#    fs.watch 'scss',  (event, filename) ->
-#            console.log("scss/ changed")
-#            scss2css()
-    
-    fs.watch 'less',  (event, filename) ->
-            console.log("less/ changed")
-            postpone  -> less2css()
-    
+task "watch", "Watch for changes and regenerate js, css и html.", ->
     fs.watch 'coffee',  (event, filename) ->
-            console.log("coffee/ changed")
-            postpone  -> rebuild()
-
-    fs.watch 'partials',  (event, filename) ->
-            console.log("partials/ changed")
-            postpone  -> invoke 'html'
-
-    fs.watch 'index_raw.html',  (event, filename) ->
-            console.log("index_raw changed")
-            postpone  -> invoke 'html'
+        console.log("coffee/ changed")
+        postpone  -> rebuild()
 
 
-TT=0
-# calls f function in 200 msec.
-# Windows fix. 
-# Prevents multiple rebuilds 
-# when file system generates several events on one file 
-postpone = (f)->
-    clearTimeout TT
-    TT = setTimeout f , 200
+###
+task 'deploy', '', ->
+    execOut "tar -czf .upload.tgz *", (commandLine, err, stdout, stderr) ->
+        execOut "ssh -i .Tester.key Tester-1@memorial06.cloudapp.net rm -rf /var/www/podvig-html", (commandLine, err, stdout, stderr) ->
+            execOut "ssh -i .Tester.key Tester-1@memorial06.cloudapp.net mkdir /var/www/podvig-html", (commandLine, err, stdout, stderr) ->
+                execOut "scp -r -i .Tester.key .upload.tgz Tester-1@memorial06.cloudapp.net:/var/www/podvig-html", (commandLine, err, stdout, stderr) ->
+                    execOut "ssh -i .Tester.key Tester-1@memorial06.cloudapp.net tar xzf /var/www/podvig-html/.upload.tgz -C /var/www/podvig-html", (commandLine, err, stdout, stderr) ->
+                        execOut "ssh -i .Tester.key Tester-1@memorial06.cloudapp.net rm -f /var/www/podvig-html/.upload.tgz", (commandLine, err, stdout, stderr) ->            
+###
 
 
-# пересобрать debug и production
-rebuild = ()->
-    #scss2css()
-    less2css()
+
+rebuild = ->
     removeGeneratedJsFiles()
-    createDebugJsFiles()
-    joinCoffeeToSingleJS(()->
-        minifyAllInOneJS(()->
-            invoke 'html'
-        )
-    )
+    generateJsFiles()
 
-# Generate CSS from SASS
-scss2css = (done) ->
-    execOut 'sass --update scss:css', done
-
-
-# Generate CSS from LESS
-less2css = (done) ->
-    execOut 'lessc  less/index.less > css/index.css', done
 
 
 # Сделает по одному js файлу на каждый коффе
-# вызовет колбек done когда закончит
-createDebugJsFiles = (done)->
-    command = "coffee "
-    if(config.genSourceMap)
-        command += "-m "
-    command += "--output #{config.jsDir}/ --compile #{config.srcDir}"
-    execOut command, done
+generateJsFiles = (onDone)-> 
+    execOut "coffee -m --output js/ --compile coffee/", onDone
 
 
-# Сделает один js файл из всех коффе
-# вызовет колбек done когда закончит
-joinCoffeeToSingleJS = (done)->
-    singleCoffee = getDirText(config.srcDir, "# ===== FILE: ")
-    fs.writeFileSync "#{outJS}.coffee", singleCoffee, "utf8"
-    command = "coffee "
-    if(config.genSourceMap)
-        command += "-m "
-    command += "--output #{config.outDir}/ -c #{outJS}.coffee"
-    execOut command, done
+
+# Удаляет js файлы генерированные из coffee
+removeGeneratedJsFiles = ->
+    for file in fs.readdirSync("coffee") when /\.coffee$/.test file
+        try
+            fs.unlinkSync "js/#{file.replace('.coffee','.js')}"
+        catch err
+
+        try
+            fs.unlinkSync "js/#{file.replace('.coffee','.map')}"
+        catch err
 
 
-# Сделает минифицированный файл из склеенного коффе -> js файла
-# вызовет колбек done когда закончит
-minifyAllInOneJS = (done)->
-    #pass -mt option to minify break code (find where problem is a very time consuming operation)
-    command = "uglifyjs #{outJS}.js -nc warnings=false --unsafe -o #{outJS}.min.js"
-    if(config.genSourceMap)
-        command += " --source-map #{outMinMap} --in-source-map #{outJS}.map"
-
-    console.log('minifyAllInOneJS command: ' + command)
-    execOut command, ()->
-        if fs.existsSync(outMinMap)
-            #uglify source map generation and relative path are different,
-            # to fix this - move generated map to {config.outDir}/
-            fs.renameSync(outMinMap, "#{config.outDir}/#{outMinMap}")
-        if(done)
-            done()
 
 
-# Получаем отформатированное время
-getTime = ()->
-    d = new Date()
-    return pad(d.getHours(), 2) + ":" + pad(d.getMinutes(), 2) + ":" + pad(d.getMilliseconds(), 3)
-
-
-# Добавляем к числу нули слева, чтобы получить выравненные строки
-# пример: 003, 012, 123
-pad = (num, size)->
-    s = num + ""
-    while (s.length < size)
-        s = "0" + s
-    return s;
-
-
-replaceAll = (text, search, replace)->
-    return text.split(search).join(replace);
-
-
-replaceCurrentTimeInText = (t)->
-    mask = "<!--@CAKE:Replace with current date-->"
-    d = new Date()
-    ct = pad(d.getHours(), 2) + ":" + pad(d.getMinutes(), 2) + " " + pad(d.getDate(), 2) + "." + pad(d.getMonth() + 1, 2) + "." + pad(d.getFullYear(), 4)
-    t = replaceAll(t, mask, ct)
-    return t
-
-# Получаем шаблон стартовой страницы для конкретной моды (debug, production)
-# Используем файл index_raw.html
-getTemplate = (mode) ->
-    indexTpl = (fs.readFileSync "index_raw.html", "utf8" )
-    indexTpl = replaceCurrentTimeInText(indexTpl)
-    #remove all conditions from template
-    start = "<!--@CAKE:if:"
-    end = "<!--@CAKE:endif:"
-    commEnd = "-->"
-    pos = 0
-    while pos >= 0
-        pos = indexTpl.indexOf(start, pos)
-        if(pos >= 0)
-            curCommentEnd = indexTpl.indexOf(commEnd, pos);
-            curModeFound = indexTpl.substr(pos + 13, curCommentEnd - pos - 13)
-            endTag = end + curModeFound + commEnd
-            endTagPos = indexTpl.indexOf(endTag, pos)
-            if(endTagPos < 0)
-                pos++;
-                continue;
-            pp = indexTpl.indexOf(mode, pos - 1)
-            if pp == pos + 13
-                #we found text for this mode
-                #console.log("found text:" + indexTpl.substr(pos, endTagPos))
-                indexTpl = indexTpl.substr(0, pos) + indexTpl.substr(curCommentEnd + 3, endTagPos - curCommentEnd - 3) + indexTpl.substr(endTagPos + endTag.length)
-            else
-                #we found text not for this mode, remove all until condition end
-                indexTpl = indexTpl.substr(0, pos) + indexTpl.substr(endTagPos + endTag.length)
-                pos = pos++
-    return indexTpl
-
-
+            
 # Выполняет команду OS и печатает вывод и сообщения об ошибках
 execOut = (commandLine, cb) ->
     console.log("> #{commandLine}")
@@ -291,53 +73,14 @@ execOut = (commandLine, cb) ->
             console.log(stderr)
         if(cb)
             cb(commandLine, err, stdout, stderr)
+            
 
 
-# Возвращает объединенный текст файлов в директории
-getDirText = (dirName, addFileNamesMarker) ->
-    res = ""
-    for file in fs.readdirSync(dirName)
-        f = "#{dirName}/#{file}"
-        if file == 'experiments.html'
-            continue
-        if addFileNamesMarker
-            res += addFileNamesMarker + f + "\n"
-        res += fs.readFileSync f
-        res += "\n\n\n\n\n"
-    return res
-
-# Возвращает объединенный текст файлов в директории
-getScriptTags = (dirName) ->
-    ("<script src='#{dirName}/#{file}'></script>" for file in fs.readdirSync(dirName) when /\.js$/.test file ).join "\n"
-
-
-# Удаляет js файлы генерированные из coffee
-removeGeneratedJsFiles = ->
-    try
-        fs.unlinkSync "js/podvig.js"
-    catch err
-
-    try
-        fs.unlinkSync "js/podvig.map"
-    catch err
-
-    try
-        fs.unlinkSync "js/podvig.coffee"
-    catch err
-
-    for file in fs.readdirSync("coffee") when /\.coffee$/.test file
-        try
-            fs.unlinkSync "js/#{file.replace('.coffee','.js')}"
-        catch err
-
-        try
-            fs.unlinkSync "js/#{file.replace('.coffee','.map')}"
-        catch err
-
-task 'deploy', '', ->
-    execOut "tar -czf .upload.tgz *", (commandLine, err, stdout, stderr) ->
-        execOut "ssh -i .Tester.key Tester-1@memorial06.cloudapp.net rm -rf /var/www/podvig-html", (commandLine, err, stdout, stderr) ->
-            execOut "ssh -i .Tester.key Tester-1@memorial06.cloudapp.net mkdir /var/www/podvig-html", (commandLine, err, stdout, stderr) ->
-                execOut "scp -r -i .Tester.key .upload.tgz Tester-1@memorial06.cloudapp.net:/var/www/podvig-html", (commandLine, err, stdout, stderr) ->
-                    execOut "ssh -i .Tester.key Tester-1@memorial06.cloudapp.net tar xzf /var/www/podvig-html/.upload.tgz -C /var/www/podvig-html", (commandLine, err, stdout, stderr) ->
-                        execOut "ssh -i .Tester.key Tester-1@memorial06.cloudapp.net rm -f /var/www/podvig-html/.upload.tgz", (commandLine, err, stdout, stderr) ->            
+# calls func function in 200 msec.
+# Windows fix. 
+# Prevents multiple rebuilds 
+# when file system generates several events on one file 
+TT=0
+postpone = (func)->
+    clearTimeout TT
+    TT = setTimeout func , 200
