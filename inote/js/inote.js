@@ -49,6 +49,7 @@
         return;
       }
       newCell = createNewCell(getNewCellNumber());
+      newCell.unlock();
       newCell.getJQueryCell().insertAfter($("#cell" + cellNumber));
       CELLS.splice(i + 1, 0, newCell);
       newCell.setFocus(0, 0);
@@ -61,6 +62,7 @@
         return;
       }
       newCell = createNewCell(getNewCellNumber());
+      newCell.unlock();
       newCell.getJQueryCell().insertBefore($("#cell" + cellNumber));
       CELLS.splice(i, 0, newCell);
       newCell.setFocus(0, 0);

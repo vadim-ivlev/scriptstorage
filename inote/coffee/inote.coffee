@@ -28,6 +28,7 @@
         i = getIndexByCellNumber(cellNumber)
         return    if i is -1
         newCell = createNewCell(getNewCellNumber())
+        newCell.unlock()
         newCell.getJQueryCell().insertAfter $("#cell" + cellNumber)
         CELLS.splice i + 1, 0, newCell
         newCell.setFocus 0, 0
@@ -38,13 +39,11 @@
         i = getIndexByCellNumber(cellNumber)
         return    if i is -1
         newCell = createNewCell(getNewCellNumber())
+        newCell.unlock()
         newCell.getJQueryCell().insertBefore $("#cell" + cellNumber)
         CELLS.splice i, 0, newCell
-        
-        #CELLS.unshift(newCell);
         newCell.setFocus 0, 0
         newCell
-    
     
     globalKeyHandler = (event) ->
         key = event.which

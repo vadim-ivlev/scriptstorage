@@ -27,33 +27,10 @@
 
     _create = (celNum, theme) ->
         
-        #input header
-        #Hide input
-        #'<span class="inputTitle hidable000"></span>'+
-        #Format selection
-        
-        # Code area
-        
-        #input
-        
-        #javascript text
-        
-        #output header
-        #Hide output
-        #'<span class="outputTitle hidable000"></span>'+
-        
-        #output
-        
-        # add lock buttons
-        
-        # add run  button
-        
-        # add cell buttons
         _jQueryCell = $("""
 <div class='cell' collapsed='no' outCollapsed='no' inCollapsed='no' access='public'>
 
     <div class='input_header'>
-
         <span class='hideInputButton toolButton hidable000' >&#x25BC</span>
         <select class='selectButton hidable000'>
             <option value='javascript'>JavaScript</option>
@@ -63,40 +40,27 @@
         </select>
         <span class='formatSelectionButton toolButton hidable000'>Format</span>
         <span class='showJavascriptButton toolButton hidable000' >Show Javascript</span>
-
         <span class='deleteButton toolButton  hidable000' title='delete cell' >&nbsp;&#x00D7&nbsp;</span>
     </div>
 
-
     <table class='codeArea' ><tr>
-
         <td id='in_' class='inputCell' ></td>
-
         <td  class='javascriptText'></td>
     </tr></table>
     <div class='input_expander toolButton hidable000'>&#x25BA</div>
 
-
-
-
     <div class='output_header'>
         <span class='hideOutputButton toolButton hidable000'>&#x25BC</span>
-    
         <span class='clearOutputButton toolButton hidable000'>Clear output</span>
         <span class='runButton toolButton hidable000' title='<Ctrl-Ent> to Run.  <Shift-Ent> to run and go to the next cell. '>Run<span style='font-family:icomoon;font-size:100%; position:relative; top:2px;'>&#xE603;</span></span>
     </div>
     
     <div id='out_' class='outputCell lr_padded'></div>
     <div class='output_expander toolButton hidable000'>&#x25BA</div>
-    
-    
-    <div class='lockButton smallButton' title='lock/unlock' style='position:absolute;top:10px;left:-19px;width:20px;'>&#xE601;</div>
-    
     <div class='runButton smallButton'  style='position:absolute;top:36px;left:-21px;width:20px;font-family:icomoon;opacity:0.4;'>&#xE603;</div>
-    
-    
     <div class='insertBefore smallButton  hidable000' title='add cell'>+</div>
     <div class='insertAfter smallButton  hidable000' title='add cell'>+</div>
+    <div class='lockButton smallButton' title='lock/unlock' style='position:absolute;top:10px;left:-19px;width:20px;'>&#xE601;</div>
 </div>
         """)
     
@@ -167,7 +131,9 @@
         saveNotebookLater()    if saveNotebookLater
         return
     
-    
+
+
+    # collapse input area ===================================================
     _setInputCollapsed = (collapsed) ->
         _inCollapsed = collapsed
         if collapsed
@@ -182,69 +148,64 @@
             _jQueryCell.find(".hideInputButton").html "[in" + _n + "] &nbsp;&nbsp;&#x25BC" #Hide input
         saveNotebookLater()    if saveNotebookLater
         return
-    
-    
+
+
+
+    # make it read only ======================================================
+    _lock = ->
+        _lockButton.html "&#xE601;"
+        _jQueryCell.find(".hidable000").removeClass "visible"
+        _jQueryCell.find(".codeArea").css "border-color", "transparent"
+        _codemirror.setOption "readOnly", "nocursor"
+
+
+
+    # make it  editable =======================================================
+    _unlock = ->
+        _lockButton.html "&#xE602;"
+        _jQueryCell.find(".hidable000").addClass "visible"
+        _jQueryCell.find(".codeArea").css "border-color", "#DDD"
+        _codemirror.setOption "readOnly", false
+
+
+
+    # attach events to buttons ================================================
     _attachEvents = ->
+        
         _inputCell.keydown _keyHandler
-        _lockButton.click ->
-            if _lockButton.html().charCodeAt(0) is 0xE601
-                _lockButton.html "&#xE602;"
-                _jQueryCell.find(".hidable000").addClass "visible"
-                _jQueryCell.find(".codeArea").css "border-color", "#DDD"
-                _codemirror.setOption "readOnly", false
-            else
-                _lockButton.html "&#xE601;"
-                _jQueryCell.find(".hidable000").removeClass "visible"
-                _jQueryCell.find(".codeArea").css "border-color", "transparent"
-                _codemirror.setOption "readOnly", "nocursor"
-            return
 
-        $(".deleteButton", _jQueryCell).click ->
-            _call _deleteCallback, _n
-            return
+        _lockButton.click -> if _lockButton.html().charCodeAt(0) is 0xE601 then _unlock() else _lock()
 
-        $(".insertBefore", _jQueryCell).click ->
-            _call _insertBeforeCallback, _n
-            return
+        $(".deleteButton", _jQueryCell).click -> _call _deleteCallback, _n
 
-        $(".insertAfter", _jQueryCell).click ->
-            _call _insertAfterCallback, _n
-            return
+        $(".insertBefore", _jQueryCell).click -> _call _insertBeforeCallback, _n
+
+        $(".insertAfter", _jQueryCell).click -> _call _insertAfterCallback, _n
 
         $(".runButton", _jQueryCell).click _executeCode
-        $(".clearOutputButton", _jQueryCell).click ->
-            _outputCell.html ""
-            saveNotebook()    if saveNotebook
-            return
+        
+        $(".clearOutputButton", _jQueryCell).click -> _outputCell.html ""; saveNotebook?()
 
-        $(".hideOutputButton", _jQueryCell).click ->
-            _setOutputCollapsed not _outCollapsed
-            return
+        $(".hideOutputButton", _jQueryCell).click -> _setOutputCollapsed not _outCollapsed
 
-        $(".hideInputButton", _jQueryCell).click ->
-            _setInputCollapsed not _inCollapsed
-            return
+        $(".hideInputButton", _jQueryCell).click -> _setInputCollapsed not _inCollapsed
 
-        $(".input_expander", _jQueryCell).click ->
-            _setInputCollapsed not _inCollapsed
-            return
+        $(".input_expander", _jQueryCell).click -> _setInputCollapsed not _inCollapsed
 
-        $(".output_expander", _jQueryCell).click ->
-            _setOutputCollapsed not _outCollapsed
-            return
+        $(".output_expander", _jQueryCell).click -> _setOutputCollapsed not _outCollapsed
 
         $(".formatSelectionButton", _jQueryCell).click _autoFormatSelection
+        
         $(".showJavascriptButton", _jQueryCell).click _switchJavascriptText
         
         #   $(".selectThemeButton",_jQueryCell).change(_selectTheme);
+        
         $(".selectButton", _jQueryCell).change ->
             sel = _jQueryCell.find(".selectButton")
             mode = $(sel).attr("value")
             _setMode mode
             _codemirror.focus()
-            return
 
-        return
     
     
     _setMode = (mode) ->
@@ -528,3 +489,12 @@
 
     setFocus: _setFocus
     removeFocus: _removeFocus
+
+    lock: _lock
+    unlock: _unlock
+
+
+
+
+
+    
