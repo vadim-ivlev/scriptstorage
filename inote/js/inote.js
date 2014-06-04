@@ -7,7 +7,7 @@
     _themeName = "";
     getNewCellNumber = function() {
       var c;
-      return 1 + Math.max((function() {
+      return 1 + Math.max.apply(Math, ((function() {
         var _i, _len, _results;
         _results = [];
         for (_i = 0, _len = CELLS.length; _i < _len; _i++) {
@@ -15,7 +15,7 @@
           _results.push(c.getNumber());
         }
         return _results;
-      })());
+      })()));
     };
 
     /*
@@ -102,19 +102,19 @@
       return newCell;
     };
     getCellInfo = function(event) {
-      var c, cellNumber, i;
-      c = $(event.target).parents(".cell");
-      cellNumber = c.data("number");
-      i = 0;
-      while (i < CELLS.length) {
-        if (cellNumber === CELLS[i].getNumber()) {
+      var C, cellNumber, i, _i, _len;
+      i = -1;
+      cellNumber = $(event.target).parents(".cell").data("number");
+      for (_i = 0, _len = CELLS.length; _i < _len; _i++) {
+        C = CELLS[_i];
+        i++;
+        if (cellNumber === C.getNumber()) {
           return {
-            cell: CELLS[i],
+            cell: C,
             index: i,
             number: cellNumber
           };
         }
-        i++;
       }
       return {
         cell: null,
@@ -166,25 +166,23 @@
       return isFullScreen(editor);
     };
     setXmlText = function(xmlText) {
-      var cell, cells, i, newCell, notebook;
+      var c, cell, cells, newCell, notebook, _i, _len;
       notebook = $(xmlText);
       _themeName = notebook.attr("theme");
       cells = notebook.find("cell");
-      i = 0;
-      while (i < cells.length) {
-        cell = $(cells[i]);
+      for (_i = 0, _len = cells.length; _i < _len; _i++) {
+        c = cells[_i];
+        cell = $(c);
         newCell = appendNewCell(cell.attr("number"));
         newCell.setXml(cell);
-        i++;
       }
     };
     getXmlText = function(notebookName) {
-      var i, notebook;
+      var C, notebook, _i, _len;
       notebook = $("<inote name='" + notebookName + "' theme='" + _themeName + "'/>");
-      i = 0;
-      while (i < CELLS.length) {
-        notebook.append(CELLS[i].getXml());
-        i++;
+      for (_i = 0, _len = CELLS.length; _i < _len; _i++) {
+        C = CELLS[_i];
+        notebook.append(C.getXml());
       }
       return notebook.wrap("<wrapper/>").parent().html();
     };
@@ -198,14 +196,12 @@
       CELLS = [];
     };
     setTheme = function(themeName) {
-      var editor, i;
+      var C, _i, _len;
       _themeName = themeName;
-      i = 0;
-      while (i < CELLS.length) {
-        editor = CELLS[i].getEditor();
-        editor.setOption("theme", themeName);
-        CELLS[i].getJavascriptTextViewer().setOption("theme", themeName);
-        i++;
+      for (_i = 0, _len = CELLS.length; _i < _len; _i++) {
+        C = CELLS[_i];
+        C.getEditor().setOption("theme", themeName);
+        C.getJavascriptTextViewer().setOption("theme", themeName);
       }
     };
     getTheme = function() {

@@ -6,25 +6,13 @@
     
     #Cell number generator
     getNewCellNumber = ->
-        #n = 0
-        #i = 0
+        1+Math.max (c.getNumber() for c in CELLS)...
 
-        #while i < CELLS.length
-        #    n = CELLS[i].getNumber() + 1    if n <= CELLS[i].getNumber()
-        #    i++
-        #n
-        1 + Math.max ( c.getNumber() for c in CELLS )
     
     ###
     find cell index in CELLS array  by cell number
     ###
     getIndexByCellNumber = (cellNumber) ->
-        #i = 0
-
-        #while i < CELLS.length
-        #    return i    if cellNumber is CELLS[i].getNumber()
-        #    i++
-        #-1
         ( c.getNumber() for c in CELLS ).indexOf(cellNumber)
 
     
@@ -57,16 +45,6 @@
         newCell.setFocus 0, 0
         newCell
     
-    # function printCells()
-    # {
-    # 	var s="";
-    # 	for (var i = 0; i < CELLS.length; i++) {
-    # 		s+=" "+CELLS[i].getNumber();
-    # 	}
-    # 	console.log("CELLS: "+s);
-    
-    # }
-    
     
     globalKeyHandler = (event) ->
         key = event.which
@@ -88,7 +66,6 @@
     
     createNewCell = (cellNumber) ->
         newCell = new Cell(cellNumber, _themeName)
-        
         #callbacks
         newCell.setDeleteCallback deleteCell
         newCell.setInsertBeforeCallback insertCellBefore
@@ -100,27 +77,21 @@
         newCell = createNewCell(cellNumber)
         newCell.getJQueryCell().appendTo _container
         CELLS.push newCell
-        
         #newCell.setFocus(0,0);
         newCell
     
     
     getCellInfo = (event) ->
-        c = $(event.target).parents(".cell")
-        cellNumber = c.data("number")
-        i = 0
-
-        while i < CELLS.length
-            if cellNumber is CELLS[i].getNumber()
-                return (
-                    cell: CELLS[i]
-                    index: i
-                    number: cellNumber
-                )
+        i = -1
+        cellNumber = $(event.target).parents(".cell").data("number")
+        
+        for C in CELLS
             i++
-        cell: null
-        index: -1
-        number: cellNumber
+            if cellNumber is C.getNumber()
+                return { cell:C, index:i, number: cellNumber }
+        
+        return { cell:null, index:-1, number: cellNumber }
+
     
     
     isCellFirst = (index) ->
@@ -160,39 +131,23 @@
         isFullScreen editor
     
     
-    #removeFocusAll = ->
-    #    c.removeFocus() for c in CELLS
-    #    return
-
-        #i = 0
-
-        #while i < CELLS.length
-        #    CELLS[i].removeFocus()
-        #    i++
-        #return
-    
     
     setXmlText = (xmlText) ->
         notebook = $(xmlText)
         _themeName = notebook.attr("theme")
         cells = notebook.find("cell")
-        i = 0
 
-        while i < cells.length
-            cell = $(cells[i])
+        for c in cells
+            cell = $(c)
             newCell = appendNewCell(cell.attr("number"))
             newCell.setXml cell
-            i++
         return
     
     
     getXmlText = (notebookName) ->
-        notebook = $("<inote name='" + notebookName + "' theme='" + _themeName + "'/>")
-        i = 0
-
-        while i < CELLS.length
-            notebook.append CELLS[i].getXml()
-            i++
+        notebook = $("<inote name='#{notebookName}' theme='#{_themeName}'/>")
+        for C in  CELLS
+            notebook.append C.getXml()
         notebook.wrap("<wrapper/>").parent().html()
     
     
@@ -210,16 +165,10 @@
     
     setTheme = (themeName) ->
         _themeName = themeName
-        i = 0
+        for C in CELLS
+            C.getEditor().setOption "theme", themeName
+            C.getJavascriptTextViewer().setOption "theme", themeName
 
-        while i < CELLS.length
-            editor = CELLS[i].getEditor()
-            editor.setOption "theme", themeName
-            
-            #var javaScriptViwer = CELLS[i].getJavascriptTextViewer();
-            #editor.setOption("theme", themeName);
-            CELLS[i].getJavascriptTextViewer().setOption "theme", themeName
-            i++
         return
     
     
