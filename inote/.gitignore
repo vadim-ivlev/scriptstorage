@@ -95,18 +95,4 @@ local.properties
 .buildpath
 
 node_modules
-server.js
 
-# Генерируемые файлы
-coffee/*.map
-coffee/*.js
-js/*
-production/*.coffee
-production/*.js
-production/*.map
-index.html
-index_debug.html
-#.Tester.key
-.upload.tgz
-.js
-.map
