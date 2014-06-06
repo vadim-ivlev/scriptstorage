@@ -173,36 +173,21 @@
     _attachEvents = ->
         
         _inputCell.keydown _keyHandler
-
         _lockButton.click -> if _lockButton.html().charCodeAt(0) is 0xE601 then _unlock() else _lock()
-
         $(".deleteButton", _jQueryCell).click -> _call _deleteCallback, _n
-
         $(".insertBefore", _jQueryCell).click -> _call _insertBeforeCallback, _n
-
         $(".insertAfter", _jQueryCell).click -> _call _insertAfterCallback, _n
-
         $(".runButton", _jQueryCell).click _executeCode
-        
         $(".clearOutputButton", _jQueryCell).click -> _outputCell.html ""; saveNotebook?()
-
         $(".hideOutputButton", _jQueryCell).click -> _setOutputCollapsed not _outCollapsed
-
         $(".hideInputButton", _jQueryCell).click -> _setInputCollapsed not _inCollapsed
-
         $(".input_expander", _jQueryCell).click -> _setInputCollapsed not _inCollapsed
-
         $(".output_expander", _jQueryCell).click -> _setOutputCollapsed not _outCollapsed
-
         $(".formatSelectionButton", _jQueryCell).click _autoFormatSelection
-        
         $(".showJavascriptButton", _jQueryCell).click _switchJavascriptText
-        
         #   $(".selectThemeButton",_jQueryCell).change(_selectTheme);
-        
         $(".selectButton", _jQueryCell).change ->
-            sel = _jQueryCell.find(".selectButton")
-            mode = $(sel).attr("value")
+            mode = _jQueryCell.find(".selectButton").val()
             _setMode mode
             _codemirror.focus()
 

@@ -7,9 +7,9 @@ inote = undefined
 
 
 @selectTheme = ->
-    input = document.getElementById("selectTheme_button")
-    theme = input.options[input.selectedIndex].innerHTML
-    inote.setTheme theme
+    #input = document.getElementById("selectTheme_button")
+    #theme = input.options[input.selectedIndex].innerHTML
+    inote.setTheme $("#selectTheme_button").val()
     @saveNotebookLater()
     return
 
