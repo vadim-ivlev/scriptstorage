@@ -6,7 +6,7 @@
     
     #Cell number generator
     getNewCellNumber = ->
-        1+Math.max (c.getNumber() for c in CELLS)...
+        if CELLS.length is 0 then 0 else  1+Math.max (c.getNumber() for c in CELLS)...
 
     
     ###

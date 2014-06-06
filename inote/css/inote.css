@@ -30,7 +30,7 @@ input, select
 
 #notebookList
 {
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Robot Condensed', sans-serif;
     margin-top: 50px;
     color:#BBB;
 }
@@ -77,7 +77,7 @@ input, select
     padding-left: 30px;
     padding-right: 30px;
 
-    font-family: 'Roboto Condensed',sans-serif;
+    font-family: 'Robot Condensed',sans-serif;
     font-size: 16px;
 
 }
@@ -90,7 +90,7 @@ input, select
 
 .notebookName{
 	border:1px solid transparent;
-	font-family: 'Roboto Condensed', sans-serif;
+	font-family: 'Robot Condensed', sans-serif;
 	font-size: 16px;
     width:100%;
     vertical-align: middle;
@@ -109,7 +109,7 @@ input, select
     /*float: right;*/
     /*padding-top: 2px;*/
     white-space: nowrap;
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Robot Condensed', sans-serif;
 
 }
 
@@ -161,7 +161,7 @@ input, select
     border: 1px solid transparent;
     text-decoration: none;
 
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Robot Condensed', sans-serif;
     font-size: 16px;
 
 }
@@ -184,7 +184,7 @@ input, select
     padding-left: 10px;
     padding-right: 10px;
 
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Robot Condensed', sans-serif;
 
 }
 

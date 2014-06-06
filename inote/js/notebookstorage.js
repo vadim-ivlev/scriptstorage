@@ -14,7 +14,6 @@
     };
 
     NoteBookStorage.prototype.get = function(owner_nickname, notebook_name, onsuccess, onerror) {
-      onsuccess(localStorage.getItem("inote_" + notebook_name));
       return $.ajax({
         type: "GET",
         url: "/read",
@@ -29,7 +28,6 @@
     };
 
     NoteBookStorage.prototype.put = function(access, notebook_name, notebook_content, onsuccess, onerror) {
-      localStorage.setItem("inote_" + notebook_name, notebook_content);
       return $.ajax({
         type: "POST",
         url: "/write",
@@ -41,6 +39,21 @@
         },
         success: onsuccess,
         error: onerror
+      });
+    };
+
+    NoteBookStorage.prototype.del = function(key_name, onsuccess, onerror) {
+      return $.ajax({
+        url: "/delete",
+        data: {
+          key_name: key_name
+        },
+        success: function() {
+          return typeof onsuccess === "function" ? onsuccess() : void 0;
+        },
+        error: function(e) {
+          return typeof onerror === "function" ? onerror(e) : void 0;
+        }
       });
     };
 

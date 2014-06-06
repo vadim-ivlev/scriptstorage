@@ -7,15 +7,19 @@
     _themeName = "";
     getNewCellNumber = function() {
       var c;
-      return 1 + Math.max.apply(Math, ((function() {
-        var _i, _len, _results;
-        _results = [];
-        for (_i = 0, _len = CELLS.length; _i < _len; _i++) {
-          c = CELLS[_i];
-          _results.push(c.getNumber());
-        }
-        return _results;
-      })()));
+      if (CELLS.length === 0) {
+        return 0;
+      } else {
+        return 1 + Math.max.apply(Math, ((function() {
+          var _i, _len, _results;
+          _results = [];
+          for (_i = 0, _len = CELLS.length; _i < _len; _i++) {
+            c = CELLS[_i];
+            _results.push(c.getNumber());
+          }
+          return _results;
+        })()));
+      }
     };
 
     /*

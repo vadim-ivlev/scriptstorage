@@ -12,7 +12,7 @@ class @NoteBookStorage
 
 
     get : (owner_nickname, notebook_name, onsuccess, onerror) ->
-        onsuccess( localStorage.getItem("inote_"+notebook_name))
+        #onsuccess( localStorage.getItem("inote_"+notebook_name))
         $.ajax
             type: "GET"
             url: "/read"
@@ -27,7 +27,7 @@ class @NoteBookStorage
 
 
     put : (access, notebook_name, notebook_content, onsuccess, onerror) ->
-        localStorage.setItem "inote_" + notebook_name, notebook_content
+        #localStorage.setItem "inote_" + notebook_name, notebook_content
         $.ajax
             type: "POST"
             url: "/write"
@@ -39,6 +39,15 @@ class @NoteBookStorage
 
             success: onsuccess
             error: onerror
+
+
+
+    del: (key_name, onsuccess, onerror) ->
+        $.ajax
+            url: "/delete"
+            data:{ key_name: key_name }
+            success:  -> onsuccess?() 
+            error: (e) -> onerror?(e)
 
 
 

@@ -128,7 +128,7 @@
             _jQueryCell.find(".output_expander").hide()
             _jQueryCell.find(".output_header").show()
             _jQueryCell.find(".hideOutputButton").html "[out" + _n + "] &#x25BC" #Hide output
-        saveNotebookLater()    if saveNotebookLater
+        saveNotebookLater?()
         return
     
 
@@ -146,7 +146,7 @@
             _jQueryCell.find(".input_expander").hide()
             _jQueryCell.find(".input_header").show()
             _jQueryCell.find(".hideInputButton").html "[in" + _n + "] &nbsp;&nbsp;&#x25BC" #Hide input
-        saveNotebookLater()    if saveNotebookLater
+        saveNotebookLater?()
         return
 
 
@@ -221,7 +221,7 @@
             _jQueryCell.find(".formatSelectionButton").show()
         else
             _jQueryCell.find(".formatSelectionButton").hide()
-        saveNotebookLater()    if saveNotebookLater
+        saveNotebookLater?()
         return
     
     
@@ -321,7 +321,7 @@
                 html = converter.makeHtml(code)
                 _outputCell.html "<div class='markdown'>" + html + "</div>"
             else if _mode is "javascript"
-                result = eval_.call(window, code)
+                result = eval.call(window, code)
                 _print result
             else if _mode is "text/x-coffeescript"
                 _javascriptTextViewer.setValue ""
@@ -330,7 +330,7 @@
                 )
                 _javascriptTextViewer.setValue compiledCode
                 _javascriptTextViewer.refresh()
-                result = eval_.call(window, compiledCode)
+                result = eval.call(window, compiledCode)
                 _print result
         catch e
             _printError "" + e
@@ -410,7 +410,6 @@
         _outputCell.html "<div class='markdown'>" + html + "</div>"
         return
     
-    #if (saveNotebookLater) saveNotebookLater();
     
     
     
@@ -431,7 +430,6 @@
         return
     
     
-    #if (saveNotebookLater) saveNotebookLater();
     
     #EXECUTION **************************************
     _create cellNumber, themeName
