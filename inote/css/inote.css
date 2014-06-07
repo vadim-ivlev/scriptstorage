@@ -1,195 +1,286 @@
-/* GENERAL ------------------------------*/
-
-body
-{
-	background-color: white;
-    margin-left:0px;
-    margin-right:0px;
-    padding-left:0px;
-    padding-right:0px;
-    padding-bottom: 200px;;
-    /*color:#AAA;*/
-	/*font-size: x-large;*/
-
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:300&subset=latin,cyrillic);
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:300&subset=latin,cyrillic);
+@import url(http://fonts.googleapis.com/css?family=Roboto:300&subset=latin,cyrillic);
+@import url(http://fonts.googleapis.com/css?family=Cousine&;subset=latin,cyrillic);
+body {
+  background-color: white;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-bottom: 200px;
 }
-
-input, select
-{
-    background: transparent;
+input,
+select {
+  background: transparent;
 }
-
-
-#notebookList a {
-    color: red;
+/*PAGE----------------------*/
+.page {
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
-
-#notebookList a:visited {
-    color:black;
+.header {
+  border-bottom: 1px solid #AAA;
+  padding-bottom: 16px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-family: sans-serif;
+  font-size: 16px;
 }
-
-
-#notebookList
-{
-    font-family: 'Robot Condensed', sans-serif;
-    margin-top: 50px;
-    color:#BBB;
+.header:hover .hidable {
+  visibility: visible;
 }
-
-
-/*.lr_padded*/
-/*{*/
-    /*padding-left: 10px;*/
-    /*padding-right: 10px;;*/
-/*}*/
-
-/*------------Notebook----------------------*/
-.page
-{
-	/*background-color: white;*/
-	padding:10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    max-width:1000px;
-    margin-left:auto;
-    margin-right:auto;
-    /*
-    border-left:1px dotted #CCC;
-    border-right:1px dotted #CCC;
-    */
+.loginHolder {
+  white-space: nowrap;
+  font-family: sans-serif;
 }
-
-
-/*--------------Header--------------------*/
-
-#divHeader
-{
-
+.toolButton {
+  color: #BBB;
+  cursor: pointer;
+  vertical-align: middle;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 16px;
 }
-.header
-{
-    font-family: sans-serif;
-    /*color: #BBB;*/
-    border-bottom: 1px solid #AAA;
-    /*background-color: white;*/
-    padding-bottom: 16px;
-    /*position: relative;*/
-    /*box-shadow: 0px 10px 20px #AAA;*/
-    padding-left: 30px;
-    padding-right: 30px;
-
-    font-family: 'Robot Condensed',sans-serif;
-    font-size: 16px;
-
+.toolButton:hover {
+  border: 1px dotted #CCC;
 }
-
-.header:hover .hidable
-{
-	visibility:visible;
+/*------------cell----------------------*/
+@font-face {
+  font-family: 'icomoon';
+  src: url('../fonts/icomoon.eot?c52rba');
+  src: url('../fonts/icomoon.eot?#iefixc52rba') format('embedded-opentype'), url('../fonts/icomoon.woff?c52rba') format('woff'), url('../fonts/icomoon.ttf?c52rba') format('truetype'), url('../fonts/icomoon.svg?c52rba#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
-
-
-.notebookName{
-	border:1px solid transparent;
-	font-family: 'Robot Condensed', sans-serif;
-	font-size: 16px;
-    width:100%;
-    vertical-align: middle;
-    -webkit-appearance: none;
-
-    /*margin:0px;*/
+.cell {
+  position: relative;
+  border: 0px solid silver;
+  margin-top: 10px;
+  overflow: visible;
+  padding: 0px;
+  width: 100%;
+  border-radius: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
-
-.notebookName:hover
-{
-    border-bottom: 1px dotted #BBB;
+.cell:hover .hidable {
+  visibility: visible;
 }
-
-.loginHolder
-{
-    /*float: right;*/
-    /*padding-top: 2px;*/
-    white-space: nowrap;
-    font-family: 'Robot Condensed', sans-serif;
-
+.input_header {
+  width: 100%;
 }
-
-
-/*
-
-#btnSave
-{
-    position: fixed;
-    z-index: 1000;
-    right: 20px;
-    bottom: 10px;
-    color: #777;
-    font-weight: normal;
-    padding: 7px;
-    width:60px;
-    border-color: silver;
-    border-bottom-style: none;
-    border-right-style: none;
-    text-align: center;
-    box-shadow: 3px 3px 3px #888888;
-
-    background: #ffffff;
-    background: -moz-linear-gradient(top,  #ffffff 0%, #dbdbdb 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#dbdbdb));
-    background: -webkit-linear-gradient(top,  #ffffff 0%,#dbdbdb 100%);
-    background: -o-linear-gradient(top,  #ffffff 0%,#dbdbdb 100%);
-    background: -ms-linear-gradient(top,  #ffffff 0%,#dbdbdb 100%);
-    background: linear-gradient(to bottom,  #ffffff 0%,#dbdbdb 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dbdbdb',GradientType=0 );
-
+.output_header {
+  width: 100%;
 }
-
-*/
-
-
-
-
-
-
-.toolButton
-{
-	color:#BBB;
-	cursor: pointer;
-	/*background-color: #FFF;*/
-	vertical-align: middle;
-	padding-left: 10px;
-	padding-right: 10px;
-    border: 1px solid transparent;
-    text-decoration: none;
-
-    font-family: 'Robot Condensed', sans-serif;
-    font-size: 16px;
-
+.inputTitle,
+.outputTitle {
+  color: #AAA;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 12px;
+  cursor: default;
+  vertical-align: middle;
+  padding-right: 4px;
 }
-
-
-.selectButton
-{
-    border: 1px solid transparent;
-    border-radius: 0px;
-    -webkit-appearance: none;
-    -moz-appearance: window;
-    appearance: none;
-
-    font-size: 16px ;
-
-    color: #BBB;
-    cursor: pointer;
-    /*background-color: #FFF;*/
-    vertical-align: middle;
-    padding-left: 10px;
-    padding-right: 10px;
-
-    font-family: 'Robot Condensed', sans-serif;
-
+.codeArea {
+  border: 1px solid transparent;
+  border-radius: 0px;
+  border-spacing: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  padding-right: 10px;
 }
-
-
-.selectButton:hover, .toolButton:hover
-{
-    border: 1px dotted #CCC;
+.inputCell {
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+}
+.javascriptText {
+  border-left: 1px solid #AAA;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+}
+.outputCell {
+  width: 100%;
+  border: 1px dotted silver;
+  border-radius: 8px;
+  padding: 0;
+}
+.error {
+  color: red;
+  white-space: normal;
+  font-family: Courier New, Menlo, Consolas, Cousine, monospace;
+  font-size: 85%;
+}
+.noerror {
+  white-space: normal;
+  font-family: Courier New, Menlo, Consolas, Cousine, monospace;
+  font-size: 85%;
+}
+.input_expander,
+.output_expander {
+  cursor: pointer;
+  border-radius: 0px;
+  color: #BBB;
+  width: 100px;
+}
+.hidable {
+  visibility: hidden;
+}
+/*----------------Buttons -----------------*/
+.formatSelectionButton {
+  color: #BBB;
+  border-color: transparent;
+}
+.smallButton {
+  width: 14px;
+  height: 14px;
+  color: #BBB;
+  font-family: sans-serif;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  vertical-align: middle;
+  border: 1px solid transparent;
+}
+.smallButton:hover {
+  border: 1px dotted #AAA;
+}
+.insertBefore {
+  position: absolute;
+  left: -2px;
+  top: -14px;
+  border-style: none;
+  background-color: transparent;
+}
+.insertAfter {
+  position: absolute;
+  left: -2px;
+  bottom: -9px;
+  border-style: none;
+  background-color: transparent;
+}
+.deleteButton {
+  float: right;
+}
+.runButton {
+  color: #F66;
+  cursor: pointer;
+}
+.markdown {
+  font-family: sans-serif;
+  color: #333;
+}
+.markdown > * {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.markdown hr {
+  border-style: none;
+  border-bottom: 1px dotted silver;
+}
+.hidable000 {
+  visibility: hidden;
+}
+.hidden {
+  visibility: hidden;
+}
+.visible {
+  visibility: visible;
+}
+.lockButton {
+  font-family: icomoon;
+  font-size: 80%;
+}
+.CodeMirror {
+  height: auto;
+  width: 100%;
+  line-height: 130%;
+  font-family: Courier New, Menlo, Consolas, Cousine, monospace;
+}
+.CodeMirror-scroll {
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.CodeMirror-gutters {
+  background-color: transparent;
+  border-right: 2px solid  #CCC;
+}
+.CodeMirror-cursor {
+  border-width: 2px !important;
+}
+.activeline {
+  background: #F5F5F5 !important;
+}
+.CodeMirror-foldmarker {
+  color: #AAA;
+  font-family: arial;
+  line-height: .3;
+  cursor: pointer;
+}
+.CodeMirror-foldgutter {
+  width: .7em;
+}
+.CodeMirror-foldgutter-open,
+.CodeMirror-foldgutter-folded {
+  color: #AAA;
+  cursor: pointer;
+}
+.CodeMirror-foldgutter-open:after {
+  content: "\25BE";
+}
+.CodeMirror-foldgutter-folded:after {
+  content: "\25B8";
+}
+.CodeMirror-fullscreen {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+}
+.cm-tab {
+  background: url(data:image/png;
+    base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=);
+  background-position: right;
+  background-repeat: no-repeat;
+}
+.notebookName {
+  border: 1px solid transparent;
+  font-family: sans-serif;
+  font-size: 16px;
+  width: 100%;
+  vertical-align: middle;
+  -webkit-appearance: none;
+}
+.notebookName:hover {
+  border-bottom: 1px dotted #BBB;
+}
+.selectButton {
+  border: 1px solid transparent;
+  border-radius: 0px;
+  -webkit-appearance: none;
+  -moz-appearance: window;
+  appearance: none;
+  font-size: 16px;
+  color: #BBB;
+  cursor: pointer;
+  vertical-align: middle;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-family: sans-serif;
+}
+.selectButton:hover {
+  border: 1px dotted #CCC;
 }

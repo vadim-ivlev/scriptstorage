@@ -1,0 +1,153 @@
+/*------------cell----------------------*/
+@font-face {
+    font-family: 'icomoon';
+    src:url('../fonts/icomoon.eot?c52rba');
+    src:url('../fonts/icomoon.eot?#iefixc52rba') format('embedded-opentype'),url('../fonts/icomoon.woff?c52rba') format('woff'),url('../fonts/icomoon.ttf?c52rba') format('truetype'),url('../fonts/icomoon.svg?c52rba#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+.cell {
+    position:relative;
+    border: 0px solid silver;
+    margin-top:10px;
+    overflow:visible;
+    padding:0px;
+    width:100%;
+    border-radius: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.cell:hover {
+    .hidable {
+        visibility: visible;
+    }
+}
+.input_header {
+    width:100%;
+}
+.output_header {
+    width:100%;
+}
+.inputTitle, .outputTitle {
+    color:#AAA;
+    display:inline-block;
+    font-family: @FONT;
+    font-size: 12px;
+    cursor: default;
+    vertical-align: middle;
+    padding-right: 4px;
+}
+.codeArea {
+    border: 1px solid transparent;
+    border-radius: 0px;
+    border-spacing: 0;
+    margin: 0;
+    padding: 0;
+    width:100%;
+    padding-right: 10px;
+}
+.inputCell {
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+}
+.javascriptText {
+    border-left:1px solid #AAA;
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+}
+.outputCell {
+    width:100%;
+    border:1px dotted silver;
+    border-radius: 8px;
+    padding:0;
+}
+.error {
+    color:red;
+    white-space: normal;
+    font-family: @CODEFONT;
+    font-size: 85%;
+}
+.noerror {
+    white-space: normal;
+    font-family: @CODEFONT;
+    font-size: 85%;
+}
+.input_expander, .output_expander {
+    cursor: pointer;
+    border-radius: 0px;
+    color: #BBB;
+    width:100px;
+}
+.hidable {
+    visibility:hidden;
+}
+
+
+/*----------------Buttons -----------------*/
+.formatSelectionButton {
+    color: #BBB;
+    border-color: transparent;
+}
+.smallButton {
+    width:14px;
+    height:14px;
+    color: #BBB;
+    font-family:  @FONT;
+    display:inline-block;
+    text-align: center;
+    cursor: pointer;
+    vertical-align: middle;
+    border: 1px solid transparent;
+}
+.smallButton:hover {
+    border: 1px dotted #AAA;
+}
+.insertBefore {
+    position:absolute;
+    left:-2px;
+    top:-14px;
+    border-style: none;
+    background-color: transparent;
+}
+.insertAfter {
+    position:absolute;
+    left:-2px;
+    bottom:-9px;
+    border-style: none;
+    background-color: transparent;
+}
+.deleteButton {
+    float:right;
+}
+.runButton {
+    color:#F66;
+    cursor: pointer;
+}
+.markdown {
+    font-family: @FONT;
+    color: #333;
+    & > * {
+        margin-left:10px;
+        margin-right:10px;
+    }
+    hr {
+        border-style: none;
+        border-bottom: 1px dotted silver;
+    }
+}
+.hidable000 {
+    visibility:hidden;
+}
+.hidden {
+    visibility:hidden;
+}
+.visible {
+    visibility:visible;
+}
+.lockButton {
+    font-family: icomoon;
+    font-size:80%;
+}
+

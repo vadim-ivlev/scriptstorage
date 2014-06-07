@@ -1,1 +1,72 @@
-lessc: ENOENT, open '/Users/vadimivlev/Projects/_projects/scriptstorage/inote/less/index.less'
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:300&subset=latin,cyrillic);
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:300&subset=latin,cyrillic);
+@import url(http://fonts.googleapis.com/css?family=Roboto:300&subset=latin,cyrillic);
+@import url(http://fonts.googleapis.com/css?family=Cousine&;subset=latin,cyrillic);
+body {
+  background-color: white;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-bottom: 200px;
+}
+input,
+select {
+  background: transparent;
+}
+/*PAGE----------------------*/
+.page {
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.header {
+  border-bottom: 1px solid #AAA;
+  padding-bottom: 16px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-family: sans-serif;
+  font-size: 16px;
+}
+.header:hover .hidable {
+  visibility: visible;
+}
+.loginHolder {
+  white-space: nowrap;
+  font-family: sans-serif;
+}
+.toolButton {
+  color: #BBB;
+  cursor: pointer;
+  vertical-align: middle;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 16px;
+}
+.toolButton:hover {
+  border: 1px dotted #CCC;
+}
+#appTitle {
+  font-family: sans-serif;
+  width: 100%;
+  vertical-align: middle;
+  font-size: 70px;
+  font-weight: normal;
+}
+#notebookList {
+  font-family: sans-serif;
+  margin-top: 50px;
+  color: #BBB;
+}
+#notebookList a {
+  color: red;
+}
+#notebookList a:visited {
+  color: black;
+}

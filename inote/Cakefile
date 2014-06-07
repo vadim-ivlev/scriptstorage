@@ -19,9 +19,9 @@ task "rebuild", "rebuild all", ->
 
 
 task "watch", "Watch for changes and regenerate js, css и html.", ->
-    fs.watch 'coffee',  (event, filename) ->
-        console.log("coffee/ changed")
-        postpone  -> rebuild()
+    fs.watch 'coffee',  (event, filename) -> postpone  -> generateJs()
+    fs.watch 'jade',  (event, filename) -> postpone  -> generateHtml()
+    fs.watch 'less',  (event, filename) -> postpone  -> generateCss()
 
 
 ###
@@ -37,15 +37,27 @@ task 'deploy', '', ->
 
 
 rebuild = ->
+    generateJs()
+    generateHtml()
+    generateCss()
+
+
+generateHtml = (onDone)->
+    execOut "jade -P jade/ -o './'", onDone
+
+
+generateCss = ->
+    execOut 'lessc  less/index.less  css/index.css'
+    execOut 'lessc  less/inote.less  css/inote.css'
+
+
+generateJs = ->
     removeGeneratedJsFiles()
     generateJsFiles()
-    # generate html
-    execOut "jade -P jade/ -o './'"
-    # Generate CSS from LESS
-    execOut 'lessc  less/index.less > css/index.css'
 
 
-    
+
+
 # Сделает по одному js файлу на каждый коффе
 generateJsFiles = (onDone)->
     execOut "coffee -m --output js/ --compile coffee/", onDone

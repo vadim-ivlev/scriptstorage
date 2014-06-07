@@ -1,0 +1,195 @@
+/* GENERAL ------------------------------*/
+
+body
+{
+	background-color: white;
+    margin-left:0px;
+    margin-right:0px;
+    padding-left:0px;
+    padding-right:0px;
+    padding-bottom: 200px;;
+    /*color:#AAA;*/
+	/*font-size: x-large;*/
+
+}
+
+input, select
+{
+    background: transparent;
+}
+
+
+#notebookList a {
+    color: red;
+}
+
+#notebookList a:visited {
+    color:black;
+}
+
+
+#notebookList
+{
+    font-family: 'Robot Condensed', sans-serif;
+    margin-top: 50px;
+    color:#BBB;
+}
+
+
+/*.lr_padded*/
+/*{*/
+    /*padding-left: 10px;*/
+    /*padding-right: 10px;;*/
+/*}*/
+
+/*------------Notebook----------------------*/
+.page
+{
+	/*background-color: white;*/
+	padding:10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width:1000px;
+    margin-left:auto;
+    margin-right:auto;
+    /*
+    border-left:1px dotted #CCC;
+    border-right:1px dotted #CCC;
+    */
+}
+
+
+/*--------------Header--------------------*/
+
+#divHeader
+{
+
+}
+.header
+{
+    font-family: sans-serif;
+    /*color: #BBB;*/
+    border-bottom: 1px solid #AAA;
+    /*background-color: white;*/
+    padding-bottom: 16px;
+    /*position: relative;*/
+    /*box-shadow: 0px 10px 20px #AAA;*/
+    padding-left: 30px;
+    padding-right: 30px;
+
+    font-family: 'Robot Condensed',sans-serif;
+    font-size: 16px;
+
+}
+
+.header:hover .hidable
+{
+	visibility:visible;
+}
+
+
+.notebookName{
+	border:1px solid transparent;
+	font-family: 'Robot Condensed', sans-serif;
+	font-size: 16px;
+    width:100%;
+    vertical-align: middle;
+    -webkit-appearance: none;
+
+    /*margin:0px;*/
+}
+
+.notebookName:hover
+{
+    border-bottom: 1px dotted #BBB;
+}
+
+.loginHolder
+{
+    /*float: right;*/
+    /*padding-top: 2px;*/
+    white-space: nowrap;
+    font-family: 'Robot Condensed', sans-serif;
+
+}
+
+
+/*
+
+#btnSave
+{
+    position: fixed;
+    z-index: 1000;
+    right: 20px;
+    bottom: 10px;
+    color: #777;
+    font-weight: normal;
+    padding: 7px;
+    width:60px;
+    border-color: silver;
+    border-bottom-style: none;
+    border-right-style: none;
+    text-align: center;
+    box-shadow: 3px 3px 3px #888888;
+
+    background: #ffffff;
+    background: -moz-linear-gradient(top,  #ffffff 0%, #dbdbdb 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#dbdbdb));
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#dbdbdb 100%);
+    background: -o-linear-gradient(top,  #ffffff 0%,#dbdbdb 100%);
+    background: -ms-linear-gradient(top,  #ffffff 0%,#dbdbdb 100%);
+    background: linear-gradient(to bottom,  #ffffff 0%,#dbdbdb 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dbdbdb',GradientType=0 );
+
+}
+
+*/
+
+
+
+
+
+
+.toolButton
+{
+	color:#BBB;
+	cursor: pointer;
+	/*background-color: #FFF;*/
+	vertical-align: middle;
+	padding-left: 10px;
+	padding-right: 10px;
+    border: 1px solid transparent;
+    text-decoration: none;
+
+    font-family: 'Robot Condensed', sans-serif;
+    font-size: 16px;
+
+}
+
+
+.selectButton
+{
+    border: 1px solid transparent;
+    border-radius: 0px;
+    -webkit-appearance: none;
+    -moz-appearance: window;
+    appearance: none;
+
+    font-size: 16px ;
+
+    color: #BBB;
+    cursor: pointer;
+    /*background-color: #FFF;*/
+    vertical-align: middle;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    font-family: 'Robot Condensed', sans-serif;
+
+}
+
+
+.selectButton:hover, .toolButton:hover
+{
+    border: 1px dotted #CCC;
+}
