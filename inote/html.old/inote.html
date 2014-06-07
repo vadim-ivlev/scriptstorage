@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+
+    <head>
+        <meta charset=utf-8>
+        <meta name=description content="">
+        <meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>iNote</title>
+
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Roboto:300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+        <link href="http://fonts.googleapis.com/css?family=Cousine&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+
+        <!-- jQuery -->
+        <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> -->
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="libs/colResizable-1.3.min.js"></script>
+        <!--<script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>-->
+
+
+        <!-- d3js -->
+        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+        <!-- codemirror begin-->
+
+            <link rel="stylesheet" type="text/css" href="libs/codemirror-3.0/lib/codemirror.css"/>
+            <script type="text/javascript" src="libs/codemirror-3.0/lib/codemirror.js"></script>
+
+            <!-- autosize  -->
+            <link rel=stylesheet href="css/mycodemirror.css">
+
+
+            <!-- autocompletion -->
+
+            <link rel="stylesheet" type="text/css" href="libs/codemirror-3.0/addon/hint/show-hint.css"/>
+            <script type="text/javascript" src="libs/codemirror-3.0/addon/hint/show-hint.js"></script>
+            <script type="text/javascript" src="libs/codemirror-3.0/addon/hint/javascript-hint.js"></script>
+
+            <!--comments-->
+            <script src="libs/codemirror-3.0/addon/comment/comment.js"></script>
+
+        <!-- modes -->
+
+            <script src="libs/codemirror-3.0/mode/xml/xml.js"></script>
+            <script src="libs/codemirror-3.0/mode/javascript/javascript.js"></script>
+            <script src="libs/codemirror-3.0/mode/css/css.js"></script>
+            <script src="libs/codemirror-3.0/mode/htmlmixed/htmlmixed.js"></script>
+            <script src="libs/codemirror-3.0/mode/coffeescript/coffeescript.js"></script>
+
+
+            <!-- themes -->
+
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/neat.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/elegant.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/erlang-dark.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/night.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/monokai.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/cobalt.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/eclipse.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/rubyblue.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/lesser-dark.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/xq-dark.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/xq-light.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/ambiance.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/blackboard.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/vibrant-ink.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/solarized.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/twilight.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/midnight.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/3024-day.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/3024-night.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/base16-light.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/base16-dark.css">
+        <link rel="stylesheet" href="libs/codemirror-3.0/theme/tomorrow-night-eighties.css">
+        
+        
+
+
+        <!-- addons -->
+        <!--formatting is from v3.0-->
+        <script src="libs/codemirror-3.0/addon/edit/formatting.js"></script>
+
+        <script src="libs/codemirror-3.0/addon/edit/matchbrackets.js"></script>
+        <script src="libs/codemirror-3.0/addon/edit/closetag.js"></script>
+
+        <!-- folding -->
+        <script src="libs/codemirror-3.0/addon/fold/foldcode.js"></script>
+        <script src="libs/codemirror-3.0/addon/fold/foldgutter.js"></script>
+        <script src="libs/codemirror-3.0/addon/fold/brace-fold.js"></script>
+        <script src="libs/codemirror-3.0/addon/fold/xml-fold.js"></script>
+        <script src="libs/codemirror-3.0/addon/fold/indent-fold.js"></script>
+
+        <!--<script src="libs/codemirror-3.0/lib/util/collapserange.js"></script>-->
+
+        <!--Search repalce -->
+        <script src="libs/codemirror-3.0/addon/dialog/dialog.js"></script>
+        <link rel="stylesheet" href="libs/codemirror-3.0/addon/dialog/dialog.css">
+        <script src="libs/codemirror-3.0/addon/search/searchcursor.js"></script>
+        <script src="libs/codemirror-3.0/addon/search/search.js"></script>
+
+        <!-- codemirror end-->
+
+        <!-- additional functionality -->
+        <script type="text/javascript" src="libs/coffee-script.js"></script>
+        <script type="text/javascript" src="libs/json2.min.js"></script>
+        <script type="text/javascript" src="libs/showdown.js"></script>
+
+
+        <script type="text/javascript" src="js/cdmirror.js"></script>
+        <script type="text/javascript" src="js/cell.js"></script>
+        <script type="text/javascript" src="js/inote.js"></script>
+        <!--<script type="text/javascript" src="js/debug.js"></script>-->
+        <script type="text/javascript" src="js/notebookstorage.js"></script>
+
+
+
+        <link rel=stylesheet href="css/inote.css">
+        <link rel=stylesheet href="css/cell.css">
+
+        <script type="text/javascript" src="js/inote.html.js"></script>
+    </head>
+    <body>
+
+
+        <div id="divHeader" class="header lr_padded">
+            <!--<div id="divMenu" >-->
+                <table style="width: 100%">
+                    <tr>
+                        <td style="width:100%">
+                            <input type="text" id="notebookName" class="notebookName" value="New notebook"/>
+                        </td>
+                        <td style="text-align: right; white-space: nowrap">
+                            <span class="loginHolder"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:100%">
+                            <a href="index.html"  class="toolButton">Home</a>
+                            <!--<span id="btnClear" class="toolButton" >clear</span>-->
+                            <span id="btnSave" class="toolButton" >save</span>
+                            <span class="toolButton"><input id="autoSave" type="checkbox" style="vertical-align: text-top"><label for="autoSave"  >autosave</label></span>
+                            <!--<span id="btnOpen" class="toolButton" >restore</span>-->
+                            <select id="notebookAccess" title="Access" class="selectButton">
+                                <option value="public">public</option>
+                                <option value="private">private</option>
+                            </select>
+                            <select class="selectButton" onchange="selectTheme()" id="selectTheme_button">
+                                <option selected>default</option>
+                                <option>3024-day</option>
+                                <option>3024-night</option>
+                                <option>ambiance</option>
+                                <option>base16-dark</option>
+                                <option>base16-light</option>
+                                <option>blackboard</option>
+                                <option>cobalt</option>
+                                <option>eclipse</option>
+                                <option>elegant</option>
+                                <option>erlang-dark</option>
+                                <option>lesser-dark</option>
+                                <option>midnight</option>
+                                <option>monokai</option>
+                                <option>neat</option>
+                                <option>night</option>
+                                <option>rubyblue</option>
+                                <option>solarized dark</option>
+                                <option>solarized light</option>
+                                <option>tomorrow-night-eighties</option>
+                                <option>twilight</option>
+                                <option>vibrant-ink</option>
+                                <option>xq-dark</option>
+                                <option>xq-light</option>
+                            </select>
+
+                        </td>
+                       <td style="text-align: right; white-space: nowrap">
+
+                            Author:
+                           <span class="notebookOwner" title="Notebook creator"></span>
+                           <span id="saveIndicator"></span>
+
+                        </td>
+                    </tr>
+
+                </table>
+            <!--</div>-->
+
+            <!--<div >-->
+                <!--<table cellspacing="0" cellpadding="0" style="width: 100%">-->
+
+                <!--</table>-->
+            <!--</div>-->
+        </div>
+
+
+        <div id="page" class="page"></div>
+
+
+
+    </body>
+</html>

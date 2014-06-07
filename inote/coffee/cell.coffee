@@ -185,7 +185,6 @@
         $(".output_expander", _jQueryCell).click -> _setOutputCollapsed not _outCollapsed
         $(".formatSelectionButton", _jQueryCell).click _autoFormatSelection
         $(".showJavascriptButton", _jQueryCell).click _switchJavascriptText
-        #   $(".selectThemeButton",_jQueryCell).change(_selectTheme);
         $(".selectButton", _jQueryCell).change ->
             mode = _jQueryCell.find(".selectButton").val()
             _setMode mode

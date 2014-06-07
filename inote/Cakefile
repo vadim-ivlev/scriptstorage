@@ -39,13 +39,16 @@ task 'deploy', '', ->
 rebuild = ->
     removeGeneratedJsFiles()
     generateJsFiles()
+    # generate html
+    execOut "jade -P jade/ -o './'"
+    # Generate CSS from LESS
+    execOut 'lessc  less/index.less > css/index.css'
 
 
-
+    
 # Сделает по одному js файлу на каждый коффе
-generateJsFiles = (onDone)-> 
+generateJsFiles = (onDone)->
     execOut "coffee -m --output js/ --compile coffee/", onDone
-
 
 
 # Удаляет js файлы генерированные из coffee

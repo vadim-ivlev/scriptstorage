@@ -1,0 +1,144 @@
+doctype html
+html
+    head
+        meta(charset='utf-8')
+        meta(name='description', content='')
+        meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+        title iNote
+        link(href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300&subset=latin,cyrillic', rel='stylesheet', type='text/css')
+        link(href='http://fonts.googleapis.com/css?family=Roboto+Slab:300&subset=latin,cyrillic', rel='stylesheet', type='text/css')
+        link(href='http://fonts.googleapis.com/css?family=Roboto:300&subset=latin,cyrillic', rel='stylesheet', type='text/css')
+        link(href='http://fonts.googleapis.com/css?family=Cousine&subset=latin,cyrillic', rel='stylesheet', type='text/css')
+        // jQuery
+        // <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        script(src='//code.jquery.com/jquery-1.11.0.min.js')
+        script(src='libs/colResizable-1.3.min.js')
+        // <script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        // d3js
+        script(src='http://d3js.org/d3.v3.min.js', charset='utf-8')
+        // codemirror begin
+        link(rel='stylesheet', type='text/css', href='libs/codemirror-3.0/lib/codemirror.css')
+        script(type='text/javascript', src='libs/codemirror-3.0/lib/codemirror.js')
+        // autosize
+        link(rel='stylesheet', href='css/mycodemirror.css')
+        // autocompletion
+        link(rel='stylesheet', type='text/css', href='libs/codemirror-3.0/addon/hint/show-hint.css')
+        script(type='text/javascript', src='libs/codemirror-3.0/addon/hint/show-hint.js')
+        script(type='text/javascript', src='libs/codemirror-3.0/addon/hint/javascript-hint.js')
+        // comments
+        script(src='libs/codemirror-3.0/addon/comment/comment.js')
+        // modes
+        script(src='libs/codemirror-3.0/mode/xml/xml.js')
+        script(src='libs/codemirror-3.0/mode/javascript/javascript.js')
+        script(src='libs/codemirror-3.0/mode/css/css.js')
+        script(src='libs/codemirror-3.0/mode/htmlmixed/htmlmixed.js')
+        script(src='libs/codemirror-3.0/mode/coffeescript/coffeescript.js')
+        // themes
+        link(rel='stylesheet', href='libs/codemirror-3.0/theme/neat.css')
+        link(rel='stylesheet', href='libs/codemirror-3.0/theme/elegant.css')
+        link(rel='stylesheet', href='libs/codemirror-3.0/theme/erlang-dark.css')
+        link(rel='stylesheet', href='libs/codemirror-3.0/theme/night.css')
+        link(rel='stylesheet', href='libs/codemirror-3.0/theme/monokai.css')
+        link(rel='stylesheet', href='libs/codemirror-3.0/theme/cobalt.css')
+        link(rel='stylesheet', href='libs/codemirror-3.0/theme/eclipse.css')
+        link(rel='stylesheet', href='libs/codemirror-3.0/theme/rubyblue.css')
+        link(rel='stylesheet', href='libs/codemirror-3.0/theme/lesser-dark.css')
+        link(rel='stylesheet', href='libs/codemirror-3.0/theme/xq-dark.css')
+        link(rel='stylesheet', href='libs/codemirror-3.0/theme/xq-light.css')
+        link(rel='stylesheet', href='libs/codemirror-3.0/theme/ambiance.css')
+        link(rel='stylesheet', href='libs/codemirror-3.0/theme/blackboard.css')
+        link(rel='stylesheet', href='libs/codemirror-3.0/theme/vibrant-ink.css')
+        link(rel='stylesheet', href='libs/codemirror-3.0/theme/solarized.css')
+        link(rel='stylesheet', href='libs/codemirror-3.0/theme/twilight.css')
+        link(rel='stylesheet', href='libs/codemirror-3.0/theme/midnight.css')
+        link(rel='stylesheet', href='libs/codemirror-3.0/theme/3024-day.css')
+        link(rel='stylesheet', href='libs/codemirror-3.0/theme/3024-night.css')
+        link(rel='stylesheet', href='libs/codemirror-3.0/theme/base16-light.css')
+        link(rel='stylesheet', href='libs/codemirror-3.0/theme/base16-dark.css')
+        link(rel='stylesheet', href='libs/codemirror-3.0/theme/tomorrow-night-eighties.css')
+        // addons
+        // formatting is from v3.0
+        script(src='libs/codemirror-3.0/addon/edit/formatting.js')
+        script(src='libs/codemirror-3.0/addon/edit/matchbrackets.js')
+        script(src='libs/codemirror-3.0/addon/edit/closetag.js')
+        // folding
+        script(src='libs/codemirror-3.0/addon/fold/foldcode.js')
+        script(src='libs/codemirror-3.0/addon/fold/foldgutter.js')
+        script(src='libs/codemirror-3.0/addon/fold/brace-fold.js')
+        script(src='libs/codemirror-3.0/addon/fold/xml-fold.js')
+        script(src='libs/codemirror-3.0/addon/fold/indent-fold.js')
+        // <script src="libs/codemirror-3.0/lib/util/collapserange.js"></script>
+        // Search repalce
+        script(src='libs/codemirror-3.0/addon/dialog/dialog.js')
+        link(rel='stylesheet', href='libs/codemirror-3.0/addon/dialog/dialog.css')
+        script(src='libs/codemirror-3.0/addon/search/searchcursor.js')
+        script(src='libs/codemirror-3.0/addon/search/search.js')
+        // codemirror end
+        // additional functionality
+        script(type='text/javascript', src='libs/coffee-script.js')
+        script(type='text/javascript', src='libs/json2.min.js')
+        script(type='text/javascript', src='libs/showdown.js')
+        script(type='text/javascript', src='js/cdmirror.js')
+        script(type='text/javascript', src='js/cell.js')
+        script(type='text/javascript', src='js/inote.js')
+        // <script type="text/javascript" src="js/debug.js"></script>
+        script(type='text/javascript', src='js/notebookstorage.js')
+        link(rel='stylesheet', href='css/inote.css')
+        link(rel='stylesheet', href='css/cell.css')
+        script(type='text/javascript', src='js/inote.html.js')
+    body
+        #divHeader.header.lr_padded
+            // <div id="divMenu" >
+            table(style='width: 100%')
+                tr
+                    td(style='width:100%')
+                        input#notebookName.notebookName(type='text', value='New notebook')
+                    td(style='text-align: right; white-space: nowrap')
+                        span.loginHolder
+                tr
+                    td(style='width:100%')
+                        a.toolButton(href='index.html') Home
+                        // <span id="btnClear" class="toolButton" >clear</span>
+                        span#btnSave.toolButton save
+                        span.toolButton
+                            input#autoSave(type='checkbox', style='vertical-align: text-top')
+                            label(for='autoSave') autosave
+                        // <span id="btnOpen" class="toolButton" >restore</span>
+                        select#notebookAccess.selectButton(title='Access')
+                            option(value='public') public
+                            option(value='private') private
+                        select#selectTheme_button.selectButton(onchange='selectTheme()')
+                            option(selected='') default
+                            option 3024-day
+                            option 3024-night
+                            option ambiance
+                            option base16-dark
+                            option base16-light
+                            option blackboard
+                            option cobalt
+                            option eclipse
+                            option elegant
+                            option erlang-dark
+                            option lesser-dark
+                            option midnight
+                            option monokai
+                            option neat
+                            option night
+                            option rubyblue
+                            option solarized dark
+                            option solarized light
+                            option tomorrow-night-eighties
+                            option twilight
+                            option vibrant-ink
+                            option xq-dark
+                            option xq-light
+                    td(style='text-align: right; white-space: nowrap')
+                        | Author:
+                        span.notebookOwner(title='Notebook creator')
+                        span#saveIndicator
+            // </div>
+            // <div >
+            // <table cellspacing="0" cellpadding="0" style="width: 100%">
+            // </table>
+            // </div>
+        #page.page
