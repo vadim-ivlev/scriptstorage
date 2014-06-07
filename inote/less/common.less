@@ -8,7 +8,7 @@
 //@FONT: Roboto, sans-serif;
 //@FONT: Roboto Condensed, sans-serif;
 @CODEFONT: Courier New, Menlo, Consolas, Cousine, monospace;
-
+@LINKCOLOR: #79C;
 
 body {
     background-color: white;
@@ -38,7 +38,7 @@ input, select {
 // HEADER---------------------------------------------
 .header {
     font-family: sans-serif;
-    border-bottom: 1px solid #AAA;
+    border-bottom: 1px solid @LINKCOLOR;
     padding-bottom: 16px;
     padding-left: 30px;
     padding-right: 30px;
@@ -59,7 +59,7 @@ input, select {
 
 // TOOL BUTTON -----------------------------------------
 .toolButton {
-    color:#BBB;
+    color: @LINKCOLOR;
     cursor: pointer;
     vertical-align: middle;
     padding-left: 10px;
@@ -70,6 +70,6 @@ input, select {
     font-size: 16px;
 }
 .toolButton:hover {
-    border: 1px dotted #CCC;
+    border: 1px dotted @LINKCOLOR;
 }
 

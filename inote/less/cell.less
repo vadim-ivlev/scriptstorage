@@ -29,7 +29,7 @@
     width:100%;
 }
 .inputTitle, .outputTitle {
-    color:#AAA;
+    color: @LINKCOLOR;
     display:inline-block;
     font-family: @FONT;
     font-size: 12px;
@@ -77,7 +77,7 @@
 .input_expander, .output_expander {
     cursor: pointer;
     border-radius: 0px;
-    color: #BBB;
+    color: @LINKCOLOR;
     width:100px;
 }
 .hidable {
@@ -87,13 +87,13 @@
 
 /*----------------Buttons -----------------*/
 .formatSelectionButton {
-    color: #BBB;
+    color: @LINKCOLOR;
     border-color: transparent;
 }
 .smallButton {
     width:14px;
     height:14px;
-    color: #BBB;
+    color: @LINKCOLOR;
     font-family:  @FONT;
     display:inline-block;
     text-align: center;
@@ -127,7 +127,7 @@
 }
 .markdown {
     font-family: @FONT;
-    color: #333;
+    //color: #333;
     & > * {
         margin-left:10px;
         margin-right:10px;

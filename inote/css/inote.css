@@ -24,7 +24,7 @@ select {
   margin-right: auto;
 }
 .header {
-  border-bottom: 1px solid #AAA;
+  border-bottom: 1px solid #7799cc;
   padding-bottom: 16px;
   padding-left: 30px;
   padding-right: 30px;
@@ -39,7 +39,7 @@ select {
   font-family: sans-serif;
 }
 .toolButton {
-  color: #BBB;
+  color: #7799cc;
   cursor: pointer;
   vertical-align: middle;
   padding-left: 10px;
@@ -50,7 +50,7 @@ select {
   font-size: 16px;
 }
 .toolButton:hover {
-  border: 1px dotted #CCC;
+  border: 1px dotted #7799cc;
 }
 /*------------cell----------------------*/
 @font-face {
@@ -82,7 +82,7 @@ select {
 }
 .inputTitle,
 .outputTitle {
-  color: #AAA;
+  color: #7799cc;
   display: inline-block;
   font-family: sans-serif;
   font-size: 12px;
@@ -131,7 +131,7 @@ select {
 .output_expander {
   cursor: pointer;
   border-radius: 0px;
-  color: #BBB;
+  color: #7799cc;
   width: 100px;
 }
 .hidable {
@@ -139,13 +139,13 @@ select {
 }
 /*----------------Buttons -----------------*/
 .formatSelectionButton {
-  color: #BBB;
+  color: #7799cc;
   border-color: transparent;
 }
 .smallButton {
   width: 14px;
   height: 14px;
-  color: #BBB;
+  color: #7799cc;
   font-family: sans-serif;
   display: inline-block;
   text-align: center;
@@ -179,7 +179,6 @@ select {
 }
 .markdown {
   font-family: sans-serif;
-  color: #333;
 }
 .markdown > * {
   margin-left: 10px;
@@ -223,7 +222,7 @@ select {
   background: #F5F5F5 !important;
 }
 .CodeMirror-foldmarker {
-  color: #AAA;
+  color: #7799cc;
   font-family: arial;
   line-height: .3;
   cursor: pointer;
@@ -233,7 +232,7 @@ select {
 }
 .CodeMirror-foldgutter-open,
 .CodeMirror-foldgutter-folded {
-  color: #AAA;
+  color: #7799cc;
   cursor: pointer;
 }
 .CodeMirror-foldgutter-open:after {
@@ -265,7 +264,7 @@ select {
   -webkit-appearance: none;
 }
 .notebookName:hover {
-  border-bottom: 1px dotted #BBB;
+  border-bottom: 1px dotted #7799cc;
 }
 .selectButton {
   border: 1px solid transparent;
@@ -274,7 +273,7 @@ select {
   -moz-appearance: window;
   appearance: none;
   font-size: 16px;
-  color: #BBB;
+  color: #7799cc;
   cursor: pointer;
   vertical-align: middle;
   padding-left: 10px;
@@ -282,5 +281,5 @@ select {
   font-family: sans-serif;
 }
 .selectButton:hover {
-  border: 1px dotted #CCC;
+  border: 1px dotted #7799cc;
 }

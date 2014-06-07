@@ -24,7 +24,7 @@ select {
   margin-right: auto;
 }
 .header {
-  border-bottom: 1px solid #AAA;
+  border-bottom: 1px solid #7799cc;
   padding-bottom: 16px;
   padding-left: 30px;
   padding-right: 30px;
@@ -39,7 +39,7 @@ select {
   font-family: sans-serif;
 }
 .toolButton {
-  color: #BBB;
+  color: #7799cc;
   cursor: pointer;
   vertical-align: middle;
   padding-left: 10px;
@@ -50,7 +50,7 @@ select {
   font-size: 16px;
 }
 .toolButton:hover {
-  border: 1px dotted #CCC;
+  border: 1px dotted #7799cc;
 }
 #appTitle {
   font-family: sans-serif;
@@ -62,10 +62,10 @@ select {
 #notebookList {
   font-family: sans-serif;
   margin-top: 50px;
-  color: #BBB;
+  color: #7799cc;
 }
 #notebookList a {
-  color: red;
+  color: #7799cc;
 }
 #notebookList a:visited {
   color: black;
