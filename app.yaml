@@ -1,5 +1,5 @@
 application: script-note
-version: 02
+version: 03
 runtime: python27
 api_version: 1
 threadsafe: true
