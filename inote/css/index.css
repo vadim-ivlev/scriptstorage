@@ -24,11 +24,12 @@ select {
   margin-right: auto;
 }
 .header {
-  border-bottom: 1px solid #7799cc;
+  font-family: sans-serif;
+  border-bottom: 1px solid #777777;
   padding-bottom: 16px;
   padding-left: 30px;
   padding-right: 30px;
-  font-family: sans-serif;
+  font-family: arial, sans-serif;
   font-size: 16px;
 }
 .header:hover .hidable {
@@ -36,36 +37,36 @@ select {
 }
 .loginHolder {
   white-space: nowrap;
-  font-family: sans-serif;
+  font-family: arial, sans-serif;
 }
 .toolButton {
-  color: #7799cc;
+  color: #777777;
   cursor: pointer;
   vertical-align: middle;
   padding-left: 10px;
   padding-right: 10px;
   border: 1px solid transparent;
   text-decoration: none;
-  font-family: sans-serif;
+  font-family: arial, sans-serif;
   font-size: 16px;
 }
 .toolButton:hover {
-  border: 1px dotted #7799cc;
+  border: 1px dotted #777777;
 }
 #appTitle {
-  font-family: sans-serif;
+  font-family: arial, sans-serif;
   width: 100%;
   vertical-align: middle;
   font-size: 70px;
   font-weight: normal;
 }
 #notebookList {
-  font-family: sans-serif;
+  font-family: arial, sans-serif;
   margin-top: 50px;
-  color: #7799cc;
+  color: #777777;
 }
 #notebookList a {
-  color: #7799cc;
+  color: #777777;
 }
 #notebookList a:visited {
   color: black;

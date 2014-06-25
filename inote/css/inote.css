@@ -24,11 +24,12 @@ select {
   margin-right: auto;
 }
 .header {
-  border-bottom: 1px solid #7799cc;
+  font-family: sans-serif;
+  border-bottom: 1px solid #777777;
   padding-bottom: 16px;
   padding-left: 30px;
   padding-right: 30px;
-  font-family: sans-serif;
+  font-family: arial, sans-serif;
   font-size: 16px;
 }
 .header:hover .hidable {
@@ -36,21 +37,21 @@ select {
 }
 .loginHolder {
   white-space: nowrap;
-  font-family: sans-serif;
+  font-family: arial, sans-serif;
 }
 .toolButton {
-  color: #7799cc;
+  color: #777777;
   cursor: pointer;
   vertical-align: middle;
   padding-left: 10px;
   padding-right: 10px;
   border: 1px solid transparent;
   text-decoration: none;
-  font-family: sans-serif;
+  font-family: arial, sans-serif;
   font-size: 16px;
 }
 .toolButton:hover {
-  border: 1px dotted #7799cc;
+  border: 1px dotted #777777;
 }
 /*------------cell----------------------*/
 @font-face {
@@ -82,9 +83,9 @@ select {
 }
 .inputTitle,
 .outputTitle {
-  color: #7799cc;
+  color: #777777;
   display: inline-block;
-  font-family: sans-serif;
+  font-family: arial, sans-serif;
   font-size: 12px;
   cursor: default;
   vertical-align: middle;
@@ -131,7 +132,7 @@ select {
 .output_expander {
   cursor: pointer;
   border-radius: 0px;
-  color: #7799cc;
+  color: #777777;
   width: 100px;
 }
 .hidable {
@@ -139,14 +140,14 @@ select {
 }
 /*----------------Buttons -----------------*/
 .formatSelectionButton {
-  color: #7799cc;
+  color: #777777;
   border-color: transparent;
 }
 .smallButton {
   width: 14px;
   height: 14px;
-  color: #7799cc;
-  font-family: sans-serif;
+  color: #777777;
+  font-family: arial, sans-serif;
   display: inline-block;
   text-align: center;
   cursor: pointer;
@@ -178,7 +179,7 @@ select {
   cursor: pointer;
 }
 .markdown {
-  font-family: sans-serif;
+  font-family: arial, sans-serif;
 }
 .markdown > * {
   margin-left: 10px;
@@ -222,7 +223,7 @@ select {
   background: #F5F5F5 !important;
 }
 .CodeMirror-foldmarker {
-  color: #7799cc;
+  color: #777777;
   font-family: arial;
   line-height: .3;
   cursor: pointer;
@@ -232,7 +233,7 @@ select {
 }
 .CodeMirror-foldgutter-open,
 .CodeMirror-foldgutter-folded {
-  color: #7799cc;
+  color: #777777;
   cursor: pointer;
 }
 .CodeMirror-foldgutter-open:after {
@@ -257,14 +258,14 @@ select {
 }
 .notebookName {
   border: 1px solid transparent;
-  font-family: sans-serif;
+  font-family: arial, sans-serif;
   font-size: 16px;
   width: 100%;
   vertical-align: middle;
   -webkit-appearance: none;
 }
 .notebookName:hover {
-  border-bottom: 1px dotted #7799cc;
+  border-bottom: 1px dotted #777777;
 }
 .selectButton {
   border: 1px solid transparent;
@@ -273,13 +274,13 @@ select {
   -moz-appearance: window;
   appearance: none;
   font-size: 16px;
-  color: #7799cc;
+  color: #777777;
   cursor: pointer;
   vertical-align: middle;
   padding-left: 10px;
   padding-right: 10px;
-  font-family: sans-serif;
+  font-family: arial, sans-serif;
 }
 .selectButton:hover {
-  border: 1px dotted #7799cc;
+  border: 1px dotted #777777;
 }
