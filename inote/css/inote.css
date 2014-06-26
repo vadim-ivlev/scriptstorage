@@ -214,7 +214,7 @@ select {
 }
 .CodeMirror-gutters {
   background-color: transparent;
-  border-right: 2px solid  #CCC;
+  border-right: 0px solid  #CCC;
 }
 .CodeMirror-cursor {
   border-width: 2px !important;

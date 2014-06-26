@@ -3,7 +3,7 @@
         value: "" #function myScript(){return 100;}
         mode: "javascript"
         lineWrapping: true
-        lineNumbers: true
+        lineNumbers: false
         autofocus: false
         matchBrackets: true
         autoCloseTags: true
