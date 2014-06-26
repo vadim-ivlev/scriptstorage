@@ -201,6 +201,7 @@ select {
 .lockButton {
   font-family: icomoon;
   font-size: 80%;
+  opacity: 0.5;
 }
 .CodeMirror {
   height: auto;
