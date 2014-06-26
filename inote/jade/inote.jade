@@ -7,7 +7,10 @@ html
         title iNote
         // jQuery
         script(src='//code.jquery.com/jquery-1.11.0.min.js')
-            
+        //fix for jquery >1.9
+        script(type='text/javascript')
+            $.browser={ msie: ( navigator.appName == 'Microsoft Internet Explorer') ? true : false } ;
+
             
         
         // codemirror begin
