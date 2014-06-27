@@ -8,7 +8,7 @@
 }
 .cell {
     position:relative;
-    border: 0px solid silver;
+    border: 0px solid @BORDERCOLOR;
     margin-top:10px;
     overflow:visible;
     padding:0px;
@@ -38,7 +38,8 @@
     padding-right: 4px;
 }
 .codeArea {
-    border: 1px solid transparent;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
     border-radius: 0px;
     border-spacing: 0;
     margin: 0;
@@ -52,15 +53,16 @@
     vertical-align: top;
 }
 .javascriptText {
-    border-left:1px solid #AAA;
+    border-left:1px solid @BORDERCOLOR;
     margin: 0;
     padding: 0;
     vertical-align: top;
 }
 .outputCell {
     width:100%;
-    border:1px dotted silver;
-    border-radius: 8px;
+    border-top:1px solid @BORDERCOLOR;
+    //border-bottom:1px solid @BORDERCOLOR;
+    border-radius: 0px;
     padding:0;
 }
 .error {
@@ -102,7 +104,7 @@
     border: 1px solid transparent;
 }
 .smallButton:hover {
-    border: 1px dotted #AAA;
+    border: 1px dotted @BORDERCOLOR;
 }
 .insertBefore {
     position:absolute;
@@ -122,8 +124,9 @@
     float:right;
 }
 .runButton {
-    color:#F66;
+    color:#F00;
     cursor: pointer;
+    opacity:0.3;
 }
 .markdown {
     font-family: @FONT;
@@ -134,7 +137,7 @@
     }
     hr {
         border-style: none;
-        border-bottom: 1px dotted silver;
+        border-bottom: 1px dotted @BORDERCOLOR;
     }
 }
 .hidable000 {
@@ -149,6 +152,6 @@
 .lockButton {
     font-family: icomoon;
     font-size:80%;
-    opacity:0.5;
+    opacity:0.3;
 }
 

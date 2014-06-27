@@ -7,8 +7,10 @@
 @FONT: arial,sans-serif;
 //@FONT: Roboto, sans-serif;
 //@FONT: Roboto Condensed, sans-serif;
-@CODEFONT: Courier New, Menlo, Consolas, Cousine, monospace;
+//@CODEFONT: Courier New, Menlo, Consolas, Cousine, monospace;
+@CODEFONT: Menlo,  monospace;
 @LINKCOLOR: #777; 
+@BORDERCOLOR: #DDD; 
 //#79C;
 
 body {
@@ -39,7 +41,7 @@ input, select {
 // HEADER---------------------------------------------
 .header {
     font-family: sans-serif;
-    border-bottom: 1px solid @LINKCOLOR;
+    border-bottom: 1px solid @BORDERCOLOR;
     padding-bottom: 16px;
     padding-left: 30px;
     padding-right: 30px;
@@ -71,6 +73,6 @@ input, select {
     font-size: 16px;
 }
 .toolButton:hover {
-    border: 1px dotted @LINKCOLOR;
+    border: 1px dotted @BORDERCOLOR;
 }
 

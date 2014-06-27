@@ -25,7 +25,7 @@ select {
 }
 .header {
   font-family: sans-serif;
-  border-bottom: 1px solid #777777;
+  border-bottom: 1px solid #dddddd;
   padding-bottom: 16px;
   padding-left: 30px;
   padding-right: 30px;
@@ -51,7 +51,7 @@ select {
   font-size: 16px;
 }
 .toolButton:hover {
-  border: 1px dotted #777777;
+  border: 1px dotted #dddddd;
 }
 /*------------cell----------------------*/
 @font-face {
@@ -63,7 +63,7 @@ select {
 }
 .cell {
   position: relative;
-  border: 0px solid silver;
+  border: 0px solid #dddddd;
   margin-top: 10px;
   overflow: visible;
   padding: 0px;
@@ -92,7 +92,8 @@ select {
   padding-right: 4px;
 }
 .codeArea {
-  border: 1px solid transparent;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
   border-radius: 0px;
   border-spacing: 0;
   margin: 0;
@@ -106,26 +107,26 @@ select {
   vertical-align: top;
 }
 .javascriptText {
-  border-left: 1px solid #AAA;
+  border-left: 1px solid #dddddd;
   margin: 0;
   padding: 0;
   vertical-align: top;
 }
 .outputCell {
   width: 100%;
-  border: 1px dotted silver;
-  border-radius: 8px;
+  border-top: 1px solid #dddddd;
+  border-radius: 0px;
   padding: 0;
 }
 .error {
   color: red;
   white-space: normal;
-  font-family: Courier New, Menlo, Consolas, Cousine, monospace;
+  font-family: Menlo, monospace;
   font-size: 85%;
 }
 .noerror {
   white-space: normal;
-  font-family: Courier New, Menlo, Consolas, Cousine, monospace;
+  font-family: Menlo, monospace;
   font-size: 85%;
 }
 .input_expander,
@@ -155,7 +156,7 @@ select {
   border: 1px solid transparent;
 }
 .smallButton:hover {
-  border: 1px dotted #AAA;
+  border: 1px dotted #dddddd;
 }
 .insertBefore {
   position: absolute;
@@ -175,8 +176,9 @@ select {
   float: right;
 }
 .runButton {
-  color: #F66;
+  color: #F00;
   cursor: pointer;
+  opacity: 0.3;
 }
 .markdown {
   font-family: arial, sans-serif;
@@ -187,7 +189,7 @@ select {
 }
 .markdown hr {
   border-style: none;
-  border-bottom: 1px dotted silver;
+  border-bottom: 1px dotted #dddddd;
 }
 .hidable000 {
   visibility: hidden;
@@ -201,13 +203,13 @@ select {
 .lockButton {
   font-family: icomoon;
   font-size: 80%;
-  opacity: 0.5;
+  opacity: 0.3;
 }
 .CodeMirror {
   height: auto;
   width: 100%;
   line-height: 130%;
-  font-family: Courier New, Menlo, Consolas, Cousine, monospace;
+  font-family: Menlo, monospace;
 }
 .CodeMirror-scroll {
   overflow-y: hidden;
@@ -215,7 +217,7 @@ select {
 }
 .CodeMirror-gutters {
   background-color: transparent;
-  border-right: 0px solid  #CCC;
+  border-right: 1px solid #dddddd;
 }
 .CodeMirror-cursor {
   border-width: 2px !important;
@@ -230,11 +232,11 @@ select {
   cursor: pointer;
 }
 .CodeMirror-foldgutter {
-  width: .7em;
+  width: 0.9em;
 }
 .CodeMirror-foldgutter-open,
 .CodeMirror-foldgutter-folded {
-  color: #777777;
+  color: #dddddd;
   cursor: pointer;
 }
 .CodeMirror-foldgutter-open:after {

@@ -25,7 +25,7 @@ select {
 }
 .header {
   font-family: sans-serif;
-  border-bottom: 1px solid #777777;
+  border-bottom: 1px solid #dddddd;
   padding-bottom: 16px;
   padding-left: 30px;
   padding-right: 30px;
@@ -51,7 +51,7 @@ select {
   font-size: 16px;
 }
 .toolButton:hover {
-  border: 1px dotted #777777;
+  border: 1px dotted #dddddd;
 }
 #appTitle {
   font-family: arial, sans-serif;
