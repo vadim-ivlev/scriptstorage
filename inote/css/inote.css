@@ -63,12 +63,12 @@ select {
 }
 .cell {
   position: relative;
-  border: 0px solid #dddddd;
+  border: 1px solid transparent;
   margin-top: 10px;
   overflow: visible;
   padding: 0px;
   width: 100%;
-  border-radius: 0px;
+  border-radius: 8px;
   padding-top: 5px;
   padding-bottom: 5px;
 }

@@ -102,12 +102,14 @@
       _lockButton.html("&#xE601;");
       _jQueryCell.find(".hidable000").removeClass("visible");
       _jQueryCell.find(".codeArea").css("border-color", "transparent");
+      _jQueryCell.css("border-color", "transparent");
       return _codemirror.setOption("readOnly", "nocursor");
     };
     _unlock = function() {
       _lockButton.html("&#xE602;");
       _jQueryCell.find(".hidable000").addClass("visible");
       _jQueryCell.find(".codeArea").css("border-color", "#DDD");
+      _jQueryCell.css("border-color", "#DDD");
       return _codemirror.setOption("readOnly", false);
     };
     _attachEvents = function() {

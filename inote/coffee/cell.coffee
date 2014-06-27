@@ -156,6 +156,7 @@
         _lockButton.html "&#xE601;"
         _jQueryCell.find(".hidable000").removeClass "visible"
         _jQueryCell.find(".codeArea").css "border-color", "transparent"
+        _jQueryCell.css "border-color", "transparent"
         _codemirror.setOption "readOnly", "nocursor"
 
 
@@ -165,6 +166,7 @@
         _lockButton.html "&#xE602;"
         _jQueryCell.find(".hidable000").addClass "visible"
         _jQueryCell.find(".codeArea").css "border-color", "#DDD"
+        _jQueryCell.css "border-color", "#DDD"
         _codemirror.setOption "readOnly", false
 
 
