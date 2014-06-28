@@ -50,7 +50,11 @@ openNotebook = (notebookOwner, notebookAccess, notebookName) ->
     $(".notebookOwner").text notebookOwner
     $("#notebookName").val notebookName
     $("#notebookAccess").val notebookAccess
-    storage.get notebookOwner, notebookName, restoreNotebookFromXml
+    #storage.get notebookOwner, notebookName, restoreNotebookFromXml
+    page = $("#page")
+    xmlText = page.html()
+    page.html("")
+    restoreNotebookFromXml(xmlText)
     return
 
 
@@ -68,21 +72,12 @@ restoreNotebookFromXml = (xmlText) ->
 
 
 
-
-
-
-
-
-
-
 getNotebookAccessFromUrl = ->
     notebook_access = ""
     try
         notebook_access = location.href.match(/notebook_access=([^&]*)/)[1]
     notebook_access = decodeURIComponent(notebook_access)
     notebook_access
-
-
 
 
 
@@ -112,8 +107,12 @@ clearAndInit = ->
     return
 
 
+
+
+
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 $ ->
-    $(".loginHolder").load "/getloginlink"
+    #$(".loginHolder").load "/getloginlink"
     inote = new iNote($("#page"))
     
     #            inote=new iNote($(document.body));

@@ -1,32 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Index</title>
-</head>
-<body>
-<a href="{{ url }}">{{ url_linktext }}</a>
-
-<hr>
-<a href="/login">login</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/logout">logout</a>
-
-<form action="/write" method="post">
-    notebook name:<br>
-    <input type="text" name="notebook_name"><br>
-    content:<br>
-
-    <input id="radioPublic" type="radio" name="access" value="public" checked><label for="radioPublic">public</label>
-    <input id="radioPrivate" type="radio" name="access" value="private"><label for="radioPrivate">private</label>
-
-    <br>
-    <textarea name="content" style="width: 300px; height: 200px;"></textarea>
-
-    <br>
-    <input type="submit">
-
-</form>
-<br>
-
-    {{notebook_list}}
-
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>i Note Book list</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="js/notebookstorage.js"></script>
+    <script type="text/javascript" src="js/index.html.js"></script>
+  </head>
+  <body style="padding:10px;">
+    <div id="page" class="page">
+      <div id="divHeader" style="padding: 0px" class="header">
+        <div id="divMenu">
+          <table cellspacing="0" cellpadding="0" style="width: 100%">
+            <tr>
+              <td style="width:100%"><span id="appTitle">iNote</span><span id="btnCreate" class="toolButton">Create new notebook</span></td>
+              <td><span class="loginHolder">{{login_link}}</span></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div id="notebookList">{{notebook_list}}</div>
+    </div>
+  </body>
 </html>

@@ -8,11 +8,8 @@ html
         // jQuery
         script(src='//code.jquery.com/jquery-1.11.0.min.js')
         //fix for jquery >1.9
-        script(type='text/javascript')
-            $.browser={ msie: ( navigator.appName == 'Microsoft Internet Explorer') ? true : false } ;
+        script(type='text/javascript') $.browser={ msie: ( navigator.appName == 'Microsoft Internet Explorer') ? true : false } ;
 
-            
-        
         // codemirror begin
         link(rel='stylesheet', type='text/css', href='libs/codemirror-3.0/lib/codemirror.css')
         script(type='text/javascript', src='libs/codemirror-3.0/lib/codemirror.js')
@@ -91,19 +88,21 @@ html
                     td(style='width:100%')
                         input#notebookName.notebookName(type='text', value='New notebook')
                     td(style='text-align: right; white-space: nowrap')
-                        span.loginHolder
+                        span.loginHolder {{login_link}}
                 tr
                     td(style='width:100%')
-                        a.toolButton(href='index.html') Home
+                        a.toolButton(href='/') Home
                         // <span id="btnClear" class="toolButton" >clear</span>
                         span#btnSave.toolButton save
                         span.toolButton
                             input#autoSave(type='checkbox', style='vertical-align: text-top')
                             label(for='autoSave') autosave
                         // <span id="btnOpen" class="toolButton" >restore</span>
+                        
                         select#notebookAccess.selectButton(title='Access')
                             option(value='public') public
                             option(value='private') private
+                        
                         select#selectTheme_button.selectButton(onchange='selectTheme()')
                             option(selected='') default
                             option 3024-day
@@ -129,13 +128,9 @@ html
                             option vibrant-ink
                             option xq-dark
                             option xq-light
+                    
                     td(style='text-align: right; white-space: nowrap')
                         | Author:
                         span.notebookOwner(title='Notebook creator')
                         span#saveIndicator
-            // </div>
-            // <div >
-            // <table cellspacing="0" cellpadding="0" style="width: 100%">
-            // </table>
-            // </div>
-        #page.page
+        #page.page {{notebook_content}} 

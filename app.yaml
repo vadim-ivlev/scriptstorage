@@ -1,16 +1,14 @@
 application: script-note
-version: 03
+version: 04
 runtime: python27
 api_version: 1
 threadsafe: true
 
 handlers:
 
-#- url: /pages
-#  static_dir: pages
 
-
-
+- url: /
+  script: py.indexpage.app
 
 - url: /(login|logout|getusername|getloginlink)
   script: py.login.app
@@ -33,15 +31,20 @@ handlers:
 - url: /main
   script: py.main.app
 
+- url: /indexpage
+  script: py.indexpage.app
+
+- url: /book
+  script: py.book.app
 
 - url: /inote
   static_dir: inote
 
+#- url: /
+#  static_files: inote/index.html
+#  upload: inote/index.html
 
-- url: /
-  static_files: inote/index.html
-  upload: inote/index.html
-
+# files that not listed above go to inote/ folder
 - url: /(.*)
   static_files: inote/\1
   upload: inote/(.*)

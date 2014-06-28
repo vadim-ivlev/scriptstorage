@@ -25,7 +25,7 @@ select {
 }
 .header {
   font-family: sans-serif;
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 2px solid rgba(200, 200, 200, 0.4);
   padding-bottom: 16px;
   padding-left: 30px;
   padding-right: 30px;
@@ -51,7 +51,7 @@ select {
   font-size: 16px;
 }
 .toolButton:hover {
-  border: 1px dotted #dddddd;
+  border: 1px dotted rgba(200, 200, 200, 0.4);
 }
 /*------------cell----------------------*/
 @font-face {
@@ -63,7 +63,7 @@ select {
 }
 .cell {
   position: relative;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   margin-top: 10px;
   overflow: visible;
   padding: 0px;
@@ -107,14 +107,14 @@ select {
   vertical-align: top;
 }
 .javascriptText {
-  border-left: 1px solid #dddddd;
+  border-left: 1px solid rgba(200, 200, 200, 0.4);
   margin: 0;
   padding: 0;
   vertical-align: top;
 }
 .outputCell {
   width: 100%;
-  border-top: 1px solid #dddddd;
+  border-top: 1px solid rgba(200, 200, 200, 0.4);
   border-radius: 0px;
   padding: 0;
 }
@@ -156,7 +156,7 @@ select {
   border: 1px solid transparent;
 }
 .smallButton:hover {
-  border: 1px dotted #dddddd;
+  border: 1px dotted rgba(200, 200, 200, 0.4);
 }
 .insertBefore {
   position: absolute;
@@ -189,7 +189,7 @@ select {
 }
 .markdown hr {
   border-style: none;
-  border-bottom: 1px dotted #dddddd;
+  border-bottom: 1px dotted rgba(200, 200, 200, 0.4);
 }
 .hidable000 {
   visibility: hidden;
@@ -203,7 +203,10 @@ select {
 .lockButton {
   font-family: icomoon;
   font-size: 80%;
-  opacity: 0.3;
+  opacity: 0.4;
+}
+.visibleBorder {
+  border-color: rgba(200, 200, 200, 0.4);
 }
 .CodeMirror {
   height: auto;
@@ -217,7 +220,7 @@ select {
 }
 .CodeMirror-gutters {
   background-color: transparent;
-  border-right: 1px solid #dddddd;
+  border-right: 1px solid rgba(200, 200, 200, 0.4);
 }
 .CodeMirror-cursor {
   border-width: 2px !important;
@@ -236,7 +239,7 @@ select {
 }
 .CodeMirror-foldgutter-open,
 .CodeMirror-foldgutter-folded {
-  color: #dddddd;
+  color: rgba(200, 200, 200, 0.4);
   cursor: pointer;
 }
 .CodeMirror-foldgutter-open:after {

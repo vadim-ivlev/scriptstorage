@@ -115,16 +115,17 @@
             _hideJavascriptText()
         return
     
-    
+    _CLPTIME=100
+    # collapse output iarea ===================================================
     _setOutputCollapsed = (collapsed) ->
         _outCollapsed = collapsed
         if collapsed
-            _jQueryCell.find(".outputCell").hide()
-            _jQueryCell.find(".output_expander").show()
-            _jQueryCell.find(".output_header").hide()
-            _jQueryCell.find(".hideOutputButton").html "[out" + _n + "] &#x25BA" #Show output
+            _jQueryCell.find(".outputCell").hide _CLPTIME, ->
+                _jQueryCell.find(".output_expander").show()
+                _jQueryCell.find(".output_header").hide()
+                _jQueryCell.find(".hideOutputButton").html "[out" + _n + "] &#x25BA" #Show output
         else
-            _jQueryCell.find(".outputCell").show()
+            _jQueryCell.find(".outputCell").show _CLPTIME
             _jQueryCell.find(".output_expander").hide()
             _jQueryCell.find(".output_header").show()
             _jQueryCell.find(".hideOutputButton").html "[out" + _n + "] &#x25BC" #Hide output
@@ -137,12 +138,12 @@
     _setInputCollapsed = (collapsed) ->
         _inCollapsed = collapsed
         if collapsed
-            _jQueryCell.find(".codeArea").hide()
-            _jQueryCell.find(".input_expander").show()
-            _jQueryCell.find(".input_header").hide()
-            _jQueryCell.find(".hideInputButton").html "[in" + _n + "] &nbsp;&nbsp;&#x25BA" #Show input
+            _jQueryCell.find(".codeArea").hide _CLPTIME, ->
+                _jQueryCell.find(".input_expander").show()
+                _jQueryCell.find(".input_header").hide()
+                _jQueryCell.find(".hideInputButton").html "[in" + _n + "] &nbsp;&nbsp;&#x25BA" #Show input
         else
-            _jQueryCell.find(".codeArea").show()
+            _jQueryCell.find(".codeArea").show _CLPTIME
             _jQueryCell.find(".input_expander").hide()
             _jQueryCell.find(".input_header").show()
             _jQueryCell.find(".hideInputButton").html "[in" + _n + "] &nbsp;&nbsp;&#x25BC" #Hide input
@@ -155,8 +156,10 @@
     _lock = ->
         _lockButton.html "&#xE601;"
         _jQueryCell.find(".hidable000").removeClass "visible"
-        _jQueryCell.find(".codeArea").css "border-color", "transparent"
-        _jQueryCell.css "border-color", "transparent"
+        #_jQueryCell.find(".codeArea").css "border-color", "transparent"
+        #_jQueryCell.css "border-color", "transparent"
+        _jQueryCell.find(".codeArea").removeClass "visibleBorder"
+        _jQueryCell.removeClass "visibleBorder"
         _codemirror.setOption "readOnly", "nocursor"
 
 
@@ -165,8 +168,10 @@
     _unlock = ->
         _lockButton.html "&#xE602;"
         _jQueryCell.find(".hidable000").addClass "visible"
-        _jQueryCell.find(".codeArea").css "border-color", "#DDD"
-        _jQueryCell.css "border-color", "#DDD"
+        #_jQueryCell.find(".codeArea").css "border-color", "#DDD"
+        #_jQueryCell.css "border-color", "#DDD"
+        _jQueryCell.find(".codeArea").addClass "visibleBorder"
+        _jQueryCell.addClass "visibleBorder"
         _codemirror.setOption "readOnly", false
 
 

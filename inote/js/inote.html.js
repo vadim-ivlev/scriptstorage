@@ -36,6 +36,7 @@
   };
 
   openNotebook = function(notebookOwner, notebookAccess, notebookName) {
+    var page, xmlText;
     clearAndInit();
     if (!notebookName) {
       return;
@@ -43,7 +44,10 @@
     $(".notebookOwner").text(notebookOwner);
     $("#notebookName").val(notebookName);
     $("#notebookAccess").val(notebookAccess);
-    storage.get(notebookOwner, notebookName, restoreNotebookFromXml);
+    page = $("#page");
+    xmlText = page.html();
+    page.html("");
+    restoreNotebookFromXml(xmlText);
   };
 
   restoreNotebookFromXml = function(xmlText) {
@@ -97,7 +101,6 @@
   };
 
   $(function() {
-    $(".loginHolder").load("/getloginlink");
     inote = new iNote($("#page"));
     openNotebook(getNotebookOwnerFromUrl(), getNotebookAccessFromUrl(), getNotebookNameFromUrl());
     $("body").keydown(function(event) {

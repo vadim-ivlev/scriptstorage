@@ -26,7 +26,18 @@
           s += "<div  style='padding-left: 25px; color:" + (notebook_access === "private" ? "black" : "") + ";  '>" + notebook_access + "</div>";
           last_access = notebook_access;
         }
-        s += "<div style='padding-left: 50px;'>\n   <a \n   href='inote.html?notebook_owner=" + (encodeURIComponent(notebook_owner)) + "&notebook_access=" + (encodeURIComponent(notebook_access)) + "&notebook_name=" + (encodeURIComponent(notebook_name)) + "'\n   >" + notebook_name + "</a>&nbsp;&nbsp;&nbsp;\n   <span class='toolButton' title='delete' onclick='deleteNotebook(\"" + key_name + "\")'>&#x00D7</span>\n</div>";
+
+        /*    
+        s += """
+        <div style='padding-left: 50px;'>
+           <a 
+           href='inote.html?notebook_owner=#{encodeURIComponent(notebook_owner)}&notebook_access=#{encodeURIComponent(notebook_access)}&notebook_name=#{encodeURIComponent(notebook_name)}'
+           >#{notebook_name}</a>&nbsp;&nbsp;&nbsp;
+           <span class='toolButton' title='delete' onclick='deleteNotebook("#{key_name}")'>&#x00D7</span>
+        </div>
+        """
+         */
+        s += "<div style='padding-left: 50px;'>\n   <a \n   href='/book?notebook_owner=" + (encodeURIComponent(notebook_owner)) + "&notebook_access=" + (encodeURIComponent(notebook_access)) + "&notebook_name=" + (encodeURIComponent(notebook_name)) + "'\n   >" + notebook_name + "</a>&nbsp;&nbsp;&nbsp;\n   <span class='toolButton' title='delete' onclick='deleteNotebook(\"" + key_name + "\")'>&#x00D7</span>\n</div>";
       }
       return $("#notebookList").html(s);
     };
@@ -54,8 +65,14 @@
   storage = new NoteBookStorage();
 
   $(function() {
-    $(".loginHolder").load("/getloginlink");
-    storage.list(buildNotebookList);
+    if ($(".loginHolder").text().match(/^{{/)) {
+      $(".loginHolder").load("/getloginlink");
+    }
+    if ($("#notebookList").text().match(/^{{/)) {
+      storage.list(buildNotebookList);
+    } else {
+      buildNotebookList($("#notebookList").text());
+    }
     return $("#btnCreate").click(function() {
       var newName;
       newName = "N" + (5000000 + Math.floor(999000 * Math.random()));

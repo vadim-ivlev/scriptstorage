@@ -61,7 +61,7 @@ class MainPage(webapp2.RequestHandler):
             'url_linktext': url_linktext,
             }
 
-        template = jinja_environment.get_template('index.html')
+        template = jinja_environment.get_template('main.html')
         self.response.out.write(template.render(template_values))
 
 

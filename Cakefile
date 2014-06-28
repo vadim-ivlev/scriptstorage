@@ -1,7 +1,7 @@
 ###*
 
- `cake` - просмотр списка задач
- `cake <имяЗадачи>` - запуск задачи
+ `cake` - list tasks 
+ `cake <taskName>` -run taskName
 
 ###
 
@@ -10,8 +10,7 @@ fs = require "fs"
 {exec, spawn} = require 'child_process'
 
 
-task "server", "start HTTP server. (npm install -g http-server)", ->
-    execOut "http-server"
+task "server", "type: dev_appserver.py `pwd`", ->
 
 
 task "rebuild", "rebuild all", ->
@@ -19,9 +18,18 @@ task "rebuild", "rebuild all", ->
 
 
 task "watch", "Watch for changes and regenerate js, css и html.", ->
-    fs.watch 'coffee',  (event, filename) -> postpone  -> generateJs()
-    fs.watch 'jade',  (event, filename) -> postpone  -> generateHtml()
-    fs.watch 'less',  (event, filename) -> postpone  -> generateCss()
+    fs.watch 'inote/coffee',  (event, filename) -> postpone  -> generateJs()
+    fs.watch 'inote/jade',  (event, filename) -> postpone  -> generateHtml()
+    fs.watch 'inote/less',  (event, filename) -> postpone  -> generateCss()
+
+
+task "deploy", "type: appcfg.py update `pwd`", ->
+    execOut "appcfg.py update `pwd`"
+
+task "push", "push changes to Git", ->
+    execOut "git add -A .", ->
+        execOut 'git commit -am "a"', ->
+            execOut 'git push'
 
 
 ###
@@ -43,12 +51,14 @@ rebuild = ->
 
 
 generateHtml = (onDone)->
-    execOut "jade -P jade/ -o './'", onDone
+    execOut "jade -P inote/jade/ -o 'inote/'", ->
+        execOut "cp inote/*.html py/", onDone
+
 
 
 generateCss = ->
-    execOut 'lessc  less/index.less  css/index.css'
-    execOut 'lessc  less/inote.less  css/inote.css'
+    execOut 'lessc  inote/less/index.less  inote/css/index.css', ->
+        execOut 'lessc  inote/less/inote.less  inote/css/inote.css'
 
 
 generateJs = ->
@@ -60,18 +70,18 @@ generateJs = ->
 
 # Сделает по одному js файлу на каждый коффе
 generateJsFiles = (onDone)->
-    execOut "coffee -m --output js/ --compile coffee/", onDone
+    execOut "coffee -m --output inote/js/ --compile inote/coffee/", onDone
 
 
 # Удаляет js файлы генерированные из coffee
 removeGeneratedJsFiles = ->
-    for file in fs.readdirSync("coffee") when /\.coffee$/.test file
+    for file in fs.readdirSync("inote/coffee") when /\.coffee$/.test file
         try
-            fs.unlinkSync "js/#{file.replace('.coffee','.js')}"
+            fs.unlinkSync "inote/js/#{file.replace('.coffee','.js')}"
         catch err
 
         try
-            fs.unlinkSync "js/#{file.replace('.coffee','.map')}"
+            fs.unlinkSync "inote/js/#{file.replace('.coffee','.map')}"
         catch err
 
 
