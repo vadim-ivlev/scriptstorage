@@ -86,7 +86,7 @@ html
             table(style='width: 100%')
                 tr
                     td(style='width:100%')
-                        input#notebookName.notebookName(type='text', value='New notebook')
+                        input#notebookName.notebookName(type='text', value='{{notebook_name}}')
                     td(style='text-align: right; white-space: nowrap')
                         span.loginHolder {{login_link}}
                 tr
@@ -104,7 +104,7 @@ html
                             option(value='private') private
                         
                         select#selectTheme_button.selectButton(onchange='selectTheme()')
-                            option(selected='') default
+                            option default
                             option 3024-day
                             option 3024-night
                             option ambiance
@@ -131,6 +131,6 @@ html
                     
                     td(style='text-align: right; white-space: nowrap')
                         | Author:
-                        span.notebookOwner(title='Notebook creator')
+                        span.notebookOwner(title='Notebook creator') {{notebook_owner}}
                         span#saveIndicator
         #page.page {{notebook_content}} 

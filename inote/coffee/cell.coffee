@@ -214,16 +214,36 @@
             _jQueryCell.find(".formatSelectionButton").hide()
         saveNotebookLater?()
         return
-    
-    
+
+
+
+
+    # Serializing to XML =====================================
+    _VER="1"
+
     _getXml = ->
-        cell = $("<cell number='" + _n + "' mode='" + _mode + "'/>")
-        $("<in collapsed='" + _inCollapsed + "'/>").text(_codemirror.getValue()).appendTo cell
-        $("<out collapsed='" + _outCollapsed + "'/>").text(_outputCell.html()).appendTo cell
+        if _VER is "1"
+            return _getXml1()
+        else
+            return _getXml0()
+    
+    
+
+    _setXml = (cell) ->
+        if cell.attr("version") is "1"
+            _setXml1(cell)
+        else
+            _setXml0(cell)
+
+
+    _getXml0 = ->
+        cell = $("<cell verion='0' number='#{_n}' mode='#{_mode}'/>")
+        $("<in collapsed='#{_inCollapsed}'/>").text(_codemirror.getValue()).appendTo cell
+        $("<out collapsed='#{_outCollapsed}'/>").text(_outputCell.html()).appendTo cell
         cell
     
     
-    _setXml = (cell) ->
+    _setXml0 = (cell) ->
         number = cell.attr("number")
         _mode = cell.attr("mode")
         input = cell.find("in").first()
@@ -239,11 +259,38 @@
         return
     
     
+    _getXml1 = ->
+        cell = $("<div class='cell' version='1' number='#{_n}' mode='#{_mode}'/>")
+        $("<div class='inputCell' collapsed='#{_inCollapsed}'/>").text(_codemirror.getValue()).appendTo cell
+        $("<div class='outputCell' collapsed='#{_outCollapsed}'/>").text(_outputCell.html()).appendTo cell
+        cell
+    
+    
+    _setXml1 = (cell) ->
+        number = cell.attr("number")
+        _mode = cell.attr("mode")
+        input = cell.find("div.inputCell").first()
+        output = cell.find("div.outputCell").first()
+        inputValue = input.text()
+        outputValue = output.text()
+        _codemirror.setValue inputValue
+        _outputCell.html outputValue
+        _setNumber number
+        _setMode _mode
+        _setOutputCollapsed output.attr("collapsed") is "true"
+        _setInputCollapsed input.attr("collapsed") is "true"
+        return
+    
+    
+    
+    
+    # =========================================================================
     _getSelectedRange = ->
         from: _codemirror.getCursor(true)
         to: _codemirror.getCursor(false)
     
     
+
     _autoFormatSelection = ->
         range = _getSelectedRange()
         _codemirror.autoFormatRange range.from, range.to

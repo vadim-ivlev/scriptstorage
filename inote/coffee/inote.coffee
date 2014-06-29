@@ -131,7 +131,27 @@
     
     
     
+    
+    # Set/Get XML ==========================================
+    _VER="1"
+
+    getXmlText = (notebookName) ->
+        if _VER is "1"
+            return getXmlText1(notebookName)
+        else
+            return getXmlText0(notebookName)
+    
+    
+
     setXmlText = (xmlText) ->
+        if $(xmlText).attr("version") is "1"
+            setXmlText1(xmlText)
+        else
+            setXmlText0(xmlText)
+    
+
+
+    setXmlText0 = (xmlText) ->
         notebook = $(xmlText)
         _themeName = notebook.attr("theme")
         cells = notebook.find("cell")
@@ -143,13 +163,36 @@
         return
     
     
-    getXmlText = (notebookName) ->
+    getXmlText0 = (notebookName) ->
         notebook = $("<inote name='#{notebookName}' theme='#{_themeName}'/>")
         for C in  CELLS
             notebook.append C.getXml()
         notebook.wrap("<wrapper/>").parent().html()
     
+
+    setXmlText1 = (xmlText) ->
+        notebook = $(xmlText)
+        _themeName = notebook.attr("theme")
+        cells = notebook.find("div.cell")
+
+        for c in cells
+            cell = $(c)
+            newCell = appendNewCell(cell.attr("number"))
+            newCell.setXml cell
+        return
     
+    
+    getXmlText1 = (notebookName) ->
+        notebook = $("<div class='book' version='1' name='#{notebookName}' theme='#{_themeName}'/>")
+        for C in  CELLS
+            notebook.append C.getXml()
+        notebook.wrap("<wrapper/>").parent().html()
+    
+
+
+
+
+   # ===================================================== 
     _init = ->
         appendNewCell(getNewCellNumber()).setFocus 0, 0
         _container.bind "keydown", globalKeyHandler

@@ -84,7 +84,7 @@
       <table style="width: 100%">
         <tr>
           <td style="width:100%">
-            <input id="notebookName" type="text" value="New notebook" class="notebookName">
+            <input id="notebookName" type="text" value="{{notebook_name}}" class="notebookName">
           </td>
           <td style="text-align: right; white-space: nowrap"><span class="loginHolder">{{login_link}}</span></td>
         </tr>
@@ -99,7 +99,7 @@
               <option value="private">private</option>
             </select>
             <select id="selectTheme_button" onchange="selectTheme()" class="selectButton">
-              <option selected="">default</option>
+              <option>default</option>
               <option>3024-day</option>
               <option>3024-night</option>
               <option>ambiance</option>
@@ -125,7 +125,7 @@
               <option>xq-light</option>
             </select>
           </td>
-          <td style="text-align: right; white-space: nowrap">Author:<span title="Notebook creator" class="notebookOwner"></span><span id="saveIndicator"></span></td>
+          <td style="text-align: right; white-space: nowrap">Author:<span title="Notebook creator" class="notebookOwner">{{notebook_owner}}</span><span id="saveIndicator"></span></td>
         </tr>
       </table>
     </div>

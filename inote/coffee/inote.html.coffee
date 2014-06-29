@@ -51,10 +51,6 @@ openNotebook = (notebookOwner, notebookAccess, notebookName) ->
     $("#notebookName").val notebookName
     $("#notebookAccess").val notebookAccess
     #storage.get notebookOwner, notebookName, restoreNotebookFromXml
-    page = $("#page")
-    xmlText = page.html()
-    page.html("")
-    restoreNotebookFromXml(xmlText)
     return
 
 
@@ -66,7 +62,7 @@ restoreNotebookFromXml = (xmlText) ->
     inote.setXmlText xmlText
     notebook = $(xmlText)
     themeName = notebook.attr("theme")
-    $("#selectTheme_button").val themeName
+    if themeName then $("#selectTheme_button").val themeName
     inote.init()    if $(".cell").length is 0
     return
 
@@ -113,10 +109,16 @@ clearAndInit = ->
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 $ ->
     #$(".loginHolder").load "/getloginlink"
-    inote = new iNote($("#page"))
     
-    #            inote=new iNote($(document.body));
-    openNotebook getNotebookOwnerFromUrl(), getNotebookAccessFromUrl(), getNotebookNameFromUrl()
+    
+    page = $("#page")
+    xmlText = page.html()
+    page.html("")
+    inote = new iNote($("#page"))
+    #inote=new iNote($(document.body));
+
+    #openNotebook getNotebookOwnerFromUrl(), getNotebookAccessFromUrl(), getNotebookNameFromUrl()
+    restoreNotebookFromXml(xmlText)
     
     #handlers
     $("body").keydown (event) ->

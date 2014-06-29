@@ -76,7 +76,7 @@
     return $("#btnCreate").click(function() {
       var newName;
       newName = "N" + (5000000 + Math.floor(999000 * Math.random()));
-      return document.location.href = "inote.html?notebook_owner=" + encodeURIComponent($("#userName").text()) + "&notebook_access=" + encodeURIComponent("public") + "&notebook_name=" + encodeURIComponent(newName);
+      return document.location.href = "/book?notebook_owner=" + encodeURIComponent($("#userName").text()) + "&notebook_access=" + encodeURIComponent("public") + "&notebook_name=" + encodeURIComponent(newName);
     });
   });
 

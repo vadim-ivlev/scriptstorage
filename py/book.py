@@ -15,10 +15,14 @@ class Book(webapp2.RequestHandler):
         #get request params
         notebook_owner=self.request.get('notebook_owner')
         notebook_name=self.request.get('notebook_name')
+        notebook_access=self.request.get('notebook_access')
 
         template_values = {
             'notebook_content': utils.get_notebook_content(notebook_owner, notebook_name),
-            'login_link': utils.get_login_link()
+            'login_link': utils.get_login_link(),
+            'notebook_owner': notebook_owner,
+            'notebook_name': notebook_name,
+            'notebook_access': notebook_access    
             }
         template = jinja_environment.get_template('inote.html')
         text=template.render(template_values)
