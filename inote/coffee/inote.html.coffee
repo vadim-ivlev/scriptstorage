@@ -110,7 +110,6 @@ clearAndInit = ->
 $ ->
     #$(".loginHolder").load "/getloginlink"
     
-    
     page = $("#page")
     xmlText = page.html()
     page.html("")
@@ -119,7 +118,7 @@ $ ->
 
     #openNotebook getNotebookOwnerFromUrl(), getNotebookAccessFromUrl(), getNotebookNameFromUrl()
     restoreNotebookFromXml(xmlText)
-    
+    @_CPLTIME=2500
     #handlers
     $("body").keydown (event) ->
         if event.ctrlKey and event.keyCode is 83 #Ctrl-S

@@ -104,6 +104,7 @@
     page.html("");
     inote = new iNote($("#page"));
     restoreNotebookFromXml(xmlText);
+    this._CPLTIME = 2500;
     $("body").keydown(function(event) {
       if (event.ctrlKey && event.keyCode === 83) {
         saveNotebook();
