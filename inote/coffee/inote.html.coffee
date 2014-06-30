@@ -61,6 +61,7 @@ restoreNotebookFromXml = (xmlText) ->
     inote.clear()
     inote.setXmlText xmlText
     notebook = $(xmlText)
+    #$("#selectTheme_button").val "default"
     themeName = notebook.attr("theme")
     if themeName then $("#selectTheme_button").val themeName
     inote.init()    if $(".cell").length is 0
@@ -114,10 +115,14 @@ $ ->
     xmlText = page.html()
     page.html("")
     inote = new iNote($("#page"))
+    inote.setTheme("default")
     #inote=new iNote($(document.body));
 
     #openNotebook getNotebookOwnerFromUrl(), getNotebookAccessFromUrl(), getNotebookNameFromUrl()
     restoreNotebookFromXml(xmlText)
+    $("#notebookAccess").val getNotebookAccessFromUrl()
+
+    
     #handlers
     $("body").keydown (event) ->
         if event.ctrlKey and event.keyCode is 83 #Ctrl-S

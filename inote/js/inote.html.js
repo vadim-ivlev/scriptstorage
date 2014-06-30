@@ -103,7 +103,9 @@
     xmlText = page.html();
     page.html("");
     inote = new iNote($("#page"));
+    inote.setTheme("default");
     restoreNotebookFromXml(xmlText);
+    $("#notebookAccess").val(getNotebookAccessFromUrl());
     $("body").keydown(function(event) {
       if (event.ctrlKey && event.keyCode === 83) {
         saveNotebook();
