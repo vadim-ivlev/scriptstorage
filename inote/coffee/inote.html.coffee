@@ -118,7 +118,6 @@ $ ->
 
     #openNotebook getNotebookOwnerFromUrl(), getNotebookAccessFromUrl(), getNotebookNameFromUrl()
     restoreNotebookFromXml(xmlText)
-    @_CPLTIME=2500
     #handlers
     $("body").keydown (event) ->
         if event.ctrlKey and event.keyCode is 83 #Ctrl-S

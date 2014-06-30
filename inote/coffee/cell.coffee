@@ -6,8 +6,7 @@
     _javascriptTextViewer = undefined
     _inputCell = undefined
     _outputCell = undefined
-    _inputTitle = undefined
-    _outputTitle = undefined
+    _javascriptCell = undefined
     _mode = "javascript"
     
     _lockButton = undefined
@@ -28,7 +27,7 @@
     _create = (celNum, theme) ->
         
         _jQueryCell = $("""
-<div class='cell' collapsed='no' outCollapsed='no' inCollapsed='no' access='public'>
+<div class='cell'>
 
     <div class='input_header'>
         <span class='hideInputButton toolButton hidable000' >&#x25BC</span>
@@ -45,7 +44,7 @@
 
     <table class='codeArea' ><tr>
         <td id='in_' class='inputCell' ></td>
-        <td  class='javascriptText'></td>
+        <td id='js_' class='javascriptCell'></td>
     </tr></table>
     <div class='input_expander toolButton hidable000'>&#x25BA</div>
 
@@ -67,15 +66,14 @@
         _inputCell = _jQueryCell.find(".inputCell")
         _inputCell[0]._compileLater = _compileLater
         _outputCell = _jQueryCell.find(".outputCell")
-        _inputTitle = _jQueryCell.find(".inputTitle")
-        _outputTitle = _jQueryCell.find(".outputTitle")
+        _javascriptCell = _jQueryCell.find(".javascriptCell")
         
         _lockButton = _jQueryCell.find(".lockButton")
         
         _codemirror = createCodeMirror(_inputCell[0])
         _codemirror.setOption "theme", theme or "eclipse"
         _codemirror.setOption "readOnly", "nocursor"
-        _javascriptTextViewer = createCodeMirror(_jQueryCell.find(".javascriptText")[0])
+        _javascriptTextViewer = createCodeMirror(_javascriptCell[0])
         _javascriptTextViewer.setOption "readOnly", "nocursor"
         _javascriptTextViewer.setOption "theme", theme or "eclipse"
         _javascriptTextViewer.setValue ""
@@ -95,7 +93,7 @@
     
     _showJavascriptText = ->
         _jQueryCell.find(".showJavascriptButton").text "Hide Javascript"
-        _jQueryCell.find(".javascriptText").show()
+        _javascriptCell.show()
         _javascriptTextViewer.refresh()
         _compile_CoffeeScript()
         _jQueryCell.find(".codeArea").colResizable()
@@ -104,7 +102,7 @@
     
     _hideJavascriptText = ->
         _jQueryCell.find(".showJavascriptButton").text "Show Javascript"
-        _jQueryCell.find(".javascriptText").hide()
+        _javascriptCell.hide()
         return
     
     
@@ -116,6 +114,8 @@
         return
     
     # collapse output iarea ===================================================
+    _CPLTIME=100
+
     _setOutputCollapsed = (collapsed) ->
         _outCollapsed = collapsed
         if collapsed
@@ -137,12 +137,12 @@
     _setInputCollapsed = (collapsed) ->
         _inCollapsed = collapsed
         if collapsed
-            _jQueryCell.find(".codeArea").hide _CPLTIME, ->
-                _jQueryCell.find(".input_expander").show()
-                _jQueryCell.find(".input_header").hide()
-                _jQueryCell.find(".hideInputButton").html "[in" + _n + "] &nbsp;&nbsp;&#x25BA" #Show input
+            _jQueryCell.find(".codeArea").hide()
+            _jQueryCell.find(".input_expander").show()
+            _jQueryCell.find(".input_header").hide()
+            _jQueryCell.find(".hideInputButton").html "[in" + _n + "] &nbsp;&nbsp;&#x25BA" #Show input
         else
-            _jQueryCell.find(".codeArea").show _CPLTIME
+            _jQueryCell.find(".codeArea").show()
             _jQueryCell.find(".input_expander").hide()
             _jQueryCell.find(".input_header").show()
             _jQueryCell.find(".hideInputButton").html "[in" + _n + "] &nbsp;&nbsp;&#x25BC" #Hide input
@@ -259,21 +259,25 @@
     
     
     _getXml1 = ->
-        cell = $("<div class='cell' version='1' number='#{_n}' mode='#{_mode}'/>")
-        $("<div class='inputCell' collapsed='#{_inCollapsed}'/>").text(_codemirror.getValue()).appendTo cell
-        $("<div class='outputCell' collapsed='#{_outCollapsed}'/>").text(_outputCell.html()).appendTo cell
+        cell = $("<div class='cell' id='#{_jQueryCell.attr('id')}'  version='1' number='#{_n}' mode='#{_mode}'/>")
+        $("<div class='inputCell'  id='#{_inputCell.attr('id')}' collapsed='#{_inCollapsed}'/>").text(_codemirror.getValue()).appendTo cell
+        $("<div class='javascriptCell' id='#{_javascriptCell.attr('id')}'/>").text(_javascriptTextViewer.getValue()).appendTo cell
+        $("<div class='outputCell' id='#{_outputCell.attr('id')}' collapsed='#{_outCollapsed}'/>").text(_outputCell.html()).appendTo cell
         cell
     
     
     _setXml1 = (cell) ->
         number = cell.attr("number")
         _mode = cell.attr("mode")
+        
         input = cell.find("div.inputCell").first()
         output = cell.find("div.outputCell").first()
-        inputValue = input.text()
-        outputValue = output.text()
-        _codemirror.setValue inputValue
-        _outputCell.html outputValue
+        js = cell.find("div.javascriptCell").first()
+        
+        _codemirror.setValue input.text()
+        _outputCell.html output.text()
+        _javascriptTextViewer.setValue js.text()
+        
         _setNumber number
         _setMode _mode
         _setOutputCollapsed output.attr("collapsed") is "true"
@@ -323,11 +327,9 @@
         _n = Number(n)
         _jQueryCell.data "number", _n
         _jQueryCell.attr "id", "cell" + _n
-        _jQueryCell.attr "data-number", _n
         _inputCell.attr "id", "in" + _n
         _outputCell.attr "id", "out" + _n
-        _inputTitle.text _inputCell.attr("id")
-        _outputTitle.text _outputCell.attr("id")
+        _javascriptCell.attr "id", "js" + _n
         _jQueryCell.find(".output_expander").html "[out" + _n + "] &#x25BA"
         _jQueryCell.find(".input_expander").html "[in" + _n + "]&nbsp; &nbsp;&#x25BA"
         this
@@ -452,7 +454,7 @@
     
     # Compiles CoffesScript and writes it into output
     _compile_CoffeeScript = ->
-        javaScriptText = _jQueryCell.find(".javascriptText")
+        javaScriptText = _javascriptCell
         if javaScriptText.is(":visible")
             code = _codemirror.getValue()
             compiledCode = ""
