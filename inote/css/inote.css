@@ -37,7 +37,13 @@ select {
 }
 .loginHolder {
   white-space: nowrap;
-  font-family: arial, sans-serif;
+  font-family: Roboto, sans-serif;
+  color: #777777;
+}
+.notebookOwner {
+  white-space: nowrap;
+  font-family: Roboto, sans-serif;
+  color: #777777;
 }
 .toolButton {
   color: #777777;
@@ -261,11 +267,24 @@ select {
   background-position: right;
   background-repeat: no-repeat;
 }
+#saveIndicator {
+  position: absolute;
+  display: inline-block;
+  width: 10px;
+  height: 15px;
+  top: 6px;
+  left: -10px;
+  overflow: hidden;
+  font-size: 22px;
+  color: #777777;
+}
 .notebookName {
+  position: relative;
+  left: 0px;
+  width: 350px;
   border: 1px solid transparent;
   font-family: arial, sans-serif;
   font-size: 16px;
-  width: 100%;
   vertical-align: middle;
   -webkit-appearance: none;
 }

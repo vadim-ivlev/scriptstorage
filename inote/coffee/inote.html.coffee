@@ -21,7 +21,7 @@ inote = undefined
 @saveNotebookLater = ->
     clearTimeout saveNotebookTimeout
     (if ($("#autoSave").is(":checked")) then saveNotebookTimeout = setTimeout(saveNotebook, 2000) else null)
-    $("#saveIndicator").text ""
+    $("#saveIndicator").text "*"
     return
 
 
@@ -36,7 +36,10 @@ inote = undefined
     
     #localStorage.setItem("inote_"+bookName, xmlText);
     storage.put notebookAaccess, notebookName, xmlText, (d) ->
-        $("#saveIndicator").text "(saved)"
+        if d.match(/^Err/)
+            alert d
+        else
+            $("#saveIndicator").text ""
         return
 
     return
@@ -57,14 +60,14 @@ openNotebook = (notebookOwner, notebookAccess, notebookName) ->
 
 
 restoreNotebookFromXml = (xmlText) ->
-    return    unless xmlText
-    inote.clear()
-    inote.setXmlText xmlText
-    notebook = $(xmlText)
-    #$("#selectTheme_button").val "default"
-    themeName = notebook.attr("theme")
-    if themeName then $("#selectTheme_button").val themeName
-    inote.init()    if $(".cell").length is 0
+    empty = xmlText.replace(/\s/g, "") is ""
+    if not empty
+        inote.clear()
+        inote.setXmlText xmlText
+        notebook = $(xmlText)
+        themeName = notebook.attr("theme")
+        if themeName then $("#selectTheme_button").val themeName
+    inote.init()  if $(".cell").length is 0
     return
 
 
@@ -115,11 +118,14 @@ $ ->
     xmlText = page.html()
     page.html("")
     inote = new iNote($("#page"))
-    inote.setTheme("default")
+    $("#selectTheme_button").val("default")
+    inote.setTheme $("#selectTheme_button").val()
+
     #inote=new iNote($(document.body));
 
     #openNotebook getNotebookOwnerFromUrl(), getNotebookAccessFromUrl(), getNotebookNameFromUrl()
     restoreNotebookFromXml(xmlText)
+    
     $("#notebookAccess").val getNotebookAccessFromUrl()
 
     

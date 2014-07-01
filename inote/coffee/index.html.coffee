@@ -51,7 +51,7 @@ buildNotebookList = (data) =>
         data:
             key_name: key_name
 
-        success: (data) -> location.reload()
+        success: (data) -> setTimeout('location.reload(true)',100)
         error: (e) -> alert(e)
     return
 

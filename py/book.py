@@ -18,7 +18,7 @@ class Book(webapp2.RequestHandler):
         notebook_access=self.request.get('notebook_access')
 
         template_values = {
-            'notebook_content': utils.get_notebook_content(notebook_owner, notebook_name),
+            'notebook_content': utils.get_notebook_content(notebook_owner,notebook_access, notebook_name),
             'login_link': utils.get_login_link(),
             'notebook_owner': notebook_owner,
             'notebook_name': notebook_name,

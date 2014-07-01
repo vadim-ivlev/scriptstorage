@@ -86,7 +86,8 @@ html
             // <div id="divMenu" >
             table(style='width: 100%')
                 tr
-                    td(style='width:100%')
+                    td(style='width:100%;position:relative;')
+                        span#saveIndicator
                         input#notebookName.notebookName(type='text', value='{{notebook_name}}')
                     td(style='text-align: right; white-space: nowrap')
                         span.loginHolder {{login_link}}
@@ -105,33 +106,35 @@ html
                             option(value='private') private
                         
                         select#selectTheme_button.selectButton(onchange='selectTheme()')
-                            option default
-                            option 3024-day
-                            option 3024-night
-                            option ambiance
-                            option base16-dark
-                            option base16-light
-                            option blackboard
-                            option cobalt
-                            option eclipse
-                            option elegant
-                            option erlang-dark
-                            option lesser-dark
-                            option midnight
-                            option monokai
-                            option neat
-                            option night
-                            option rubyblue
-                            option solarized dark
-                            option solarized light
-                            option tomorrow-night-eighties
-                            option twilight
-                            option vibrant-ink
-                            option xq-dark
-                            option xq-light
+                            option(value='default') default
+                            option(value='3024-day') 3024-day
+                            option(value='3024-night') 3024-night
+                            option(value='ambiance') ambiance
+                            option(value='base16-dark') base16-dark
+                            option(value='base16-light') base16-light
+                            option(value='blackboard') blackboard
+                            option(value='cobalt') cobalt
+                            option(value='eclipse') eclipse
+                            option(value='elegant') elegant
+                            option(value='erlang-dark') erlang-dark
+                            option(value='lesser-dark') lesser-dark
+                            option(value='midnight') midnight
+                            option(value='monokai') monokai
+                            option(value='neat') neat
+                            option(value='night') night
+                            option(value='rubyblue') rubyblue
+                            option(value='solarized dark') solarized dark
+                            option(value='solarized light') solarized light
+                            option(value='tomorrow-night-eighties') tomorrow-night-eighties
+                            option(value='twilight') twilight
+                            option(value='vibrant-ink') vibrant-ink
+                            option(value='xq-dark') xq-dark
+                            option(value='xq-light') xq-light
                     
                     td(style='text-align: right; white-space: nowrap')
                         | Author:
                         span.notebookOwner(title='Notebook creator') {{notebook_owner}}
-                        span#saveIndicator
         #page.page {{notebook_content}} 
+
+
+

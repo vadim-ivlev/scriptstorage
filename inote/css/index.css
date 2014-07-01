@@ -37,7 +37,13 @@ select {
 }
 .loginHolder {
   white-space: nowrap;
-  font-family: arial, sans-serif;
+  font-family: Roboto, sans-serif;
+  color: #777777;
+}
+.notebookOwner {
+  white-space: nowrap;
+  font-family: Roboto, sans-serif;
+  color: #777777;
 }
 .toolButton {
   color: #777777;

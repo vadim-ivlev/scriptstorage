@@ -54,7 +54,7 @@
         key_name: key_name
       },
       success: function(data) {
-        return location.reload();
+        return setTimeout('location.reload(true)', 100);
       },
       error: function(e) {
         return alert(e);

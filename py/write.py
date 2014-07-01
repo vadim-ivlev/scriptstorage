@@ -16,7 +16,7 @@ class WriteHandler(webapp2.RequestHandler):
 
         user = users.get_current_user()
         if not user:
-            self.response.out.write("You must login to save changes")
+            self.response.out.write("Err:\nPlease login to save changes")
             return
 
         #get the user nick name

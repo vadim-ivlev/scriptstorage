@@ -20,7 +20,7 @@
     } else {
       null;
     }
-    $("#saveIndicator").text("");
+    $("#saveIndicator").text("*");
   };
 
   this.saveNotebook = function() {
@@ -31,7 +31,11 @@
     xmlText = inote.getXmlText(notebookName);
     console.log("saveNotebook");
     storage.put(notebookAaccess, notebookName, xmlText, function(d) {
-      $("#saveIndicator").text("(saved)");
+      if (d.match(/^Err/)) {
+        alert(d);
+      } else {
+        $("#saveIndicator").text("");
+      }
     });
   };
 
@@ -46,16 +50,16 @@
   };
 
   restoreNotebookFromXml = function(xmlText) {
-    var notebook, themeName;
-    if (!xmlText) {
-      return;
-    }
-    inote.clear();
-    inote.setXmlText(xmlText);
-    notebook = $(xmlText);
-    themeName = notebook.attr("theme");
-    if (themeName) {
-      $("#selectTheme_button").val(themeName);
+    var empty, notebook, themeName;
+    empty = xmlText.replace(/\s/g, "") === "";
+    if (!empty) {
+      inote.clear();
+      inote.setXmlText(xmlText);
+      notebook = $(xmlText);
+      themeName = notebook.attr("theme");
+      if (themeName) {
+        $("#selectTheme_button").val(themeName);
+      }
     }
     if ($(".cell").length === 0) {
       inote.init();
@@ -103,7 +107,8 @@
     xmlText = page.html();
     page.html("");
     inote = new iNote($("#page"));
-    inote.setTheme("default");
+    $("#selectTheme_button").val("default");
+    inote.setTheme($("#selectTheme_button").val());
     restoreNotebookFromXml(xmlText);
     $("#notebookAccess").val(getNotebookAccessFromUrl());
     $("body").keydown(function(event) {
