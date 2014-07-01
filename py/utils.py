@@ -96,3 +96,29 @@ def get_notebook_element(owner_nickname, notebook_access, notebook_name, element
     e = root.find(".//*[@id='%s']" % element_id)
     s = ET.tostring(e, encoding="UTF-8", method="text") 
     return s
+
+
+
+
+def get_mime_type(element_id):
+    """
+    calculates mime type by element_id.
+    to return pege elements.
+    """
+    if not element_id: 
+        return "text/html"
+    
+    head = element_id[:2] 
+    if head == "ou": # output cell
+        return "text/html"
+    if head == "in": #input cell
+        return "text/plain"
+    if head == "js": # compiled javascript
+        return "application/javascript"
+    if head == "ce": # the whole cell 
+        return "text/html"
+
+    return "text/plain"
+
+
+

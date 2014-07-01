@@ -26,6 +26,7 @@ class Book(webapp2.RequestHandler):
             }
         template = jinja_environment.get_template('inote.html')
         text=template.render(template_values)
+        self.response.headers['Content-Type'] = 'text/html'
         self.response.out.write(text)
 
 

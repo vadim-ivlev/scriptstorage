@@ -15,7 +15,7 @@ class ReadHandler(webapp2.RequestHandler):
         element_id=self.request.get('element_id')
 
         
-        self.response.headers['Content-Type'] = 'text/plain'
+        self.response.headers['Content-Type'] = utils.get_mime_type( element_id )
         
         #import pdb; pdb.set_trace()
 
