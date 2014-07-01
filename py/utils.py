@@ -1,6 +1,7 @@
 from notebook import NoteBook
 from google.appengine.ext import db
 from google.appengine.api import users
+import xml.etree.ElementTree as ET
 
 def get_login_link():
     """
@@ -50,39 +51,8 @@ def get_list_of_notebooks():
         #self.response.out.write("%s\n" % key_name)
     return s
     
-    
-#def get_notebook_content(owner_nickname, notebook_name):
-#    """
-#    Returns content of the notebook.
-#    owner_nickname usually is creater email.
-#    notebook_name - notebook name.
-#    """
-#
-#    #get the user nick name
-#    nickname=u''
-#    if users.get_current_user():
-#        nickname=users.get_current_user().nickname()
-#
-#    # calculate possible keys to retrieve content from db
-#    public_key = db.Key.from_path("NoteBook", owner_nickname+"/public/"+notebook_name)
-#    private_key = db.Key.from_path("NoteBook", owner_nickname+"/private/"+notebook_name)
-#
-#    #try to find public notebook
-#    notebook=NoteBook.get(public_key)
-#    
-#    # if notebook is found return its content
-#    if notebook:
-#        return notebook.content
-#
-#    # otherwise if request comes from the creator
-#    elif nickname==owner_nickname:
-#        # try to find a private notebook
-#        notebook=NoteBook.get(private_key)
-#        # if a notebook is found then return its content
-#        if notebook:
-#            return notebook.content
-#
-#    return ""
+
+
 
 
 def get_notebook_content(owner_nickname, notebook_access, notebook_name):
@@ -115,11 +85,14 @@ def get_notebook_content(owner_nickname, notebook_access, notebook_name):
 
 
 
-def get_notebook_part(owner_nickname, notebook_access, notebook_name, part_id):
+def get_notebook_element(owner_nickname, notebook_access, notebook_name, element_id):
     """
     Returns part of the notebook by id.
     """
+    #import pdb; pdb.set_trace()
+    
     content = get_notebook_content( owner_nickname, notebook_access, notebook_name)
-
-    return content
-
+    root = ET.fromstring(content)
+    e = root.find(".//*[@id='%s']" % element_id)
+    s = ET.tostring(e, encoding="UTF-8", method="text") 
+    return s

@@ -9,12 +9,20 @@ class ReadHandler(webapp2.RequestHandler):
     """
     def get(self):
         #get request params
-        owner_nickname=self.request.get('owner_nickname')
-        notebook_name=self.request.get('notebook_name')
+        notebook_owner=self.request.get('notebook_owner')
         notebook_access=self.request.get('notebook_access')
+        notebook_name=self.request.get('notebook_name')
+        element_id=self.request.get('element_id')
 
+        
         self.response.headers['Content-Type'] = 'text/plain'
-        self.response.out.write(utils.get_notebook_content(owner_nickname, notebook_access, notebook_name))
+        
+        #import pdb; pdb.set_trace()
+
+        if element_id:
+            self.response.out.write(utils.get_notebook_element(notebook_owner, notebook_access, notebook_name, element_id))
+        else:
+            self.response.out.write(utils.get_notebook_content(notebook_owner, notebook_access, notebook_name))
         
 
 
