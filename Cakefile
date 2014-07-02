@@ -6,11 +6,15 @@
 ###
 
 
+isWin = /^win/.test(process.platform)
+curDirSymbol = if isWin then "%cd%" else "`pwd`"
+
+
 fs = require "fs"
 {exec, spawn} = require 'child_process'
 
 
-task "server", "type: dev_appserver.py `pwd`", ->
+task "server", "type: dev_appserver.py #{curDirSymbol}", ->
 
 
 task "rebuild", "rebuild all", ->
@@ -23,8 +27,8 @@ task "watch", "Watch for changes and regenerate js, css и html.", ->
     fs.watch 'inote/less',  (event, filename) -> postpone  -> generateCss()
 
 
-task "deploy", "type: appcfg.py update `pwd`", ->
-    execOut "appcfg.py update `pwd`"
+task "deploy", "type: appcfg.py update  #{curDirSymbol}", ->
+    execOut "appcfg.py update  #{curDirSymbol}"
 
 task "push", "push changes to Git", ->
     execOut "git add -A .", ->
