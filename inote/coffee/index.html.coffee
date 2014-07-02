@@ -32,7 +32,7 @@ buildNotebookList = (data) =>
         s += """
         <div style='padding-left: 50px;'>
            <a 
-           href='/book?notebook_owner=#{encodeURIComponent(notebook_owner)}&notebook_access=#{encodeURIComponent(notebook_access)}&notebook_name=#{encodeURIComponent(notebook_name)}'
+           href='/page?notebook_owner=#{encodeURIComponent(notebook_owner)}&notebook_access=#{encodeURIComponent(notebook_access)}&notebook_name=#{encodeURIComponent(notebook_name)}'
            >#{notebook_name}</a>&nbsp;&nbsp;&nbsp;
            <span class='toolButton' title='delete' onclick='deleteNotebook("#{key_name}")'>&#x00D7</span>
         </div>
@@ -74,5 +74,5 @@ $ ->
     
     $("#btnCreate").click ->
         newName = "N" + (5000000 + Math.floor(999000 * Math.random()))
-        document.location.href = "/book?notebook_owner=" + encodeURIComponent($("#userName").text()) + "&notebook_access=" + encodeURIComponent("public") + "&notebook_name=" + encodeURIComponent(newName)
+        document.location.href = "/page?notebook_owner=" + encodeURIComponent($("#userName").text()) + "&notebook_access=" + encodeURIComponent("public") + "&notebook_name=" + encodeURIComponent(newName)
 

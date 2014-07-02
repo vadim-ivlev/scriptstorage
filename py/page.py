@@ -8,7 +8,7 @@ jinja_environment = jinja2.Environment(
 
 
 
-class Book(webapp2.RequestHandler):
+class Page(webapp2.RequestHandler):
     def get(self):
         #import pdb; pdb.set_trace()
         
@@ -34,6 +34,6 @@ class Book(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication(
     [
-        ('/book', Book)
+        ('/page.*', Page)
     ],  debug=True )
 

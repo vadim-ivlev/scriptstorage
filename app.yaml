@@ -34,8 +34,8 @@ handlers:
 - url: /indexpage
   script: py.indexpage.app
 
-- url: /book
-  script: py.book.app
+- url: /page.*
+  script: py.page.app
 
 - url: /inote
   static_dir: inote
