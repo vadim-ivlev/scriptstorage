@@ -5,8 +5,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>iNote</title>
-    <!--link(rel='stylesheet', type='text/css', href='libs/codemirror-3.0/addon/hint/show-hint.css')-->
-    <!--link(rel='stylesheet', type='text/css', href='libs/codemirror-3.0/lib/codemirror.css')-->
+    <!--link(rel='stylesheet', href='libs/codemirror-3.0/addon/hint/show-hint.css')-->
+    <!--link(rel='stylesheet', href='libs/codemirror-3.0/lib/codemirror.css')-->
     <!--link(rel='stylesheet', href='libs/codemirror-3.0/theme/neat.css')-->
     <!--link(rel='stylesheet', href='libs/codemirror-3.0/theme/elegant.css')-->
     <!--link(rel='stylesheet', href='libs/codemirror-3.0/theme/erlang-dark.css')-->
@@ -34,40 +34,9 @@
     <!-- jQuery-->
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-    <!--fix for jquery >1.9-->
-    <script type="text/javascript">
-      $.browser={ msie: ( navigator.appName == 'Microsoft Internet Explorer') ? true : false } ;
-      
-    </script>
-    <script src="libs/codemirror-3.0/lib/codemirror.js"></script>
-    <script src="libs/codemirror-3.0/addon/hint/show-hint.js"></script>
-    <script src="libs/codemirror-3.0/addon/hint/javascript-hint.js"></script>
-    <script src="libs/codemirror-3.0/addon/comment/comment.js"></script>
-    <script src="libs/codemirror-3.0/mode/xml/xml.js"></script>
-    <script src="libs/codemirror-3.0/mode/javascript/javascript.js"></script>
-    <script src="libs/codemirror-3.0/mode/css/css.js"></script>
-    <script src="libs/codemirror-3.0/mode/htmlmixed/htmlmixed.js"></script>
-    <script src="libs/codemirror-3.0/mode/coffeescript/coffeescript.js"></script>
-    <script src="libs/codemirror-3.0/addon/edit/formatting.js"></script>
-    <script src="libs/codemirror-3.0/addon/edit/matchbrackets.js"></script>
-    <script src="libs/codemirror-3.0/addon/edit/closetag.js"></script>
-    <script src="libs/codemirror-3.0/addon/fold/foldcode.js"></script>
-    <script src="libs/codemirror-3.0/addon/fold/foldgutter.js"></script>
-    <script src="libs/codemirror-3.0/addon/fold/brace-fold.js"></script>
-    <script src="libs/codemirror-3.0/addon/fold/xml-fold.js"></script>
-    <script src="libs/codemirror-3.0/addon/fold/indent-fold.js"></script>
-    <script src="libs/codemirror-3.0/addon/dialog/dialog.js"></script>
-    <script src="libs/codemirror-3.0/addon/search/searchcursor.js"></script>
-    <script src="libs/codemirror-3.0/addon/search/search.js"></script>
-    <script src="libs/coffee-script.js"></script>
-    <script src="libs/json2.min.js"></script>
-    <script src="libs/showdown.js"></script>
-    <script src="libs/colResizable-1.3.min.js"></script>
-    <script src="js/cdmirror.js"></script>
-    <script src="js/cell.js"></script>
-    <script src="js/inote.js"></script>
-    <script src="js/notebookstorage.js"></script>
-    <script src="js/inote.html.js"></script>
+    <!--fix for jquery >1.9 for colResize-->
+    <script type="text/javascript">$.browser={ msie: ( navigator.appName == 'Microsoft Internet Explorer') ? true : false } ;</script>
+    <script src="js/all.js"></script>
   </head>
   <body>
     <div id="divHeader" class="header lr_padded">
