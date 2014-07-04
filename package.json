@@ -1,0 +1,28 @@
+{
+  "name": "scriptstorage",
+  "version": "0.0.0",
+  "description": "Code scrap book repository",
+  "main": "script playground",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vadim-ivlev/scriptstorage.git"
+  },
+  "keywords": [
+    "javascript",
+    "coffescript",
+    "html",
+    "js"
+  ],
+  "author": "Vadim Ivlev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vadim-ivlev/scriptstorage/issues"
+  },
+  "homepage": "https://github.com/vadim-ivlev/scriptstorage",
+  "dependencies": {
+    "uglify-js": "^2.4.14"
+  }
+}
