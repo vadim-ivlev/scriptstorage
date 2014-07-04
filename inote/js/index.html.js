@@ -26,18 +26,7 @@
           s += "<div  style='padding-left: 25px; color:" + (notebook_access === "private" ? "black" : "") + ";  '>" + notebook_access + "</div>";
           last_access = notebook_access;
         }
-
-        /*    
-        s += """
-        <div style='padding-left: 50px;'>
-           <a 
-           href='inote.html?notebook_owner=#{encodeURIComponent(notebook_owner)}&notebook_access=#{encodeURIComponent(notebook_access)}&notebook_name=#{encodeURIComponent(notebook_name)}'
-           >#{notebook_name}</a>&nbsp;&nbsp;&nbsp;
-           <span class='toolButton' title='delete' onclick='deleteNotebook("#{key_name}")'>&#x00D7</span>
-        </div>
-        """
-         */
-        s += "<div style='padding-left: 50px;'>\n   <a \n   href='/page?notebook_owner=" + (encodeURIComponent(notebook_owner)) + "&notebook_access=" + (encodeURIComponent(notebook_access)) + "&notebook_name=" + (encodeURIComponent(notebook_name)) + "'\n   >" + notebook_name + "</a>&nbsp;&nbsp;&nbsp;\n   <span class='toolButton' title='delete' onclick='deleteNotebook(\"" + key_name + "\")'>&#x00D7</span>\n</div>";
+        s += "<div style='padding-left: 50px;'>\n   <a \n   href='/page?owner=" + (encodeURIComponent(notebook_owner)) + "&access=" + (encodeURIComponent(notebook_access)) + "&name=" + (encodeURIComponent(notebook_name)) + "'\n   >" + notebook_name + "</a>&nbsp;&nbsp;&nbsp;\n   <span class='toolButton' title='delete' onclick='deleteNotebook(\"" + key_name + "\")'>&#x00D7</span>\n</div>";
       }
       return $("#notebookList").html(s);
     };
@@ -76,7 +65,7 @@
     return $("#btnCreate").click(function() {
       var newName;
       newName = "N" + (5000000 + Math.floor(999000 * Math.random()));
-      return document.location.href = "/page?notebook_owner=" + encodeURIComponent($("#userName").text()) + "&notebook_access=" + encodeURIComponent("public") + "&notebook_name=" + encodeURIComponent(newName);
+      return document.location.href = "/page?owner=" + encodeURIComponent($("#userName").text()) + "&access=" + encodeURIComponent("public") + "&name=" + encodeURIComponent(newName);
     });
   });
 

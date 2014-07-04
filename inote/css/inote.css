@@ -1230,13 +1230,10 @@ select {
   margin-right: auto;
 }
 .header {
-  font-family: sans-serif;
   border-bottom: 0px solid rgba(200, 200, 200, 0.4);
-  padding-bottom: 16px;
-  padding-left: 30px;
-  padding-right: 30px;
-  font-family: arial, sans-serif;
-  font-size: 16px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family: Roboto, sans-serif;
 }
 .header:hover .hidable {
   visibility: visible;
@@ -1474,12 +1471,11 @@ select {
   background-repeat: no-repeat;
 }
 #saveIndicator {
-  position: absolute;
+  position: relative;
   display: inline-block;
   width: 10px;
   height: 15px;
-  top: 6px;
-  left: -10px;
+  top: 3px;
   overflow: hidden;
   font-size: 22px;
   color: #777777;
@@ -1489,10 +1485,11 @@ select {
   left: 0px;
   width: 350px;
   border: 1px solid transparent;
-  font-family: arial, sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 16px;
   vertical-align: middle;
   -webkit-appearance: none;
+  cursor: pointer;
 }
 .notebookName:hover {
   border-bottom: 1px dotted #777777;

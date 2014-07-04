@@ -8,7 +8,7 @@ class WriteHandler(webapp2.RequestHandler):
     def post(self):
 
         #get request params
-        notebook_name=self.request.get('notebook_name')
+        notebook_name=self.request.get('name')
         content=self.request.get('content')
         access=self.request.get('access')
 

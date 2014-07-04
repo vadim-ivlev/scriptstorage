@@ -19,7 +19,7 @@ class @NoteBookStorage
             dataType: "text"
             data:
                 owner_nickname: owner_nickname
-                notebook_name: notebook_name
+                name: notebook_name
 
             success: onsuccess
             error: onerror
@@ -33,7 +33,7 @@ class @NoteBookStorage
             url: "/write"
             dataType: "text"
             data:
-                notebook_name: notebook_name
+                name: notebook_name
                 access: access
                 content: notebook_content
 

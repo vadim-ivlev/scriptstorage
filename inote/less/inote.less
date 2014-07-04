@@ -31,20 +31,16 @@
 
 
 
-
-
-
 @import 'common';
 @import 'cell';
 @import 'mycodemirror';
 
 #saveIndicator {
-    position: absolute;
+    position: relative;
     display: inline-block;
     width: 10px;
     height:15px;
-    top:6px;
-    left:-10px;
+    top:3px;
     overflow:hidden;
     font-size:22px;
     color:@LINKCOLOR; 
@@ -54,11 +50,12 @@
     left:0px;
     width:350px;
     border:1px solid transparent;
-    font-family: @FONT;
+    font-family: @BUTTONFONT;
     font-size: 16px;
     //width:100%;
     vertical-align: middle;
     -webkit-appearance: none;
+    cursor:pointer;
 }
 
 

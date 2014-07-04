@@ -7,14 +7,9 @@ inote = undefined
 
 
 @selectTheme = ->
-    #input = document.getElementById("selectTheme_button")
-    #theme = input.options[input.selectedIndex].innerHTML
     inote.setTheme $("#selectTheme_button").val()
     @saveNotebookLater()
     return
-
-
-
 
 
 
@@ -26,7 +21,7 @@ inote = undefined
 
 
 @saveNotebook = ->
-    notebookName = $("#notebookName").val()
+    notebookName = $("#notebookName").text()
     notebookOwner = $(".notebookOwner").text()
     notebookAaccess = $("#notebookAccess").val()
     xmlText = inote.getXmlText(notebookName)
@@ -44,14 +39,16 @@ inote = undefined
 
     return
 
-
+@changeName = ->
+    newName = prompt "Change the name", $("#notebookName").text()
+    $("#notebookName").text newName if newName
 
 
 openNotebook = (notebookOwner, notebookAccess, notebookName) ->
     clearAndInit()
     return    unless notebookName
     $(".notebookOwner").text notebookOwner
-    $("#notebookName").val notebookName
+    $("#notebookName").text notebookName
     $("#notebookAccess").val notebookAccess
     #storage.get notebookOwner, notebookName, restoreNotebookFromXml
     return
@@ -75,7 +72,7 @@ restoreNotebookFromXml = (xmlText) ->
 getNotebookAccessFromUrl = ->
     notebook_access = ""
     try
-        notebook_access = location.href.match(/notebook_access=([^&]*)/)[1]
+        notebook_access = location.href.match(/access=([^&]*)/)[1]
     notebook_access = decodeURIComponent(notebook_access)
     notebook_access
 
@@ -85,7 +82,7 @@ getNotebookAccessFromUrl = ->
 getNotebookNameFromUrl = ->
     notebook_name = ""
     try
-        notebook_name = location.href.match(/notebook_name=([^&]*)/)[1]
+        notebook_name = location.href.match(/name=([^&]*)/)[1]
     notebook_name = decodeURIComponent(notebook_name)
     notebook_name
 
@@ -94,7 +91,7 @@ getNotebookNameFromUrl = ->
 getNotebookOwnerFromUrl = ->
     notebook_owner = ""
     try
-        notebook_owner = location.href.match(/notebook_owner=([^&]*)/)[1]
+        notebook_owner = location.href.match(/owner=([^&]*)/)[1]
     notebook_owner = decodeURIComponent(notebook_owner)
     notebook_owner
 
@@ -134,7 +131,9 @@ $ ->
         if event.ctrlKey and event.keyCode is 83 #Ctrl-S
             saveNotebook()
             false
-
+    # hide save button if the user is not loginned
+    if not $("#userName").text()
+        $("#saveGroup").hide()
     
     #$("#btnClear").click(clearAndInit);
     $("#btnSave").click saveNotebook
@@ -142,5 +141,5 @@ $ ->
 
 
 #            $("#btnOpen").click(function(){
-#                openNotebook($(".notebookOwner").text(), $("#notebookAccess").val(),  $("#notebookName").val() );
+#                openNotebook($(".notebookOwner").text(), $("#notebookAccess").val(),  $("#notebookName").text() );
 #            });

@@ -25,7 +25,7 @@
 
   this.saveNotebook = function() {
     var notebookAaccess, notebookName, notebookOwner, xmlText;
-    notebookName = $("#notebookName").val();
+    notebookName = $("#notebookName").text();
     notebookOwner = $(".notebookOwner").text();
     notebookAaccess = $("#notebookAccess").val();
     xmlText = inote.getXmlText(notebookName);
@@ -39,13 +39,21 @@
     });
   };
 
+  this.changeName = function() {
+    var newName;
+    newName = prompt("Change the name", $("#notebookName").text());
+    if (newName) {
+      return $("#notebookName").text(newName);
+    }
+  };
+
   openNotebook = function(notebookOwner, notebookAccess, notebookName) {
     clearAndInit();
     if (!notebookName) {
       return;
     }
     $(".notebookOwner").text(notebookOwner);
-    $("#notebookName").val(notebookName);
+    $("#notebookName").text(notebookName);
     $("#notebookAccess").val(notebookAccess);
   };
 
@@ -70,7 +78,7 @@
     var notebook_access;
     notebook_access = "";
     try {
-      notebook_access = location.href.match(/notebook_access=([^&]*)/)[1];
+      notebook_access = location.href.match(/access=([^&]*)/)[1];
     } catch (_error) {}
     notebook_access = decodeURIComponent(notebook_access);
     return notebook_access;
@@ -80,7 +88,7 @@
     var notebook_name;
     notebook_name = "";
     try {
-      notebook_name = location.href.match(/notebook_name=([^&]*)/)[1];
+      notebook_name = location.href.match(/name=([^&]*)/)[1];
     } catch (_error) {}
     notebook_name = decodeURIComponent(notebook_name);
     return notebook_name;
@@ -90,7 +98,7 @@
     var notebook_owner;
     notebook_owner = "";
     try {
-      notebook_owner = location.href.match(/notebook_owner=([^&]*)/)[1];
+      notebook_owner = location.href.match(/owner=([^&]*)/)[1];
     } catch (_error) {}
     notebook_owner = decodeURIComponent(notebook_owner);
     return notebook_owner;
@@ -117,6 +125,9 @@
         return false;
       }
     });
+    if (!$("#userName").text()) {
+      $("#saveGroup").hide();
+    }
     $("#btnSave").click(saveNotebook);
   });
 

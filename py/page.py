@@ -13,9 +13,9 @@ class Page(webapp2.RequestHandler):
         #import pdb; pdb.set_trace()
         
         #get request params
-        notebook_owner=self.request.get('notebook_owner')
-        notebook_name=self.request.get('notebook_name')
-        notebook_access=self.request.get('notebook_access')
+        notebook_owner=self.request.get('owner')
+        notebook_name=self.request.get('name')
+        notebook_access=self.request.get('access')
         debug=self.request.get('debug')
 
         template_values = {

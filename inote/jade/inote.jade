@@ -75,29 +75,25 @@ html
             script(src='js/all.js')
         
     body
-        #divHeader.header.lr_padded
+        #divHeader.header
             // <div id="divMenu" >
             table(style='width: 100%')
                 tr
                     td(style='width:100%;position:relative;')
                         span#saveIndicator
-                        input#notebookName.notebookName(type='text', value='{{notebook_name}}')
-                    td(style='text-align: right; white-space: nowrap')
-                        span.loginHolder {{login_link}}
-                tr
-                    td(style='width:100%')
+                        //input#notebookName.notebookName(type='text', value='{{notebook_name}}')
+                        span#notebookName.notebookName(onclick='changeName()') {{notebook_name}}
                         a.toolButton(href='/') Home
                         // <span id="btnClear" class="toolButton" >clear</span>
-                        span#btnSave.toolButton save
-                        span.toolButton
-                            input#autoSave(type='checkbox', style='vertical-align: text-top')
-                            label(for='autoSave') autosave
                         // <span id="btnOpen" class="toolButton" >restore</span>
-                        
-                        select#notebookAccess.selectButton(title='Access')
-                            option(value='public') public
-                            option(value='private') private
-                        
+                        span#saveGroup
+                            span#btnSave.toolButton save
+                            span.toolButton
+                                input#autoSave(type='checkbox', style='vertical-align: text-top')
+                                label(for='autoSave') autosave
+                            select#notebookAccess.selectButton(title='Access')
+                                option(value='public') public
+                                option(value='private') private
                         select#selectTheme_button.selectButton(onchange='selectTheme()')
                             option(value='default') default
                             option(value='3024-day') 3024-day
@@ -125,8 +121,13 @@ html
                             option(value='xq-light') xq-light
                     
                     td(style='text-align: right; white-space: nowrap')
-                        | Author:
-                        span.notebookOwner(title='Notebook creator') {{notebook_owner}}
+                        span.loginHolder {{login_link}}
+                //
+                    tr
+                        td(style='width:100%')
+                        td(style='text-align: right; white-space: nowrap')
+                            | Author:
+                            span.notebookOwner(title='Notebook creator') {{notebook_owner}}
         #page.page {{notebook_content}} 
 
 

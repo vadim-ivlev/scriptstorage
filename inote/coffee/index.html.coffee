@@ -19,20 +19,10 @@ buildNotebookList = (data) =>
         unless last_access is notebook_access
             s += "<div  style='padding-left: 25px; color:" + ((if notebook_access is "private" then "black" else "")) + ";  '>" + notebook_access + "</div>"
             last_access = notebook_access
-        ###    
         s += """
         <div style='padding-left: 50px;'>
            <a 
-           href='inote.html?notebook_owner=#{encodeURIComponent(notebook_owner)}&notebook_access=#{encodeURIComponent(notebook_access)}&notebook_name=#{encodeURIComponent(notebook_name)}'
-           >#{notebook_name}</a>&nbsp;&nbsp;&nbsp;
-           <span class='toolButton' title='delete' onclick='deleteNotebook("#{key_name}")'>&#x00D7</span>
-        </div>
-        """
-        ###
-        s += """
-        <div style='padding-left: 50px;'>
-           <a 
-           href='/page?notebook_owner=#{encodeURIComponent(notebook_owner)}&notebook_access=#{encodeURIComponent(notebook_access)}&notebook_name=#{encodeURIComponent(notebook_name)}'
+           href='/page?owner=#{encodeURIComponent(notebook_owner)}&access=#{encodeURIComponent(notebook_access)}&name=#{encodeURIComponent(notebook_name)}'
            >#{notebook_name}</a>&nbsp;&nbsp;&nbsp;
            <span class='toolButton' title='delete' onclick='deleteNotebook("#{key_name}")'>&#x00D7</span>
         </div>
@@ -74,5 +64,5 @@ $ ->
     
     $("#btnCreate").click ->
         newName = "N" + (5000000 + Math.floor(999000 * Math.random()))
-        document.location.href = "/page?notebook_owner=" + encodeURIComponent($("#userName").text()) + "&notebook_access=" + encodeURIComponent("public") + "&notebook_name=" + encodeURIComponent(newName)
+        document.location.href = "/page?owner=" + encodeURIComponent($("#userName").text()) + "&access=" + encodeURIComponent("public") + "&name=" + encodeURIComponent(newName)
 

@@ -9,9 +9,9 @@ class ReadHandler(webapp2.RequestHandler):
     """
     def get(self):
         #get request params
-        notebook_owner=self.request.get('notebook_owner')
-        notebook_access=self.request.get('notebook_access')
-        notebook_name=self.request.get('notebook_name')
+        notebook_owner=self.request.get('owner')
+        notebook_access=self.request.get('access')
+        notebook_name=self.request.get('name')
         element_id=self.request.get('element_id')
 
         
