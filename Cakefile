@@ -97,8 +97,8 @@ rebuild = ->
 
 
 generateHtml = (onDone)->
-    execOut "jade -P 'inote/jade/' -o 'inote/html/'", ->
-        execOut "jade -P -O '{ dbg: 1 }' 'inote/jade/'  -o 'inote/html_debug/'", ->
+    execOut 'jade -P "inote/jade/" -o "inote/html/"', ->
+        execOut 'jade -P -O "{ dbg: 1 }" "inote/jade/"  -o "inote/html_debug/"', ->
             execOut "cp inote/html/*.html py/html/", ->
                 execOut "cp inote/html_debug/*.html py/html_debug/", onDone
 
