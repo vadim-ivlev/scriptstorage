@@ -15,7 +15,9 @@
     <div id="page" class="page">
       <div id="divHeader" style="padding: 0px;height:110px;" class="header">
         <div style="float:left"><span id="appTitle">iNote</span><span id="btnCreate" class="toolButton">Create new notebook</span></div>
-        <div style="float:right"><span class="loginHolder">{{login_link}}</span></div>
+        <div style="float:right"><span class="loginHolder">{{login_link}}</span><br>
+          <button style="display:none;" onclick="hello(&quot;github&quot;).login()">facebook</button>
+        </div>
       </div>
       <div id="notebookList">{{notebook_list}}</div>
     </div>

@@ -21,4 +21,6 @@ html
                         span#btnCreate.toolButton Create new notebook
                     div(style='float:right')
                         span.loginHolder {{login_link}}
+                        br
+                        button(style='display:none;', onclick='hello("github").login()') facebook
             #notebookList {{notebook_list}}

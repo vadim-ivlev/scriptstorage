@@ -51,6 +51,26 @@
     });
   };
 
+  hello.init({
+    facebook: '1517454335144201',
+    github: '161c82b7f50dcddfa3a2c4c947afe6e30226da3'
+  }, {
+    redirect_uri: 'redirect.html'
+  });
+
+  hello.on("auth.login", function(auth) {
+    hello(auth.network).api("/me").success(function(r) {
+      var $target;
+      console.log(r);
+      alert(r);
+      $target = $("#page");
+      if ($target.length === 0) {
+        $target = $("<div id='profile_" + auth.network + "'></div>").appendTo("#profile");
+      }
+      $target.html("<img src=\"" + r.thumbnail + "\" /> Hey " + r.name).attr("title", r.name + " on " + auth.network);
+    });
+  });
+
   storage = new NoteBookStorage();
 
   $(function() {

@@ -46,9 +46,25 @@ buildNotebookList = (data) =>
     return
 
 
+# HELLOJS
+hello.init {facebook :'1517454335144201',github:'161c82b7f50dcddfa3a2c4c947afe6e30226da3' },{redirect_uri:'redirect.html'}
+
+hello.on "auth.login", (auth) ->
+  # call user information, for the given network
+  hello(auth.network).api("/me").success (r) ->
+    console.log r
+    alert r
+    $target = $("#page")
+    $target = $("<div id='profile_" + auth.network + "'></div>").appendTo("#profile")  if $target.length is 0
+    $target.html("<img src=\"" + r.thumbnail + "\" /> Hey " + r.name).attr "title", r.name + " on " + auth.network
+    return
+  return
+
+# HELLOJS
+
+
+
 storage = new NoteBookStorage()
-
-
 # on page load ==================================================================
 $ ->
     # check if login text contains python server template 
