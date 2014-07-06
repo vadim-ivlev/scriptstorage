@@ -11,11 +11,14 @@ jinja_environment = jinja2.Environment(
 class IndexPage(webapp2.RequestHandler):
     def get(self):
         #import pdb; pdb.set_trace()
+        debug=self.request.get('debug')
         template_values = {
             'notebook_list': utils.get_list_of_notebooks(),
             'login_link': utils.get_login_link()
             }
-        template = jinja_environment.get_template('index.html')
+        # if there is debug param in url render the debug version
+        folder = 'html_debug/' if debug else 'html/'
+        template = jinja_environment.get_template( folder+'index.html' )
         self.response.out.write(template.render(template_values))
 
 

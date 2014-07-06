@@ -125,6 +125,9 @@ clearAndInit = ->
 $ ->
     #$(".loginHolder").load "/getloginlink"
     
+    # page transition
+    #$("body").css("display", "none")
+    
     page = $("#page")
     xmlText = page.html()
     page.html("")
@@ -158,6 +161,11 @@ $ ->
         
     #$("#btnClear").click(clearAndInit);
     $("#btnSave").click saveNotebook
+
+    # page transition
+    #$("body").fadeIn(1000)
+
+
 
 
 #            $("#btnOpen").click(function(){

@@ -7,8 +7,9 @@
     config = {
       value: "",
       mode: "javascript",
+      vimMode: true,
       lineWrapping: true,
-      lineNumbers: false,
+      lineNumbers: true,
       autofocus: false,
       matchBrackets: true,
       autoCloseTags: true,
@@ -23,23 +24,19 @@
           spaces = Array(cm.getOption("indentUnit") + 1).join(" ");
           return cm.replaceSelection(spaces, "end", "+input");
         },
-        F2: function(ed) {
-          if (ed.getMode().name === "javascript") {
-            return foldFunc_brace(ed, ed.getCursor().line);
-          } else {
-            return foldFunc_tag(ed, ed.getCursor().line);
-          }
-        },
+
+        /*
+        F2: (ed) ->
+            if ed.getMode().name is "javascript"
+                foldFunc_brace ed, ed.getCursor().line
+            else
+                foldFunc_tag ed, ed.getCursor().line
+         */
         "Ctrl-Q": function(cm) {
           return cm.foldCode(cm.getCursor());
         },
         "Alt-F11": function(cm) {
           return setFullScreen(cm, !this.isFullScreen(cm));
-        },
-        Esc: function(cm) {
-          if (this.isFullScreen(cm)) {
-            return setFullScreen(cm, false);
-          }
         },
         "Cmd-/": "toggleComment",
         "Ctrl-/": "toggleComment"

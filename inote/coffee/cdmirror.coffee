@@ -2,8 +2,9 @@
     config =
         value: "" #function myScript(){return 100;}
         mode: "javascript"
+        vimMode: true
         lineWrapping: true
-        lineNumbers: false
+        lineNumbers: true
         autofocus: false
         matchBrackets: true
         autoCloseTags: true
@@ -21,13 +22,13 @@
             Tab: (cm) ->
                 spaces = Array(cm.getOption("indentUnit") + 1).join(" ")
                 cm.replaceSelection spaces, "end", "+input"
-
+            ###
             F2: (ed) ->
                 if ed.getMode().name is "javascript"
                     foldFunc_brace ed, ed.getCursor().line
                 else
                     foldFunc_tag ed, ed.getCursor().line
-
+            ###
             "Ctrl-Q": (cm) -> cm.foldCode cm.getCursor()
 
             
@@ -36,7 +37,7 @@
 
             
             #FULL SCREEN keys
-            Esc: (cm) -> setFullScreen cm, false    if @isFullScreen(cm)
+            #Esc: (cm) -> setFullScreen cm, false    if @isFullScreen(cm)
 
             "Cmd-/": "toggleComment"
             "Ctrl-/": "toggleComment"

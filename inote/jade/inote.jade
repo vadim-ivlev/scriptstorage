@@ -40,26 +40,28 @@ html
         script(type='text/javascript'). 
             $.browser={ msie: ( navigator.appName == 'Microsoft Internet Explorer') ? true : false } ;
         if dbg            
-            script(src='libs/codemirror-3.0/lib/codemirror.js')
-            script(src='libs/codemirror-3.0/addon/hint/show-hint.js')
-            script(src='libs/codemirror-3.0/addon/hint/javascript-hint.js')
-            script(src='libs/codemirror-3.0/addon/comment/comment.js')
-            script(src='libs/codemirror-3.0/mode/xml/xml.js')
-            script(src='libs/codemirror-3.0/mode/javascript/javascript.js')
-            script(src='libs/codemirror-3.0/mode/css/css.js')
-            script(src='libs/codemirror-3.0/mode/htmlmixed/htmlmixed.js')
-            script(src='libs/codemirror-3.0/mode/coffeescript/coffeescript.js')
-            script(src='libs/codemirror-3.0/addon/edit/formatting.js')
-            script(src='libs/codemirror-3.0/addon/edit/matchbrackets.js')
-            script(src='libs/codemirror-3.0/addon/edit/closetag.js')
-            script(src='libs/codemirror-3.0/addon/fold/foldcode.js')
-            script(src='libs/codemirror-3.0/addon/fold/foldgutter.js')
-            script(src='libs/codemirror-3.0/addon/fold/brace-fold.js')
-            script(src='libs/codemirror-3.0/addon/fold/xml-fold.js')
-            script(src='libs/codemirror-3.0/addon/fold/indent-fold.js')
-            script(src='libs/codemirror-3.0/addon/dialog/dialog.js')
-            script(src='libs/codemirror-3.0/addon/search/searchcursor.js')
-            script(src='libs/codemirror-3.0/addon/search/search.js')
+            script(src='libs/codemirror-4.3/lib/codemirror.js')
+            script(src='libs/codemirror-4.3/addon/hint/show-hint.js')
+            script(src='libs/codemirror-4.3/addon/hint/javascript-hint.js')
+            script(src='libs/codemirror-4.3/addon/comment/comment.js')
+            script(src='libs/codemirror-4.3/mode/xml/xml.js')
+            script(src='libs/codemirror-4.3/mode/javascript/javascript.js')
+            script(src='libs/codemirror-4.3/mode/css/css.js')
+            script(src='libs/codemirror-4.3/mode/htmlmixed/htmlmixed.js')
+            script(src='libs/codemirror-4.3/mode/coffeescript/coffeescript.js')
+            //script(src='libs/codemirror-4.3/addon/edit/formatting.js')
+            script(src='libs/codemirror-4.3/addon/edit/matchbrackets.js')
+            script(src='libs/codemirror-4.3/addon/edit/closetag.js')
+            script(src='libs/codemirror-4.3/addon/fold/foldcode.js')
+            script(src='libs/codemirror-4.3/addon/fold/foldgutter.js')
+            script(src='libs/codemirror-4.3/addon/fold/brace-fold.js')
+            script(src='libs/codemirror-4.3/addon/fold/xml-fold.js')
+            script(src='libs/codemirror-4.3/addon/fold/indent-fold.js')
+            script(src='libs/codemirror-4.3/addon/dialog/dialog.js')
+            script(src='libs/codemirror-4.3/addon/search/searchcursor.js')
+            script(src='libs/codemirror-4.3/addon/search/search.js')
+                
+            script(src='libs/codemirror-4.3/keymap/vim.js')
             
             script(src='libs/coffee-script.js')
             script(src='libs/json2.min.js')
@@ -76,59 +78,52 @@ html
         
     body
         #divHeader.header
-            // <div id="divMenu" >
-            table(style='width: 100%')
-                tr
-                    td(style='width:100%;position:relative;')
-                        span#saveIndicator
-                        //input#notebookName.notebookName(type='text', value='{{notebook_name}}')
-                        span#notebookName.notebookName(onclick='changeName()') {{notebook_name}}
-                        span.notebookVersion {{notebook_version}}
-                        a.toolButton(href='/') Home
-                        // <span id="btnClear" class="toolButton" >clear</span>
-                        // <span id="btnOpen" class="toolButton" >restore</span>
-                        span#saveGroup
-                            span#btnSave.toolButton save
-                            span.toolButton
-                                input#autoSave(type='checkbox', style='vertical-align: text-top')
-                                label(for='autoSave') autosave
-                            select#notebookAccess.selectButton(title='Access')
-                                option(value='public') public
-                                option(value='private') private
-                            select#selectTheme_button.selectButton(onchange='selectTheme()')
-                                option(value='default') default
-                                option(value='3024-day') 3024-day
-                                option(value='3024-night') 3024-night
-                                option(value='ambiance') ambiance
-                                option(value='base16-dark') base16-dark
-                                option(value='base16-light') base16-light
-                                option(value='blackboard') blackboard
-                                option(value='cobalt') cobalt
-                                option(value='eclipse') eclipse
-                                option(value='elegant') elegant
-                                option(value='erlang-dark') erlang-dark
-                                option(value='lesser-dark') lesser-dark
-                                option(value='midnight') midnight
-                                option(value='monokai') monokai
-                                option(value='neat') neat
-                                option(value='night') night
-                                option(value='rubyblue') rubyblue
-                                option(value='solarized dark') solarized dark
-                                option(value='solarized light') solarized light
-                                option(value='tomorrow-night-eighties') tomorrow-night-eighties
-                                option(value='twilight') twilight
-                                option(value='vibrant-ink') vibrant-ink
-                                option(value='xq-dark') xq-dark
-                                option(value='xq-light') xq-light
-                    
-                    td(style='text-align: right; white-space: nowrap')
-                        span.loginHolder {{login_link}}
-                //
-                    tr
-                        td(style='width:100%')
-                        td(style='text-align: right; white-space: nowrap')
-                            | Author:
-                            span.notebookOwner(title='Notebook creator') {{notebook_owner}}
+            div(style='float:left')
+                span#saveIndicator
+                span#notebookName.notebookName(onclick='changeName()') {{notebook_name}}
+                span.notebookVersion {{notebook_version}}
+                a.toolButton(href='/') Home
+                // <span id="btnClear" class="toolButton" >clear</span>
+                // <span id="btnOpen" class="toolButton" >restore</span>
+                span#saveGroup
+                    span#btnSave.toolButton save
+                    span.toolButton
+                        input#autoSave(type='checkbox', style='vertical-align: text-top')
+                        label(for='autoSave') autosave
+                    select#notebookAccess.selectButton(title='Access')
+                        option(value='public') public
+                        option(value='private') private
+                    select#selectTheme_button.selectButton(onchange='selectTheme()')
+                        option(value='default') default
+                        option(value='3024-day') 3024-day
+                        option(value='3024-night') 3024-night
+                        option(value='ambiance') ambiance
+                        option(value='base16-dark') base16-dark
+                        option(value='base16-light') base16-light
+                        option(value='blackboard') blackboard
+                        option(value='cobalt') cobalt
+                        option(value='eclipse') eclipse
+                        option(value='elegant') elegant
+                        option(value='erlang-dark') erlang-dark
+                        option(value='lesser-dark') lesser-dark
+                        option(value='midnight') midnight
+                        option(value='monokai') monokai
+                        option(value='neat') neat
+                        option(value='night') night
+                        option(value='rubyblue') rubyblue
+                        option(value='solarized dark') solarized dark
+                        option(value='solarized light') solarized light
+                        option(value='tomorrow-night-eighties') tomorrow-night-eighties
+                        option(value='twilight') twilight
+                        option(value='vibrant-ink') vibrant-ink
+                        option(value='xq-dark') xq-dark
+                        option(value='xq-light') xq-light
+            
+            div(style='float: right; white-space: nowrap')
+                span.notebookOwner {{notebook_owner}}
+                span.loginHolder {{login_link}}
+        
+        
         #page.page {{notebook_content}} 
 
 

@@ -9,18 +9,16 @@ html
         link(rel='stylesheet', href='css/index.css')
         
         script(src='//code.jquery.com/jquery-1.11.0.min.js')
+        script(src='libs/hello.min.js')
         script(src='js/notebookstorage.js')
         script(type='text/javascript', src='js/index.html.js')
 
     body(style='padding:10px;')
         #page.page
-            #divHeader.header(style='padding: 0px')
-                #divMenu
-                    table(cellspacing='0', cellpadding='0', style='width: 100%')
-                        tr
-                            td(style='width:100%')
-                                span#appTitle iNote
-                                span#btnCreate.toolButton Create new notebook
-                            td
-                                span.loginHolder {{login_link}}
+            #divHeader.header(style='padding: 0px;height:110px;')
+                    div(style='float:left')
+                        span#appTitle iNote
+                        span#btnCreate.toolButton Create new notebook
+                    div(style='float:right')
+                        span.loginHolder {{login_link}}
             #notebookList {{notebook_list}}

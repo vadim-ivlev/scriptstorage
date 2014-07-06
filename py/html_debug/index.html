@@ -7,20 +7,15 @@
     <title>i Note Book list</title>
     <link rel="stylesheet" href="css/index.css">
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="libs/hello.min.js"></script>
     <script src="js/notebookstorage.js"></script>
     <script type="text/javascript" src="js/index.html.js"></script>
   </head>
   <body style="padding:10px;">
     <div id="page" class="page">
-      <div id="divHeader" style="padding: 0px" class="header">
-        <div id="divMenu">
-          <table cellspacing="0" cellpadding="0" style="width: 100%">
-            <tr>
-              <td style="width:100%"><span id="appTitle">iNote</span><span id="btnCreate" class="toolButton">Create new notebook</span></td>
-              <td><span class="loginHolder">{{login_link}}</span></td>
-            </tr>
-          </table>
-        </div>
+      <div id="divHeader" style="padding: 0px;height:110px;" class="header">
+        <div style="float:left"><span id="appTitle">iNote</span><span id="btnCreate" class="toolButton">Create new notebook</span></div>
+        <div style="float:right"><span class="loginHolder">{{login_link}}</span></div>
       </div>
       <div id="notebookList">{{notebook_list}}</div>
     </div>

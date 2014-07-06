@@ -24,20 +24,13 @@ select {
   margin-right: auto;
 }
 .header {
-  border-bottom: 0px solid rgba(200, 200, 200, 0.4);
   padding-left: 20px;
   padding-right: 20px;
-  font-family: Roboto, sans-serif;
 }
 .header:hover .hidable {
   visibility: visible;
 }
 .loginHolder {
-  white-space: nowrap;
-  font-family: Roboto, sans-serif;
-  color: #777777;
-}
-.notebookOwner {
   white-space: nowrap;
   font-family: Roboto, sans-serif;
   color: #777777;
@@ -65,7 +58,6 @@ select {
 }
 #notebookList {
   font-family: arial, sans-serif;
-  margin-top: 50px;
   color: #777777;
 }
 #notebookList a {
