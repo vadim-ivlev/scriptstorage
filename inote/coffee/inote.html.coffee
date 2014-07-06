@@ -14,27 +14,41 @@ inote = undefined
 
 
 @saveNotebookLater = ->
-    clearTimeout saveNotebookTimeout
-    (if ($("#autoSave").is(":checked")) then saveNotebookTimeout = setTimeout(saveNotebook, 2000) else null)
     $("#saveIndicator").text "*"
+    clearTimeout saveNotebookTimeout
+
+    #saveWithVersion = ->
+    #    saveNotebook true
+
+    if $("#autoSave").is(":checked")
+        saveNotebookTimeout = setTimeout saveNotebook , 2000
     return
+        
+        
 
 
-@saveNotebook = ->
+@saveNotebook = (event) ->
     notebookName = $("#notebookName").text()
     notebookOwner = $(".notebookOwner").text()
     notebookAaccess = $("#notebookAccess").val()
+    
+    # If it was the button who initiated the event then dont pass the version
+    notebookVersion = if event then null else $(".notebookVersion").text()
+
     xmlText = inote.getXmlText(notebookName)
     
     #console.log(xmlText);
     console.log "saveNotebook"
     
     #localStorage.setItem("inote_"+bookName, xmlText);
-    storage.put notebookAaccess, notebookName, xmlText, (d) ->
-        if d.match(/^Err/)
-            alert d
+    storage.put notebookAaccess, notebookName, xmlText, notebookVersion, (d) ->
+        o=eval "a=#{d}"
+        return unless o
+        if o.error
+            alert o.error
         else
             $("#saveIndicator").text ""
+            $(".notebookVersion").text o.version
         return
 
     return
@@ -126,18 +140,24 @@ $ ->
     $("#notebookAccess").val getNotebookAccessFromUrl()
 
     
-    #handlers
+    ### Save if the user press Ctrl-S
     $("body").keydown (event) ->
         if event.ctrlKey and event.keyCode is 83 #Ctrl-S
             saveNotebook()
             false
+    ###
+    
+    
     # hide save button if the user is not loginned
-    if not $("#userName").text()
+    userName= $("#userName").text()
+    if not userName
         $("#saveGroup").hide()
     
+    if userName != getNotebookOwnerFromUrl()
+        $("#saveGroup").hide()
+        
     #$("#btnClear").click(clearAndInit);
     $("#btnSave").click saveNotebook
-    return
 
 
 #            $("#btnOpen").click(function(){

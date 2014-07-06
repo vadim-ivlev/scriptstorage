@@ -1,3 +1,7 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:300&subset=latin,cyrillic);
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:300&subset=latin,cyrillic);
+@import url(http://fonts.googleapis.com/css?family=Roboto:300&subset=latin,cyrillic);
+@import url(http://fonts.googleapis.com/css?family=Cousine&;subset=latin,cyrillic);
 /* BASICS */
 
 .CodeMirror {
@@ -1204,10 +1208,6 @@ View-port and gutter both get little noise background to give it a real feel.
   font-size: 70%;
 }
 
-@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:300&subset=latin,cyrillic);
-@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:300&subset=latin,cyrillic);
-@import url(http://fonts.googleapis.com/css?family=Roboto:300&subset=latin,cyrillic);
-@import url(http://fonts.googleapis.com/css?family=Cousine&;subset=latin,cyrillic);
 body {
   background-color: white;
   margin-left: 0px;
@@ -1482,14 +1482,23 @@ select {
 }
 .notebookName {
   position: relative;
-  left: 0px;
-  width: 350px;
   border: 1px solid transparent;
   font-family: Roboto, sans-serif;
   font-size: 16px;
   vertical-align: middle;
   -webkit-appearance: none;
   cursor: pointer;
+}
+.notebookVersion {
+  position: relative;
+  border: 1px solid transparent;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  cursor: pointer;
+  font-size: 10px;
+  vertical-align: top;
 }
 .notebookName:hover {
   border-bottom: 1px dotted #777777;

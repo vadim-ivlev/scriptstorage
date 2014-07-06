@@ -16,10 +16,20 @@ class Page(webapp2.RequestHandler):
         notebook_owner=self.request.get('owner')
         notebook_name=self.request.get('name')
         notebook_access=self.request.get('access')
+        version=self.request.get('version')
         debug=self.request.get('debug')
+        content=""
+        
+        # retrieve the page if it is allowed
+        if utils.access_allowed(notebook_access, notebook_owner):
+            (content, version)=utils.get_notebook_content(notebook_owner,notebook_access, notebook_name, version)
+
+        if not version:
+            version = "0"
 
         template_values = {
-            'notebook_content': utils.get_notebook_content(notebook_owner,notebook_access, notebook_name),
+            'notebook_content': content,
+            'notebook_version': str(version),
             'login_link': utils.get_login_link(),
             'notebook_owner': notebook_owner,
             'notebook_name': notebook_name,
@@ -32,6 +42,7 @@ class Page(webapp2.RequestHandler):
         text=template.render(template_values)
         
         self.response.headers['Content-Type'] = 'text/html'
+        self.response.headers['Content-Version'] = str(version)
         self.response.out.write(text)
 
 

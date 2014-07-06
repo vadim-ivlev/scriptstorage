@@ -83,6 +83,7 @@ html
                         span#saveIndicator
                         //input#notebookName.notebookName(type='text', value='{{notebook_name}}')
                         span#notebookName.notebookName(onclick='changeName()') {{notebook_name}}
+                        span.notebookVersion {{notebook_version}}
                         a.toolButton(href='/') Home
                         // <span id="btnClear" class="toolButton" >clear</span>
                         // <span id="btnOpen" class="toolButton" >restore</span>
@@ -94,31 +95,31 @@ html
                             select#notebookAccess.selectButton(title='Access')
                                 option(value='public') public
                                 option(value='private') private
-                        select#selectTheme_button.selectButton(onchange='selectTheme()')
-                            option(value='default') default
-                            option(value='3024-day') 3024-day
-                            option(value='3024-night') 3024-night
-                            option(value='ambiance') ambiance
-                            option(value='base16-dark') base16-dark
-                            option(value='base16-light') base16-light
-                            option(value='blackboard') blackboard
-                            option(value='cobalt') cobalt
-                            option(value='eclipse') eclipse
-                            option(value='elegant') elegant
-                            option(value='erlang-dark') erlang-dark
-                            option(value='lesser-dark') lesser-dark
-                            option(value='midnight') midnight
-                            option(value='monokai') monokai
-                            option(value='neat') neat
-                            option(value='night') night
-                            option(value='rubyblue') rubyblue
-                            option(value='solarized dark') solarized dark
-                            option(value='solarized light') solarized light
-                            option(value='tomorrow-night-eighties') tomorrow-night-eighties
-                            option(value='twilight') twilight
-                            option(value='vibrant-ink') vibrant-ink
-                            option(value='xq-dark') xq-dark
-                            option(value='xq-light') xq-light
+                            select#selectTheme_button.selectButton(onchange='selectTheme()')
+                                option(value='default') default
+                                option(value='3024-day') 3024-day
+                                option(value='3024-night') 3024-night
+                                option(value='ambiance') ambiance
+                                option(value='base16-dark') base16-dark
+                                option(value='base16-light') base16-light
+                                option(value='blackboard') blackboard
+                                option(value='cobalt') cobalt
+                                option(value='eclipse') eclipse
+                                option(value='elegant') elegant
+                                option(value='erlang-dark') erlang-dark
+                                option(value='lesser-dark') lesser-dark
+                                option(value='midnight') midnight
+                                option(value='monokai') monokai
+                                option(value='neat') neat
+                                option(value='night') night
+                                option(value='rubyblue') rubyblue
+                                option(value='solarized dark') solarized dark
+                                option(value='solarized light') solarized light
+                                option(value='tomorrow-night-eighties') tomorrow-night-eighties
+                                option(value='twilight') twilight
+                                option(value='vibrant-ink') vibrant-ink
+                                option(value='xq-dark') xq-dark
+                                option(value='xq-light') xq-light
                     
                     td(style='text-align: right; white-space: nowrap')
                         span.loginHolder {{login_link}}

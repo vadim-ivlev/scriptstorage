@@ -1,3 +1,6 @@
+@import 'common';
+@import 'cell';
+
 
         // codemirror begin
 @import (inline) '../libs/codemirror-3.0/lib/codemirror.css';
@@ -31,8 +34,6 @@
 
 
 
-@import 'common';
-@import 'cell';
 @import 'mycodemirror';
 
 #saveIndicator {
@@ -45,19 +46,22 @@
     font-size:22px;
     color:@LINKCOLOR; 
 }
+
 .notebookName {
     position: relative;
-    left:0px;
-    width:350px;
     border:1px solid transparent;
     font-family: @BUTTONFONT;
     font-size: 16px;
-    //width:100%;
     vertical-align: middle;
     -webkit-appearance: none;
     cursor:pointer;
 }
 
+.notebookVersion {
+    .notebookName;
+    font-size:10px;
+    vertical-align:top;
+}
 
 .notebookName:hover {
     border-bottom: 1px dotted @LINKCOLOR;

@@ -14,27 +14,32 @@
   };
 
   this.saveNotebookLater = function() {
+    $("#saveIndicator").text("*");
     clearTimeout(saveNotebookTimeout);
     if ($("#autoSave").is(":checked")) {
       saveNotebookTimeout = setTimeout(saveNotebook, 2000);
-    } else {
-      null;
     }
-    $("#saveIndicator").text("*");
   };
 
-  this.saveNotebook = function() {
-    var notebookAaccess, notebookName, notebookOwner, xmlText;
+  this.saveNotebook = function(event) {
+    var notebookAaccess, notebookName, notebookOwner, notebookVersion, xmlText;
     notebookName = $("#notebookName").text();
     notebookOwner = $(".notebookOwner").text();
     notebookAaccess = $("#notebookAccess").val();
+    notebookVersion = event ? null : $(".notebookVersion").text();
     xmlText = inote.getXmlText(notebookName);
     console.log("saveNotebook");
-    storage.put(notebookAaccess, notebookName, xmlText, function(d) {
-      if (d.match(/^Err/)) {
-        alert(d);
+    storage.put(notebookAaccess, notebookName, xmlText, notebookVersion, function(d) {
+      var o;
+      o = eval("a=" + d);
+      if (!o) {
+        return;
+      }
+      if (o.error) {
+        alert(o.error);
       } else {
         $("#saveIndicator").text("");
+        $(".notebookVersion").text(o.version);
       }
     });
   };
@@ -110,7 +115,7 @@
   };
 
   $(function() {
-    var page, xmlText;
+    var page, userName, xmlText;
     page = $("#page");
     xmlText = page.html();
     page.html("");
@@ -119,16 +124,21 @@
     inote.setTheme($("#selectTheme_button").val());
     restoreNotebookFromXml(xmlText);
     $("#notebookAccess").val(getNotebookAccessFromUrl());
-    $("body").keydown(function(event) {
-      if (event.ctrlKey && event.keyCode === 83) {
-        saveNotebook();
-        return false;
-      }
-    });
-    if (!$("#userName").text()) {
+
+    /* Save if the user press Ctrl-S
+    $("body").keydown (event) ->
+        if event.ctrlKey and event.keyCode is 83 #Ctrl-S
+            saveNotebook()
+            false
+     */
+    userName = $("#userName").text();
+    if (!userName) {
       $("#saveGroup").hide();
     }
-    $("#btnSave").click(saveNotebook);
+    if (userName !== getNotebookOwnerFromUrl()) {
+      $("#saveGroup").hide();
+    }
+    return $("#btnSave").click(saveNotebook);
   });
 
 }).call(this);

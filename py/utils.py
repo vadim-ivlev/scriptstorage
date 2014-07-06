@@ -53,49 +53,65 @@ def get_list_of_notebooks():
     
 
 
+def access_allowed(notebook_access,notebook_owner) :
+    """
+    check if the user can read the the page
+    """
+    if notebook_access == "public":          # if access is public
+        return True
+    # access is private 
+    if users.get_current_user():                 # check if the user is logined.    
+        return users.get_current_user().nickname() == notebook_owner   # make sure the user is the owner.
+    else:
+        return False # the user is not loginned
 
 
-def get_notebook_content(owner_nickname, notebook_access, notebook_name):
+
+
+def get_notebook_content(owner_nickname, notebook_access, notebook_name, notebook_version):
     """
     Returns content of the notebook.
     """
     content = "" #content of the book
 
     # calculate the key to retrieve content from db
-    key = db.Key.from_path("NoteBook", owner_nickname+"/"+notebook_access+"/"+notebook_name)
+    key_name=owner_nickname+"/"+notebook_access+"/"+notebook_name
+    
+    #import pdb; pdb.set_trace()
+    # if version is not specified return the latest one from NoteBook
+    if notebook_version == "" or notebook_version is None:
+        key = db.Key.from_path("NoteBook", key_name)
+    else: # return the required version from NoteBookVersion
+        # Add version to the key to retrieve a saved version
+        key = db.Key.from_path("NoteBookVersion", key_name+"/"+str(notebook_version) )
+
 
     if not key:
-        return content
+        return (content, 0)
     
-    if notebook_access == "public":          # if access is public
-        notebook = NoteBook.get( key )          # get the notebook.
-        if notebook:                            # if notebook is found
-            return  notebook.content               # return its content. 
-    else:                                        # else (access is private) 
-        if users.get_current_user():                 # check if the user is logined.    
-            nickname = users.get_current_user().nickname() # get the user nick name.
-            if nickname == owner_nickname:                 # make sure the user is the owner.
-                notebook = NoteBook.get( key )             # get the notebook.
-                if notebook:                               # if a notebook is found 
-                    return notebook.content                    # return its content.
+    notebook = NoteBook.get( key )          # get the notebook.
+    if notebook:                            # if notebook is found
+        return  (notebook.content, notebook.version)    # return its content. 
 
-    return content
+    return (content, 0)
 
 
 
 
-
-def get_notebook_element(owner_nickname, notebook_access, notebook_name, element_id):
+def get_notebook_element(owner_nickname, notebook_access, notebook_name, element_id, notebook_version):
     """
     Returns part of the notebook by id.
     """
     #import pdb; pdb.set_trace()
     
-    content = get_notebook_content( owner_nickname, notebook_access, notebook_name)
+    (content,version) = get_notebook_content( owner_nickname, notebook_access, notebook_name, notebook_version)
+    
+    # Extract the element
     root = ET.fromstring(content)
     e = root.find(".//*[@id='%s']" % element_id)
     s = ET.tostring(e, encoding="UTF-8", method="text") 
-    return s
+    
+    return (s, version)
 
 
 

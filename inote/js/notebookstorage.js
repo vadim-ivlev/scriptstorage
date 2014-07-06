@@ -27,19 +27,24 @@
       });
     };
 
-    NoteBookStorage.prototype.put = function(access, notebook_name, notebook_content, onsuccess, onerror) {
-      return $.ajax({
+    NoteBookStorage.prototype.put = function(notebook_access, notebook_name, notebook_content, notebook_version, onsuccess, onerror) {
+      var r;
+      r = {
         type: "POST",
         url: "/write",
         dataType: "text",
         data: {
           name: notebook_name,
-          access: access,
+          access: notebook_access,
           content: notebook_content
         },
         success: onsuccess,
         error: onerror
-      });
+      };
+      if (notebook_version) {
+        r.data.version = notebook_version;
+      }
+      return $.ajax(r);
     };
 
     NoteBookStorage.prototype.del = function(key_name, onsuccess, onerror) {

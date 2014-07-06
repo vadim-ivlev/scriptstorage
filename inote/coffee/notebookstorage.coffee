@@ -26,20 +26,24 @@ class @NoteBookStorage
 
 
 
-    put : (access, notebook_name, notebook_content, onsuccess, onerror) ->
+    put : (notebook_access, notebook_name, notebook_content, notebook_version, onsuccess, onerror) ->
         #localStorage.setItem "inote_" + notebook_name, notebook_content
-        $.ajax
+        r =
             type: "POST"
             url: "/write"
             dataType: "text"
             data:
                 name: notebook_name
-                access: access
+                access: notebook_access
                 content: notebook_content
 
             success: onsuccess
             error: onerror
-
+        
+        if notebook_version
+            r.data.version = notebook_version
+        
+        $.ajax r
 
 
     del: (key_name, onsuccess, onerror) ->
