@@ -47,7 +47,7 @@ buildNotebookList = (data) =>
 
 
 # HELLOJS
-hello.init {facebook :'1517454335144201',github:'161c82b7f50dcddfa3a2c4c947afe6e30226da3' },{redirect_uri:'redirect.html'}
+hello.init {facebook :'1517454335144201',windows:'0000000044121F60' },{redirect_uri:'redirect.html'}
 
 hello.on "auth.login", (auth) ->
   # call user information, for the given network
