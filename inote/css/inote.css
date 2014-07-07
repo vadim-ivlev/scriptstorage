@@ -1367,7 +1367,7 @@ select {
 .outputTitle {
   color: #777777;
   display: inline-block;
-  font-family: arial, sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 12px;
   cursor: default;
   vertical-align: middle;
@@ -1462,7 +1462,7 @@ select {
   opacity: 0.3;
 }
 .markdown {
-  font-family: arial, sans-serif;
+  font-family: Roboto, sans-serif;
 }
 .markdown > * {
   margin-left: 10px;

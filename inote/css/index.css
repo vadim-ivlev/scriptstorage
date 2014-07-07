@@ -54,14 +54,14 @@ select {
   font-family: Roboto, sans-serif;
 }
 #appTitle {
-  font-family: arial, sans-serif;
+  font-family: Roboto, sans-serif;
   width: 100%;
   vertical-align: middle;
   font-size: 70px;
   font-weight: normal;
 }
 #notebookList {
-  font-family: arial, sans-serif;
+  font-family: Roboto, sans-serif;
   color: #777777;
 }
 #notebookList a {
