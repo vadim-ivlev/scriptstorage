@@ -7,7 +7,7 @@
     <title>i Note Book list</title>
     <link rel="stylesheet" href="css/index.css">
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="libs/hello.min.js"></script>
+    <!--script(src='libs/hello.min.js')-->
     <script src="js/notebookstorage.js"></script>
     <script type="text/javascript" src="js/index.html.js"></script>
   </head>
@@ -15,8 +15,9 @@
     <div id="page" class="page">
       <div id="divHeader" style="padding: 0px;height:110px;" class="header">
         <div style="float:left"><span id="appTitle">iNote</span><span id="btnCreate" class="toolButton">Create new notebook</span></div>
-        <div style="float:right"><span class="loginHolder">{{login_link}}</span><br>
-          <button style="display:non;" onclick="hello(&quot;windows&quot;).login()">w</button>
+        <div style="float:right">
+          <div class="loginHolder">{{login_link}}</div>
+          <div class="oauthHolder"></div>
         </div>
       </div>
       <div id="notebookList">{{notebook_list}}</div>

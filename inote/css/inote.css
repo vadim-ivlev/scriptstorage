@@ -1332,6 +1332,9 @@ select {
 .toolButton:hover {
   border: 1px dotted rgba(200, 200, 200, 0.4);
 }
+.oauthHolder {
+  font-family: Roboto, sans-serif;
+}
 /*------------cell----------------------*/
 @font-face {
   font-family: 'icomoon';

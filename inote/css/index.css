@@ -50,6 +50,9 @@ select {
 .toolButton:hover {
   border: 1px dotted rgba(200, 200, 200, 0.4);
 }
+.oauthHolder {
+  font-family: Roboto, sans-serif;
+}
 #appTitle {
   font-family: arial, sans-serif;
   width: 100%;

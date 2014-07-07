@@ -46,23 +46,39 @@ buildNotebookList = (data) =>
     return
 
 
-# HELLOJS
-hello.init {facebook :'1517454335144201',windows:'0000000044121F60' },{redirect_uri:'redirect.html'}
-
-hello.on "auth.login", (auth) ->
-  # call user information, for the given network
-  hello(auth.network).api("/me").success (r) ->
-    console.log r
-    alert r
-    $target = $("#page")
-    $target = $("<div id='profile_" + auth.network + "'></div>").appendTo("#profile")  if $target.length is 0
-    $target.html("<img src=\"" + r.thumbnail + "\" /> Hey " + r.name).attr "title", r.name + " on " + auth.network
-    return
-  return
 
 # HELLOJS
+prepareOAuthorization = ->
+    $.getScript "/inote/libs/hello.min.js", ->
+        hello.init
+            facebook :'1517454335144201'
+            windows:'0000000044121F60'
+        ,
+            redirect_uri:'http://inote.vadimivlev.com'
+            display: 'popup'
 
+        #{redirect_uri:'https://login.live.com/oauth20_desktop.srf'} 
 
+        hello.on "auth.login", (auth) ->
+          # call user information, for the given network
+          hello(auth.network).api("/me").success (r) ->
+            console.log r
+            $page_ = $("#page")
+            $div_ = $("<div id='profile_'><img src='#{r.thumbnail}' /> Hey #{r.name} <br>id: #{r.id}</div>").appendTo($page_)
+            return
+          return
+
+        win_log=$("<a id='win_log' href=''' style='margin:5px'>win_log</a>").appendTo $(".oauthHolder")
+        win_log.click (e) -> e.preventDefault(); hello.login('windows')
+
+        win_out=$("<a id='win_out' href='' style='margin:5px'>win_out</a>").appendTo $(".oauthHolder")
+        win_out.click (e) -> e.preventDefault(); hello.logout('windows',{force:true}); console.log "logout"
+
+        fb = hello("facebook").getAuthResponse()
+        wl = hello("windows").getAuthResponse()
+        #console.log ((if online(fb) then "Signed" else "Not signed")) + " into FaceBook, " + ((if online(wl) then "Signed" else "Not signed")) + " into Windows Live"
+        console.log fb
+        console.log wl
 
 storage = new NoteBookStorage()
 # on page load ==================================================================
@@ -81,4 +97,5 @@ $ ->
     $("#btnCreate").click ->
         newName = "N" + (5000000 + Math.floor(999000 * Math.random()))
         document.location.href = "/page?owner=" + encodeURIComponent($("#userName").text()) + "&access=" + encodeURIComponent("public") + "&name=" + encodeURIComponent(newName)
-
+    
+    prepareOAuthorization()
