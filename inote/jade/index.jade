@@ -20,6 +20,8 @@ html
                         span#appTitle iNote
                         span#btnCreate.toolButton Create new notebook
                     div(style='float:right')
-                        div.loginHolder {{login_link}}
+                        div
+                            span.loginHolder.icon-login {{login_link}}
+                            //span.icon-login &gt;
                         div.oauthHolder
             #notebookList {{notebook_list}}

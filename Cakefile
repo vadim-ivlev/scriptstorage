@@ -59,6 +59,7 @@ uglify = require("uglify-js")
 
 
 task "server", "type: dev_appserver.py #{curDirSymbol}", ->
+    execOut "dev_appserver.py #{curDirSymbol}"
 
 
 task "rebuild", "rebuild all", ->
