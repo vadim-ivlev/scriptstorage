@@ -52,48 +52,93 @@
   };
 
   prepareOAuthorization = function() {
-    return $.getScript("/inote/libs/hello.min.js", function() {
-      var fb, win_log, win_out, wl;
-      hello.init({
-        facebook: '1517454335144201',
-        windows: '0000000044121F60'
-      }, {
-        redirect_uri: 'http://inote.vadimivlev.com',
-        display: 'popup'
-      });
-      hello.on("auth.login", function(auth) {
-        hello(auth.network).api("/me").success(function(r) {
-          var $div_, $page_;
-          console.log(r);
-          $page_ = $("#page");
-          $div_ = $("<div id='profile_'><img src='" + r.thumbnail + "' /> Hey " + r.name + " <br>id: " + r.id + "</div>").appendTo($page_);
-        });
-      });
-      win_log = $("<a id='win_log' href=''' style='margin:5px'>win_log</a>").appendTo($(".oauthHolder"));
-      win_log.click(function(e) {
-        e.preventDefault();
-        return hello.login('windows');
-      });
-      win_out = $("<a id='win_out' href='' style='margin:5px'>win_out</a>").appendTo($(".oauthHolder"));
-      win_out.click(function(e) {
-        e.preventDefault();
-        hello.logout('windows', {
-          force: true
-        });
-        return console.log("logout");
-      });
-      fb = hello("facebook").getAuthResponse();
-      wl = hello("windows").getAuthResponse();
-      console.log(fb);
-      return console.log(wl);
+    var adjustGUI, buildLoginButtons, buildLogoutButton, checkNetwork, oLogin, oLogout, oauthHolder;
+    hello.init({
+      facebook: '1517454335144201',
+      windows: '0000000044121F60'
+    }, {
+      redirect_uri: 'http://inote.vadimivlev.com',
+      display: 'popup'
     });
+    hello.on("auth.login", function(auth) {
+      hello(auth.network).api("/me").success(function(r) {
+        var $div_, $page_;
+        console.log("auth.login");
+        console.log(r);
+        $page_ = $("#page");
+        $div_ = $("<div id='profile_'>\n    <img src='" + r.thumbnail + "' style='width:50px; height:50px; border-radius:25px;vertical-align:middle;'/>\n    id: " + r.id + "\n    name: " + r.name + "\n</div>").appendTo($page_);
+      });
+    });
+    hello.on("auth.logout", function(auth) {
+      console.log("auth.logout");
+      return console.log(auth);
+    });
+    buildLoginButtons = function(oLogin) {
+      var addLoginLink;
+      addLoginLink = function(iconClass, network) {
+        return $("<a id='" + network + "_login' class='" + iconClass + "' href='' style='text-decoration:none; margin:3px'></a>").appendTo(oLogin).click(function(e) {
+          e.preventDefault();
+          return hello.login(network);
+        });
+      };
+      addLoginLink("icon-windows", "windows");
+      addLoginLink("icon-googleplus", "googleplus");
+      addLoginLink("icon-githib", "github");
+      addLoginLink("icon-wordpress", "wordpress");
+      addLoginLink("icon-twitter", "twitter");
+      return addLoginLink("icon-linkedin", "linkedin");
+    };
+    buildLogoutButton = function(oLogout) {
+      var addLogoutLink;
+      addLogoutLink = function(iconClass, network) {
+        return $("<a id='" + network + "_logout' class='" + iconClass + "' href='' style='text-decoration:none; margin:3px'>logout</a>").appendTo(oLogout).click(function(e) {
+          e.preventDefault();
+          hello.logout(network, {
+            force: true
+          });
+          return location.reload();
+        });
+      };
+      return addLogoutLink("icon-windows", "windows");
+    };
+    oauthHolder = $(".oauthHolder");
+    oauthHolder.html("");
+    oLogin = $("<span id='oLogin'></span>").appendTo(oauthHolder);
+    $("<span>Login </span>").appendTo(oLogin);
+    oLogout = $("<span id='oLogout'></span>").appendTo(oauthHolder);
+    buildLoginButtons(oLogin);
+    buildLogoutButton(oLogout);
+    checkNetwork = function(network) {
+      var butIn, butOut, r;
+      r = hello(network).getAuthResponse();
+      butIn = oLogin.find("#" + network + "_login");
+      butOut = oLogout.find("#" + network + "_logout");
+      if (r) {
+        storage.list(buildNotebookList);
+        oLogin.hide();
+        butIn.hide();
+        butOut.show();
+        return console.log(r);
+      } else {
+        oLogin.show();
+        butIn.show();
+        return butOut.hide();
+      }
+    };
+    adjustGUI = function() {
+      checkNetwork("windows");
+      return console.log("adjustGUI");
+    };
+    return adjustGUI();
   };
 
   storage = new NoteBookStorage();
 
   $(function() {
-    if ($(".loginHolder").text().match(/^{{/)) {
-      $(".loginHolder").load("/getloginlink");
+    var loginHolder;
+    loginHolder = $(".loginHolder");
+    if (loginHolder.text().match(/^{{/)) {
+      loginHolder.load("/getloginlink");
     }
     if ($("#notebookList").text().match(/^{{/)) {
       storage.list(buildNotebookList);
@@ -105,6 +150,7 @@
       newName = "N" + (5000000 + Math.floor(999000 * Math.random()));
       return document.location.href = "/page?owner=" + encodeURIComponent($("#userName").text()) + "&access=" + encodeURIComponent("public") + "&name=" + encodeURIComponent(newName);
     });
+    loginHolder.addClass(loginHolder.text().match(/login/i) ? "icon-login" : "icon-logout");
     return prepareOAuthorization();
   });
 

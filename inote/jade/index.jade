@@ -9,9 +9,8 @@ html
         link(rel='stylesheet', href='css/index.css')
         
         script(src='//code.jquery.com/jquery-1.11.0.min.js')
-        //script(src='libs/hello.min.js')
+        script(src='libs/hello.min.js')
         script(src='js/notebookstorage.js')
-        script(type='text/javascript', src='js/index.html.js')
 
     body(style='padding:10px;')
         #page.page
@@ -20,8 +19,9 @@ html
                         span#appTitle iNote
                         span#btnCreate.toolButton Create new notebook
                     div(style='float:right')
-                        div
-                            span.loginHolder.icon-login {{login_link}}
+                        div(style='text-align:right')
+                            span.loginHolder {{login_link}}
                             //span.icon-login &gt;
                         div.oauthHolder
             #notebookList {{notebook_list}}
+        script(type='text/javascript', src='js/index.html.js')

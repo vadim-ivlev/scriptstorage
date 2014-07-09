@@ -48,44 +48,101 @@ buildNotebookList = (data) =>
 
 
 # HELLOJS
-prepareOAuthorization = ->
-    $.getScript "/inote/libs/hello.min.js", ->
-        hello.init
-            facebook :'1517454335144201'
-            windows:'0000000044121F60'
-        ,
-            redirect_uri:'http://inote.vadimivlev.com'
-            display: 'popup'
+prepareOAuthorization =() ->
+    #$.getScript "/inote/libs/hello.min.js", ->
+    # init 
+    hello.init
+        facebook :'1517454335144201'
+        windows:'0000000044121F60'
+    ,
+        redirect_uri:'http://inote.vadimivlev.com'
+        display: 'popup'
 
-        #{redirect_uri:'https://login.live.com/oauth20_desktop.srf'} 
 
-        hello.on "auth.login", (auth) ->
-          # call user information, for the given network
-          hello(auth.network).api("/me").success (r) ->
+    # on login ,call user information for the given network
+    hello.on "auth.login", (auth) ->
+      hello(auth.network).api("/me").success (r) ->
+        console.log "auth.login"
+        console.log r
+        $page_ = $("#page")
+        $div_ = $("""
+            <div id='profile_'>
+                <img src='#{r.thumbnail}' style='width:50px; height:50px; border-radius:25px;vertical-align:middle;'/>
+                id: #{r.id}
+                name: #{r.name}
+            </div>
+            """).appendTo($page_)
+        return
+      return
+    
+    # on logout ,call user information for the given network
+    hello.on "auth.logout", (auth) ->
+        console.log "auth.logout"
+        console.log auth
+    
+    
+    buildLoginButtons = (oLogin)->
+        addLoginLink =(iconClass, network) ->
+            $("<a id='#{network}_login' class='#{iconClass}' href='' style='text-decoration:none; margin:3px'></a>").appendTo(oLogin).click (e) ->
+                e.preventDefault()
+                hello.login(network)
+        
+        addLoginLink "icon-windows", "windows"
+        addLoginLink "icon-googleplus", "googleplus"
+        addLoginLink "icon-githib", "github"
+        addLoginLink "icon-wordpress", "wordpress"
+        addLoginLink "icon-twitter", "twitter"
+        addLoginLink "icon-linkedin", "linkedin"
+    
+    buildLogoutButton = (oLogout) ->
+        addLogoutLink =(iconClass, network) ->
+            $("<a id='#{network}_logout' class='#{iconClass}' href='' style='text-decoration:none; margin:3px'>logout</a>").appendTo(oLogout).click (e) ->
+                e.preventDefault()
+                hello.logout(network, {force:true})
+                location.reload()
+        
+        addLogoutLink "icon-windows", "windows"
+
+    oauthHolder = $(".oauthHolder")
+    oauthHolder.html ""
+      
+    oLogin = $("<span id='oLogin'></span>").appendTo oauthHolder
+    $("<span>Login </span>").appendTo oLogin
+    oLogout = $("<span id='oLogout'></span>").appendTo oauthHolder
+    
+    buildLoginButtons(oLogin)
+    buildLogoutButton(oLogout)
+    
+    #TEST
+    checkNetwork = (network) ->
+        r=hello(network).getAuthResponse()
+        butIn=oLogin.find("##{network}_login")
+
+        butOut=oLogout.find("##{network}_logout")
+        if r
+            storage.list buildNotebookList
+            oLogin.hide()
+            butIn.hide()
+            butOut.show()
             console.log r
-            $page_ = $("#page")
-            $div_ = $("<div id='profile_'><img src='#{r.thumbnail}' /> Hey #{r.name} <br>id: #{r.id}</div>").appendTo($page_)
-            return
-          return
+        else
+            oLogin.show()
+            butIn.show()
+            butOut.hide()
+    
+    adjustGUI = () ->
+        checkNetwork "windows"
+        console.log "adjustGUI"
 
-        win_log=$("<a id='win_log' href=''' style='margin:5px'>win_log</a>").appendTo $(".oauthHolder")
-        win_log.click (e) -> e.preventDefault(); hello.login('windows')
-
-        win_out=$("<a id='win_out' href='' style='margin:5px'>win_out</a>").appendTo $(".oauthHolder")
-        win_out.click (e) -> e.preventDefault(); hello.logout('windows',{force:true}); console.log "logout"
-
-        fb = hello("facebook").getAuthResponse()
-        wl = hello("windows").getAuthResponse()
-        #console.log ((if online(fb) then "Signed" else "Not signed")) + " into FaceBook, " + ((if online(wl) then "Signed" else "Not signed")) + " into Windows Live"
-        console.log fb
-        console.log wl
+    adjustGUI()
 
 storage = new NoteBookStorage()
 # on page load ==================================================================
 $ ->
+    loginHolder =$(".loginHolder")
     # check if login text contains python server template 
-    if $(".loginHolder").text().match(/^{{/)
-        $(".loginHolder").load "/getloginlink"
+    if loginHolder.text().match(/^{{/)
+        loginHolder.load "/getloginlink"
     
     
     # check if notebook list contains python server template 
@@ -98,4 +155,7 @@ $ ->
         newName = "N" + (5000000 + Math.floor(999000 * Math.random()))
         document.location.href = "/page?owner=" + encodeURIComponent($("#userName").text()) + "&access=" + encodeURIComponent("public") + "&name=" + encodeURIComponent(newName)
     
+    # check if login text has login 
+    loginHolder.addClass(if loginHolder.text().match(/login/i) then "icon-login" else "icon-logout")
+
     prepareOAuthorization()

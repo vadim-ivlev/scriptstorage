@@ -1341,6 +1341,11 @@ select {
 }
 .oauthHolder {
   font-family: Roboto, sans-serif;
+  text-align: right;
+  color: #777777;
+}
+.oauthHolder a {
+  color: #777777;
 }
 .ic {
   font-family: icomoon;
@@ -1348,12 +1353,262 @@ select {
   vertical-align: middle;
   margin-left: 5px;
 }
-.icon-login::after {
+.icon-play::after {
   font-family: icomoon;
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  content: '>';
+  content: 'r';
+}
+.icon-question-circle::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: '?';
+}
+.icon-info-circle::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: 'i';
+}
+.icon-home::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: 'h';
+}
+.icon-pencil::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: 'e';
+}
+.icon-image::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: 'p';
+}
+.icon-file::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: 'f';
+}
+.icon-expand::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: 'X';
+}
+.icon-contract::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: '_';
+}
+.icon-lock::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: 'L';
+}
+.icon-unlocked::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: 'u';
+}
+.icon-cog::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: 'g';
+}
+.icon-food::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: 'd';
+}
+.icon-remove::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: 'b';
+}
+.icon-menu::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: 'm';
+}
+.icon-link::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: 'n';
+}
+.icon-attachment::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: '@';
+}
+.icon-eye::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: 'O';
+}
+.icon-eye-blocked::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: 'o';
+}
+.icon-star::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: 't';
+}
+.icon-close::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: 'x';
+}
+.icon-plus::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: '+';
+}
+.icon-embed::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: '[';
+}
+.icon-share::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: 's';
+}
+.icon-googleplus::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: 'G';
+  font-size: 130%;
+  color: #F44;
+}
+.icon-facebook::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: 'F';
+  font-size: 130%;
+}
+.icon-twitter::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: 'T';
+  font-size: 130%;
+}
+.icon-youtube::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: 'Y';
+  font-size: 130%;
+}
+.icon-github::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: 'H';
+  font-size: 130%;
+}
+.icon-wordpress::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: 'P';
+  font-size: 130%;
+}
+.icon-blogger::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: 'B';
+  font-size: 130%;
+  color: orange;
+}
+.icon-windows::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: 'W';
+  font-size: 130%;
+  color: #58F;
+}
+.icon-linkedin::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: 'I';
+  font-size: 130%;
+}
+.icon-file-xml::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: 'N';
+}
+.icon-html5::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: '5';
 }
 .icon-logout::after {
   font-family: icomoon;
@@ -1361,6 +1616,13 @@ select {
   vertical-align: middle;
   margin-left: 5px;
   content: '<';
+}
+.icon-login::after {
+  font-family: icomoon;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 5px;
+  content: '>';
 }
 /*------------cell----------------------*/
 .cell {
