@@ -1,0 +1,27 @@
+doctype html
+html
+    head
+        meta(charset='utf-8')
+        meta(name='description', content='')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        title i Note login
+
+        link(rel='stylesheet', href='css/login.css')
+        
+        script(src='//code.jquery.com/jquery-1.11.0.min.js')
+        script(src='libs/hello.min.js')
+        script(src='js/index.html.js')
+
+    body(style='padding:10px;')
+        .loginHolder loginHolder
+    //
+        #page.page
+            #divHeader.header(style='padding: 0px;height:110px;')
+                    div(style='float:left')
+                        span#appTitle iNote
+                        span#btnCreate.toolButton Create new notebook
+                    div(style='float:right')
+                        div(style='text-align:right')
+                            span.loginHolder {{login_link}}
+                            //span.icon-login &gt;
+                        div.oauthHolder
