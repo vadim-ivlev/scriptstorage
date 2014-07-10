@@ -22,22 +22,14 @@
             Tab: (cm) ->
                 spaces = Array(cm.getOption("indentUnit") + 1).join(" ")
                 cm.replaceSelection spaces, "end", "+input"
-            ###
-            F2: (ed) ->
-                if ed.getMode().name is "javascript"
-                    foldFunc_brace ed, ed.getCursor().line
-                else
-                    foldFunc_tag ed, ed.getCursor().line
-            ###
+            
             "Ctrl-Q": (cm) -> cm.foldCode cm.getCursor()
 
             
             #FULL SCREEN keys
-            "Alt-F11": (cm) -> setFullScreen cm, not @isFullScreen(cm)
+            "Alt-F11": (cm) -> @setFullScreen cm, not @isFullScreen(cm)
 
             
-            #FULL SCREEN keys
-            #Esc: (cm) -> setFullScreen cm, false    if @isFullScreen(cm)
 
             "Cmd-/": "toggleComment"
             "Ctrl-/": "toggleComment"
@@ -48,6 +40,8 @@
         saveNotebookLater?()
         #if (console) console.log("change event");
         parentDomObject._compileLater?()
+
+    
 
     return editor
 
@@ -65,7 +59,7 @@ winHeight = ->
     window.innerHeight or (document.documentElement or document.body).clientHeight
 
 
-setFullScreen = (cm, full) ->
+@setFullScreen = (cm, full) ->
     wrap = cm.getWrapperElement()
     if full
         wrap.className += " CodeMirror-fullscreen"

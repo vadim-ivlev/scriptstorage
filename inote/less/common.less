@@ -34,11 +34,38 @@ body {
     padding-bottom: 200px;
 }
 
-input, select {
+input {
     background: transparent;
 }
 
 
+.selectButton {
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 0px;
+    -webkit-appearance: none;
+    -moz-appearance: window;
+    appearance: none;
+    font-size: 16px;
+    color: @LINKCOLOR;
+    cursor: pointer;
+    vertical-align: middle;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: @BUTTONFONT;
+}
+
+
+
+.selectButton:hover {
+    border: 1px dotted @LINKCOLOR;
+}
+
+.selectButton::after { 
+    content: 'v▼'; 
+    font-size: 70%;
+    opacity: 0.7;
+}
 /*PAGE----------------------*/
 .page {
     padding:10px;
@@ -81,7 +108,7 @@ input, select {
     font-size: 16px;
 }
 .toolButton:hover {
-    border: 1px dotted @BORDERCOLOR;
+    border: 1px dotted @LINKCOLOR;
 }
 .oauthHolder {
     font-family:@BUTTONFONT;
@@ -97,18 +124,19 @@ input, select {
     color: @LINKCOLOR;
     vertical-align: middle;
     margin-left:5px;
+    opacity:0.5;
 }
 
-.icon-play::after { .ic; content: 'r'; }
+.icon-play::after { .ic; content: 'r'; cursor:pointer;  }
 .icon-question-circle::after { .ic; content: '?'; }
 .icon-info-circle::after { .ic; content: 'i'; }
 .icon-home::after { .ic; content: 'h'; }
-.icon-pencil::after { .ic; content: 'e'; }
+.icon-pencil::after { .ic; content: 'e'; opacity:0.7 }
 .icon-image::after { .ic; content: 'p'; }
 .icon-file::after { .ic; content: 'f'; }
-.icon-expand::after { .ic; content: 'X'; }
+.icon-expand::after { .ic; content: 'X'; font-size:80%;  }
 .icon-contract::after { .ic; content: '_'; }
-.icon-lock::after { .ic; content: 'L'; }
+.icon-lock::after { .ic; content: 'L'; opacity:0.7;}
 .icon-unlocked::after { .ic; content: 'u'; }
 .icon-cog::after { .ic; content: 'g'; }
 .icon-food::after { .ic; content: 'd'; }
@@ -116,11 +144,11 @@ input, select {
 .icon-menu::after { .ic; content: 'm'; }
 .icon-link::after { .ic; content: 'n'; }
 .icon-attachment::after { .ic; content: '@'; }
-.icon-eye::after { .ic; content: 'O'; }
-.icon-eye-blocked::after { .ic; content: 'o'; }
+.icon-eye::before { .ic; content: 'O'; margin-left:0; margin-right:5px; }
+.icon-eye-blocked::before { .ic; content: 'o'; margin-left:0; margin-right:5px; }
 .icon-star::after { .ic; content: 't'; }
-.icon-close::after { .ic; content: 'x'; }
-.icon-plus::after { .ic; content: '+'; }
+.icon-close::after { .ic; content: 'x'; font-size:80%; }
+.icon-plus::after { .ic; content: '+'; opacity:0.3 }
 .icon-embed::after { .ic; content: '['; }
 .icon-share::after { .ic; content: 's'; }
 .icon-googleplus::after { .ic; content: 'G'; font-size:130%; color:#F44; }

@@ -30,36 +30,37 @@
 <div class='cell'>
 
     <div class='input_header'>
-        <span class='hideInputButton toolButton hidable000' >&#x25BC</span>
+        <span class='hideInputButton toolButton hidable000 icon-eye-blocked' ></span> <!-- &#x25BC -->
         <select class='selectButton hidable000'>
             <option value='javascript'>JavaScript</option>
             <option value='text/x-coffeescript'>CoffeeScript</option>
             <option value='text/html'>HTML</option>
             <option value='markdown'>Markdown</option>
         </select>
-        <span class='formatSelectionButton toolButton hidable000'>Format</span>
+        <span class='toolButton hidable000 icon-expand' title='Fullscreen on/of'>Alt-F11</span>
         <span class='showJavascriptButton toolButton hidable000' >Show Javascript</span>
-        <span class='deleteButton toolButton  hidable000' title='delete cell' >&nbsp;&#x00D7&nbsp;</span>
+        <span class='deleteButton toolButton  hidable000 icon-remove' title='delete cell' ></span><!-- &nbsp;b&#x00D7&nbsp; -->
     </div>
-
-    <table class='codeArea' ><tr>
-        <td id='in_' class='inputCell' ></td>
-        <td id='js_' class='javascriptCell'></td>
-    </tr></table>
-    <div class='input_expander toolButton hidable000'>&#x25BA</div>
+        <table class='codeArea' > 
+            <tr>
+                <td id='in_' class='inputCell' ></td>
+                <td id='js_' class='javascriptCell'></td>
+            </tr>
+        </table>
+    <div class='input_expander toolButton hidable000 icon-eye'></div> <!-- &#x25BA -->
 
     <div class='output_header'>
-        <span class='hideOutputButton toolButton hidable000'>&#x25BC</span>
-        <span class='clearOutputButton toolButton hidable000'>Clear output</span>
-        <span class='runButton toolButton hidable000' title='<Ctrl-Ent> to Run.  <Shift-Ent> to run and go to the next cell. '>Run<span style='font-family:icomoon;font-size:100%; position:relative; top:2px;'>&#xE603;</span></span>
+        <span class='hideOutputButton toolButton hidable000 icon-eye-blocked'></span> <!-- &#x25BC -->
+        <span class='clearOutputButton toolButton hidable000'>clear output</span>
+        <span class='toolButton hidable000 icon-play' title='<Ctrl-Ent> to Run.  <Shift-Ent> to run and go to the next cell. '>run</span>
     </div>
     
     <div id='out_' class='outputCell lr_padded'></div>
-    <div class='output_expander toolButton hidable000'>&#x25BA</div>
-    <div class='runButton smallButton'  style='position:absolute;top:36px;left:-21px;width:20px;font-family:icomoon;opacity:0.4;'>&#xE603;</div>
-    <div class='insertBefore smallButton  hidable000' title='add cell'>+</div>
-    <div class='insertAfter smallButton  hidable000' title='add cell'>+</div>
-    <div class='lockButton smallButton' title='lock/unlock' style='position:absolute;top:10px;left:-19px;width:20px;'>&#xE601;</div>
+    <div class='output_expander toolButton hidable000 icon-eye'></div> <!-- &#x25BA -->
+    <div class='run2 smallButton icon-play'  style='position:absolute;top:2px;left:11px; opacity:0.5;'></div>
+    <div class='insertBefore smallButton  hidable000 icon-plus' title='add cell'></div>
+    <div class='insertAfter smallButton  hidable000 icon-plus' title='add cell'></div>
+    <div class='lockButton smallButton icon-pencil' title='lock/unlock' style='position:absolute;top:10px;left:-20px;'></div>
 </div>
         """)
     
@@ -122,12 +123,12 @@
             _jQueryCell.find(".outputCell").hide _CPLTIME, ->
                 _jQueryCell.find(".output_expander").show()
                 _jQueryCell.find(".output_header").hide()
-                _jQueryCell.find(".hideOutputButton").html "[out" + _n + "] &#x25BA" #Show output
+                _jQueryCell.find(".hideOutputButton").html "[out" + _n + "]" #Show output &#x25BA
         else
             _jQueryCell.find(".outputCell").show _CPLTIME
             _jQueryCell.find(".output_expander").hide()
             _jQueryCell.find(".output_header").show()
-            _jQueryCell.find(".hideOutputButton").html "[out" + _n + "] &#x25BC" #Hide output
+            _jQueryCell.find(".hideOutputButton").html "[out" + _n + "]" #Hide output &#x25BC
         saveNotebookLater?()
         return
     
@@ -140,12 +141,12 @@
             _jQueryCell.find(".codeArea").hide()
             _jQueryCell.find(".input_expander").show()
             _jQueryCell.find(".input_header").hide()
-            _jQueryCell.find(".hideInputButton").html "[in" + _n + "] &nbsp;&nbsp;&#x25BA" #Show input
+            _jQueryCell.find(".hideInputButton").html "[in" + _n + "] " #Show input&nbsp;&nbsp;&#x25BA
         else
             _jQueryCell.find(".codeArea").show()
             _jQueryCell.find(".input_expander").hide()
             _jQueryCell.find(".input_header").show()
-            _jQueryCell.find(".hideInputButton").html "[in" + _n + "] &nbsp;&nbsp;&#x25BC" #Hide input
+            _jQueryCell.find(".hideInputButton").html "[in" + _n + "] " #Hide input &nbsp;&nbsp;&#x25BC
         saveNotebookLater?()
         return
 
@@ -153,43 +154,46 @@
 
     # make it read only ======================================================
     _lock = ->
-        _lockButton.html "&#xE601;"
+        _lockButton.removeClass('icon-lock').addClass("icon-pencil");
         _jQueryCell.find(".hidable000").removeClass "visible"
-        #_jQueryCell.find(".codeArea").css "border-color", "transparent"
-        #_jQueryCell.css "border-color", "transparent"
         _jQueryCell.find(".codeArea").removeClass "visibleBorder"
-        _jQueryCell.removeClass "visibleBorder"
+        _jQueryCell.removeClass "visibleBorder shadow"
         _codemirror.setOption "readOnly", "nocursor"
+        _jQueryCell.find(".run2").show()
 
 
 
     # make it  editable =======================================================
     _unlock = ->
-        _lockButton.html "&#xE602;"
+        _lockButton.removeClass("icon-pencil").addClass("icon-lock")
         _jQueryCell.find(".hidable000").addClass "visible"
-        #_jQueryCell.find(".codeArea").css "border-color", "#DDD"
-        #_jQueryCell.css "border-color", "#DDD"
         _jQueryCell.find(".codeArea").addClass "visibleBorder"
-        _jQueryCell.addClass "visibleBorder"
+        _jQueryCell.addClass "visibleBorder shadow"
         _codemirror.setOption "readOnly", false
-
+        _jQueryCell.find(".run2").hide()
+    
+    _lockUnlock = ->
+        if _lockButton.hasClass('icon-pencil') 
+            _unlock() 
+        else 
+            _lock()
 
 
     # attach events to buttons ================================================
     _attachEvents = ->
-        
         _inputCell.keydown _keyHandler
-        _lockButton.click -> if _lockButton.html().charCodeAt(0) is 0xE601 then _unlock() else _lock()
+        _lockButton.click _lockUnlock
         $(".deleteButton", _jQueryCell).click -> _call _deleteCallback, _n
         $(".insertBefore", _jQueryCell).click -> _call _insertBeforeCallback, _n
         $(".insertAfter", _jQueryCell).click -> _call _insertAfterCallback, _n
-        $(".runButton", _jQueryCell).click _executeCode
+        $(".icon-play", _jQueryCell).click _executeCode
         $(".clearOutputButton", _jQueryCell).click -> _outputCell.html ""; saveNotebook?()
         $(".hideOutputButton", _jQueryCell).click -> _setOutputCollapsed not _outCollapsed
         $(".hideInputButton", _jQueryCell).click -> _setInputCollapsed not _inCollapsed
         $(".input_expander", _jQueryCell).click -> _setInputCollapsed not _inCollapsed
         $(".output_expander", _jQueryCell).click -> _setOutputCollapsed not _outCollapsed
-        $(".formatSelectionButton", _jQueryCell).click _autoFormatSelection
+        $(".icon-expand", _jQueryCell).click -> 
+            setFullScreen(_codemirror, true)
         $(".showJavascriptButton", _jQueryCell).click _switchJavascriptText
         $(".selectButton", _jQueryCell).change ->
             mode = _jQueryCell.find(".selectButton").val()
@@ -207,10 +211,6 @@
         else
             _hideJavascriptText()
             _jQueryCell.find(".showJavascriptButton").hide()
-        if _mode is "javascript" or _mode is "text/html"
-            _jQueryCell.find(".formatSelectionButton").show()
-        else
-            _jQueryCell.find(".formatSelectionButton").hide()
         saveNotebookLater?()
         return
 
@@ -293,12 +293,6 @@
         to: _codemirror.getCursor(false)
     
     
-
-    _autoFormatSelection = ->
-        range = _getSelectedRange()
-        _codemirror.autoFormatRange range.from, range.to
-        return
-    
     
     _commentSelection = (isComment) ->
         range = _getSelectedRange()
@@ -330,8 +324,8 @@
         _inputCell.attr "id", "in" + _n
         _outputCell.attr "id", "out" + _n
         _javascriptCell.attr "id", "js" + _n
-        _jQueryCell.find(".output_expander").html "[out" + _n + "] &#x25BA"
-        _jQueryCell.find(".input_expander").html "[in" + _n + "]&nbsp; &nbsp;&#x25BA"
+        _jQueryCell.find(".output_expander").html "[out" + _n + "]" # &#x25BA
+        _jQueryCell.find(".input_expander").html "[in" + _n + "]" # &nbsp;&nbsp;&#x25BA
         this
     
     

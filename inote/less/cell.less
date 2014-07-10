@@ -1,7 +1,7 @@
 /*------------cell----------------------*/
 .cell {
     position:relative;
-    border: 2px solid transparent;
+    border: 1px solid transparent;
     //border-right: 1px solid @BORDERCOLOR;
     //border-left: 1px solid @BORDERCOLOR;
     margin-top:10px;
@@ -71,11 +71,15 @@
     font-family: @CODEFONT;
     font-size: 85%;
 }
-.input_expander, .output_expander {
+.input_expander, 
+.output_expander, 
+.hideInputButton, 
+.hideOutputButton{
     cursor: pointer;
     border-radius: 0px;
     color: @LINKCOLOR;
-    width:100px;
+    width:70px;
+    display: inline-block;
 }
 .hidable {
     visibility:hidden;
@@ -83,10 +87,6 @@
 
 
 /*----------------Buttons -----------------*/
-.formatSelectionButton {
-    color: @LINKCOLOR;
-    border-color: transparent;
-}
 .smallButton {
     width:14px;
     height:14px;
@@ -103,26 +103,22 @@
 }
 .insertBefore {
     position:absolute;
-    left:-2px;
-    top:-14px;
-    border-style: none;
+    left:50%;
+    top:-19px;
+    //border-style: none;
     background-color: transparent;
 }
 .insertAfter {
     position:absolute;
-    left:-2px;
+    left:50%;
     bottom:-9px;
-    border-style: none;
+    //border-style: none;
     background-color: transparent;
 }
 .deleteButton {
     float:right;
 }
-.runButton {
-    color:#F00;
-    cursor: pointer;
-    opacity:0.3;
-}
+
 .markdown {
     font-family: @FONT;
     //color: #333;
@@ -147,10 +143,14 @@
 .lockButton {
     font-family: icomoon;
     font-size:80%;
-    opacity:0.4;
+    opacity:0.7;
 }
 
 .visibleBorder
 {
     border-color: @BORDERCOLOR;
+}
+.shadow
+{
+    box-shadow:0px 0px 3px 3px rgba(0,0,0,0.04);
 }
