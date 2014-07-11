@@ -30,7 +30,7 @@ inote = undefined
 @saveNotebook = (event) ->
     notebookName = $("#notebookName").text()
     notebookOwner = $(".notebookOwner").text()
-    notebookAaccess = $("#notebookAccess").val()
+    notebookAccess = $("#notebookAccess").val()
     
     # If it was the button who initiated the event then dont pass the version
     notebookVersion = if event then null else $(".notebookVersion").text()
@@ -41,7 +41,7 @@ inote = undefined
     console.log "saveNotebook"
     
     #localStorage.setItem("inote_"+bookName, xmlText);
-    storage.put notebookAaccess, notebookName, xmlText, notebookVersion, (d) ->
+    storage.put notebookAccess, notebookName, xmlText, notebookVersion, (d) ->
         o=eval "a=#{d}"
         return unless o
         if o.error

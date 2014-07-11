@@ -27,7 +27,7 @@
 
             
             #FULL SCREEN keys
-            "Alt-F11": (cm) -> @setFullScreen cm, not @isFullScreen(cm)
+            #"Alt-F11": (cm) -> @setFullScreen cm, not @isFullScreen(cm)
 
             
 

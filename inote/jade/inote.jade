@@ -6,36 +6,13 @@ html
         meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
         title iNote
 
-        //link(rel='stylesheet', href='libs/codemirror-3.0/addon/hint/show-hint.css')
-        //link(rel='stylesheet', href='libs/codemirror-3.0/lib/codemirror.css')
-        //link(rel='stylesheet', href='libs/codemirror-3.0/theme/neat.css')
-        //link(rel='stylesheet', href='libs/codemirror-3.0/theme/elegant.css')
-        //link(rel='stylesheet', href='libs/codemirror-3.0/theme/erlang-dark.css')
-        //link(rel='stylesheet', href='libs/codemirror-3.0/theme/night.css')
-        //link(rel='stylesheet', href='libs/codemirror-3.0/theme/monokai.css')
-        //link(rel='stylesheet', href='libs/codemirror-3.0/theme/cobalt.css')
-        //link(rel='stylesheet', href='libs/codemirror-3.0/theme/eclipse.css')
-        //link(rel='stylesheet', href='libs/codemirror-3.0/theme/rubyblue.css')
-        //link(rel='stylesheet', href='libs/codemirror-3.0/theme/lesser-dark.css')
-        //link(rel='stylesheet', href='libs/codemirror-3.0/theme/xq-dark.css')
-        //link(rel='stylesheet', href='libs/codemirror-3.0/theme/xq-light.css')
-        //link(rel='stylesheet', href='libs/codemirror-3.0/theme/ambiance.css')
-        //link(rel='stylesheet', href='libs/codemirror-3.0/theme/blackboard.css')
-        //link(rel='stylesheet', href='libs/codemirror-3.0/theme/vibrant-ink.css')
-        //link(rel='stylesheet', href='libs/codemirror-3.0/theme/solarized.css')
-        //link(rel='stylesheet', href='libs/codemirror-3.0/theme/twilight.css')
-        //link(rel='stylesheet', href='libs/codemirror-3.0/theme/midnight.css')
-        //link(rel='stylesheet', href='libs/codemirror-3.0/theme/3024-day.css')
-        //link(rel='stylesheet', href='libs/codemirror-3.0/theme/3024-night.css')
-        //link(rel='stylesheet', href='libs/codemirror-3.0/theme/base16-light.css')
-        //link(rel='stylesheet', href='libs/codemirror-3.0/theme/base16-dark.css')
-        //link(rel='stylesheet', href='libs/codemirror-3.0/theme/tomorrow-night-eighties.css')
-        //link(rel='stylesheet', href='libs/codemirror-3.0/addon/dialog/dialog.css')
         
         link(rel='stylesheet', href='css/inote.css')
         // jQuery
         script(src='//code.jquery.com/jquery-1.11.0.min.js')
+        script window.jQuery || document.write('<script src="libs/jquery-1.11.0.min.js"><\/script>')
         script(src='http://d3js.org/d3.v3.min.js', charset='utf-8')
+        script window.d3 || document.write('<script src="libs/d3.v3.min.js"><\/script>')
         //fix for jquery >1.9 for colResize
         script(type='text/javascript'). 
             $.browser={ msie: ( navigator.appName == 'Microsoft Internet Explorer') ? true : false } ;
@@ -93,8 +70,11 @@ html
                     select#notebookAccess.selectButton(title='Access')
                         option(value='public') public
                         option(value='private') private
+                    select#notebookEditor.selectButton(title='Editor')
+                        option(value='default') default editor
+                        option(value='vim') vim
                     select#selectTheme_button.selectButton(onchange='selectTheme()')
-                        option(value='default') default
+                        option(value='default') default theme
                         option(value='3024-day') 3024-day
                         option(value='3024-night') 3024-night
                         option(value='ambiance') ambiance
@@ -118,6 +98,7 @@ html
                         option(value='vibrant-ink') vibrant-ink
                         option(value='xq-dark') xq-dark
                         option(value='xq-light') xq-light
+
             
             div(style='float: right; white-space: nowrap')
                 span.notebookOwner {{notebook_owner}}

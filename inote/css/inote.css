@@ -1374,14 +1374,14 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
 }
 .icon-play::after {
   font-family: icomoon;
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: 'r';
   cursor: pointer;
 }
@@ -1390,7 +1390,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: '?';
 }
 .icon-info-circle::after {
@@ -1398,7 +1398,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: 'i';
 }
 .icon-home::after {
@@ -1406,7 +1406,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: 'h';
 }
 .icon-pencil::after {
@@ -1414,7 +1414,6 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
   content: 'e';
   opacity: 0.7;
 }
@@ -1423,7 +1422,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: 'p';
 }
 .icon-file::after {
@@ -1431,7 +1430,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: 'f';
 }
 .icon-expand::after {
@@ -1439,7 +1438,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: 'X';
   font-size: 80%;
 }
@@ -1448,7 +1447,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: '_';
 }
 .icon-lock::after {
@@ -1456,7 +1455,6 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
   content: 'L';
   opacity: 0.7;
 }
@@ -1465,7 +1463,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: 'u';
 }
 .icon-cog::after {
@@ -1473,7 +1471,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: 'g';
 }
 .icon-food::after {
@@ -1481,7 +1479,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: 'd';
 }
 .icon-remove::after {
@@ -1489,7 +1487,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: 'b';
 }
 .icon-menu::after {
@@ -1497,7 +1495,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: 'm';
 }
 .icon-link::after {
@@ -1505,7 +1503,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: 'n';
 }
 .icon-attachment::after {
@@ -1513,7 +1511,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: '@';
 }
 .icon-eye::before {
@@ -1521,7 +1519,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: 'O';
   margin-left: 0;
   margin-right: 5px;
@@ -1531,7 +1529,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: 'o';
   margin-left: 0;
   margin-right: 5px;
@@ -1541,7 +1539,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: 't';
 }
 .icon-close::after {
@@ -1549,7 +1547,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: 'x';
   font-size: 80%;
 }
@@ -1558,7 +1556,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: '+';
   opacity: 0.3;
 }
@@ -1567,7 +1565,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: '[';
 }
 .icon-share::after {
@@ -1575,7 +1573,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: 's';
 }
 .icon-googleplus::after {
@@ -1583,7 +1581,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: 'G';
   font-size: 130%;
   color: #F44;
@@ -1593,7 +1591,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: 'F';
   font-size: 130%;
 }
@@ -1602,7 +1600,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: 'T';
   font-size: 130%;
 }
@@ -1611,7 +1609,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: 'Y';
   font-size: 130%;
 }
@@ -1620,7 +1618,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: 'H';
   font-size: 130%;
 }
@@ -1629,7 +1627,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: 'P';
   font-size: 130%;
 }
@@ -1638,7 +1636,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: 'B';
   font-size: 130%;
   color: orange;
@@ -1648,7 +1646,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: 'W';
   font-size: 130%;
   color: #58F;
@@ -1658,7 +1656,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: 'I';
   font-size: 130%;
 }
@@ -1667,7 +1665,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: 'N';
 }
 .icon-html5::after {
@@ -1675,7 +1673,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: '5';
 }
 .icon-logout::after {
@@ -1683,7 +1681,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: '<';
 }
 .icon-login::after {
@@ -1691,7 +1689,7 @@ input {
   color: #777777;
   vertical-align: middle;
   margin-left: 5px;
-  opacity: 0.5;
+  opacity: 0.7;
   content: '>';
 }
 /*------------cell----------------------*/
@@ -1776,18 +1774,16 @@ input {
 }
 /*----------------Buttons -----------------*/
 .smallButton {
-  width: 14px;
-  height: 14px;
   color: #777777;
   font-family: Roboto, sans-serif;
   display: inline-block;
   text-align: center;
   cursor: pointer;
   vertical-align: middle;
-  border: 1px solid transparent;
+  border: 1px dotted transparent;
 }
 .smallButton:hover {
-  border: 1px dotted rgba(200, 200, 200, 0.4);
+  border: 1px dotted #777777;
 }
 .insertBefore {
   position: absolute;
@@ -1824,16 +1820,21 @@ input {
 .visible {
   visibility: visible;
 }
-.lockButton {
-  font-family: icomoon;
-  font-size: 80%;
-  opacity: 0.7;
-}
 .visibleBorder {
   border-color: rgba(200, 200, 200, 0.4);
 }
 .shadow {
   box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.04);
+}
+.fullscreen-top-right {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  z-index: 20000;
+}
+.javascriptCell {
+  border-left: 1px solid rgba(200, 200, 200, 0.4);
+  vertical-align: top;
 }
 .CodeMirror {
   height: auto;

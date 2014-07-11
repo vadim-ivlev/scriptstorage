@@ -27,9 +27,6 @@
         "Ctrl-Q": function(cm) {
           return cm.foldCode(cm.getCursor());
         },
-        "Alt-F11": function(cm) {
-          return this.setFullScreen(cm, !this.isFullScreen(cm));
-        },
         "Cmd-/": "toggleComment",
         "Ctrl-/": "toggleComment"
       }

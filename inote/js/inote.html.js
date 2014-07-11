@@ -22,14 +22,14 @@
   };
 
   this.saveNotebook = function(event) {
-    var notebookAaccess, notebookName, notebookOwner, notebookVersion, xmlText;
+    var notebookAccess, notebookName, notebookOwner, notebookVersion, xmlText;
     notebookName = $("#notebookName").text();
     notebookOwner = $(".notebookOwner").text();
-    notebookAaccess = $("#notebookAccess").val();
+    notebookAccess = $("#notebookAccess").val();
     notebookVersion = event ? null : $(".notebookVersion").text();
     xmlText = inote.getXmlText(notebookName);
     console.log("saveNotebook");
-    storage.put(notebookAaccess, notebookName, xmlText, notebookVersion, function(d) {
+    storage.put(notebookAccess, notebookName, xmlText, notebookVersion, function(d) {
       var o;
       o = eval("a=" + d);
       if (!o) {

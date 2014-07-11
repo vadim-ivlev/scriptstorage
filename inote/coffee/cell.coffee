@@ -10,6 +10,7 @@
     _mode = "javascript"
     
     _lockButton = undefined
+    _fullscreenButton = undefined
     
     _deleteCallback = null
     _insertBeforeCallback = null
@@ -37,9 +38,9 @@
             <option value='text/html'>HTML</option>
             <option value='markdown'>Markdown</option>
         </select>
-        <span class='toolButton hidable000 icon-expand' title='Fullscreen on/of'>Alt-F11</span>
         <span class='showJavascriptButton toolButton hidable000' >Show Javascript</span>
         <span class='deleteButton toolButton  hidable000 icon-remove' title='delete cell' ></span><!-- &nbsp;b&#x00D7&nbsp; -->
+        <span class='toolButton hidable000 icon-expand' style='float:right' title='Fullscreen on/of'>Alt-F11</span>
     </div>
         <table class='codeArea' > 
             <tr>
@@ -52,15 +53,15 @@
     <div class='output_header'>
         <span class='hideOutputButton toolButton hidable000 icon-eye-blocked'></span> <!-- &#x25BC -->
         <span class='clearOutputButton toolButton hidable000'>clear output</span>
-        <span class='toolButton hidable000 icon-play' title='<Ctrl-Ent> to Run.  <Shift-Ent> to run and go to the next cell. '>run</span>
+        <span class='toolButton hidable000 icon-play' title='<Ctrl-Ent> to run.  <Shift-Ent> to run and go to the next cell. '>run</span>
     </div>
     
     <div id='out_' class='outputCell lr_padded'></div>
     <div class='output_expander toolButton hidable000 icon-eye'></div> <!-- &#x25BA -->
-    <div class='run2 smallButton icon-play'  style='position:absolute;top:2px;left:11px; opacity:0.5;'></div>
     <div class='insertBefore smallButton  hidable000 icon-plus' title='add cell'></div>
     <div class='insertAfter smallButton  hidable000 icon-plus' title='add cell'></div>
-    <div class='lockButton smallButton icon-pencil' title='lock/unlock' style='position:absolute;top:10px;left:-20px;'></div>
+    <div class='lockButton smallButton icon-pencil' title='lock/unlock' style='position:absolute;top:0px;left:-27px;'></div>
+    <div class='run2 smallButton icon-play'  style='position:absolute;top:0px;left:8px;' title='run the code'></div>
 </div>
         """)
     
@@ -70,6 +71,7 @@
         _javascriptCell = _jQueryCell.find(".javascriptCell")
         
         _lockButton = _jQueryCell.find(".lockButton")
+        _fullscreenButton = _jQueryCell.find(".icon-expand")
         
         _codemirror = createCodeMirror(_inputCell[0])
         _codemirror.setOption "theme", theme or "eclipse"
@@ -183,6 +185,7 @@
     _attachEvents = ->
         _inputCell.keydown _keyHandler
         _lockButton.click _lockUnlock
+        _fullscreenButton.click _switchFullsreen
         $(".deleteButton", _jQueryCell).click -> _call _deleteCallback, _n
         $(".insertBefore", _jQueryCell).click -> _call _insertBeforeCallback, _n
         $(".insertAfter", _jQueryCell).click -> _call _insertAfterCallback, _n
@@ -192,15 +195,21 @@
         $(".hideInputButton", _jQueryCell).click -> _setInputCollapsed not _inCollapsed
         $(".input_expander", _jQueryCell).click -> _setInputCollapsed not _inCollapsed
         $(".output_expander", _jQueryCell).click -> _setOutputCollapsed not _outCollapsed
-        $(".icon-expand", _jQueryCell).click -> 
-            setFullScreen(_codemirror, true)
+
         $(".showJavascriptButton", _jQueryCell).click _switchJavascriptText
         $(".selectButton", _jQueryCell).change ->
             mode = _jQueryCell.find(".selectButton").val()
             _setMode mode
             _codemirror.focus()
 
-    
+    _switchFullsreen = ->
+        fs = not isFullScreen(_codemirror)
+        setFullScreen(_codemirror, fs)
+        if fs
+            _fullscreenButton.addClass("fullscreen-top-right")
+        else
+            _fullscreenButton.removeClass("fullscreen-top-right")
+
     
     _setMode = (mode) ->
         _mode = mode
@@ -293,23 +302,27 @@
         to: _codemirror.getCursor(false)
     
     
-    
+    ### 
     _commentSelection = (isComment) ->
         range = _getSelectedRange()
         _codemirror.commentRange isComment, range.from, range.to
         return
-    
+    ###
     
     _keyHandler = (event) ->
+        #console.log?("_keyHandler:"+event.which);
+        c=event.ctrlKey
+        a=event.altKey
+        s=event.shiftkey
         
-        #if (console) console.log("_keyHandler:"+event.which);
-        if event.which is 13
-            event.preventDefault()
-            if event.shiftKey
-                _executeCode()
-            else _executeCode()    if event.ctrlKey
-        #Ctrl+Alt+F
-        else _commentSelection not event.shiftKey    if event.which is 191 and event.ctrlKey
+        switch event.which
+            when 13 # Enter
+                if c or s then _executeCode()
+            #when 191 # /
+            #    if c then _commentSelection(not s)
+            when 122 # F11
+                if a then _switchFullsreen()
+                    
         return
     
     
