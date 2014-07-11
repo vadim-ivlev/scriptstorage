@@ -136,9 +136,8 @@
       $("#saveGroup").hide();
     }
     if (userName !== getNotebookOwnerFromUrl()) {
-      $("#saveGroup").hide();
+      return $("#saveGroup").hide();
     }
-    return $("#btnSave").click(saveNotebook);
   });
 
 }).call(this);

@@ -229,22 +229,27 @@
       return notebook.wrap("<wrapper/>").parent().html();
     };
     _init = function() {
-      appendNewCell(getNewCellNumber()).setFocus(0, 0);
+      var nc;
+      nc = appendNewCell(getNewCellNumber());
       _container.bind("keydown", globalKeyHandler);
+      nc.setFocus(0, 0);
+      nc.unlock();
     };
     clear = function() {
       var cells;
       cells = _container.find(".cell").remove();
-      CELLS = [];
+      return CELLS = [];
     };
     setTheme = function(themeName) {
-      var C, _i, _len;
+      var C, _i, _len, _results;
       _themeName = themeName;
+      _results = [];
       for (_i = 0, _len = CELLS.length; _i < _len; _i++) {
         C = CELLS[_i];
         C.getEditor().setOption("theme", themeName);
-        C.getJavascriptTextViewer().setOption("theme", themeName);
+        _results.push(C.getJavascriptTextViewer().setOption("theme", themeName));
       }
+      return _results;
     };
     getTheme = function() {
       return _themeName;

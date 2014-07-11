@@ -298,6 +298,7 @@
         line: 0,
         ch: 0
       });
+      return this;
     };
     _removeFocus = function() {};
     _executeCode = function() {

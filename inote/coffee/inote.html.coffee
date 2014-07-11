@@ -17,8 +17,6 @@ inote = undefined
     $("#saveIndicator").text "*"
     clearTimeout saveNotebookTimeout
 
-    #saveWithVersion = ->
-    #    saveNotebook true
 
     if $("#autoSave").is(":checked")
         saveNotebookTimeout = setTimeout saveNotebook , 2000
@@ -160,7 +158,7 @@ $ ->
         $("#saveGroup").hide()
         
     #$("#btnClear").click(clearAndInit);
-    $("#btnSave").click saveNotebook
+    #$("#btnSave").click saveNotebook
 
     # page transition
     #$("body").fadeIn(1000)

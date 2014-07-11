@@ -352,8 +352,7 @@
         _codemirror.setCursor
             line: 0
             ch: 0
-
-        return
+        return @
     
     
     _removeFocus = ->

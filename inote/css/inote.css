@@ -1824,9 +1824,6 @@ input {
 .visibleBorder {
   border-color: rgba(200, 200, 200, 0.4);
 }
-.shadow {
-  box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.04);
-}
 .fullscreen-top-right {
   position: fixed;
   top: 5px;

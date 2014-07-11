@@ -77,6 +77,7 @@
         newCell.getJQueryCell().appendTo _container
         CELLS.push newCell
         #newCell.setFocus(0,0);
+        #newCell.unlock()
         newCell
     
     
@@ -194,15 +195,16 @@
 
    # ===================================================== 
     _init = ->
-        appendNewCell(getNewCellNumber()).setFocus 0, 0
+        nc=appendNewCell(getNewCellNumber())
         _container.bind "keydown", globalKeyHandler
+        nc.setFocus 0, 0
+        nc.unlock()
         return
     
     
     clear = ->
         cells = _container.find(".cell").remove()
         CELLS = []
-        return
     
     
     setTheme = (themeName) ->
@@ -210,8 +212,6 @@
         for C in CELLS
             C.getEditor().setOption "theme", themeName
             C.getJavascriptTextViewer().setOption "theme", themeName
-
-        return
     
     
     getTheme = ->
