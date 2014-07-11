@@ -313,15 +313,19 @@
         #console.log?("_keyHandler:"+event.which);
         c=event.ctrlKey
         a=event.altKey
-        s=event.shiftkey
+        s=event.shiftKey
         
         switch event.which
             when 13 # Enter
-                if c or s then _executeCode()
+                if c or s
+                    event.preventDefault()
+                    _executeCode()
             #when 191 # /
             #    if c then _commentSelection(not s)
             when 122 # F11
-                if a then _switchFullsreen()
+                if a
+                    event.preventDefault()
+                    _switchFullsreen()
                     
         return
     

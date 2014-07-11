@@ -262,15 +262,17 @@
       var a, c, s;
       c = event.ctrlKey;
       a = event.altKey;
-      s = event.shiftkey;
+      s = event.shiftKey;
       switch (event.which) {
         case 13:
           if (c || s) {
+            event.preventDefault();
             _executeCode();
           }
           break;
         case 122:
           if (a) {
+            event.preventDefault();
             _switchFullsreen();
           }
       }
