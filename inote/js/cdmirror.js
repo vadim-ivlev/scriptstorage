@@ -7,7 +7,7 @@
     config = {
       value: "",
       mode: "javascript",
-      vimMode: true,
+      vimMode: false,
       lineWrapping: true,
       lineNumbers: true,
       autofocus: false,

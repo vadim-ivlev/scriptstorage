@@ -1,4 +1,11 @@
-@Cell = (cellNumber, themeName) ->
+###
+
+cellNumber - defines names for the cell and input and output
+themeName - color scheme of the editor
+keyMap - default| vim | sublime | emac
+
+###
+@Cell = (cellNumber, themeName, keyMap) ->
     
     _n = undefined
     _jQueryCell = undefined
@@ -22,47 +29,49 @@
     _onfirst = false
     _onlast = false
     _compileTimeout = undefined
+    _keyMap = "default"
 
 
 
-    _create = (celNum, theme) ->
+    _create = (celNum, theme, keyM) ->
         
         _jQueryCell = $("""
-<div class='cell'>
+            <div class='cell'>
 
-    <div class='input_header'>
-        <span class='hideInputButton toolButton hidable000 icon-eye-blocked' ></span> <!-- &#x25BC -->
-        <select class='selectButton hidable000'>
-            <option value='javascript'>JavaScript</option>
-            <option value='text/x-coffeescript'>CoffeeScript</option>
-            <option value='text/html'>HTML</option>
-            <option value='markdown'>Markdown</option>
-        </select>
-        <span class='showJavascriptButton toolButton hidable000' >Show Javascript</span>
-        <span class='deleteButton toolButton  hidable000 icon-remove' title='delete cell' ></span><!-- &nbsp;b&#x00D7&nbsp; -->
-        <span class='toolButton hidable000 icon-expand' style='float:right' title='Fullscreen on/of'>Alt-F11</span>
-    </div>
-        <table class='codeArea' > 
-            <tr>
-                <td id='in_' class='inputCell' ></td>
-                <td id='js_' class='javascriptCell'></td>
-            </tr>
-        </table>
-    <div class='input_expander toolButton hidable000 icon-eye'></div> <!-- &#x25BA -->
+                <div class='input_header'>
+                    <span class='hideInputButton toolButton hidable000 icon-eye-blocked' ></span> <!-- &#x25BC -->
+                    <select class='selectButton hidable000'>
+                        <option value='javascript'>JavaScript</option>
+                        <option value='text/x-coffeescript'>CoffeeScript</option>
+                        <option value='text/html'>HTML</option>
+                        <option value='markdown'>Markdown</option>
+                    </select>
+                    <span class='showJavascriptButton toolButton hidable000' >Show Javascript</span>
+                    <span class='deleteButton toolButton  hidable000 icon-remove' title='delete cell' ></span><!-- &nbsp;b&#x00D7&nbsp; -->
+                    <span class='toolButton hidable000 icon-expand' style='float:right' title='Fullscreen on/of'>Alt-F11</span>
+                    <span class='keyMap toolButton hidable000' style='float:right' title='editor mode'></span>
+                </div>
+                    <table class='codeArea' > 
+                        <tr>
+                            <td id='in_' class='inputCell' ></td>
+                            <td id='js_' class='javascriptCell'></td>
+                        </tr>
+                    </table>
+                <div class='input_expander toolButton hidable000 icon-eye'></div> <!-- &#x25BA -->
 
-    <div class='output_header'>
-        <span class='hideOutputButton toolButton hidable000 icon-eye-blocked'></span> <!-- &#x25BC -->
-        <span class='clearOutputButton toolButton hidable000'>clear output</span>
-        <span class='toolButton hidable000 icon-play' title='<Ctrl-Ent> to run.  <Shift-Ent> to run and go to the next cell. '>run</span>
-    </div>
-    
-    <div id='out_' class='outputCell lr_padded'></div>
-    <div class='output_expander toolButton hidable000 icon-eye'></div> <!-- &#x25BA -->
-    <div class='insertBefore smallButton  hidable000 icon-plus' title='add cell'></div>
-    <div class='insertAfter smallButton  hidable000 icon-plus' title='add cell'></div>
-    <div class='lockButton smallButton icon-pencil' title='lock/unlock' style='position:absolute;top:0px;left:-27px;'></div>
-    <div class='run2 smallButton icon-play'  style='position:absolute;top:0px;left:8px;' title='run the code'></div>
-</div>
+                <div class='output_header'>
+                    <span class='hideOutputButton toolButton hidable000 icon-eye-blocked'></span> <!-- &#x25BC -->
+                    <span class='clearOutputButton toolButton hidable000'>clear output</span>
+                    <span class='toolButton hidable000 icon-play' title='<Ctrl-Ent> to run.  <Shift-Ent> to run and go to the next cell. '>run</span>
+                </div>
+                
+                <div id='out_' class='outputCell lr_padded'></div>
+                <div class='output_expander toolButton hidable000 icon-eye'></div> <!-- &#x25BA -->
+                <div class='insertBefore smallButton  hidable000 icon-plus' title='add cell'></div>
+                <div class='insertAfter smallButton  hidable000 icon-plus' title='add cell'></div>
+                <div class='lockButton smallButton icon-pencil' title='lock/unlock' style='position:absolute;top:0px;left:-27px;'></div>
+                <div class='run2 smallButton icon-play'  style='position:absolute;top:0px;left:8px;' title='run the code'></div>
+            </div>
         """)
     
         _inputCell = _jQueryCell.find(".inputCell")
@@ -74,18 +83,19 @@
         _fullscreenButton = _jQueryCell.find(".icon-expand")
         
         _codemirror = createCodeMirror(_inputCell[0])
-        _codemirror.setOption "theme", theme or "eclipse"
         _codemirror.setOption "readOnly", "nocursor"
         _javascriptTextViewer = createCodeMirror(_javascriptCell[0])
         _javascriptTextViewer.setOption "readOnly", "nocursor"
-        _javascriptTextViewer.setOption "theme", theme or "eclipse"
         _javascriptTextViewer.setValue ""
-        
+       
+        _setTheme theme
+
         _attachEvents()
         _setNumber celNum
         _setMode _mode
         _setOutputCollapsed _outCollapsed
         _setInputCollapsed _outCollapsed
+        _setKeyMap keyM
         return
     
     
@@ -93,6 +103,19 @@
         f param    if typeof (f) is "function"
         return
     
+    _setKeyMap = (v)->
+        _keyMap = if v then v else "default"
+        _jQueryCell.find(".keyMap").text _keyMap
+        _codemirror.setOption "vimMode", (_keyMap is "vim")
+        _codemirror.setOption "keyMap", _keyMap
+        @
+
+    _setTheme = (themeName) ->
+            th = if themeName then themeName else "default"
+            _codemirror.setOption "theme", th
+            _javascriptTextViewer.setOption "theme", th
+
+
     
     _showJavascriptText = ->
         _jQueryCell.find(".showJavascriptButton").text "Hide Javascript"
@@ -481,7 +504,7 @@
     
     
     #EXECUTION **************************************
-    _create cellNumber, themeName
+    _create cellNumber, themeName, keyMap
     
     
     #RETURN *****************************************
@@ -539,6 +562,9 @@
 
     lock: _lock
     unlock: _unlock
+
+    setKeyMap: _setKeyMap
+    setTheme: _setTheme
 
 
 

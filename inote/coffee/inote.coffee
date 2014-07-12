@@ -3,6 +3,7 @@
     _container = domContainer
     CELLS = []
     _themeName = ""
+    _keyMap = "default"
     
     #Cell number generator
     getNewCellNumber = ->
@@ -64,7 +65,7 @@
     
     
     createNewCell = (cellNumber) ->
-        newCell = new Cell(cellNumber, _themeName)
+        newCell = new Cell(cellNumber, _themeName, _keyMap)
         #callbacks
         newCell.setDeleteCallback deleteCell
         newCell.setInsertBeforeCallback insertCellBefore
@@ -155,6 +156,7 @@
     setXmlText0 = (xmlText) ->
         notebook = $(xmlText)
         _themeName = notebook.attr("theme")
+        _keyMap = notebook.attr("keyMap")
         cells = notebook.find("cell")
 
         for c in cells
@@ -165,7 +167,7 @@
     
     
     getXmlText0 = (notebookName) ->
-        notebook = $("<inote name='#{notebookName}' theme='#{_themeName}'/>")
+        notebook = $("<inote name='#{notebookName}' theme='#{_themeName}' keyMap='#{_keyMap}'/>")
         for C in  CELLS
             notebook.append C.getXml()
         notebook.wrap("<wrapper/>").parent().html()
@@ -174,6 +176,7 @@
     setXmlText1 = (xmlText) ->
         notebook = $(xmlText)
         _themeName = notebook.attr("theme")
+        _keyMap = notebook.attr("keyMap")
         cells = notebook.find("div.cell")
 
         for c in cells
@@ -184,7 +187,7 @@
     
     
     getXmlText1 = (notebookName) ->
-        notebook = $("<div class='book' version='1' name='#{notebookName}' theme='#{_themeName}'/>")
+        notebook = $("<div class='book' version='1' name='#{notebookName}' theme='#{_themeName}' keyMap='#{_keyMap}'/>")
         for C in  CELLS
             notebook.append C.getXml()
         notebook.wrap("<wrapper/>").parent().html()
@@ -210,12 +213,18 @@
     setTheme = (themeName) ->
         _themeName = themeName
         for C in CELLS
-            C.getEditor().setOption "theme", themeName
-            C.getJavascriptTextViewer().setOption "theme", themeName
-    
-    
+            C.setTheme themeName
+
     getTheme = ->
         _themeName
+    
+    setKeyMap = (keyMap) ->
+        _keyMap = keyMap
+        for C in CELLS
+            C.setKeyMap keyMap
+
+    getKeyMap = ->
+        _keyMap
     
     #PUBLIC
     @setXmlText = setXmlText
@@ -224,4 +233,6 @@
     @init = _init
     @setTheme = setTheme
     @getTheme = getTheme
+    @setKeyMap = setKeyMap
+    @getKeyMap = getKeyMap
     return

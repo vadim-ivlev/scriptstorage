@@ -12,6 +12,11 @@ inote = undefined
     return
 
 
+@selectKeyMap = ->
+    inote.setKeyMap $("#notebookEditor").val()
+    @saveNotebookLater()
+    return
+
 
 @saveNotebookLater = ->
     $("#saveIndicator").text "*"
@@ -74,8 +79,15 @@ restoreNotebookFromXml = (xmlText) ->
         inote.clear()
         inote.setXmlText xmlText
         notebook = $(xmlText)
+        
         themeName = notebook.attr("theme")
         if themeName then $("#selectTheme_button").val themeName
+
+        keyMap= notebook.attr("keyMap")
+        if keyMap then $("#notebookEditor").val keyMap
+
+
+
     inote.init()  if $(".cell").length is 0
     return
 
@@ -130,8 +142,12 @@ $ ->
     xmlText = page.html()
     page.html("")
     inote = new iNote($("#page"))
+    
     $("#selectTheme_button").val("default")
-    inote.setTheme $("#selectTheme_button").val()
+    inote.setTheme "default" 
+    
+    $("#notebookEditor").val("default")
+    inote.setKeyMap "default" 
 
     #inote=new iNote($(document.body));
 

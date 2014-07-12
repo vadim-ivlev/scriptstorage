@@ -13,6 +13,11 @@
     this.saveNotebookLater();
   };
 
+  this.selectKeyMap = function() {
+    inote.setKeyMap($("#notebookEditor").val());
+    this.saveNotebookLater();
+  };
+
   this.saveNotebookLater = function() {
     $("#saveIndicator").text("*");
     clearTimeout(saveNotebookTimeout);
@@ -63,7 +68,7 @@
   };
 
   restoreNotebookFromXml = function(xmlText) {
-    var empty, notebook, themeName;
+    var empty, keyMap, notebook, themeName;
     empty = xmlText.replace(/\s/g, "") === "";
     if (!empty) {
       inote.clear();
@@ -72,6 +77,10 @@
       themeName = notebook.attr("theme");
       if (themeName) {
         $("#selectTheme_button").val(themeName);
+      }
+      keyMap = notebook.attr("keyMap");
+      if (keyMap) {
+        $("#notebookEditor").val(keyMap);
       }
     }
     if ($(".cell").length === 0) {
@@ -121,7 +130,9 @@
     page.html("");
     inote = new iNote($("#page"));
     $("#selectTheme_button").val("default");
-    inote.setTheme($("#selectTheme_button").val());
+    inote.setTheme("default");
+    $("#notebookEditor").val("default");
+    inote.setKeyMap("default");
     restoreNotebookFromXml(xmlText);
     $("#notebookAccess").val(getNotebookAccessFromUrl());
 

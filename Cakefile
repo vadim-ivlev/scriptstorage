@@ -34,6 +34,7 @@ js_files_text ="""
             script(src='inote/libs/codemirror-4.3/addon/search/search.js')
             
             script(src='inote/libs/codemirror-4.3/keymap/vim.js')
+            script(src='inote/libs/codemirror-4.3/keymap/sublime.js')
             
             script(src='inote/libs/coffee-script.js')
             script(src='inote/libs/json2.min.js')

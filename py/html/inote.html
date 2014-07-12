@@ -26,9 +26,10 @@
           <option value="public">public</option>
           <option value="private">private</option>
         </select>
-        <select id="notebookEditor" title="Editor" class="selectButton">
+        <select id="notebookEditor" title="Editor" onchange="selectKeyMap()" class="selectButton">
           <option value="default">default editor</option>
           <option value="vim">vim</option>
+          <option value="sublime">sublime</option>
         </select>
         <select id="selectTheme_button" onchange="selectTheme()" class="selectButton">
           <option value="default">default theme</option>

@@ -2,7 +2,7 @@
     config =
         value: "" #function myScript(){return 100;}
         mode: "javascript"
-        vimMode: true
+        vimMode: false
         lineWrapping: true
         lineNumbers: true
         autofocus: false
@@ -38,7 +38,6 @@
 
     editor.on "change", (instance, changeObj) ->
         saveNotebookLater?()
-        #if (console) console.log("change event");
         parentDomObject._compileLater?()
 
     
