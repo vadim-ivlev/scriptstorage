@@ -429,7 +429,7 @@ input {
   color: black;
 }
 #btnCreate {
-  border: 1px solid rgba(200, 200, 200, 0.4);
+  border: 1px solid rgba(200, 200, 200, 0.7);
   padding: 10px;
   padding-left: 20px;
   padding-right: 20px;
@@ -438,5 +438,5 @@ input {
   font-variant: small-caps;
 }
 #btnCreate:hover {
-  border-color: rgba(200, 200, 200, 0.4);
+  border-color: rgba(200, 200, 200, 0.7);
 }

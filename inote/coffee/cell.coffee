@@ -105,6 +105,7 @@ keyMap - default| vim | sublime | emac
     
     _setKeyMap = (v)->
         _keyMap = if v then v else "default"
+        if _keyMap is "undefined" then _keyMap = "default"
         _jQueryCell.find(".keyMap").text _keyMap
         _codemirror.setOption "vimMode", (_keyMap is "vim")
         _codemirror.setOption "keyMap", _keyMap

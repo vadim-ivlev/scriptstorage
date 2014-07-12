@@ -57,6 +57,9 @@ keyMap - default| vim | sublime | emac
     };
     _setKeyMap = function(v) {
       _keyMap = v ? v : "default";
+      if (_keyMap === "undefined") {
+        _keyMap = "default";
+      }
       _jQueryCell.find(".keyMap").text(_keyMap);
       _codemirror.setOption("vimMode", _keyMap === "vim");
       _codemirror.setOption("keyMap", _keyMap);

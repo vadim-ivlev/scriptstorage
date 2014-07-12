@@ -1739,7 +1739,7 @@ input {
   vertical-align: top;
 }
 .javascriptText {
-  border-left: 1px solid rgba(200, 200, 200, 0.4);
+  border-left: 1px solid rgba(200, 200, 200, 0.7);
   margin: 0;
   padding: 0;
   vertical-align: top;
@@ -1810,7 +1810,7 @@ input {
 }
 .markdown hr {
   border-style: none;
-  border-bottom: 1px dotted rgba(200, 200, 200, 0.4);
+  border-bottom: 1px dotted rgba(200, 200, 200, 0.7);
 }
 .hidable000 {
   visibility: hidden;
@@ -1822,10 +1822,7 @@ input {
   visibility: visible;
 }
 .visibleBorder {
-  border-color: rgba(200, 200, 200, 0.4);
-}
-.shadow {
-  box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.04);
+  border-color: rgba(200, 200, 200, 0.7);
 }
 .fullscreen-top-right {
   position: fixed;
@@ -1834,13 +1831,13 @@ input {
   z-index: 20000;
 }
 .javascriptCell {
-  border-left: 1px solid rgba(200, 200, 200, 0.4);
+  border-left: 1px solid rgba(200, 200, 200, 0.7);
   vertical-align: top;
 }
 .CodeMirror {
   height: auto;
   width: 100%;
-  line-height: 130%;
+  line-height: 120%;
   font-family: Menlo, monospace;
 }
 .CodeMirror-scroll {
@@ -1849,18 +1846,13 @@ input {
 }
 .CodeMirror-gutters {
   background-color: transparent;
-  border-right: 2px solid rgba(200, 200, 200, 0.4);
+  border-right: 2px solid rgba(200, 200, 200, 0.7);
 }
 .CodeMirror-cursor {
   border-width: 2px !important;
 }
-.activeline {
-  background: #F5F5F5 !important;
-}
 .CodeMirror-foldmarker {
   color: #777777;
-  font-family: arial;
-  line-height: .4;
   cursor: pointer;
 }
 .CodeMirror-foldgutter {
@@ -1868,7 +1860,7 @@ input {
 }
 .CodeMirror-foldgutter-open,
 .CodeMirror-foldgutter-folded {
-  color: rgba(200, 200, 200, 0.4);
+  color: #777777;
   cursor: pointer;
 }
 .CodeMirror-foldgutter-open:after {
