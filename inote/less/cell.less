@@ -4,13 +4,13 @@
     border: 1px solid transparent;
     //border-right: 1px solid @BORDERCOLOR;
     //border-left: 1px solid @BORDERCOLOR;
-    margin-top:10px;
+    margin-top:20px;
     overflow:visible;
     padding:0px;
     width:100%;
-    border-radius: 8px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    border-radius: 10px;
+    //padding-top: 5px;
+    //padding-bottom: 5px;
 }
 .cell:hover {
     .hidable {
@@ -18,10 +18,12 @@
     }
 }
 .input_header {
-    width:100%;
+    //width:100%;
+    display:inline;
 }
 .output_header {
-    width:100%;
+    //width:100%;
+    display:inline;
 }
 .inputTitle, .outputTitle {
     color: @LINKCOLOR;
@@ -58,27 +60,25 @@
     //border-top:1px solid @BORDERCOLOR;
     //border-bottom:1px solid @BORDERCOLOR;
     border-radius: 0px;
+    overflow: auto;
     padding:0;
 }
-.error {
-    color:red;
-    white-space: normal;
-    font-family: @CODEFONT;
-    font-size: 85%;
-}
+
 .noerror {
-    white-space: normal;
+    white-space: pre-wrap;
     font-family: @CODEFONT;
     font-size: 85%;
 }
+.error {
+    .noerror;
+    color:red;
+}
+
 .input_expander, 
 .output_expander, 
 .hideInputButton, 
 .hideOutputButton{
-    cursor: pointer;
-    border-radius: 0px;
-    color: @LINKCOLOR;
-    width:70px;
+    width:90px;
     display: inline-block;
 }
 .hidable {
@@ -86,33 +86,32 @@
 }
 
 
-/*----------------Buttons -----------------*/
-.smallButton {
-    color: @LINKCOLOR;
-    font-family:  @BUTTONFONT;
-    display:inline-block;
-    text-align: center;
-    cursor: pointer;
-    vertical-align: middle;
-    border: 1px dotted transparent;
+
+// Insert new cell buttons ---------------------------
+
+.insertNewCell() {
+    position:absolute;
+    left:50%;
+    border: 1px solid @BORDERCOLOR;
+    background-color: transparent;
+    font-size:0px;
+    &:after {
+        font-size:10px;
+    }
 }
-.smallButton:hover {
-    border: 1px dotted @LINKCOLOR;
-}
+
 .insertBefore {
-    position:absolute;
-    left:50%;
-    top:-20px;
-    //border-style: none;
-    background-color: transparent;
+    .insertNewCell();
+    top: -1px;
 }
+
+
 .insertAfter {
-    position:absolute;
-    left:50%;
-    bottom:-15px;
-    //border-style: none;
-    background-color: transparent;
+    .insertNewCell();
+    bottom:-1px;
 }
+
+// ---------------------------------------
 .deleteButton {
     float:right;
 }

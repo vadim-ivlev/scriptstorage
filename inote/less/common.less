@@ -25,6 +25,8 @@
 @BORDERCOLOR: rgba(200,200,200,0.7); 
 //#79C;
 
+@RAD: 10px;
+
 body {
     background-color: white;
     margin-left:0px;
@@ -39,33 +41,6 @@ input {
 }
 
 
-.selectButton {
-    background: transparent;
-    border: 1px solid transparent;
-    border-radius: 0px;
-    -webkit-appearance: none;
-    -moz-appearance: window;
-    appearance: none;
-    font-size: 16px;
-    color: @LINKCOLOR;
-    cursor: pointer;
-    vertical-align: middle;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-family: @BUTTONFONT;
-}
-
-
-
-.selectButton:hover {
-    border: 1px dotted @LINKCOLOR;
-}
-
-.selectButton::after { 
-    content: 'v▼'; 
-    font-size: 70%;
-    opacity: 0.7;
-}
 /*PAGE----------------------*/
 .page {
     padding:10px;
@@ -98,19 +73,58 @@ input {
 }
 // TOOL BUTTON -----------------------------------------
 .toolButton {
+    margin:0px;
+    border: none;
     color: @LINKCOLOR;
+    background-color: transparent;
     cursor: pointer;
     vertical-align: middle;
-    padding-left: 10px;
-    padding-right: 10px;
-    border: 1px solid transparent;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-left: 1px dotted transparent;
+    border-right: 1px dotted transparent;
     text-decoration: none;
     font-family:@BUTTONFONT;
     font-size: 16px;
+    border-radius: @RAD;
 }
 .toolButton:hover {
-    border: 1px dotted @LINKCOLOR;
+    border-color: @LINKCOLOR;
 }
+
+
+// SELECT BUTTON --------------------------
+.selectButton {
+    .toolButton;
+    -webkit-appearance: none;
+    -moz-appearance: window;
+    appearance: none;
+    vertical-align: middle;
+}
+
+.selectButton:hover {
+    border-color: @LINKCOLOR;
+}
+/*
+.selectButton::before { 
+    content: '▼'; 
+    font-size: 70%;
+    opacity: 0.7;
+}
+*/
+
+// SMALL BUTTONS
+.smallButton {
+    .toolButton;
+    padding-left: 0;
+    padding-right: 0;
+}
+.smallButton:hover {
+    border-color: @LINKCOLOR;
+}
+
+
+
 .oauthHolder {
     font-family:@BUTTONFONT;
     text-align: right;
@@ -120,11 +134,15 @@ input {
     color:@LINKCOLOR;
 }
 
+
+
 .ic {
     font-family: icomoon;
+    font-size: 15px;
     color: @LINKCOLOR;
     vertical-align: middle;
-    margin-left:5px;
+    margin-left:4px;
+    margin-right:4px;
     opacity:0.7;
 }
 
@@ -145,11 +163,11 @@ input {
 .icon-menu::after { .ic; content: 'm'; }
 .icon-link::after { .ic; content: 'n'; }
 .icon-attachment::after { .ic; content: '@'; }
-.icon-eye::before { .ic; content: 'O'; margin-left:0; margin-right:5px; }
-.icon-eye-blocked::before { .ic; content: 'o'; margin-left:0; margin-right:5px; }
+.icon-eye::before { .ic; content: 'O'; }
+.icon-eye-blocked::before { .ic; content: 'o'; }
 .icon-star::after { .ic; content: 't'; }
 .icon-close::after { .ic; content: 'x'; font-size:80%; }
-.icon-plus::after { .ic; content: '+'; opacity:0.3 }
+.icon-plus::after { .ic; content: '+'; }
 .icon-embed::after { .ic; content: '['; }
 .icon-share::after { .ic; content: 's'; }
 .icon-googleplus::after { .ic; content: 'G'; font-size:130%; color:#F44; }

@@ -6,13 +6,7 @@ keyMap - default| vim | sublime | emac
 
 ###
 
-#@PRINT
-
-#@CLEAR
-
-
-window.print = null
-window.clear = null
+#@PRINT = ->
 
 @Cell = (cellNumber, themeName, keyMap) ->
     
@@ -392,9 +386,8 @@ window.clear = null
     
     
     _executeCode = ->
-        #window.PRINT = _print #(o) -> _print(o)
-        window.print =_print
-        window.clear = _clearPrintArea
+        @PRINT=_print
+        @CLEAR=_clearPrintArea
 
         _clearPrintArea()
         _outputCell.html ""
@@ -409,7 +402,7 @@ window.clear = null
                 html = converter.makeHtml(code)
                 _outputCell.html "<div class='markdown'>" + html + "</div>"
             else if _mode is "javascript"
-                eval.call(window, code)
+                result = eval.call(window, code)
                 #_print result
             else if _mode is "text/x-coffeescript"
                 _javascriptTextViewer.setValue ""
@@ -418,7 +411,7 @@ window.clear = null
                 )
                 _javascriptTextViewer.setValue compiledCode
                 _javascriptTextViewer.refresh()
-                eval.call(window, compiledCode)
+                result = eval.call(window, compiledCode)
                 #_print result
         catch e
             _printError "" + e
@@ -433,7 +426,7 @@ window.clear = null
 
     _createPrintArea = ->
         _printArea = $("<pre class='noerror'/>")
-        _printArea.appendTo _outputCell
+        _outputCell.append _printArea
 
     
 
@@ -449,18 +442,13 @@ window.clear = null
         if o instanceof jQuery
             s = "{jQuery}"
         else
-            if typeof(o) is "string"
-                s = o
-            else if typeof(o) is "number"
-                s = o
-            else
-                try
-                    s = JSON.stringify(o, (key, value) ->
-                        (if this[key] instanceof Function then value.toString() else value)
-                    , " ")
-                catch e
-                    s = "Error: JSON.stringify\n"
-        _printArea.text( _printArea.text() + s )
+            try
+                s = JSON.stringify(o, (key, value) ->
+                    (if this[key] instanceof Function then value.toString() else value)
+                , " ")
+            catch e
+                s = "Error of JSON.sringify\n"
+         _printArea.text( _printArea.text() + s )
         #_outputCell.html box
         return
 

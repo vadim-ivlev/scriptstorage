@@ -20,29 +20,6 @@ body {
 input {
   background: transparent;
 }
-.selectButton {
-  background: transparent;
-  border: 1px solid transparent;
-  border-radius: 0px;
-  -webkit-appearance: none;
-  -moz-appearance: window;
-  appearance: none;
-  font-size: 16px;
-  color: #777777;
-  cursor: pointer;
-  vertical-align: middle;
-  padding-left: 10px;
-  padding-right: 10px;
-  font-family: Roboto, sans-serif;
-}
-.selectButton:hover {
-  border: 1px dotted #777777;
-}
-.selectButton::after {
-  content: 'v▼';
-  font-size: 70%;
-  opacity: 0.7;
-}
 /*PAGE----------------------*/
 .page {
   padding: 10px;
@@ -67,18 +44,73 @@ input {
   color: #777777;
 }
 .toolButton {
+  margin: 0px;
+  border: none;
   color: #777777;
+  background-color: transparent;
   cursor: pointer;
   vertical-align: middle;
-  padding-left: 10px;
-  padding-right: 10px;
-  border: 1px solid transparent;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-left: 1px dotted transparent;
+  border-right: 1px dotted transparent;
   text-decoration: none;
   font-family: Roboto, sans-serif;
   font-size: 16px;
+  border-radius: 10px;
 }
 .toolButton:hover {
-  border: 1px dotted #777777;
+  border-color: #777777;
+}
+.selectButton {
+  margin: 0px;
+  border: none;
+  color: #777777;
+  background-color: transparent;
+  cursor: pointer;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-left: 1px dotted transparent;
+  border-right: 1px dotted transparent;
+  text-decoration: none;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  border-radius: 10px;
+  -webkit-appearance: none;
+  -moz-appearance: window;
+  appearance: none;
+  vertical-align: middle;
+}
+.selectButton:hover {
+  border-color: #777777;
+}
+/*
+.selectButton::before { 
+    content: '▼'; 
+    font-size: 70%;
+    opacity: 0.7;
+}
+*/
+.smallButton {
+  margin: 0px;
+  border: none;
+  color: #777777;
+  background-color: transparent;
+  cursor: pointer;
+  vertical-align: middle;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-left: 1px dotted transparent;
+  border-right: 1px dotted transparent;
+  text-decoration: none;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  border-radius: 10px;
+  padding-left: 0;
+  padding-right: 0;
+}
+.smallButton:hover {
+  border-color: #777777;
 }
 .oauthHolder {
   font-family: Roboto, sans-serif;
@@ -90,216 +122,263 @@ input {
 }
 .ic {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
 }
 .icon-play::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: 'r';
   cursor: pointer;
 }
 .icon-question-circle::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: '?';
 }
 .icon-info-circle::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: 'i';
 }
 .icon-home::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: 'h';
 }
 .icon-pencil::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   content: 'e';
   opacity: 0.7;
 }
 .icon-image::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: 'p';
 }
 .icon-file::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: 'f';
 }
 .icon-expand::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: 'X';
   font-size: 80%;
 }
 .icon-contract::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: '_';
 }
 .icon-lock::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   content: 'L';
   opacity: 0.7;
 }
 .icon-unlocked::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: 'u';
 }
 .icon-cog::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: 'g';
 }
 .icon-food::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: 'd';
 }
 .icon-remove::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: 'b';
 }
 .icon-menu::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: 'm';
 }
 .icon-link::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: 'n';
 }
 .icon-attachment::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: '@';
 }
 .icon-eye::before {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: 'O';
-  margin-left: 0;
-  margin-right: 5px;
 }
 .icon-eye-blocked::before {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: 'o';
-  margin-left: 0;
-  margin-right: 5px;
 }
 .icon-star::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: 't';
 }
 .icon-close::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: 'x';
   font-size: 80%;
 }
 .icon-plus::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: '+';
-  opacity: 0.3;
 }
 .icon-embed::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: '[';
 }
 .icon-share::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: 's';
 }
 .icon-googleplus::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: 'G';
   font-size: 130%;
@@ -307,54 +386,66 @@ input {
 }
 .icon-facebook::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: 'F';
   font-size: 130%;
 }
 .icon-twitter::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: 'T';
   font-size: 130%;
 }
 .icon-youtube::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: 'Y';
   font-size: 130%;
 }
 .icon-github::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: 'H';
   font-size: 130%;
 }
 .icon-wordpress::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: 'P';
   font-size: 130%;
 }
 .icon-blogger::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: 'B';
   font-size: 130%;
@@ -362,9 +453,11 @@ input {
 }
 .icon-windows::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: 'W';
   font-size: 130%;
@@ -372,42 +465,52 @@ input {
 }
 .icon-linkedin::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: 'I';
   font-size: 130%;
 }
 .icon-file-xml::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: 'N';
 }
 .icon-html5::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: '5';
 }
 .icon-logout::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: '<';
 }
 .icon-login::after {
   font-family: icomoon;
+  font-size: 15px;
   color: #777777;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
   opacity: 0.7;
   content: '>';
 }

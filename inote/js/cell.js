@@ -8,8 +8,12 @@ keyMap - default| vim | sublime | emac
  */
 
 (function() {
+  window.print = null;
+
+  window.clear = null;
+
   this.Cell = function(cellNumber, themeName, keyMap) {
-    var toXmlString, _CPLTIME, _VER, _attachEvents, _call, _codemirror, _compileLater, _compileTimeout, _compile_CoffeeScript, _compile_Markdown, _create, _cursorOnFirstLine, _cursorOnLastLine, _deleteCallback, _executeCode, _fullscreenButton, _getNumber, _getSelectedRange, _getXml, _getXml0, _getXml1, _hideJavascriptText, _inCollapsed, _inputCell, _insertAfterCallback, _insertBeforeCallback, _jQueryCell, _javascriptCell, _javascriptTextViewer, _keyHandler, _keyMap, _lock, _lockButton, _lockUnlock, _mode, _n, _onfirst, _onlast, _outCollapsed, _outputCell, _print, _printError, _removeFocus, _setCursorOnFirstLine, _setCursorOnLastLine, _setFocus, _setInputCollapsed, _setKeyMap, _setMode, _setNumber, _setOutputCollapsed, _setTheme, _setXml, _setXml0, _setXml1, _showJavascriptText, _switchFullsreen, _switchJavascriptText, _unlock;
+    var toXmlString, _CPLTIME, _VER, _attachEvents, _call, _clearPrintArea, _codemirror, _compileLater, _compileTimeout, _compile_CoffeeScript, _compile_Markdown, _create, _createPrintArea, _cursorOnFirstLine, _cursorOnLastLine, _deleteCallback, _executeCode, _fullscreenButton, _getNumber, _getSelectedRange, _getXml, _getXml0, _getXml1, _hideJavascriptText, _inCollapsed, _inputCell, _insertAfterCallback, _insertBeforeCallback, _jQueryCell, _javascriptCell, _javascriptTextViewer, _keyHandler, _keyMap, _lock, _lockButton, _lockUnlock, _mode, _n, _onfirst, _onlast, _outCollapsed, _outputCell, _print, _printArea, _printError, _removeFocus, _setCursorOnFirstLine, _setCursorOnLastLine, _setFocus, _setInputCollapsed, _setKeyMap, _setMode, _setNumber, _setOutputCollapsed, _setTheme, _setXml, _setXml0, _setXml1, _showJavascriptText, _switchFullsreen, _switchJavascriptText, _unlock;
     _n = void 0;
     _jQueryCell = void 0;
     _codemirror = void 0;
@@ -30,7 +34,7 @@ keyMap - default| vim | sublime | emac
     _compileTimeout = void 0;
     _keyMap = "default";
     _create = function(celNum, theme, keyM) {
-      _jQueryCell = $("<div class='cell'>\n\n    <div class='input_header'>\n        <span class='hideInputButton toolButton hidable000 icon-eye-blocked' ></span> <!-- &#x25BC -->\n        <select class='selectButton hidable000'>\n            <option value='javascript'>JavaScript</option>\n            <option value='text/x-coffeescript'>CoffeeScript</option>\n            <option value='text/html'>HTML</option>\n            <option value='markdown'>Markdown</option>\n        </select>\n        <span class='showJavascriptButton toolButton hidable000' >Show Javascript</span>\n        <span class='deleteButton toolButton  hidable000 icon-remove' title='delete cell' ></span><!-- &nbsp;b&#x00D7&nbsp; -->\n        <span class='toolButton hidable000 icon-expand' style='float:right' title='Fullscreen on/of'>Alt-F11</span>\n        <span class='keyMap toolButton hidable000' style='float:right' title='editor mode'></span>\n    </div>\n        <table class='codeArea' > \n            <tr>\n                <td id='in_' class='inputCell' ></td>\n                <td id='js_' class='javascriptCell'></td>\n            </tr>\n        </table>\n    <div class='input_expander toolButton hidable000 icon-eye'></div> <!-- &#x25BA -->\n\n    <div class='output_header'>\n        <span class='hideOutputButton toolButton hidable000 icon-eye-blocked'></span> <!-- &#x25BC -->\n        <span class='clearOutputButton toolButton hidable000'>clear output</span>\n        <span class='toolButton hidable000 icon-play' title='<Ctrl-Ent> to run.  <Shift-Ent> to run and go to the next cell. '>run</span>\n    </div>\n    \n    <div id='out_' class='outputCell lr_padded'></div>\n    <div class='output_expander toolButton hidable000 icon-eye'></div> <!-- &#x25BA -->\n    <div class='insertBefore smallButton  hidable000 icon-plus' title='add cell'></div>\n    <div class='insertAfter smallButton  hidable000 icon-plus' title='add cell'></div>\n    <div class='lockButton smallButton icon-pencil' title='lock/unlock' style='position:absolute;top:0px;left:-27px;'></div>\n    <div class='run2 smallButton icon-play'  style='position:absolute;top:0px;left:8px;' title='run the code'></div>\n</div>");
+      _jQueryCell = $("<div class='cell'>\n\n    <div class='input_header'>\n        <span class='hideInputButton toolButton hidable000 icon-eye-blocked' ></span> <!-- &#x25BC -->\n        <select class='selectButton hidable000'>\n            <option value='javascript'>JavaScript</option>\n            <option value='text/x-coffeescript'>CoffeeScript</option>\n            <option value='text/html'>HTML</option>\n            <option value='markdown'>Markdown</option>\n        </select>\n        <span class='showJavascriptButton toolButton hidable000' >Show Javascript</span>\n        <span class='deleteButton toolButton  hidable000 icon-remove' title='delete cell' ></span><!-- &nbsp;b&#x00D7&nbsp; -->\n        <span class='toolButton hidable000 icon-expand' style='float:right' title='Fullscreen on/of'>Alt-F11</span>\n        <span class='keyMap toolButton hidable000' style='float:right' title='editor mode'></span>\n    </div>\n        <table class='codeArea' > \n            <tr>\n                <td id='in_' class='inputCell' ></td>\n                <td id='js_' class='javascriptCell'></td>\n            </tr>\n        </table>\n    <div class='input_expander toolButton hidable000 icon-eye'></div> <!-- &#x25BA -->\n\n    <div class='output_header' style='display:inline'>\n        <span class='hideOutputButton toolButton hidable000 icon-eye-blocked'></span> <!-- &#x25BC -->\n        <span class='clearOutputButton toolButton hidable000'>clear output</span>\n        <span class='toolButton hidable000 icon-play' title='<Ctrl-Ent> to run.  <Shift-Ent> to run and go to the next cell. '>run</span>\n    </div>\n    \n    <div id='out_' class='outputCell lr_padded'></div>\n    <div class='output_expander toolButton hidable000 icon-eye'></div> <!-- &#x25BA -->\n    <div class='insertBefore smallButton  hidable000 icon-plus' title='add cell'></div>\n    <div class='insertAfter smallButton  hidable000 icon-plus' title='add cell'></div>\n    <div class='lockButton smallButton icon-pencil' title='lock/unlock' style='position:absolute;top:0px;left:-27px;'></div>\n    <div class='run2 smallButton icon-play'  style='position:absolute;top:0px;left:8px;' title='run the code'></div>\n</div>");
       _inputCell = _jQueryCell.find(".inputCell");
       _inputCell[0]._compileLater = _compileLater;
       _outputCell = _jQueryCell.find(".outputCell");
@@ -327,11 +331,13 @@ keyMap - default| vim | sublime | emac
     };
     _removeFocus = function() {};
     _executeCode = function() {
-      var code, compiledCode, converter, e, html, result;
+      var code, compiledCode, converter, e, html;
+      window.print = _print;
+      window.clear = _clearPrintArea;
+      _clearPrintArea();
       _outputCell.html("");
       try {
         code = _codemirror.getValue();
-        result = void 0;
         if (_mode === "text/html") {
           _outputCell.html(code);
         } else if (_mode === "markdown") {
@@ -339,8 +345,7 @@ keyMap - default| vim | sublime | emac
           html = converter.makeHtml(code);
           _outputCell.html("<div class='markdown'>" + html + "</div>");
         } else if (_mode === "javascript") {
-          result = eval.call(window, code);
-          _print(result);
+          eval.call(window, code);
         } else if (_mode === "text/x-coffeescript") {
           _javascriptTextViewer.setValue("");
           compiledCode = CoffeeScript.compile(code, {
@@ -348,39 +353,56 @@ keyMap - default| vim | sublime | emac
           });
           _javascriptTextViewer.setValue(compiledCode);
           _javascriptTextViewer.refresh();
-          result = eval.call(window, compiledCode);
-          _print(result);
+          eval.call(window, compiledCode);
         }
       } catch (_error) {
         e = _error;
         _printError("" + e);
       }
     };
+    _printArea = null;
+    _clearPrintArea = function() {
+      _printArea = null;
+      return _outputCell.find("pre.noerror").remove();
+    };
+    _createPrintArea = function() {
+      _printArea = $("<pre class='noerror'/>");
+      return _printArea.appendTo(_outputCell);
+    };
     _print = function(o) {
-      var box, e, s;
-      if (typeof o === "undefined") {
-        return;
+
+      /*
+      return    if typeof (o) is "undefined"
+      box = $("<pre class='noerror'/>")
+       */
+      var e, s;
+      if (_printArea == null) {
+        _printArea = _createPrintArea();
       }
-      box = $("<pre class='noerror'/>");
       s = "";
       if (o instanceof jQuery) {
         s = "{jQuery}";
       } else {
-        try {
-          s = JSON.stringify(o, function(key, value) {
-            if (this[key] instanceof Function) {
-              return value.toString();
-            } else {
-              return value;
-            }
-          }, " ");
-        } catch (_error) {
-          e = _error;
-          return;
+        if (typeof o === "string") {
+          s = o;
+        } else if (typeof o === "number") {
+          s = o;
+        } else {
+          try {
+            s = JSON.stringify(o, function(key, value) {
+              if (this[key] instanceof Function) {
+                return value.toString();
+              } else {
+                return value;
+              }
+            }, " ");
+          } catch (_error) {
+            e = _error;
+            s = "Error: JSON.stringify\n";
+          }
         }
       }
-      box.text(s);
-      _outputCell.html(box);
+      _printArea.text(_printArea.text() + s);
     };
     _printError = function(o) {
       _outputCell.html("<div class='error'>" + o + "</div>");
