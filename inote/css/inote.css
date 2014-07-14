@@ -1911,9 +1911,11 @@ input {
 .hidable000 {
   visibility: hidden;
 }
+/*
 .hidden {
-  visibility: hidden;
+    visibility:hidden;
 }
+*/
 .visible {
   visibility: visible;
 }

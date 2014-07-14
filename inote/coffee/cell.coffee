@@ -70,8 +70,8 @@ window.clear = null
 
                 <div class='output_header' style='display:inline'>
                     <span class='hideOutputButton toolButton hidable000 icon-eye-blocked'></span> <!-- &#x25BC -->
-                    <span class='clearOutputButton toolButton hidable000'>clear output</span>
-                    <span class='toolButton hidable000 icon-play' title='<Ctrl-Ent> to run.  <Shift-Ent> to run and go to the next cell. '>run</span>
+                    <span class='clearOutputButton toolButton '>clear</span>
+                    <span class='toolButton icon-play' title='<Ctrl-Ent> to run.  <Shift-Ent> to run and go to the next cell. '>run</span>
                 </div>
                 
                 <div id='out_' class='outputCell lr_padded'></div>
@@ -189,7 +189,7 @@ window.clear = null
 
     # make it read only ======================================================
     _lock = ->
-        _lockButton.removeClass('icon-lock').addClass("icon-pencil");
+        _lockButton.removeClass('icon-lock').addClass("icon-pencil")
         _jQueryCell.find(".hidable000").removeClass "visible"
         _jQueryCell.find(".codeArea").removeClass "visibleBorder"
         _jQueryCell.removeClass "visibleBorder shadow"
@@ -208,9 +208,9 @@ window.clear = null
         _jQueryCell.find(".run2").hide()
     
     _lockUnlock = ->
-        if _lockButton.hasClass('icon-pencil') 
-            _unlock() 
-        else 
+        if _lockButton.hasClass('icon-pencil')
+            _unlock()
+        else
             _lock()
 
 
