@@ -12,19 +12,15 @@
     //padding-top: 5px;
     //padding-bottom: 5px;
 }
-.cell:hover {
-    .hidable {
-        visibility: visible;
-    }
-}
 .input_header {
     //width:100%;
-    display:inline;
+    //display:inline;
 }
 .output_header {
     //width:100%;
-    display:inline;
+    //display:inline;
 }
+/*
 .inputTitle, .outputTitle {
     color: @LINKCOLOR;
     display:inline-block;
@@ -34,6 +30,7 @@
     vertical-align: middle;
     padding-right: 4px;
 }
+*/
 .codeArea {
     border-top: 1px solid transparent;
     border-bottom: 1px solid transparent;
@@ -79,11 +76,9 @@
 .hideInputButton, 
 .hideOutputButton{
     width:90px;
-    display: inline-block;
+    //display: inline-block;
 }
-.hidable {
-    visibility:hidden;
-}
+
 
 
 
@@ -128,17 +123,15 @@
         border-bottom: 1px dotted @BORDERCOLOR;
     }
 }
+
 .hidable000 {
-    visibility:hidden;
+    display:none;
 }
-/*
-.hidden {
-    visibility:hidden;
-}
-*/
+
 .visible {
-    visibility:visible;
+    display:initial;
 }
+
 .lockButton {
 }
 
@@ -161,4 +154,10 @@
 .javascriptCell {
     border-left:1px solid @BORDERCOLOR;
     vertical-align:top;
+}
+
+.unlocked
+{
+    border-radius:4px;
+    border: 1px solid @BORDERCOLOR;
 }

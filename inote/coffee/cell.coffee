@@ -47,7 +47,7 @@ window.clear = null
         _jQueryCell = $("""
             <div class='cell'>
 
-                <div class='input_header'>
+                <span class='input_header'>
                     <span class='hideInputButton toolButton hidable000 icon-eye-blocked' ></span> <!-- &#x25BC -->
                     <select class='selectButton hidable000'>
                         <option value='javascript'>JavaScript</option>
@@ -59,27 +59,29 @@ window.clear = null
                     <span class='deleteButton toolButton  hidable000 icon-remove' title='delete cell' ></span><!-- &nbsp;b&#x00D7&nbsp; -->
                     <span class='toolButton hidable000 icon-expand' style='float:right' title='Fullscreen on/of'>Alt-F11</span>
                     <span class='keyMap toolButton hidable000' style='float:right' title='editor mode'></span>
-                </div>
-                    <table class='codeArea' > 
-                        <tr>
-                            <td id='in_' class='inputCell' ></td>
-                            <td id='js_' class='javascriptCell'></td>
-                        </tr>
-                    </table>
-                <div class='input_expander toolButton hidable000 icon-eye'></div> <!-- &#x25BA -->
+                </span>
+                
+                <table class='codeArea' > 
+                    <tr>
+                        <td id='in_' class='inputCell' ></td>
+                        <td id='js_' class='javascriptCell'></td>
+                    </tr>
+                </table>
+                
+                <span class='input_expander toolButton hidable000 icon-eye'></span> 
 
-                <div class='output_header' style='display:inline'>
+                <span class='output_header'>
                     <span class='hideOutputButton toolButton hidable000 icon-eye-blocked'></span> <!-- &#x25BC -->
                     <span class='clearOutputButton toolButton '>clear</span>
                     <span class='toolButton icon-play' title='<Ctrl-Ent> to run.  <Shift-Ent> to run and go to the next cell. '>run</span>
-                </div>
+                </span>
                 
                 <div id='out_' class='outputCell lr_padded'></div>
-                <div class='output_expander toolButton hidable000 icon-eye'></div> <!-- &#x25BA -->
+                
+                
                 <div class='insertBefore smallButton  hidable000 icon-plus' title='add cell'></div>
                 <div class='insertAfter smallButton  hidable000 icon-plus' title='add cell'></div>
-                <div class='lockButton smallButton icon-pencil' title='lock/unlock' style='position:absolute;top:0px;left:-27px;'></div>
-                <div class='run2 smallButton icon-play'  style='position:absolute;top:0px;left:8px;' title='run the code'></div>
+                <div class='lockButton smallButton icon-pencil' title='edit/lock' style='position:absolute;top:0px;left:-27px;'></div>
             </div>
         """)
     
@@ -156,13 +158,9 @@ window.clear = null
         _outCollapsed = collapsed
         if collapsed
             _jQueryCell.find(".outputCell").hide _CPLTIME, ->
-                _jQueryCell.find(".output_expander").show()
-                _jQueryCell.find(".output_header").hide()
                 _jQueryCell.find(".hideOutputButton").html "[out" + _n + "]" #Show output &#x25BA
         else
             _jQueryCell.find(".outputCell").show _CPLTIME
-            _jQueryCell.find(".output_expander").hide()
-            _jQueryCell.find(".output_header").show()
             _jQueryCell.find(".hideOutputButton").html "[out" + _n + "]" #Hide output &#x25BC
         saveNotebookLater?()
         return
@@ -189,29 +187,27 @@ window.clear = null
 
     # make it read only ======================================================
     _lock = ->
-        _lockButton.removeClass('icon-lock').addClass("icon-pencil")
         _jQueryCell.find(".hidable000").removeClass "visible"
         _jQueryCell.find(".codeArea").removeClass "visibleBorder"
         _jQueryCell.removeClass "visibleBorder shadow"
         _codemirror.setOption "readOnly", "nocursor"
-        _jQueryCell.find(".run2").show()
 
 
 
     # make it  editable =======================================================
     _unlock = ->
-        _lockButton.removeClass("icon-pencil").addClass("icon-lock")
         _jQueryCell.find(".hidable000").addClass "visible"
         _jQueryCell.find(".codeArea").addClass "visibleBorder"
         _jQueryCell.addClass "visibleBorder shadow"
         _codemirror.setOption "readOnly", false
-        _jQueryCell.find(".run2").hide()
     
     _lockUnlock = ->
-        if _lockButton.hasClass('icon-pencil')
-            _unlock()
-        else
+        if _lockButton.hasClass('unlocked')
+            _lockButton.removeClass('unlocked')
             _lock()
+        else
+            _lockButton.addClass('unlocked')
+            _unlock()
 
 
     # attach events to buttons ================================================
@@ -227,7 +223,6 @@ window.clear = null
         $(".hideOutputButton", _jQueryCell).click -> _setOutputCollapsed not _outCollapsed
         $(".hideInputButton", _jQueryCell).click -> _setInputCollapsed not _inCollapsed
         $(".input_expander", _jQueryCell).click -> _setInputCollapsed not _inCollapsed
-        $(".output_expander", _jQueryCell).click -> _setOutputCollapsed not _outCollapsed
 
         $(".showJavascriptButton", _jQueryCell).click _switchJavascriptText
         $(".selectButton", _jQueryCell).change ->
@@ -343,7 +338,6 @@ window.clear = null
     ###
     
     _keyHandler = (event) ->
-        #console.log?("_keyHandler:"+event.which);
         c=event.ctrlKey
         a=event.altKey
         s=event.shiftKey
@@ -353,8 +347,6 @@ window.clear = null
                 if c or s
                     event.preventDefault()
                     _executeCode()
-            #when 191 # /
-            #    if c then _commentSelection(not s)
             when 122 # F11
                 if a
                     event.preventDefault()
@@ -374,7 +366,6 @@ window.clear = null
         _inputCell.attr "id", "in" + _n
         _outputCell.attr "id", "out" + _n
         _javascriptCell.attr "id", "js" + _n
-        _jQueryCell.find(".output_expander").html "[out" + _n + "]" # &#x25BA
         _jQueryCell.find(".input_expander").html "[in" + _n + "]" # &nbsp;&nbsp;&#x25BA
         this
     
@@ -392,7 +383,6 @@ window.clear = null
     
     
     _executeCode = ->
-        #window.PRINT = _print #(o) -> _print(o)
         window.print =_print
         window.clear = _clearPrintArea
 
@@ -401,7 +391,6 @@ window.clear = null
         
         try
             code = _codemirror.getValue()
-            #result = undefined
             if _mode is "text/html"
                 _outputCell.html code
             else if _mode is "markdown"
@@ -410,7 +399,6 @@ window.clear = null
                 _outputCell.html "<div class='markdown'>" + html + "</div>"
             else if _mode is "javascript"
                 eval.call(window, code)
-                #_print result
             else if _mode is "text/x-coffeescript"
                 _javascriptTextViewer.setValue ""
                 compiledCode = CoffeeScript.compile(code,
@@ -419,7 +407,6 @@ window.clear = null
                 _javascriptTextViewer.setValue compiledCode
                 _javascriptTextViewer.refresh()
                 eval.call(window, compiledCode)
-                #_print result
         catch e
             _printError "" + e
         return
@@ -439,10 +426,6 @@ window.clear = null
 
 
     _print = (o) ->
-        ###
-        return    if typeof (o) is "undefined"
-        box = $("<pre class='noerror'/>")
-        ###
         _printArea ?= _createPrintArea()
         
         s = ""
@@ -461,7 +444,6 @@ window.clear = null
                 catch e
                     s = "Error: JSON.stringify\n"
         _printArea.text( _printArea.text() + s )
-        #_outputCell.html box
         return
 
     

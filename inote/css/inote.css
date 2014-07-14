@@ -1806,25 +1806,17 @@ input {
   width: 100%;
   border-radius: 10px;
 }
-.cell:hover .hidable {
-  visibility: visible;
+/*
+.inputTitle, .outputTitle {
+    color: @LINKCOLOR;
+    display:inline-block;
+    font-family: @FONT;
+    font-size: 12px;
+    cursor: default;
+    vertical-align: middle;
+    padding-right: 4px;
 }
-.input_header {
-  display: inline;
-}
-.output_header {
-  display: inline;
-}
-.inputTitle,
-.outputTitle {
-  color: #777777;
-  display: inline-block;
-  font-family: Roboto, sans-serif;
-  font-size: 12px;
-  cursor: default;
-  vertical-align: middle;
-  padding-right: 4px;
-}
+*/
 .codeArea {
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
@@ -1867,10 +1859,6 @@ input {
 .hideInputButton,
 .hideOutputButton {
   width: 90px;
-  display: inline-block;
-}
-.hidable {
-  visibility: hidden;
 }
 .insertBefore {
   position: absolute;
@@ -1909,15 +1897,10 @@ input {
   border-bottom: 1px dotted rgba(200, 200, 200, 0.7);
 }
 .hidable000 {
-  visibility: hidden;
+  display: none;
 }
-/*
-.hidden {
-    visibility:hidden;
-}
-*/
 .visible {
-  visibility: visible;
+  display: initial;
 }
 .visibleBorder {
   border-color: rgba(200, 200, 200, 0.7);
@@ -1931,6 +1914,10 @@ input {
 .javascriptCell {
   border-left: 1px solid rgba(200, 200, 200, 0.7);
   vertical-align: top;
+}
+.unlocked {
+  border-radius: 4px;
+  border: 1px solid rgba(200, 200, 200, 0.7);
 }
 .CodeMirror {
   height: auto;

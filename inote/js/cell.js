@@ -34,7 +34,7 @@ keyMap - default| vim | sublime | emac
     _compileTimeout = void 0;
     _keyMap = "default";
     _create = function(celNum, theme, keyM) {
-      _jQueryCell = $("<div class='cell'>\n\n    <div class='input_header'>\n        <span class='hideInputButton toolButton hidable000 icon-eye-blocked' ></span> <!-- &#x25BC -->\n        <select class='selectButton hidable000'>\n            <option value='javascript'>JavaScript</option>\n            <option value='text/x-coffeescript'>CoffeeScript</option>\n            <option value='text/html'>HTML</option>\n            <option value='markdown'>Markdown</option>\n        </select>\n        <span class='showJavascriptButton toolButton hidable000' >Show Javascript</span>\n        <span class='deleteButton toolButton  hidable000 icon-remove' title='delete cell' ></span><!-- &nbsp;b&#x00D7&nbsp; -->\n        <span class='toolButton hidable000 icon-expand' style='float:right' title='Fullscreen on/of'>Alt-F11</span>\n        <span class='keyMap toolButton hidable000' style='float:right' title='editor mode'></span>\n    </div>\n        <table class='codeArea' > \n            <tr>\n                <td id='in_' class='inputCell' ></td>\n                <td id='js_' class='javascriptCell'></td>\n            </tr>\n        </table>\n    <div class='input_expander toolButton hidable000 icon-eye'></div> <!-- &#x25BA -->\n\n    <div class='output_header' style='display:inline'>\n        <span class='hideOutputButton toolButton hidable000 icon-eye-blocked'></span> <!-- &#x25BC -->\n        <span class='clearOutputButton toolButton '>clear</span>\n        <span class='toolButton icon-play' title='<Ctrl-Ent> to run.  <Shift-Ent> to run and go to the next cell. '>run</span>\n    </div>\n    \n    <div id='out_' class='outputCell lr_padded'></div>\n    <div class='output_expander toolButton hidable000 icon-eye'></div> <!-- &#x25BA -->\n    <div class='insertBefore smallButton  hidable000 icon-plus' title='add cell'></div>\n    <div class='insertAfter smallButton  hidable000 icon-plus' title='add cell'></div>\n    <div class='lockButton smallButton icon-pencil' title='lock/unlock' style='position:absolute;top:0px;left:-27px;'></div>\n    <div class='run2 smallButton icon-play'  style='position:absolute;top:0px;left:8px;' title='run the code'></div>\n</div>");
+      _jQueryCell = $("<div class='cell'>\n\n    <span class='input_header'>\n        <span class='hideInputButton toolButton hidable000 icon-eye-blocked' ></span> <!-- &#x25BC -->\n        <select class='selectButton hidable000'>\n            <option value='javascript'>JavaScript</option>\n            <option value='text/x-coffeescript'>CoffeeScript</option>\n            <option value='text/html'>HTML</option>\n            <option value='markdown'>Markdown</option>\n        </select>\n        <span class='showJavascriptButton toolButton hidable000' >Show Javascript</span>\n        <span class='deleteButton toolButton  hidable000 icon-remove' title='delete cell' ></span><!-- &nbsp;b&#x00D7&nbsp; -->\n        <span class='toolButton hidable000 icon-expand' style='float:right' title='Fullscreen on/of'>Alt-F11</span>\n        <span class='keyMap toolButton hidable000' style='float:right' title='editor mode'></span>\n    </span>\n    \n    <table class='codeArea' > \n        <tr>\n            <td id='in_' class='inputCell' ></td>\n            <td id='js_' class='javascriptCell'></td>\n        </tr>\n    </table>\n    \n    <span class='input_expander toolButton hidable000 icon-eye'></span> \n\n    <span class='output_header'>\n        <span class='hideOutputButton toolButton hidable000 icon-eye-blocked'></span> <!-- &#x25BC -->\n        <span class='clearOutputButton toolButton '>clear</span>\n        <span class='toolButton icon-play' title='<Ctrl-Ent> to run.  <Shift-Ent> to run and go to the next cell. '>run</span>\n    </span>\n    \n    <div id='out_' class='outputCell lr_padded'></div>\n    \n    \n    <div class='insertBefore smallButton  hidable000 icon-plus' title='add cell'></div>\n    <div class='insertAfter smallButton  hidable000 icon-plus' title='add cell'></div>\n    <div class='lockButton smallButton icon-pencil' title='edit/lock' style='position:absolute;top:0px;left:-27px;'></div>\n</div>");
       _inputCell = _jQueryCell.find(".inputCell");
       _inputCell[0]._compileLater = _compileLater;
       _outputCell = _jQueryCell.find(".outputCell");
@@ -98,14 +98,10 @@ keyMap - default| vim | sublime | emac
       _outCollapsed = collapsed;
       if (collapsed) {
         _jQueryCell.find(".outputCell").hide(_CPLTIME, function() {
-          _jQueryCell.find(".output_expander").show();
-          _jQueryCell.find(".output_header").hide();
           return _jQueryCell.find(".hideOutputButton").html("[out" + _n + "]");
         });
       } else {
         _jQueryCell.find(".outputCell").show(_CPLTIME);
-        _jQueryCell.find(".output_expander").hide();
-        _jQueryCell.find(".output_header").show();
         _jQueryCell.find(".hideOutputButton").html("[out" + _n + "]");
       }
       if (typeof saveNotebookLater === "function") {
@@ -130,26 +126,24 @@ keyMap - default| vim | sublime | emac
       }
     };
     _lock = function() {
-      _lockButton.removeClass('icon-lock').addClass("icon-pencil");
       _jQueryCell.find(".hidable000").removeClass("visible");
       _jQueryCell.find(".codeArea").removeClass("visibleBorder");
       _jQueryCell.removeClass("visibleBorder shadow");
-      _codemirror.setOption("readOnly", "nocursor");
-      return _jQueryCell.find(".run2").show();
+      return _codemirror.setOption("readOnly", "nocursor");
     };
     _unlock = function() {
-      _lockButton.removeClass("icon-pencil").addClass("icon-lock");
       _jQueryCell.find(".hidable000").addClass("visible");
       _jQueryCell.find(".codeArea").addClass("visibleBorder");
       _jQueryCell.addClass("visibleBorder shadow");
-      _codemirror.setOption("readOnly", false);
-      return _jQueryCell.find(".run2").hide();
+      return _codemirror.setOption("readOnly", false);
     };
     _lockUnlock = function() {
-      if (_lockButton.hasClass('icon-pencil')) {
-        return _unlock();
-      } else {
+      if (_lockButton.hasClass('unlocked')) {
+        _lockButton.removeClass('unlocked');
         return _lock();
+      } else {
+        _lockButton.addClass('unlocked');
+        return _unlock();
       }
     };
     _attachEvents = function() {
@@ -178,9 +172,6 @@ keyMap - default| vim | sublime | emac
       });
       $(".input_expander", _jQueryCell).click(function() {
         return _setInputCollapsed(!_inCollapsed);
-      });
-      $(".output_expander", _jQueryCell).click(function() {
-        return _setOutputCollapsed(!_outCollapsed);
       });
       $(".showJavascriptButton", _jQueryCell).click(_switchJavascriptText);
       return $(".selectButton", _jQueryCell).change(function() {
@@ -316,7 +307,6 @@ keyMap - default| vim | sublime | emac
       _inputCell.attr("id", "in" + _n);
       _outputCell.attr("id", "out" + _n);
       _javascriptCell.attr("id", "js" + _n);
-      _jQueryCell.find(".output_expander").html("[out" + _n + "]");
       _jQueryCell.find(".input_expander").html("[in" + _n + "]");
       return this;
     };
@@ -370,11 +360,6 @@ keyMap - default| vim | sublime | emac
       return _printArea.appendTo(_outputCell);
     };
     _print = function(o) {
-
-      /*
-      return    if typeof (o) is "undefined"
-      box = $("<pre class='noerror'/>")
-       */
       var e, s;
       if (_printArea == null) {
         _printArea = _createPrintArea();
