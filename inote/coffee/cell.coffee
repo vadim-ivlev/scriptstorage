@@ -172,12 +172,12 @@ window.clear = null
         _inCollapsed = collapsed
         if collapsed
             _jQueryCell.find(".codeArea").hide()
-            _jQueryCell.find(".input_expander").show()
+            _jQueryCell.find(".input_expander").addClass('visible')
             _jQueryCell.find(".input_header").hide()
             _jQueryCell.find(".hideInputButton").html "show [in#{_n}]" #Show input&nbsp;&nbsp;&#x25BA
         else
             _jQueryCell.find(".codeArea").show()
-            _jQueryCell.find(".input_expander").hide()
+            _jQueryCell.find(".input_expander").removeClass('visible')
             _jQueryCell.find(".input_header").show()
             _jQueryCell.find(".hideInputButton").html "hide [in#{_n}]" #Hide input &nbsp;&nbsp;&#x25BC
         saveNotebookLater?()
