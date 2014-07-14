@@ -98,11 +98,11 @@ keyMap - default| vim | sublime | emac
       _outCollapsed = collapsed;
       if (collapsed) {
         _jQueryCell.find(".outputCell").hide(_CPLTIME, function() {
-          return _jQueryCell.find(".hideOutputButton").html("[out" + _n + "]");
+          return _jQueryCell.find(".hideOutputButton").html("show [out" + _n + "]");
         });
       } else {
         _jQueryCell.find(".outputCell").show(_CPLTIME);
-        _jQueryCell.find(".hideOutputButton").html("[out" + _n + "]");
+        _jQueryCell.find(".hideOutputButton").html("hide [out" + _n + "]");
       }
       if (typeof saveNotebookLater === "function") {
         saveNotebookLater();
@@ -114,12 +114,12 @@ keyMap - default| vim | sublime | emac
         _jQueryCell.find(".codeArea").hide();
         _jQueryCell.find(".input_expander").show();
         _jQueryCell.find(".input_header").hide();
-        _jQueryCell.find(".hideInputButton").html("[in" + _n + "] ");
+        _jQueryCell.find(".hideInputButton").html("show [in" + _n + "]");
       } else {
         _jQueryCell.find(".codeArea").show();
         _jQueryCell.find(".input_expander").hide();
         _jQueryCell.find(".input_header").show();
-        _jQueryCell.find(".hideInputButton").html("[in" + _n + "] ");
+        _jQueryCell.find(".hideInputButton").html("hide [in" + _n + "]");
       }
       if (typeof saveNotebookLater === "function") {
         saveNotebookLater();
@@ -307,7 +307,7 @@ keyMap - default| vim | sublime | emac
       _inputCell.attr("id", "in" + _n);
       _outputCell.attr("id", "out" + _n);
       _javascriptCell.attr("id", "js" + _n);
-      _jQueryCell.find(".input_expander").html("[in" + _n + "]");
+      _jQueryCell.find(".input_expander").html("show [in" + _n + "]");
       return this;
     };
     _setFocus = function(lineNumber, charNumber) {

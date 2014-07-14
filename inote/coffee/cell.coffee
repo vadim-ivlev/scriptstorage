@@ -158,10 +158,10 @@ window.clear = null
         _outCollapsed = collapsed
         if collapsed
             _jQueryCell.find(".outputCell").hide _CPLTIME, ->
-                _jQueryCell.find(".hideOutputButton").html "[out" + _n + "]" #Show output &#x25BA
+                _jQueryCell.find(".hideOutputButton").html "show [out#{_n}]" #Show output &#x25BA
         else
             _jQueryCell.find(".outputCell").show _CPLTIME
-            _jQueryCell.find(".hideOutputButton").html "[out" + _n + "]" #Hide output &#x25BC
+            _jQueryCell.find(".hideOutputButton").html "hide [out#{_n}]" #Hide output &#x25BC
         saveNotebookLater?()
         return
     
@@ -174,12 +174,12 @@ window.clear = null
             _jQueryCell.find(".codeArea").hide()
             _jQueryCell.find(".input_expander").show()
             _jQueryCell.find(".input_header").hide()
-            _jQueryCell.find(".hideInputButton").html "[in" + _n + "] " #Show input&nbsp;&nbsp;&#x25BA
+            _jQueryCell.find(".hideInputButton").html "show [in#{_n}]" #Show input&nbsp;&nbsp;&#x25BA
         else
             _jQueryCell.find(".codeArea").show()
             _jQueryCell.find(".input_expander").hide()
             _jQueryCell.find(".input_header").show()
-            _jQueryCell.find(".hideInputButton").html "[in" + _n + "] " #Hide input &nbsp;&nbsp;&#x25BC
+            _jQueryCell.find(".hideInputButton").html "hide [in#{_n}]" #Hide input &nbsp;&nbsp;&#x25BC
         saveNotebookLater?()
         return
 
@@ -366,7 +366,7 @@ window.clear = null
         _inputCell.attr "id", "in" + _n
         _outputCell.attr "id", "out" + _n
         _javascriptCell.attr "id", "js" + _n
-        _jQueryCell.find(".input_expander").html "[in" + _n + "]" # &nbsp;&nbsp;&#x25BA
+        _jQueryCell.find(".input_expander").html "show [in#{_n}]" # &nbsp;&nbsp;&#x25BA
         this
     
     

@@ -157,12 +157,11 @@ $ ->
     $("#notebookAccess").val getNotebookAccessFromUrl()
 
     
-    ### Save if the user press Ctrl-S
+    # Save if the user press Ctrl-S
     $("body").keydown (event) ->
         if event.ctrlKey and event.keyCode is 83 #Ctrl-S
             saveNotebook()
             false
-    ###
     
     
     # hide save button if the user is not loginned
@@ -174,7 +173,6 @@ $ ->
         $("#saveGroup").hide()
         
     #$("#btnClear").click(clearAndInit);
-    #$("#btnSave").click saveNotebook
 
     # page transition
     #$("body").fadeIn(1000)

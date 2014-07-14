@@ -60,17 +60,18 @@ html
                 span.notebookOwner {{notebook_owner}}
                 span.loginHolder {{login_link}}
         
+            a.toolButton.icon-home(href='/')
             span#saveIndicator
             span#notebookName.notebookName(onclick='changeName()') {{notebook_name}}
             span.notebookVersion {{notebook_version}}
-            a.toolButton(href='/') Home
             // <span id="btnClear" class="toolButton" >clear</span>
             // <span id="btnOpen" class="toolButton" >restore</span>
-            span#saveGroup
-                span#btnSave.toolButton(onclick='saveNotebook(event)') save
+            div#saveGroup
+                span#btnSave.toolButton(onclick='saveNotebook()',title='Ctrl-S') save
                 span.toolButton(style='white-space:nowrap;')
                     input#autoSave(type='checkbox')
                     label(for='autoSave') autosave
+                span#btnSave.toolButton(onclick='saveNotebook(event)',title='Save a new version.') new version
                 select#notebookAccess.selectButton(title='Access')
                     option(value='public') public
                     option(value='private') private

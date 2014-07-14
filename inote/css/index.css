@@ -301,7 +301,7 @@ input {
   opacity: 0.7;
   content: '@';
 }
-.icon-eye::before {
+.icon-eye::after {
   font-family: icomoon;
   font-size: 15px;
   color: #777777;
@@ -311,7 +311,7 @@ input {
   opacity: 0.7;
   content: 'O';
 }
-.icon-eye-blocked::before {
+.icon-eye-blocked::after {
   font-family: icomoon;
   font-size: 15px;
   color: #777777;

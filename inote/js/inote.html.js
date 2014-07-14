@@ -135,13 +135,12 @@
     inote.setKeyMap("default");
     restoreNotebookFromXml(xmlText);
     $("#notebookAccess").val(getNotebookAccessFromUrl());
-
-    /* Save if the user press Ctrl-S
-    $("body").keydown (event) ->
-        if event.ctrlKey and event.keyCode is 83 #Ctrl-S
-            saveNotebook()
-            false
-     */
+    $("body").keydown(function(event) {
+      if (event.ctrlKey && event.keyCode === 83) {
+        saveNotebook();
+        return false;
+      }
+    });
     userName = $("#userName").text();
     if (!userName) {
       $("#saveGroup").hide();
