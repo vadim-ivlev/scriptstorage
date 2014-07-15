@@ -1804,7 +1804,6 @@ input {
   overflow: visible;
   padding: 0px;
   width: 100%;
-  border-radius: 10px;
 }
 /*
 .inputTitle, .outputTitle {
@@ -1918,6 +1917,14 @@ input {
 .unlocked {
   border-radius: 4px;
   border: 1px solid rgba(200, 200, 200, 0.7);
+}
+.uppertab {
+  border: 1px solid silver;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+  border-bottom-style: none;
 }
 .CodeMirror {
   height: auto;
