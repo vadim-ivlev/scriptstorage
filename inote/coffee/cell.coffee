@@ -47,7 +47,7 @@ window.clear = null
         _jQueryCell = $("""
             <div class='cell'>
 
-                <span class='input_header'>
+                <div class='input_header uppertab' style='min-height:23px;'>
                     <span class='hideInputButton toolButton hidable000 icon-eye-blocked' ></span> <!-- &#x25BC -->
                     <select class='selectButton hidable000'>
                         <option value='javascript'>JavaScript</option>
@@ -59,7 +59,7 @@ window.clear = null
                     <span class='deleteButton toolButton  hidable000 icon-remove' title='delete cell' ></span><!-- &nbsp;b&#x00D7&nbsp; -->
                     <span class='toolButton hidable000 icon-expand' style='float:right' title='Fullscreen on/of'>Alt-F11</span>
                     <span class='keyMap toolButton hidable000' style='float:right' title='editor mode'></span>
-                </span>
+                </div>
                 
                 <table class='codeArea' > 
                     <tr>
@@ -70,7 +70,7 @@ window.clear = null
                 
                 <span class='input_expander toolButton hidable000 icon-eye'></span> 
 
-                <span class='output_header'>
+                <span class='output_header uppertab'>
                     <span class='hideOutputButton toolButton hidable000 icon-eye-blocked'></span> <!-- &#x25BC -->
                     <span class='clearOutputButton toolButton '>clear</span>
                     <span class='toolButton icon-play' title='<Ctrl-Ent> to run.  <Shift-Ent> to run and go to the next cell. '>run</span>
