@@ -46,16 +46,17 @@ buildNotebookList = (data) =>
     return
 
 
-
+###
 # HELLOJS
 prepareOAuthorization =() ->
     #$.getScript "/inote/libs/hello.min.js", ->
     # init 
-    hello.init
+    h ello.init
         facebook :'1517454335144201'
         windows:'0000000044121F60'
     ,
-        redirect_uri:'http://inote.vadimivlev.com'
+        #redirect_uri:'http://inote.vadimivlev.com'
+        redirect_uri:'http://inote.vadimivlev.com/inote/html/login.html'
         display: 'popup'
 
 
@@ -135,7 +136,8 @@ prepareOAuthorization =() ->
         console.log "adjustGUI"
 
     adjustGUI()
-
+###
+#
 storage = new NoteBookStorage()
 # on page load ==================================================================
 $ ->
@@ -156,6 +158,6 @@ $ ->
         document.location.href = "/page?owner=" + encodeURIComponent($("#userName").text()) + "&access=" + encodeURIComponent("public") + "&name=" + encodeURIComponent(newName)
     
     # check if login text has login 
-    loginHolder.addClass(if loginHolder.text().match(/login/i) then "icon-login" else "icon-logout")
+    #loginHolder.addClass(if loginHolder.text().match(/login/i) then "icon-login" else "icon-logout")
 
-    prepareOAuthorization()
+    #prepareOAuthorization()

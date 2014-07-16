@@ -10,8 +10,9 @@ html
         
         script(src='//code.jquery.com/jquery-1.11.0.min.js')
         script window.jQuery || document.write('<script src="libs/jquery-1.11.0.min.js"><\/script>')
-        script(src='libs/hello.min.js')
+        //script(src='libs/hello.min.js')
         script(src='js/notebookstorage.js')
+        script(type='text/javascript', src='js/index.html.js')
 
     body(style='padding:10px;')
         #page.page
@@ -22,7 +23,7 @@ html
                     div(style='float:right')
                         div(style='text-align:right')
                             span.loginHolder {{login_link}}
-                            //span.icon-login &gt;
-                        div.oauthHolder
+                            br
+                            br
+                            a.toolButton(href='/inote/html/login.html') login2
             #notebookList {{notebook_list}}
-        script(type='text/javascript', src='js/index.html.js')
