@@ -38,7 +38,7 @@ keyMap - default| vim | sublime | emac
     _compileTimeout = void 0;
     _keyMap = "default";
     _create = function(celNum, theme, keyM) {
-      _jQueryCell = $("<div class='cell' locked=\"false\">\n\n    <span class='input_header'>\n        <span class='hideInputButton hidable000 toolButton uppertab' ></span> \n        <!-- SUPPORTER -->\n        <div style='width:1px; height:22px; background-color:transparent;display: inline-block;vertical-align: middle;'></div>\n        <span class='editControls'>\n            <select class='selectButton hidable000'>\n                <option value='javascript'>JavaScript</option>\n                <option value='text/x-coffeescript'>CoffeeScript</option>\n                <option value='text/html'>HTML</option>\n                <option value='markdown'>Markdown</option>\n            </select>\n            <span class='showJavascriptButton toolButton hidable000' >Show Javascript</span>\n            <span class='deleteButton toolButton  hidable000 icon-remove' title='delete cell' ></span>\n            <span class='toolButton hidable000 icon-expand' style='float:right' title='Fullscreen on/of'>Alt-F11</span>\n            <span class='keyMap toolButton hidable000' style='float:right' title='editor mode'></span>\n        </span>\n    </span>\n    \n    <table class='codeArea' > \n        <tr>\n            <td id='in_' class='inputCell' ></td>\n            <td id='js_' class='javascriptCell'></td>\n        </tr>\n    </table>\n    \n\n    <span class='output_header' output_label=\"\" >\n        <span class='hideOutputButton toolButton hidable000 uppertab'></span> \n        <span class='clearOutputButton toolButton '>clear</span>\n        <span class='toolButton icon-play' title='<Ctrl-Ent> to run.  <Shift-Ent> to run and go to the next cell. '>run</span>\n        <input class='cellLabel'></input>\n    </span>\n    \n    <div id='out_' class='outputCell'></div>\n    \n    \n    <div class='insertBefore smallButton  hidable000 icon-plus' title='add cell'></div>\n    <div class='insertAfter smallButton  hidable000 icon-plus' title='add cell'></div>\n    <div class='lockButton smallButton icon-pencil' title='edit/lock' style='position:absolute;top:0px;left:-27px;'></div>\n</div>");
+      _jQueryCell = $("<div class='cell' locked=\"false\">\n\n    <span class='input_header'>\n        <span class='hideInputButton hidable000 toolButton uppertab' ></span> \n        <!-- SUPPORTER -->\n        <div style='width:1px; height:22px; background-color:transparent;display: inline-block;vertical-align: middle;'></div>\n        <span class='editControls'>\n            <select class='selectButton hidable000'>\n                <option value='javascript'>JavaScript</option>\n                <option value='text/x-coffeescript'>CoffeeScript</option>\n                <option value='text/html'>HTML</option>\n                <option value='markdown'>Markdown</option>\n            </select>\n            <span class='showJavascriptButton toolButton hidable000' >Show Javascript</span>\n            <span class='deleteButton toolButton  hidable000 icon-close' style='padding-right:0;' title='delete cell' ></span>\n            <!--\n            <span class='toolButton hidable000 icon-expand' style='float:right' title='Fullscreen on/of'>Alt-F11</span>\n            -->\n            <span class='keyMap toolButton hidable000' style='float:right; display:none;' title='editor mode'></span>\n        </span>\n    </span>\n    \n    <table class='codeArea' > \n        <tr>\n            <td id='in_' class='inputCell position_relative'>\n            <span class='toolButton hidable000 position_absolute_100 icon-expand' \n                style='right:0px; top:2px;;' \n                title='Fullscreen on/of'>Alt-F11</span>\n            </td>\n            <td id='js_' class='javascriptCell'></td>\n        </tr>\n    </table>\n    \n\n    <span class='output_header' output_label=\"\" >\n        <span class='hideOutputButton toolButton hidable000 uppertab'></span> \n        <span class='clearOutputButton toolButton icon-close ' title='clear output'>\n            <span class='hidable000'>\n                clear\n            </span>\n        </span>\n        <span class='toolButton icon-play' title='<Ctrl-Ent> to run.  <Shift-Ent> to run and go to the next cell. '>\n            <span class='hidable000'>\n                run\n            </span>\n        </span>\n        <span class='cellLabel' contenteditable='true'></span>\n    </span>\n    \n    <div id='out_' class='outputCell'></div>\n    \n    \n    <div class='insertBefore smallButton  hidable000 icon-plus' title='add cell'></div>\n    <div class='insertAfter smallButton  hidable000 icon-plus' title='add cell'></div>\n    <div class='lockButton smallButton icon-pencil' title='edit/lock' style='position:absolute;top:0px;left:-27px;'></div>\n</div>");
       _inputCell = _jQueryCell.find(".inputCell");
       _inputCell[0]._compileLater = _compileLater;
       _outputCell = _jQueryCell.find(".outputCell");
@@ -246,7 +246,7 @@ keyMap - default| vim | sublime | emac
       $(".icon-play", _jQueryCell).click(_executeCode);
       $(".clearOutputButton", _jQueryCell).click(function() {
         _outputCell.html("");
-        return typeof saveNotebook === "function" ? saveNotebook() : void 0;
+        return typeof saveNotebookLater === "function" ? saveNotebookLater() : void 0;
       });
       $(".hideOutputButton", _jQueryCell).click(function() {
         return _setOutputCollapsed(!_outCollapsed);
@@ -261,8 +261,11 @@ keyMap - default| vim | sublime | emac
         _setMode(mode);
         return _codemirror.focus();
       });
-      return $('.cellLabel', _jQueryCell).change(function(e) {
-        return typeof this.saveNotebookLater === "function" ? this.saveNotebookLater() : void 0;
+      return $('.cellLabel', _jQueryCell).keypress(function(e) {
+        if (typeof saveNotebookLater === "function") {
+          saveNotebookLater();
+        }
+        return console.log("descr changed");
       });
     };
     _switchFullsreen = function() {
@@ -270,9 +273,13 @@ keyMap - default| vim | sublime | emac
       fs = !isFullScreen(_codemirror);
       setFullScreen(_codemirror, fs);
       if (fs) {
-        return _fullscreenButton.addClass("fullscreen-top-right");
+        _fullscreenButton.addClass("fullscreen-top-right");
+        _inputCell.removeClass('position_relative');
+        return _fullscreenButton.removeClass("position_absolute_100");
       } else {
-        return _fullscreenButton.removeClass("fullscreen-top-right");
+        _fullscreenButton.removeClass("fullscreen-top-right");
+        _inputCell.addClass('position_relative');
+        return _fullscreenButton.addClass("position_absolute_100");
       }
     };
     _setMode = function(mode) {
@@ -329,7 +336,7 @@ keyMap - default| vim | sublime | emac
     _getXml1 = function() {
       var cell, unlk;
       unlk = _lockButton.hasClass('unlocked') ? "true" : "false";
-      cell = $("<div class='cell' id='" + (_jQueryCell.attr('id')) + "'  version='1' number='" + _n + "' mode='" + _mode + "' unlocked='" + unlk + "' celllabel='" + ($('.cellLabel', _jQueryCell).val()) + "'/>");
+      cell = $("<div class='cell' id='" + (_jQueryCell.attr('id')) + "'  version='1' number='" + _n + "' mode='" + _mode + "' unlocked='" + unlk + "' celllabel='" + ($('.cellLabel', _jQueryCell).text()) + "'/>");
       $("<div class='inputCell'  id='" + (_inputCell.attr('id')) + "' collapsed='" + _inCollapsed + "'/>").text(_codemirror.getValue()).appendTo(cell);
       $("<div class='javascriptCell' id='" + (_javascriptCell.attr('id')) + "'/>").text(_javascriptTextViewer.getValue()).appendTo(cell);
       $("<div class='outputCell' id='" + (_outputCell.attr('id')) + "' collapsed='" + _outCollapsed + "'/>").text(_outputCell.html()).appendTo(cell);
@@ -349,7 +356,7 @@ keyMap - default| vim | sublime | emac
       _setMode(_mode);
       _setOutputCollapsed(output.attr("collapsed") === "true");
       _setInputCollapsed(input.attr("collapsed") === "true");
-      $('.cellLabel', _jQueryCell).val(cell.attr('celllabel'));
+      $('.cellLabel', _jQueryCell).text(cell.attr('celllabel'));
       if (cell.attr('unlocked') === "false") {
         _lock();
       } else {

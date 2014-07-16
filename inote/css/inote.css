@@ -1334,6 +1334,7 @@ input {
   vertical-align: middle;
   padding-left: 8px;
   padding-right: 8px;
+  border-bottom: 1px solid transparent;
   text-decoration: none;
   font-family: Roboto, sans-serif;
   font-size: 16px;
@@ -1349,6 +1350,7 @@ input {
   cursor: pointer;
   padding-left: 8px;
   padding-right: 8px;
+  border-bottom: 1px solid transparent;
   text-decoration: none;
   font-family: Roboto, sans-serif;
   font-size: 16px;
@@ -1376,6 +1378,7 @@ input {
   vertical-align: middle;
   padding-left: 8px;
   padding-right: 8px;
+  border-bottom: 1px solid transparent;
   text-decoration: none;
   font-family: Roboto, sans-serif;
   font-size: 16px;
@@ -1442,6 +1445,8 @@ input {
   margin-right: 4px;
   opacity: 0.7;
   content: 'h';
+  font-size: 25px;
+  margin-left: 0;
 }
 .icon-pencil::after {
   font-family: icomoon;
@@ -1613,7 +1618,7 @@ input {
   margin-right: 4px;
   opacity: 0.7;
   content: 'x';
-  font-size: 80%;
+  font-size: 50%;
 }
 .icon-plus::after {
   font-family: icomoon;
@@ -1822,8 +1827,6 @@ input {
   overflow: auto;
   padding: 0;
   border: 1px solid transparent;
-  padding-left: 5px;
-  padding-right: 5px;
 }
 .noerror {
   white-space: pre-wrap;
@@ -1847,7 +1850,9 @@ input {
   border: 1px solid rgba(200, 200, 200, 0.7);
   background-color: transparent;
   font-size: 0px;
-  top: -1px;
+  top: 0px;
+  border-bottom-right-radius: 7px;
+  border-bottom-left-radius: 7px;
 }
 .insertBefore:after {
   font-size: 10px;
@@ -1858,7 +1863,9 @@ input {
   border: 1px solid rgba(200, 200, 200, 0.7);
   background-color: transparent;
   font-size: 0px;
-  bottom: -1px;
+  bottom: 0px;
+  border-top-right-radius: 7px;
+  border-top-left-radius: 7px;
 }
 .insertAfter:after {
   font-size: 10px;
@@ -1888,9 +1895,14 @@ input {
 }
 .fullscreen-top-right {
   position: fixed;
-  top: 5px;
-  right: 5px;
   z-index: 20000;
+}
+.position_absolute_100 {
+  position: absolute;
+  z-index: 100;
+}
+.position_relative {
+  position: relative;
 }
 .javascriptCell {
   border-left: 1px solid rgba(200, 200, 200, 0.7);
@@ -1913,12 +1925,16 @@ input {
 }
 .cellLabel {
   border: 1px solid transparent;
+  border-bottom-style: none;
   color: #777777;
   font-family: Roboto, sans-serif;
   font-size: 16px;
-  height: 17px;
   vertical-align: middle;
   margin: 0px;
+  padding-left: 4px;
+  padding-right: 4px;
+  min-width: 100px;
+  display: inline-block;
 }
 .cellLabel:hover {
   border-color: rgba(200, 200, 200, 0.7);

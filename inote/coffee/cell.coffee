@@ -60,15 +60,21 @@ window?.clear = null
                             <option value='markdown'>Markdown</option>
                         </select>
                         <span class='showJavascriptButton toolButton hidable000' >Show Javascript</span>
-                        <span class='deleteButton toolButton  hidable000 icon-remove' title='delete cell' ></span>
+                        <span class='deleteButton toolButton  hidable000 icon-close' style='padding-right:0;' title='delete cell' ></span>
+                        <!--
                         <span class='toolButton hidable000 icon-expand' style='float:right' title='Fullscreen on/of'>Alt-F11</span>
-                        <span class='keyMap toolButton hidable000' style='float:right' title='editor mode'></span>
+                        -->
+                        <span class='keyMap toolButton hidable000' style='float:right; display:none;' title='editor mode'></span>
                     </span>
                 </span>
                 
                 <table class='codeArea' > 
                     <tr>
-                        <td id='in_' class='inputCell' ></td>
+                        <td id='in_' class='inputCell position_relative'>
+                        <span class='toolButton hidable000 position_absolute_100 icon-expand' 
+                            style='right:0px; top:2px;;' 
+                            title='Fullscreen on/of'>Alt-F11</span>
+                        </td>
                         <td id='js_' class='javascriptCell'></td>
                     </tr>
                 </table>
@@ -76,9 +82,17 @@ window?.clear = null
 
                 <span class='output_header' output_label="" >
                     <span class='hideOutputButton toolButton hidable000 uppertab'></span> 
-                    <span class='clearOutputButton toolButton '>clear</span>
-                    <span class='toolButton icon-play' title='<Ctrl-Ent> to run.  <Shift-Ent> to run and go to the next cell. '>run</span>
-                    <input class='cellLabel'></input>
+                    <span class='clearOutputButton toolButton icon-close ' title='clear output'>
+                        <span class='hidable000'>
+                            clear
+                        </span>
+                    </span>
+                    <span class='toolButton icon-play' title='<Ctrl-Ent> to run.  <Shift-Ent> to run and go to the next cell. '>
+                        <span class='hidable000'>
+                            run
+                        </span>
+                    </span>
+                    <span class='cellLabel' contenteditable='true'></span>
                 </span>
                 
                 <div id='out_' class='outputCell'></div>
@@ -308,7 +322,9 @@ window?.clear = null
         $(".insertBefore", _jQueryCell).click -> _call _insertBeforeCallback, _n
         $(".insertAfter", _jQueryCell).click -> _call _insertAfterCallback, _n
         $(".icon-play", _jQueryCell).click _executeCode
-        $(".clearOutputButton", _jQueryCell).click -> _outputCell.html ""; saveNotebook?()
+        $(".clearOutputButton", _jQueryCell).click -> 
+            _outputCell.html ""
+            saveNotebookLater?()
         $(".hideOutputButton", _jQueryCell).click -> _setOutputCollapsed not _outCollapsed
         $(".hideInputButton", _jQueryCell).click -> _setInputCollapsed not _inCollapsed
 
@@ -318,9 +334,13 @@ window?.clear = null
             _setMode mode
             _codemirror.focus()
         
-        $('.cellLabel',_jQueryCell).change  (e) ->
-            #_state.cell_label(e.target.value)
-            @saveNotebookLater?()
+        #$('.cellLabel',_jQueryCell).change  (e) ->
+        #    saveNotebookLater?()
+        #    console.log "descr changed"
+        
+        $('.cellLabel',_jQueryCell).keypress  (e) ->
+            saveNotebookLater?()
+            console.log "descr changed"
 
 
     _switchFullsreen = ->
@@ -328,8 +348,12 @@ window?.clear = null
         setFullScreen(_codemirror, fs)
         if fs
             _fullscreenButton.addClass("fullscreen-top-right")
+            _inputCell.removeClass('position_relative')
+            _fullscreenButton.removeClass("position_absolute_100")
         else
             _fullscreenButton.removeClass("fullscreen-top-right")
+            _inputCell.addClass('position_relative')
+            _fullscreenButton.addClass("position_absolute_100")
 
     
     _setMode = (mode) ->
@@ -392,7 +416,7 @@ window?.clear = null
 
         unlk=if _lockButton.hasClass('unlocked') then "true" else "false"
 
-        cell = $("<div class='cell' id='#{_jQueryCell.attr('id')}'  version='1' number='#{_n}' mode='#{_mode}' unlocked='#{unlk}' celllabel='#{$('.cellLabel',_jQueryCell).val()}'/>") # cell_state='#{_state.str()}'
+        cell = $("<div class='cell' id='#{_jQueryCell.attr('id')}'  version='1' number='#{_n}' mode='#{_mode}' unlocked='#{unlk}' celllabel='#{$('.cellLabel',_jQueryCell).text()}'/>") # cell_state='#{_state.str()}'
         $("<div class='inputCell'  id='#{_inputCell.attr('id')}' collapsed='#{_inCollapsed}'/>").text(_codemirror.getValue()).appendTo cell
         $("<div class='javascriptCell' id='#{_javascriptCell.attr('id')}'/>").text(_javascriptTextViewer.getValue()).appendTo cell
         $("<div class='outputCell' id='#{_outputCell.attr('id')}' collapsed='#{_outCollapsed}'/>").text(_outputCell.html()).appendTo cell
@@ -416,7 +440,7 @@ window?.clear = null
         _setMode _mode
         _setOutputCollapsed output.attr("collapsed") is "true"
         _setInputCollapsed input.attr("collapsed") is "true"
-        $('.cellLabel',_jQueryCell).val(cell.attr('celllabel'))
+        $('.cellLabel',_jQueryCell).text(cell.attr('celllabel'))
         
         if cell.attr('unlocked') is "false"
             _lock()
