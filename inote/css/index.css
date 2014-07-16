@@ -52,12 +52,9 @@ input {
   vertical-align: middle;
   padding-left: 8px;
   padding-right: 8px;
-  border-left: 1px dotted transparent;
-  border-right: 1px dotted transparent;
   text-decoration: none;
   font-family: Roboto, sans-serif;
   font-size: 16px;
-  border-radius: 10px;
 }
 .toolButton:hover {
   border-color: #777777;
@@ -70,12 +67,9 @@ input {
   cursor: pointer;
   padding-left: 8px;
   padding-right: 8px;
-  border-left: 1px dotted transparent;
-  border-right: 1px dotted transparent;
   text-decoration: none;
   font-family: Roboto, sans-serif;
   font-size: 16px;
-  border-radius: 10px;
   -webkit-appearance: none;
   -moz-appearance: window;
   appearance: none;
@@ -100,12 +94,9 @@ input {
   vertical-align: middle;
   padding-left: 8px;
   padding-right: 8px;
-  border-left: 1px dotted transparent;
-  border-right: 1px dotted transparent;
   text-decoration: none;
   font-family: Roboto, sans-serif;
   font-size: 16px;
-  border-radius: 10px;
   padding-left: 0;
   padding-right: 0;
 }

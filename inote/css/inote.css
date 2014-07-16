@@ -1334,12 +1334,9 @@ input {
   vertical-align: middle;
   padding-left: 8px;
   padding-right: 8px;
-  border-left: 1px dotted transparent;
-  border-right: 1px dotted transparent;
   text-decoration: none;
   font-family: Roboto, sans-serif;
   font-size: 16px;
-  border-radius: 10px;
 }
 .toolButton:hover {
   border-color: #777777;
@@ -1352,12 +1349,9 @@ input {
   cursor: pointer;
   padding-left: 8px;
   padding-right: 8px;
-  border-left: 1px dotted transparent;
-  border-right: 1px dotted transparent;
   text-decoration: none;
   font-family: Roboto, sans-serif;
   font-size: 16px;
-  border-radius: 10px;
   -webkit-appearance: none;
   -moz-appearance: window;
   appearance: none;
@@ -1382,12 +1376,9 @@ input {
   vertical-align: middle;
   padding-left: 8px;
   padding-right: 8px;
-  border-left: 1px dotted transparent;
-  border-right: 1px dotted transparent;
   text-decoration: none;
   font-family: Roboto, sans-serif;
   font-size: 16px;
-  border-radius: 10px;
   padding-left: 0;
   padding-right: 0;
 }
@@ -1799,36 +1790,25 @@ input {
 /*------------cell----------------------*/
 .cell {
   position: relative;
-  border: 1px solid transparent;
+  border: 0px solid transparent;
   margin-top: 20px;
   overflow: visible;
   padding: 0px;
   width: 100%;
 }
-/*
-.inputTitle, .outputTitle {
-    color: @LINKCOLOR;
-    display:inline-block;
-    font-family: @FONT;
-    font-size: 12px;
-    cursor: default;
-    vertical-align: middle;
-    padding-right: 4px;
-}
-*/
 .codeArea {
-  border-top: 1px solid transparent;
-  border-bottom: 1px solid transparent;
-  border-radius: 0px;
+  border: 1px solid transparent;
   border-spacing: 0;
   margin: 0;
   padding: 0;
   width: 100%;
+  margin-bottom: 5px;
 }
 .inputCell {
   margin: 0;
   padding: 0;
   vertical-align: top;
+  border: 1px solid transparent;
 }
 .javascriptText {
   border-left: 1px solid rgba(200, 200, 200, 0.7);
@@ -1841,6 +1821,9 @@ input {
   border-radius: 0px;
   overflow: auto;
   padding: 0;
+  border: 1px solid transparent;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .noerror {
   white-space: pre-wrap;
@@ -1853,11 +1836,10 @@ input {
   font-size: 85%;
   color: red;
 }
-.input_expander,
-.output_expander,
 .hideInputButton,
 .hideOutputButton {
   width: 90px;
+  display: inline-block;
 }
 .insertBefore {
   position: absolute;
@@ -1919,12 +1901,27 @@ input {
   border: 1px solid rgba(200, 200, 200, 0.7);
 }
 .uppertab {
-  border: 1px solid silver;
+  border: 1px solid rgba(200, 200, 200, 0.7);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   border-top-left-radius: 9px;
   border-top-right-radius: 9px;
-  border-bottom-style: none;
+  border-bottom-color: white;
+}
+.uppertab:hover {
+  border-bottom-color: white;
+}
+.cellLabel {
+  border: 1px solid transparent;
+  color: #777777;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  height: 17px;
+  vertical-align: middle;
+  margin: 0px;
+}
+.cellLabel:hover {
+  border-color: rgba(200, 200, 200, 0.7);
 }
 .CodeMirror {
   height: auto;

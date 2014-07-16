@@ -82,6 +82,11 @@ task "push", "push changes to Git", ->
             execOut 'git push'
 
 
+task "test", "QUnit tests", ->
+    execOut "qunit -c inote/js/cell.js -t inote/js/qunit-tests.js"
+
+
+
 ###
 task 'deploy', '', ->
     execOut "tar -czf .upload.tgz *", (commandLine, err, stdout, stderr) ->

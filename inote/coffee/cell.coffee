@@ -11,8 +11,8 @@ keyMap - default| vim | sublime | emac
 #@CLEAR
 
 
-window.print = null
-window.clear = null
+window?.print = null
+window?.clear = null
 
 @Cell = (cellNumber, themeName, keyMap) ->
     
@@ -40,26 +40,31 @@ window.clear = null
     _compileTimeout = undefined
     _keyMap = "default"
 
+    # Cell state
+    #_state = null 
 
 
     _create = (celNum, theme, keyM) ->
-        
         _jQueryCell = $("""
-            <div class='cell'>
+            <div class='cell' locked="false">
 
-                <div class='input_header' style='min-height:23px;'>
-                    <span class='hideInputButton toolButton hidable000 uppertab' ></span> <!-- &#x25BC -->
-                    <select class='selectButton hidable000'>
-                        <option value='javascript'>JavaScript</option>
-                        <option value='text/x-coffeescript'>CoffeeScript</option>
-                        <option value='text/html'>HTML</option>
-                        <option value='markdown'>Markdown</option>
-                    </select>
-                    <span class='showJavascriptButton toolButton hidable000' >Show Javascript</span>
-                    <span class='deleteButton toolButton  hidable000 icon-remove' title='delete cell' ></span><!-- &nbsp;b&#x00D7&nbsp; -->
-                    <span class='toolButton hidable000 icon-expand' style='float:right' title='Fullscreen on/of'>Alt-F11</span>
-                    <span class='keyMap toolButton hidable000' style='float:right' title='editor mode'></span>
-                </div>
+                <span class='input_header'>
+                    <span class='hideInputButton hidable000 toolButton uppertab' ></span> 
+                    <!-- SUPPORTER -->
+                    <div style='width:1px; height:22px; background-color:transparent;display: inline-block;vertical-align: middle;'></div>
+                    <span class='editControls'>
+                        <select class='selectButton hidable000'>
+                            <option value='javascript'>JavaScript</option>
+                            <option value='text/x-coffeescript'>CoffeeScript</option>
+                            <option value='text/html'>HTML</option>
+                            <option value='markdown'>Markdown</option>
+                        </select>
+                        <span class='showJavascriptButton toolButton hidable000' >Show Javascript</span>
+                        <span class='deleteButton toolButton  hidable000 icon-remove' title='delete cell' ></span>
+                        <span class='toolButton hidable000 icon-expand' style='float:right' title='Fullscreen on/of'>Alt-F11</span>
+                        <span class='keyMap toolButton hidable000' style='float:right' title='editor mode'></span>
+                    </span>
+                </span>
                 
                 <table class='codeArea' > 
                     <tr>
@@ -68,15 +73,15 @@ window.clear = null
                     </tr>
                 </table>
                 
-                <span class='input_expander toolButton hidable000 uppertab'></span> 
 
-                <span class='output_header'>
-                    <span class='hideOutputButton toolButton hidable000 uppertab'></span> <!-- &#x25BC -->
+                <span class='output_header' output_label="" >
+                    <span class='hideOutputButton toolButton hidable000 uppertab'></span> 
                     <span class='clearOutputButton toolButton '>clear</span>
                     <span class='toolButton icon-play' title='<Ctrl-Ent> to run.  <Shift-Ent> to run and go to the next cell. '>run</span>
+                    <input class='cellLabel'></input>
                 </span>
                 
-                <div id='out_' class='outputCell lr_padded'></div>
+                <div id='out_' class='outputCell'></div>
                 
                 
                 <div class='insertBefore smallButton  hidable000 icon-plus' title='add cell'></div>
@@ -105,8 +110,13 @@ window.clear = null
         _setNumber celNum
         _setMode _mode
         _setOutputCollapsed _outCollapsed
-        _setInputCollapsed _outCollapsed
+        _setInputCollapsed _inCollapsed
+        _unlock()
         _setKeyMap keyM
+        
+        # to remember the state of UI
+        #_state = new CellState _jQueryCell
+
         return
     
     
@@ -121,6 +131,7 @@ window.clear = null
         _codemirror.setOption "vimMode", (_keyMap is "vim")
         _codemirror.setOption "keyMap", _keyMap
         @
+
 
     _setTheme = (themeName) ->
             th = if themeName then themeName else "default"
@@ -150,19 +161,93 @@ window.clear = null
         else
             _hideJavascriptText()
         return
+    ###
+    # CELL STATE /////////////////////////////////////////////////
     
+    class CellState
+        _c = null
+        _cellState = 
+            in_collapsed:false
+            out_collapsed:false
+            cell_locked:false
+            cell_language:'javascript'
+            cell_label:''
+
+        constructor: (cell)-> _c=cell
+
+        # set or get 
+        cell_locked: (v) ->
+            if v?
+                _cellState.cell_locked = v
+            else
+                return _cellState.cell_locked 
+
+
+        # set or get 
+        in_collapsed: (v) ->
+            if v?
+                _cellState.in_collapsed = v
+            else
+                return _cellState.in_collapsed
+
+        
+        # set or get 
+        out_collapsed: (v) ->
+            if v?
+                _cellState.out_collapsed = v
+            else
+                return _cellState.out_collapsed
+
+
+
+        # set or get 
+        cell_language: (s) ->
+            if s?
+                _cellState.cell_language = s
+            else
+                return _cellState.cell_language
+
+        
+
+        # set or get 
+        cell_label: (s) ->
+            if s?
+                _cellState.cell_label = s
+            else
+                return _cellState.cell_label
+
+
+                
+        # set or get 
+        cell_state: (v) ->
+            if not v
+                return _cellState 
+            _cellState[p] = v[p] for p of _cellState when v[p]?
+            _cellState
+
+
+        # set or get 
+        str: (s) ->
+            if s?
+                 @cell_state(JSON.parse(s))
+            else
+                return JSON.stringify(@cell_state())
+    ###        
+
     # collapse output iarea ===================================================
     _CPLTIME=100
 
     _setOutputCollapsed = (collapsed) ->
         _outCollapsed = collapsed
         if collapsed
-            _jQueryCell.find(".outputCell").hide _CPLTIME, ->
+            _outputCell.hide _CPLTIME, ->
                 _jQueryCell.find(".hideOutputButton").html "show [out#{_n}]" #Show output &#x25BA
+                _jQueryCell.find(".hideOutputButton").removeClass('uppertab')
         else
-            _jQueryCell.find(".outputCell").show _CPLTIME
+            _outputCell.show _CPLTIME
             _jQueryCell.find(".hideOutputButton").html "hide [out#{_n}]" #Hide output &#x25BC
-        saveNotebookLater?()
+            _jQueryCell.find(".hideOutputButton").addClass('uppertab')
+        @saveNotebookLater?()
         return
     
 
@@ -172,15 +257,15 @@ window.clear = null
         _inCollapsed = collapsed
         if collapsed
             _jQueryCell.find(".codeArea").hide()
-            _jQueryCell.find(".input_expander").addClass('visible')
-            _jQueryCell.find(".input_header").hide()
             _jQueryCell.find(".hideInputButton").html "show [in#{_n}]" #Show input&nbsp;&nbsp;&#x25BA
+            _jQueryCell.find(".hideInputButton").removeClass('uppertab')
+            _jQueryCell.find(".editControls").hide()
         else
             _jQueryCell.find(".codeArea").show()
-            _jQueryCell.find(".input_expander").removeClass('visible')
-            _jQueryCell.find(".input_header").show()
             _jQueryCell.find(".hideInputButton").html "hide [in#{_n}]" #Hide input &nbsp;&nbsp;&#x25BC
-        saveNotebookLater?()
+            _jQueryCell.find(".hideInputButton").addClass('uppertab')
+            _jQueryCell.find(".editControls").show()
+        @saveNotebookLater?()
         return
 
 
@@ -191,6 +276,9 @@ window.clear = null
         _jQueryCell.find(".codeArea").removeClass "visibleBorder"
         _jQueryCell.removeClass "visibleBorder shadow"
         _codemirror.setOption "readOnly", "nocursor"
+        _outputCell.removeClass('visibleBorder')
+        _lockButton.removeClass('unlocked')
+        @saveNotebookLater?()
 
 
 
@@ -200,13 +288,14 @@ window.clear = null
         _jQueryCell.find(".codeArea").addClass "visibleBorder"
         _jQueryCell.addClass "visibleBorder shadow"
         _codemirror.setOption "readOnly", false
+        _outputCell.addClass('visibleBorder')
+        _lockButton.addClass('unlocked')
+        @saveNotebookLater?()
     
     _lockUnlock = ->
         if _lockButton.hasClass('unlocked')
-            _lockButton.removeClass('unlocked')
             _lock()
         else
-            _lockButton.addClass('unlocked')
             _unlock()
 
 
@@ -222,13 +311,17 @@ window.clear = null
         $(".clearOutputButton", _jQueryCell).click -> _outputCell.html ""; saveNotebook?()
         $(".hideOutputButton", _jQueryCell).click -> _setOutputCollapsed not _outCollapsed
         $(".hideInputButton", _jQueryCell).click -> _setInputCollapsed not _inCollapsed
-        $(".input_expander", _jQueryCell).click -> _setInputCollapsed not _inCollapsed
 
         $(".showJavascriptButton", _jQueryCell).click _switchJavascriptText
         $(".selectButton", _jQueryCell).change ->
             mode = _jQueryCell.find(".selectButton").val()
             _setMode mode
             _codemirror.focus()
+        
+        $('.cellLabel',_jQueryCell).change  (e) ->
+            #_state.cell_label(e.target.value)
+            @saveNotebookLater?()
+
 
     _switchFullsreen = ->
         fs = not isFullScreen(_codemirror)
@@ -296,7 +389,10 @@ window.clear = null
     
     
     _getXml1 = ->
-        cell = $("<div class='cell' id='#{_jQueryCell.attr('id')}'  version='1' number='#{_n}' mode='#{_mode}'/>")
+
+        unlk=if _lockButton.hasClass('unlocked') then "true" else "false"
+
+        cell = $("<div class='cell' id='#{_jQueryCell.attr('id')}'  version='1' number='#{_n}' mode='#{_mode}' unlocked='#{unlk}' celllabel='#{$('.cellLabel',_jQueryCell).val()}'/>") # cell_state='#{_state.str()}'
         $("<div class='inputCell'  id='#{_inputCell.attr('id')}' collapsed='#{_inCollapsed}'/>").text(_codemirror.getValue()).appendTo cell
         $("<div class='javascriptCell' id='#{_javascriptCell.attr('id')}'/>").text(_javascriptTextViewer.getValue()).appendTo cell
         $("<div class='outputCell' id='#{_outputCell.attr('id')}' collapsed='#{_outCollapsed}'/>").text(_outputCell.html()).appendTo cell
@@ -306,6 +402,7 @@ window.clear = null
     _setXml1 = (cell) ->
         number = cell.attr("number")
         _mode = cell.attr("mode")
+        #_state.str( cell.attr('cell_state'))
         
         input = cell.find("div.inputCell").first()
         output = cell.find("div.outputCell").first()
@@ -319,6 +416,14 @@ window.clear = null
         _setMode _mode
         _setOutputCollapsed output.attr("collapsed") is "true"
         _setInputCollapsed input.attr("collapsed") is "true"
+        $('.cellLabel',_jQueryCell).val(cell.attr('celllabel'))
+        
+        if cell.attr('unlocked') is "false"
+            _lock()
+        else
+            _unlock();
+
+
         return
     
     
@@ -366,7 +471,6 @@ window.clear = null
         _inputCell.attr "id", "in" + _n
         _outputCell.attr "id", "out" + _n
         _javascriptCell.attr "id", "js" + _n
-        _jQueryCell.find(".input_expander").html "show [in#{_n}]" # &nbsp;&nbsp;&#x25BA
         this
     
     

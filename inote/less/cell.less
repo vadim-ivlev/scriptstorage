@@ -1,50 +1,29 @@
 /*------------cell----------------------*/
 .cell {
     position:relative;
-    border: 1px solid transparent;
-    //border-right: 1px solid @BORDERCOLOR;
-    //border-left: 1px solid @BORDERCOLOR;
+    border: 0px solid transparent;
     margin-top:20px;
     overflow:visible;
     padding:0px;
     width:100%;
-    //border-radius: 10px;
-    //padding-top: 5px;
-    //padding-bottom: 5px;
 }
 .input_header {
-    //width:100%;
-    //display:inline;
 }
 .output_header {
-    //width:100%;
-    //display:inline;
 }
-/*
-.inputTitle, .outputTitle {
-    color: @LINKCOLOR;
-    display:inline-block;
-    font-family: @FONT;
-    font-size: 12px;
-    cursor: default;
-    vertical-align: middle;
-    padding-right: 4px;
-}
-*/
 .codeArea {
-    border-top: 1px solid transparent;
-    border-bottom: 1px solid transparent;
-    border-radius: 0px;
+    border: 1px solid transparent;
     border-spacing: 0;
     margin: 0;
     padding: 0;
     width:100%;
-    //padding-right: 10px;
+    margin-bottom: 5px;
 }
 .inputCell {
     margin: 0;
     padding: 0;
     vertical-align: top;
+    border: 1px solid transparent;
 }
 .javascriptText {
     border-left:1px solid @BORDERCOLOR;
@@ -54,11 +33,12 @@
 }
 .outputCell {
     width:100%;
-    //border-top:1px solid @BORDERCOLOR;
-    //border-bottom:1px solid @BORDERCOLOR;
     border-radius: 0px;
     overflow: auto;
     padding:0;
+    border: 1px solid transparent;
+    padding-left:5px;
+    padding-right:5px;
 }
 
 .noerror {
@@ -71,12 +51,10 @@
     color:red;
 }
 
-.input_expander, 
-.output_expander, 
 .hideInputButton, 
 .hideOutputButton{
     width:90px;
-    //display: inline-block;
+    display: inline-block;
 }
 
 
@@ -163,10 +141,25 @@
 }
 
 .uppertab {
-    border: 1px solid silver;
+    border: 1px solid @BORDERCOLOR;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     border-top-left-radius: 9px;
     border-top-right-radius: 9px;
-    border-bottom-style: none;
+    border-bottom-color: white;
+    &:hover {
+        border-bottom-color: white;
+    }
 }    
+.cellLabel {
+    border:1px solid transparent;
+    color: @LINKCOLOR;
+    font-family:@BUTTONFONT; 
+    font-size:@BUTTONFONTSIZE;
+    height:17px;
+    vertical-align: middle;
+    margin:0px;
+    &:hover {
+        border-color: @BORDERCOLOR;
+    }
+}

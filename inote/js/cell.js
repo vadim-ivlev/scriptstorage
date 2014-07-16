@@ -8,9 +8,13 @@ keyMap - default| vim | sublime | emac
  */
 
 (function() {
-  window.print = null;
+  if (typeof window !== "undefined" && window !== null) {
+    window.print = null;
+  }
 
-  window.clear = null;
+  if (typeof window !== "undefined" && window !== null) {
+    window.clear = null;
+  }
 
   this.Cell = function(cellNumber, themeName, keyMap) {
     var toXmlString, _CPLTIME, _VER, _attachEvents, _call, _clearPrintArea, _codemirror, _compileLater, _compileTimeout, _compile_CoffeeScript, _compile_Markdown, _create, _createPrintArea, _cursorOnFirstLine, _cursorOnLastLine, _deleteCallback, _executeCode, _fullscreenButton, _getNumber, _getSelectedRange, _getXml, _getXml0, _getXml1, _hideJavascriptText, _inCollapsed, _inputCell, _insertAfterCallback, _insertBeforeCallback, _jQueryCell, _javascriptCell, _javascriptTextViewer, _keyHandler, _keyMap, _lock, _lockButton, _lockUnlock, _mode, _n, _onfirst, _onlast, _outCollapsed, _outputCell, _print, _printArea, _printError, _removeFocus, _setCursorOnFirstLine, _setCursorOnLastLine, _setFocus, _setInputCollapsed, _setKeyMap, _setMode, _setNumber, _setOutputCollapsed, _setTheme, _setXml, _setXml0, _setXml1, _showJavascriptText, _switchFullsreen, _switchJavascriptText, _unlock;
@@ -34,7 +38,7 @@ keyMap - default| vim | sublime | emac
     _compileTimeout = void 0;
     _keyMap = "default";
     _create = function(celNum, theme, keyM) {
-      _jQueryCell = $("<div class='cell'>\n\n    <div class='input_header' style='min-height:23px;'>\n        <span class='hideInputButton toolButton hidable000 uppertab' ></span> <!-- &#x25BC -->\n        <select class='selectButton hidable000'>\n            <option value='javascript'>JavaScript</option>\n            <option value='text/x-coffeescript'>CoffeeScript</option>\n            <option value='text/html'>HTML</option>\n            <option value='markdown'>Markdown</option>\n        </select>\n        <span class='showJavascriptButton toolButton hidable000' >Show Javascript</span>\n        <span class='deleteButton toolButton  hidable000 icon-remove' title='delete cell' ></span><!-- &nbsp;b&#x00D7&nbsp; -->\n        <span class='toolButton hidable000 icon-expand' style='float:right' title='Fullscreen on/of'>Alt-F11</span>\n        <span class='keyMap toolButton hidable000' style='float:right' title='editor mode'></span>\n    </div>\n    \n    <table class='codeArea' > \n        <tr>\n            <td id='in_' class='inputCell' ></td>\n            <td id='js_' class='javascriptCell'></td>\n        </tr>\n    </table>\n    \n    <span class='input_expander toolButton hidable000 uppertab'></span> \n\n    <span class='output_header'>\n        <span class='hideOutputButton toolButton hidable000 uppertab'></span> <!-- &#x25BC -->\n        <span class='clearOutputButton toolButton '>clear</span>\n        <span class='toolButton icon-play' title='<Ctrl-Ent> to run.  <Shift-Ent> to run and go to the next cell. '>run</span>\n    </span>\n    \n    <div id='out_' class='outputCell lr_padded'></div>\n    \n    \n    <div class='insertBefore smallButton  hidable000 icon-plus' title='add cell'></div>\n    <div class='insertAfter smallButton  hidable000 icon-plus' title='add cell'></div>\n    <div class='lockButton smallButton icon-pencil' title='edit/lock' style='position:absolute;top:0px;left:-27px;'></div>\n</div>");
+      _jQueryCell = $("<div class='cell' locked=\"false\">\n\n    <span class='input_header'>\n        <span class='hideInputButton hidable000 toolButton uppertab' ></span> \n        <!-- SUPPORTER -->\n        <div style='width:1px; height:22px; background-color:transparent;display: inline-block;vertical-align: middle;'></div>\n        <span class='editControls'>\n            <select class='selectButton hidable000'>\n                <option value='javascript'>JavaScript</option>\n                <option value='text/x-coffeescript'>CoffeeScript</option>\n                <option value='text/html'>HTML</option>\n                <option value='markdown'>Markdown</option>\n            </select>\n            <span class='showJavascriptButton toolButton hidable000' >Show Javascript</span>\n            <span class='deleteButton toolButton  hidable000 icon-remove' title='delete cell' ></span>\n            <span class='toolButton hidable000 icon-expand' style='float:right' title='Fullscreen on/of'>Alt-F11</span>\n            <span class='keyMap toolButton hidable000' style='float:right' title='editor mode'></span>\n        </span>\n    </span>\n    \n    <table class='codeArea' > \n        <tr>\n            <td id='in_' class='inputCell' ></td>\n            <td id='js_' class='javascriptCell'></td>\n        </tr>\n    </table>\n    \n\n    <span class='output_header' output_label=\"\" >\n        <span class='hideOutputButton toolButton hidable000 uppertab'></span> \n        <span class='clearOutputButton toolButton '>clear</span>\n        <span class='toolButton icon-play' title='<Ctrl-Ent> to run.  <Shift-Ent> to run and go to the next cell. '>run</span>\n        <input class='cellLabel'></input>\n    </span>\n    \n    <div id='out_' class='outputCell'></div>\n    \n    \n    <div class='insertBefore smallButton  hidable000 icon-plus' title='add cell'></div>\n    <div class='insertAfter smallButton  hidable000 icon-plus' title='add cell'></div>\n    <div class='lockButton smallButton icon-pencil' title='edit/lock' style='position:absolute;top:0px;left:-27px;'></div>\n</div>");
       _inputCell = _jQueryCell.find(".inputCell");
       _inputCell[0]._compileLater = _compileLater;
       _outputCell = _jQueryCell.find(".outputCell");
@@ -51,7 +55,8 @@ keyMap - default| vim | sublime | emac
       _setNumber(celNum);
       _setMode(_mode);
       _setOutputCollapsed(_outCollapsed);
-      _setInputCollapsed(_outCollapsed);
+      _setInputCollapsed(_inCollapsed);
+      _unlock();
       _setKeyMap(keyM);
     };
     _call = function(f, param) {
@@ -93,56 +98,135 @@ keyMap - default| vim | sublime | emac
         _hideJavascriptText();
       }
     };
+
+    /*
+     * CELL STATE /////////////////////////////////////////////////
+    
+    class CellState
+        _c = null
+        _cellState = 
+            in_collapsed:false
+            out_collapsed:false
+            cell_locked:false
+            cell_language:'javascript'
+            cell_label:''
+    
+        constructor: (cell)-> _c=cell
+    
+         * set or get 
+        cell_locked: (v) ->
+            if v?
+                _cellState.cell_locked = v
+            else
+                return _cellState.cell_locked 
+    
+    
+         * set or get 
+        in_collapsed: (v) ->
+            if v?
+                _cellState.in_collapsed = v
+            else
+                return _cellState.in_collapsed
+    
+        
+         * set or get 
+        out_collapsed: (v) ->
+            if v?
+                _cellState.out_collapsed = v
+            else
+                return _cellState.out_collapsed
+    
+    
+    
+         * set or get 
+        cell_language: (s) ->
+            if s?
+                _cellState.cell_language = s
+            else
+                return _cellState.cell_language
+    
+        
+    
+         * set or get 
+        cell_label: (s) ->
+            if s?
+                _cellState.cell_label = s
+            else
+                return _cellState.cell_label
+    
+    
+                
+         * set or get 
+        cell_state: (v) ->
+            if not v
+                return _cellState 
+            _cellState[p] = v[p] for p of _cellState when v[p]?
+            _cellState
+    
+    
+         * set or get 
+        str: (s) ->
+            if s?
+                 @cell_state(JSON.parse(s))
+            else
+                return JSON.stringify(@cell_state())
+     */
     _CPLTIME = 100;
     _setOutputCollapsed = function(collapsed) {
       _outCollapsed = collapsed;
       if (collapsed) {
-        _jQueryCell.find(".outputCell").hide(_CPLTIME, function() {
-          return _jQueryCell.find(".hideOutputButton").html("show [out" + _n + "]");
+        _outputCell.hide(_CPLTIME, function() {
+          _jQueryCell.find(".hideOutputButton").html("show [out" + _n + "]");
+          return _jQueryCell.find(".hideOutputButton").removeClass('uppertab');
         });
       } else {
-        _jQueryCell.find(".outputCell").show(_CPLTIME);
+        _outputCell.show(_CPLTIME);
         _jQueryCell.find(".hideOutputButton").html("hide [out" + _n + "]");
+        _jQueryCell.find(".hideOutputButton").addClass('uppertab');
       }
-      if (typeof saveNotebookLater === "function") {
-        saveNotebookLater();
+      if (typeof this.saveNotebookLater === "function") {
+        this.saveNotebookLater();
       }
     };
     _setInputCollapsed = function(collapsed) {
       _inCollapsed = collapsed;
       if (collapsed) {
         _jQueryCell.find(".codeArea").hide();
-        _jQueryCell.find(".input_expander").addClass('visible');
-        _jQueryCell.find(".input_header").hide();
         _jQueryCell.find(".hideInputButton").html("show [in" + _n + "]");
+        _jQueryCell.find(".hideInputButton").removeClass('uppertab');
+        _jQueryCell.find(".editControls").hide();
       } else {
         _jQueryCell.find(".codeArea").show();
-        _jQueryCell.find(".input_expander").removeClass('visible');
-        _jQueryCell.find(".input_header").show();
         _jQueryCell.find(".hideInputButton").html("hide [in" + _n + "]");
+        _jQueryCell.find(".hideInputButton").addClass('uppertab');
+        _jQueryCell.find(".editControls").show();
       }
-      if (typeof saveNotebookLater === "function") {
-        saveNotebookLater();
+      if (typeof this.saveNotebookLater === "function") {
+        this.saveNotebookLater();
       }
     };
     _lock = function() {
       _jQueryCell.find(".hidable000").removeClass("visible");
       _jQueryCell.find(".codeArea").removeClass("visibleBorder");
       _jQueryCell.removeClass("visibleBorder shadow");
-      return _codemirror.setOption("readOnly", "nocursor");
+      _codemirror.setOption("readOnly", "nocursor");
+      _outputCell.removeClass('visibleBorder');
+      _lockButton.removeClass('unlocked');
+      return typeof this.saveNotebookLater === "function" ? this.saveNotebookLater() : void 0;
     };
     _unlock = function() {
       _jQueryCell.find(".hidable000").addClass("visible");
       _jQueryCell.find(".codeArea").addClass("visibleBorder");
       _jQueryCell.addClass("visibleBorder shadow");
-      return _codemirror.setOption("readOnly", false);
+      _codemirror.setOption("readOnly", false);
+      _outputCell.addClass('visibleBorder');
+      _lockButton.addClass('unlocked');
+      return typeof this.saveNotebookLater === "function" ? this.saveNotebookLater() : void 0;
     };
     _lockUnlock = function() {
       if (_lockButton.hasClass('unlocked')) {
-        _lockButton.removeClass('unlocked');
         return _lock();
       } else {
-        _lockButton.addClass('unlocked');
         return _unlock();
       }
     };
@@ -170,15 +254,15 @@ keyMap - default| vim | sublime | emac
       $(".hideInputButton", _jQueryCell).click(function() {
         return _setInputCollapsed(!_inCollapsed);
       });
-      $(".input_expander", _jQueryCell).click(function() {
-        return _setInputCollapsed(!_inCollapsed);
-      });
       $(".showJavascriptButton", _jQueryCell).click(_switchJavascriptText);
-      return $(".selectButton", _jQueryCell).change(function() {
+      $(".selectButton", _jQueryCell).change(function() {
         var mode;
         mode = _jQueryCell.find(".selectButton").val();
         _setMode(mode);
         return _codemirror.focus();
+      });
+      return $('.cellLabel', _jQueryCell).change(function(e) {
+        return typeof this.saveNotebookLater === "function" ? this.saveNotebookLater() : void 0;
       });
     };
     _switchFullsreen = function() {
@@ -243,8 +327,9 @@ keyMap - default| vim | sublime | emac
       _setInputCollapsed(input.attr("collapsed") === "true");
     };
     _getXml1 = function() {
-      var cell;
-      cell = $("<div class='cell' id='" + (_jQueryCell.attr('id')) + "'  version='1' number='" + _n + "' mode='" + _mode + "'/>");
+      var cell, unlk;
+      unlk = _lockButton.hasClass('unlocked') ? "true" : "false";
+      cell = $("<div class='cell' id='" + (_jQueryCell.attr('id')) + "'  version='1' number='" + _n + "' mode='" + _mode + "' unlocked='" + unlk + "' celllabel='" + ($('.cellLabel', _jQueryCell).val()) + "'/>");
       $("<div class='inputCell'  id='" + (_inputCell.attr('id')) + "' collapsed='" + _inCollapsed + "'/>").text(_codemirror.getValue()).appendTo(cell);
       $("<div class='javascriptCell' id='" + (_javascriptCell.attr('id')) + "'/>").text(_javascriptTextViewer.getValue()).appendTo(cell);
       $("<div class='outputCell' id='" + (_outputCell.attr('id')) + "' collapsed='" + _outCollapsed + "'/>").text(_outputCell.html()).appendTo(cell);
@@ -264,6 +349,12 @@ keyMap - default| vim | sublime | emac
       _setMode(_mode);
       _setOutputCollapsed(output.attr("collapsed") === "true");
       _setInputCollapsed(input.attr("collapsed") === "true");
+      $('.cellLabel', _jQueryCell).val(cell.attr('celllabel'));
+      if (cell.attr('unlocked') === "false") {
+        _lock();
+      } else {
+        _unlock();
+      }
     };
     _getSelectedRange = function() {
       return {
@@ -307,7 +398,6 @@ keyMap - default| vim | sublime | emac
       _inputCell.attr("id", "in" + _n);
       _outputCell.attr("id", "out" + _n);
       _javascriptCell.attr("id", "js" + _n);
-      _jQueryCell.find(".input_expander").html("show [in" + _n + "]");
       return this;
     };
     _setFocus = function(lineNumber, charNumber) {
