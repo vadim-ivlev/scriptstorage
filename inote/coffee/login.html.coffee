@@ -45,8 +45,6 @@ prepareOAuthorization =() ->
         addLoginLink "icon-wordpress", "wordpress"
         addLoginLink "icon-twitter", "twitter"
         addLoginLink "icon-linkedin", "linkedin"
-        oLogin.append("<br>")
-        oLogin.append("<a href='javascript:window.history.back()'>back</a>")
     
 
 
@@ -60,19 +58,16 @@ prepareOAuthorization =() ->
         
         addLogoutLink "icon-windows", "windows"
         
-        oLogin.append("<br>")
-        oLogin.append("<a href='javascript:window.history.back()'>back</a>")
     
     
 
 
-
-
+    
     oauthHolder = $(".oauthHolder")
     oauthHolder.html ""
       
     oLogin = $("<span id='oLogin'></span>").appendTo oauthHolder
-    $("<span>Login </span>").appendTo oLogin
+    $("<span>Sign in with</span><br><br>").appendTo oLogin
     oLogout = $("<span id='oLogout'></span>").appendTo oauthHolder
     
     buildLoginButtons(oLogin)
@@ -112,3 +107,34 @@ prepareOAuthorization =() ->
 # on page load ==================================================================
 $ ->
     prepareOAuthorization()
+
+
+###
+## ON LOGIN
+
+* write_cookie()
+* reload_the_page()
+or 
+* change_UI(); requery_server()
+
+ PAGE LOAD
+
+* check if the_user_is_logined. (cookie or UI)
+and change_UI
+
+# ON LOGIN
+
+* write_cookie()
+* reload_the_page()
+or 
+* change_UI(); requery_server()
+
+# ON LOGOUT
+
+* delete_cookie()
+* reload_the_page()
+or 
+* change_UI(); requery_server()
+
+
+###

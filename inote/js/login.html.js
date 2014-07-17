@@ -37,9 +37,7 @@
       addLoginLink("icon-githib", "github");
       addLoginLink("icon-wordpress", "wordpress");
       addLoginLink("icon-twitter", "twitter");
-      addLoginLink("icon-linkedin", "linkedin");
-      oLogin.append("<br>");
-      return oLogin.append("<a href='javascript:window.history.back()'>back</a>");
+      return addLoginLink("icon-linkedin", "linkedin");
     };
     buildLogoutButton = function(oLogout) {
       var addLogoutLink;
@@ -52,14 +50,12 @@
           return location.reload();
         });
       };
-      addLogoutLink("icon-windows", "windows");
-      oLogin.append("<br>");
-      return oLogin.append("<a href='javascript:window.history.back()'>back</a>");
+      return addLogoutLink("icon-windows", "windows");
     };
     oauthHolder = $(".oauthHolder");
     oauthHolder.html("");
     oLogin = $("<span id='oLogin'></span>").appendTo(oauthHolder);
-    $("<span>Login </span>").appendTo(oLogin);
+    $("<span>Sign in with</span><br><br>").appendTo(oLogin);
     oLogout = $("<span id='oLogout'></span>").appendTo(oauthHolder);
     buildLoginButtons(oLogin);
     buildLogoutButton(oLogout);
@@ -89,6 +85,35 @@
   $(function() {
     return prepareOAuthorization();
   });
+
+
+  /*
+   *# ON LOGIN
+  
+  * write_cookie()
+  * reload_the_page()
+  or 
+  * change_UI(); requery_server()
+  
+   PAGE LOAD
+  
+  * check if the_user_is_logined. (cookie or UI)
+  and change_UI
+  
+   * ON LOGIN
+  
+  * write_cookie()
+  * reload_the_page()
+  or 
+  * change_UI(); requery_server()
+  
+   * ON LOGOUT
+  
+  * delete_cookie()
+  * reload_the_page()
+  or 
+  * change_UI(); requery_server()
+   */
 
 }).call(this);
 
