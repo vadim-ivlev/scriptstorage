@@ -1,109 +1,3 @@
-# HELLOJS
-prepareOAuthorization =() ->
-    #$.getScript "/inote/libs/hello.min.js", ->
-    # init ================== set OAuth 2 parameners =======================
-    hello.init
-        facebook :'1517454335144201'
-        windows:'0000000044121F60'
-    ,
-        #redirect_uri:'http://inote.vadimivlev.com'
-        redirect_uri:'http://inote.vadimivlev.com/inote/html/login.html'
-        display: 'popup'
-
-
-    # on login ,call user information for the given network =======================
-    hello.on "auth.login", (auth) ->
-      hello(auth.network).api("/me").success (r) ->
-        console.log "auth.login"
-        console.log r
-        $page_ = $(".oauthLogin")
-        $div_ = $("""
-            <div id='profile_'>
-                <img src='#{r.thumbnail}' style='width:50px; height:50px; border-radius:25px;vertical-align:middle;'/>
-                id: #{r.id}
-                name: #{r.name}
-            </div>
-            """).appendTo($page_)
-        return
-      return
-    
-    # on logout ,call user information for the given network =====================
-    hello.on "auth.logout", (auth) ->
-        console.log "auth.logout"
-        console.log auth
-    
-    # Adds social login buttons to a container ====================================
-    buildLoginButtons = (oLogin)->
-        addLoginLink =(iconClass, network) ->
-            $("<a id='#{network}_login' class='#{iconClass}' href='' style='text-decoration:none; margin:3px'></a>").appendTo(oLogin).click (e) ->
-                e.preventDefault()
-                hello.login(network)
-        
-        addLoginLink "icon-windows", "windows"
-        addLoginLink "icon-googleplus", "googleplus"
-        addLoginLink "icon-githib", "github"
-        addLoginLink "icon-wordpress", "wordpress"
-        addLoginLink "icon-twitter", "twitter"
-        addLoginLink "icon-linkedin", "linkedin"
-    
-
-
-    # adds logout button to container =================================
-    buildLogoutButton = (oLogout) ->
-        addLogoutLink =(iconClass, network) ->
-            $("<a id='#{network}_logout' class='#{iconClass}' href='' style='text-decoration:none; margin:3px'>logout</a>").appendTo(oLogout).click (e) ->
-                e.preventDefault()
-                hello.logout(network, {force:true})
-                location.reload()
-        
-        addLogoutLink "icon-windows", "windows"
-        
-    
-    
-
-
-    
-    oauthHolder = $(".oauthHolder")
-    oauthHolder.html ""
-      
-    oLogin = $("<span id='oLogin'></span>").appendTo oauthHolder
-    $("<span>Sign in with</span><br><br>").appendTo oLogin
-    oLogout = $("<span id='oLogout'></span>").appendTo oauthHolder
-    
-    buildLoginButtons(oLogin)
-    buildLogoutButton(oLogout)
-    
-    #TEST
-    checkNetwork = (network) ->
-        r=hello(network).getAuthResponse()
-        butIn=oLogin.find("##{network}_login")
-
-        butOut=oLogout.find("##{network}_logout")
-        if r
-            oLogin.hide()
-            butIn.hide()
-            butOut.show()
-            console.log r
-        else
-            oLogin.show()
-            butIn.show()
-            butOut.hide()
-    
-    adjustGUI = () ->
-        checkNetwork "windows"
-        console.log "adjustGUI"
-
-
-
-    adjustGUI()
-
-
-
-
-
-
-
-
 
 # New code ======================================================================
 
@@ -121,8 +15,17 @@ hello.init
 hello.on "auth.login", (auth) ->
   hello(auth.network).api("/me").success (r) ->
     console.log "auth.login"
+
+    # add network name to build a propper signout link, and to save in cookies
+    r.network = auth.network
     console.log r
-    on_signin(r)
+    if n=get_signed_network_name()
+        console.log "Has signed already in '#{n}'"
+    else 
+        console.log "Real sign in '#{n}'"
+        on_signin(r)
+        #go back
+        window.location.href = document.referrer
 
 
 # on logout ,===================================================================
@@ -130,6 +33,14 @@ hello.on "auth.logout", (auth) ->
     console.log "auth.logout"
     console.log auth
     on_signout()
+    #go back
+    window.location.href = document.referrer
+
+
+### TEST is not used
+checkNetwork = (network) ->
+    r=hello(network).getAuthResponse()
+###
 
 
 
@@ -160,20 +71,27 @@ delete_cookie = ->
 
 
 get_signed_network_name = ->
+    console.log "get_signed_network_name: #{read_cookie().network}"
     read_cookie().network
 
 
 # GUI depends on if the user is signed in or out
 adjust_ui = -> 
-    build_signout_ui =(network_name) ->
+    build_signout_ui = ->
         # And the network logout link to contain
-        addLogoutLink =($container, network) ->
-            $("<a id='#{network}_logout' class='icon-#{network}' href='' style='text-decoration:none; margin:3px'>logout</a>")
-                .click (e) -> e.preventDefault(); hello.logout(network, {force:true})
-                .appendTo(oLogout)
+        addLogoutLink =($container) ->
+            r = read_cookie()
+            $("""<span id='profile_#{r.id}' title='id: #{r.id}' class='icon-#{r.network}' >
+                    <img src='#{r.thumbnail}' style='width:30px; height:30px; border-radius:25px;vertical-align:middle;'/>
+                    #{r.name}
+                </span>""").appendTo($container)
+
+            $("<a id='#{r.network}_logout' href='' style='text-decoration:none; margin:3px'>logout</a>")
+                .click (e) -> e.preventDefault(); hello.logout(r.network, {force:true})
+                .appendTo($container)
         
         c=$('.oauthHolder').html('')
-        addLogoutLink c, network_name
+        addLogoutLink c 
 
     build_signin_ui = ->
         # And the network logout link to contain
@@ -214,7 +132,5 @@ on_signout = -> delete_cookie(); adjust_ui()
 
 
 # on page load ==================================================================   
-$ ->
-    #prepareOAuthorization()
-    on_page_load()
+$ -> on_page_load()
 

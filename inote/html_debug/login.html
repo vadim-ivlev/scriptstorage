@@ -15,6 +15,8 @@
   </head>
   <body style="padding:10px;">
     <div class="oauthHolder">oauthHolder</div>
-    <div style="text-align:center; margin-top:50px;"><a href="javascript:history.back()" class="toolButton">back</a></div>
+    <div style="text-align:center; margin-top:50px;">
+      <!--a.toolButton(href='javascript:hello.logout("windows", {force:true})') logout windows--><a href="javascript:window.location.href = document.referrer;" class="toolButton">back</a>
+    </div>
   </body>
 </html>
