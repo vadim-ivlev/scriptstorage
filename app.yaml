@@ -10,7 +10,7 @@ handlers:
 - url: /
   script: py.indexpage.app
 
-- url: /(login|logout|getusername|getloginlink)
+- url: /(login|logout|getusername|getloginlink|test)
   script: py.login.app
 
 - url: /proxy/.*

@@ -52,10 +52,22 @@ class GetLoginLink(webapp2.RequestHandler):
         self.response.out.write(s)
 
 
+class Test(webapp2.RequestHandler):
+    def get(self):
+        
+        #import pdb; pdb.set_trace() 
+        
+        self.response.headers['Content-Type'] = 'text/plain'
+        s='=======================\n'
+        s+="[%s]\n" % utils.get_user_social_id(self)
+        s+='=======================\n'
+        self.response.out.write(s)
+
 app = webapp2.WSGIApplication([
     ('/login', LoginPage),
     ('/logout', LogoutPage),
     ('/getusername', GetUserNamePage), 
-    ('/getloginlink', GetLoginLink)
+    ('/getloginlink', GetLoginLink),
+    ('/test', Test)
     ],
     debug=True)

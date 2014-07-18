@@ -15,15 +15,27 @@ class WriteHandler(webapp2.RequestHandler):
 
         self.response.headers['Content-Type'] = 'text/plain'
 
-        user = users.get_current_user()
-        if not user:
+
+        nickname=utils.get_user_social_id(self)
+        if not nickname:
             self.response.out.write("{'error':'Please login to save changes'}")
             return
 
+
+
+        #user = users.get_current_user()
+        #if not user:
+        #    self.response.out.write("{'error':'Please login to save changes'}")
+        #    return
+
+
+
         #get the user nick name
-        nickname=""
-        if user:
-            nickname=user.nickname()
+        
+        #nickname=""
+        #if user:
+        #    nickname=user.nickname()
+
 
 
         # find the last version

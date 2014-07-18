@@ -102,7 +102,7 @@ task 'deploy', '', ->
 rebuild = ->
     generateJs()
     generateHtml()
-    generateCss()
+    try generateCss()
 
 
 generateHtml = (onDone)->

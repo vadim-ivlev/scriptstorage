@@ -13,7 +13,7 @@ class IndexPage(webapp2.RequestHandler):
         #import pdb; pdb.set_trace()
         debug=self.request.get('debug')
         template_values = {
-            'notebook_list': utils.get_list_of_notebooks(),
+            'notebook_list': utils.get_list_of_notebooks(self),
             'login_link': utils.get_login_link()
             }
         # if there is debug param in url render the debug version

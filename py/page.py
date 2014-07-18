@@ -21,7 +21,7 @@ class Page(webapp2.RequestHandler):
         content=""
         
         # retrieve the page if it is allowed
-        if utils.access_allowed(notebook_access, notebook_owner):
+        if utils.access_allowed(self,notebook_access, notebook_owner):
             (content, version)=utils.get_notebook_content(notebook_owner,notebook_access, notebook_name, version)
 
         if not version:

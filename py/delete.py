@@ -3,6 +3,7 @@ from notebook import NoteBook
 
 from google.appengine.ext import db
 from google.appengine.api import users
+import utils
 
 
 class DeleteHandler(webapp2.RequestHandler):
@@ -10,9 +11,10 @@ class DeleteHandler(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = 'text/plain'
 
         #get the user nick name
-        nickname=u''
-        if users.get_current_user():
-            nickname=users.get_current_user().nickname()
+        nickname=utils.get_user_social_id(self)
+
+        #if users.get_current_user():
+        #    nickname=users.get_current_user().nickname()
 
         key_name=self.request.get('key_name')
         if not key_name: return

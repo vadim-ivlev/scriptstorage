@@ -1,4 +1,4 @@
-import logging
+#import logging
 from notebook import NoteBook
 from google.appengine.ext import db
 from google.appengine.api import users
@@ -8,8 +8,6 @@ def get_login_link():
     """
     returns html links to login/logout page
     """
-    logging.info("users.get_current_user()")
-    logging.info( users.get_current_user())
 
     if users.get_current_user():
         s="<span id='userName'>%s</span> <a class='toolButton00' href='/logout'>Logout</a>"  %  users.get_current_user().nickname()
@@ -19,15 +17,17 @@ def get_login_link():
 
 
 
-def get_list_of_notebooks():
+def get_list_of_notebooks(o):
     """
     returns list of notebooks
     """
 
     #get the user nick name
-    nickname=u''
-    if users.get_current_user():
-        nickname=users.get_current_user().nickname()
+    #nickname=u''
+    #if users.get_current_user():
+    #    nickname=users.get_current_user().nickname()
+    
+    nickname=get_user_social_name(o)
 
 #        notebooks = db.GqlQuery("SELECT * FROM NoteBook")
 #        notebooks= NoteBook.all()
@@ -56,17 +56,22 @@ def get_list_of_notebooks():
     
 
 
-def access_allowed(notebook_access,notebook_owner) :
+def access_allowed(o, notebook_access,notebook_owner) :
     """
     check if the user can read the the page
     """
     if notebook_access == "public":          # if access is public
         return True
     # access is private 
-    if users.get_current_user():                 # check if the user is logined.    
-        return users.get_current_user().nickname() == notebook_owner   # make sure the user is the owner.
-    else:
-        return False # the user is not loginned
+    
+    #if users.get_current_user():                 # check if the user is logined.    
+    #    return users.get_current_user().nickname() == notebook_owner   # make sure the user is the owner.
+    #else:
+    #    return False # the user is not loginned
+
+    return (get_user_social_id(o) == notebook_owner)
+
+
 
 
 
@@ -141,3 +146,34 @@ def get_mime_type(element_id):
 
 
 
+
+def get_user_social_name(o):
+    s= get_user_social_id(o)
+    a=s.split("|")
+    return a[0]
+
+
+
+def get_user_social_id(o):
+    
+    if users.get_current_user():
+        return users.get_current_user().nickname()
+    
+    _c = o.request.cookies
+    
+    if _c == None:
+        return ""
+    
+    _network = _c.get("network")
+    if _network == None:
+        return ""
+    
+    _id = _c.get("id")
+    if _id == None:
+        return ""
+
+    _name = _c.get("name")
+    if _name == None:
+        return ""
+    
+    return "%s|%s|%s" % (_name, _network, _id )

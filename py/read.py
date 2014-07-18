@@ -26,7 +26,7 @@ class ReadHandler(webapp2.RequestHandler):
             (content,version)=utils.get_notebook_element(notebook_owner, notebook_access, notebook_name, element_id, version)
         else:
             # return the whole page if it is allowed 
-            if utils.access_allowed(notebook_access, notebook_owner):
+            if utils.access_allowed(self, notebook_access, notebook_owner):
                 (element,version)=utils.get_notebook_content(notebook_owner, notebook_access, notebook_name, version)
                 
 

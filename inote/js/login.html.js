@@ -58,6 +58,19 @@
     });
   };
 
+  this.write_sample_cookies = function() {
+    return write_cookie({
+      network: 'windows',
+      id: '123456789',
+      name: 'vad ivl',
+      thumbnail: 'http://ddd.ddd.com/'
+    });
+  };
+
+  this.delete_sample_cookies = function() {
+    return delete_cookie();
+  };
+
   read_cookie = function() {
     return {
       network: $.cookie('network'),

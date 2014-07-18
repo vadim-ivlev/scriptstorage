@@ -3,12 +3,12 @@
 
 # OAuth parameters
 hello.init
-    facebook :'1517454335144201'
-    windows:'0000000044121F60'
-,
-    #redirect_uri:'http://inote.vadimivlev.com'
-    redirect_uri:'http://inote.vadimivlev.com/inote/html/login.html'
-    display: 'popup'
+        facebook :'1517454335144201'
+        windows:'0000000044121F60'
+    ,
+        #redirect_uri:'http://inote.vadimivlev.com'
+        redirect_uri:'http://inote.vadimivlev.com/inote/html/login.html'
+        display: 'popup'
 
 
 # on login ,call user information for the given network =======================
@@ -21,7 +21,7 @@ hello.on "auth.login", (auth) ->
     console.log r
     if n=get_signed_network_name()
         console.log "Has signed already in '#{n}'"
-    else 
+    else
         console.log "Real sign in '#{n}'"
         on_signin(r)
         #go back
@@ -52,6 +52,18 @@ write_cookie = (r) ->
     $.cookie('thumbnail', r.thumbnail, { expires: 7, path: '/' })
     return
 
+@write_sample_cookies = ->
+    write_cookie
+        network:'windows'
+        id:'123456789'
+        name:'vad ivl'
+        thumbnail:'http://ddd.ddd.com/'
+
+@delete_sample_cookies = ->
+    delete_cookie()
+
+
+
 read_cookie = ->
     #$.cookie()
     network: $.cookie('network')
@@ -76,7 +88,7 @@ get_signed_network_name = ->
 
 
 # GUI depends on if the user is signed in or out
-adjust_ui = -> 
+adjust_ui = ->
     build_signout_ui = ->
         # And the network logout link to contain
         addLogoutLink =($container) ->
@@ -91,7 +103,7 @@ adjust_ui = ->
                 .appendTo($container)
         
         c=$('.oauthHolder').html('')
-        addLogoutLink c 
+        addLogoutLink c
 
     build_signin_ui = ->
         # And the network logout link to contain
@@ -109,8 +121,8 @@ adjust_ui = ->
         addLoginLink c, "linkedin"
     
     if network_name = get_signed_network_name()
-        build_signout_ui(network_name) 
-    else 
+        build_signout_ui(network_name)
+    else
         build_signin_ui()
 
 
