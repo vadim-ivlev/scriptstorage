@@ -1,3 +1,4 @@
+import logging
 from notebook import NoteBook
 from google.appengine.ext import db
 from google.appengine.api import users
@@ -7,6 +8,8 @@ def get_login_link():
     """
     returns html links to login/logout page
     """
+    logging.info("users.get_current_user()")
+    logging.info( users.get_current_user())
 
     if users.get_current_user():
         s="<span id='userName'>%s</span> <a class='toolButton00' href='/logout'>Logout</a>"  %  users.get_current_user().nickname()
