@@ -126,6 +126,27 @@ adjust_ui = ->
         build_signin_ui()
 
 
+build_oauth_panel = ->
+    $("<div class='oauthHolder' 
+        style='border:1px solid silver; 
+        width:100%; 
+        min-height:10px;
+        background-color:white;
+        position:absolute;
+        padding-top:10px;
+        padding-bottom:10px;
+        top:0px;
+        left:0px;
+        display:none;
+        z-index:30000'
+        ></div>").prependTo("body")
+
+@show_oauth_panel = ->
+    $(".oauthHolder").show()
+
+hide_oauth_panel= ->
+    $(".oauthHolder").hide()
+        
 # Sign in/out logic =========================================
 
 # ON SIGN IN. When the user successfully signed in the server. 
@@ -144,5 +165,7 @@ on_signout = -> delete_cookie(); adjust_ui()
 
 
 # on page load ==================================================================   
-$ -> on_page_load()
+$ -> 
+    build_oauth_panel()
+    on_page_load()
 

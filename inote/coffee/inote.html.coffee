@@ -27,8 +27,6 @@ inote = undefined
         saveNotebookTimeout = setTimeout saveNotebook , 2000
     return
         
-        
-
 
 @saveNotebook = (event) ->
     notebookName = $("#notebookName").text()
@@ -85,8 +83,6 @@ restoreNotebookFromXml = (xmlText) ->
 
         keyMap= notebook.attr("keyMap")
         if keyMap then $("#notebookEditor").val keyMap
-
-
 
     inote.init()  if $(".cell").length is 0
     return

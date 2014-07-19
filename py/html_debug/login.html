@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>i Note login</title>
     <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/login.css">
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script>window.jQuery || document.write('<script src="libs/jquery-1.11.0.min.js"><\/script>')</script>
     <script src="../libs/hello.min.js"></script>
@@ -14,9 +13,8 @@
     <script src="../js/login.html.js"></script>
   </head>
   <body style="padding:10px;">
-    <div class="oauthHolder">oauthHolder</div>
-    <div style="text-align:center; margin-top:50px;">
-      <!--a.toolButton(href='javascript:hello.logout("windows", {force:true})') logout windows--><a href="javascript:window.location.href = document.referrer;" class="toolButton">back</a><br><br><a href="javascript:write_sample_cookies()" class="toolButton">write sample cookies</a><br><a href="javascript:delete_sample_cookies()" class="toolButton">delete sample cookies</a>
+    <div style="text-align:center; margin-top:50px;"><br><br><a href="javascript:show_oauth_panel()" class="toolButton">Show Login Panel</a><br>
+      <!--a.toolButton(href='javascript:hello.logout("windows", {force:true})') logout windows--><br><a href="javascript:window.location.href = document.referrer;" class="toolButton">back</a><br><a href="javascript:write_sample_cookies()" class="toolButton">write sample cookies</a><br><a href="javascript:delete_sample_cookies()" class="toolButton">delete sample cookies</a>
     </div>
   </body>
 </html>

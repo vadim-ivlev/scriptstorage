@@ -7,7 +7,6 @@ html
         title i Note login
 
         link(rel='stylesheet', href='../css/index.css')
-        link(rel='stylesheet', href='../css/login.css')
         
         script(src='//code.jquery.com/jquery-1.11.0.min.js')
         script window.jQuery || document.write('<script src="libs/jquery-1.11.0.min.js"><\/script>')
@@ -16,11 +15,14 @@ html
         script(src='../js/login.html.js')
 
     body(style='padding:10px;')
-        .oauthHolder oauthHolder
         div(style='text-align:center; margin-top:50px;')
-            //a.toolButton(href='javascript:hello.logout("windows", {force:true})') logout windows
-            a.toolButton(href='javascript:window.location.href = document.referrer;') back
             br
+            br
+            a.toolButton(href='javascript:show_oauth_panel()') Show Login Panel
+            br
+            //a.toolButton(href='javascript:hello.logout("windows", {force:true})') logout windows
+            br
+            a.toolButton(href='javascript:window.location.href = document.referrer;') back
             br
             a.toolButton(href='javascript:write_sample_cookies()') write sample cookies
             br
