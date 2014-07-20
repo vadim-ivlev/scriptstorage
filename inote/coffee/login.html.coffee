@@ -56,7 +56,7 @@ write_cookie = (r) ->
     write_cookie
         network:'windows'
         id:'123456789'
-        name:'vad ivl'
+        name:'vad Ивлев'
         thumbnail:'http://ddd.ddd.com/'
 
 @delete_sample_cookies = ->

@@ -58,7 +58,9 @@ html
         #divHeader.header
             div(style='float: right; white-space: nowrap')
                 span.notebookOwner {{notebook_owner}}
-                span.loginHolder {{login_link}}
+                span#user_social_name.toolButton {{user_social_name}}
+                span.loginHolder.toolButton {{login_link}}
+                a.toolButton(href='/inote/html/login.html') login2
         
             a.icon-home(href='/',style='text-decoration:none;')
             span#saveIndicator

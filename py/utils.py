@@ -3,6 +3,7 @@ from notebook import NoteBook
 from google.appengine.ext import db
 from google.appengine.api import users
 import xml.etree.ElementTree as ET
+from urllib2 import unquote
 
 def get_login_link():
     """
@@ -152,7 +153,8 @@ def get_user_social_name(o):
     a=s.split("|")
     return a[0]
 
-
+def unq(s):
+    return unquote(s) #.decode('utf-8')
 
 def get_user_social_id(o):
     
@@ -176,4 +178,4 @@ def get_user_social_id(o):
     if _name == None:
         return ""
     
-    return "%s|%s|%s" % (_name, _network, _id )
+    return "%s|%s|%s" % (unq(_name), unq(_network), unq(_id) )

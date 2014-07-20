@@ -13,6 +13,7 @@ class IndexPage(webapp2.RequestHandler):
         #import pdb; pdb.set_trace()
         debug=self.request.get('debug')
         template_values = {
+            'user_social_name': utils.get_user_social_name(self),    
             'notebook_list': utils.get_list_of_notebooks(self),
             'login_link': utils.get_login_link()
             }
