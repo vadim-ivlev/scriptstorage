@@ -5,6 +5,7 @@
 hello.init
         facebook :'1517454335144201'
         windows:'0000000044121F60'
+        github:'84a4f2c5dc8582a14718'
     ,
         redirect_uri:'http://inote.vadimivlev.com/'
         #redirect_uri:'http://inote.vadimivlev.com/inote/html/login.html'
