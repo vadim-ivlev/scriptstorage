@@ -109,6 +109,8 @@ input {
 .oauthHolder {
   font-family: Roboto, sans-serif;
   text-align: right;
+  height: 30px;
+  display: inline-block;
   color: #777777;
 }
 .oauthHolder a {

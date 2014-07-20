@@ -6,7 +6,7 @@
     facebook: '1517454335144201',
     windows: '0000000044121F60'
   }, {
-    redirect_uri: 'http://inote.vadimivlev.com/inote/html/login.html',
+    redirect_uri: 'http://inote.vadimivlev.com/',
     display: 'popup'
   });
 
@@ -107,8 +107,8 @@
       addLogoutLink = function($container) {
         var r;
         r = read_cookie();
-        $("<span id='profile_" + r.id + "' title='id: " + r.id + "' class='icon-" + r.network + "' >\n    <img src='" + r.thumbnail + "' style='width:30px; height:30px; border-radius:25px;vertical-align:middle;'/>\n    " + r.name + "\n</span>").appendTo($container);
-        return $("<a id='" + r.network + "_logout' href='' style='text-decoration:none; margin:3px'>logout</a>").click(function(e) {
+        $("<span id='profile_" + r.id + "' title='id: " + r.id + "' class='icon-" + r.network + "' >\n    <img src='" + r.thumbnail + "' style='width:30px; height:30px; border-radius:25px;vertical-align:middle;'/>\n    <span class='toolButton'>" + r.name + "</span>\n</span>").appendTo($container);
+        return $("<a id='" + r.network + "_logout' href='' class='toolButton'>logout</a>").click(function(e) {
           e.preventDefault();
           return hello.logout(r.network, {
             force: true
@@ -142,7 +142,9 @@
   };
 
   build_oauth_panel = function() {
-    return $("<div class='oauthHolder' style='border:1px solid silver; width:100%; min-height:10px; background-color:white; position:absolute0; padding-top:10px; padding-bottom:10px; top:0px; left:0px; display:block; z-index:30000' ></div>").prependTo("body");
+    if ($(".oauthHolder").length === 0) {
+      return $("<div class='oauthHolder' style='border:0px solid silver; width:100%; height:30px; background-color:white; position:absolute0; top:0px; left:0px; display:block; z-index:30000' ></div>").prependTo("body");
+    }
   };
 
   this.show_oauth_panel = function() {

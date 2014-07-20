@@ -6,8 +6,8 @@ hello.init
         facebook :'1517454335144201'
         windows:'0000000044121F60'
     ,
-        #redirect_uri:'http://inote.vadimivlev.com'
-        redirect_uri:'http://inote.vadimivlev.com/inote/html/login.html'
+        redirect_uri:'http://inote.vadimivlev.com/'
+        #redirect_uri:'http://inote.vadimivlev.com/inote/html/login.html'
         display: 'popup'
 
 
@@ -99,10 +99,10 @@ adjust_ui = ->
             r = read_cookie()
             $("""<span id='profile_#{r.id}' title='id: #{r.id}' class='icon-#{r.network}' >
                     <img src='#{r.thumbnail}' style='width:30px; height:30px; border-radius:25px;vertical-align:middle;'/>
-                    #{r.name}
+                    <span class='toolButton'>#{r.name}</span>
                 </span>""").appendTo($container)
 
-            $("<a id='#{r.network}_logout' href='' style='text-decoration:none; margin:3px'>logout</a>")
+            $("<a id='#{r.network}_logout' href='' class='toolButton'>logout</a>")
                 .click (e) -> e.preventDefault(); hello.logout(r.network, {force:true})
                 .appendTo($container)
         
@@ -131,19 +131,19 @@ adjust_ui = ->
 
 
 build_oauth_panel = ->
-    $("<div class='oauthHolder' 
-        style='border:1px solid silver; 
-        width:100%; 
-        min-height:10px;
-        background-color:white;
-        position:absolute0;
-        padding-top:10px;
-        padding-bottom:10px;
-        top:0px;
-        left:0px;
-        display:block;
-        z-index:30000'
-        ></div>").prependTo("body")
+    # if there is not a oauthHolder on the page create one
+    if $(".oauthHolder").length == 0
+        $("<div class='oauthHolder' 
+            style='border:0px solid silver; 
+            width:100%; 
+            height:30px;
+            background-color:white;
+            position:absolute0;
+            top:0px;
+            left:0px;
+            display:block;
+            z-index:30000'
+            ></div>").prependTo("body")
 
 @show_oauth_panel = ->
     $(".oauthHolder").show()

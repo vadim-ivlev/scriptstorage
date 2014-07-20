@@ -115,8 +115,8 @@ generateHtml = (onDone)->
 
 generateCss = ->
     execOut 'lessc  inote/less/index.less  inote/css/index.css', ->
-        execOut 'lessc  inote/less/inote.less  inote/css/inote.css', ->
-            execOut 'lessc  inote/less/login.less  inote/css/login.css'
+        execOut 'lessc  inote/less/inote.less  inote/css/inote.css' #, ->
+            #execOut 'lessc  inote/less/login.less  inote/css/login.css'
 
 
 generateJs = ->
