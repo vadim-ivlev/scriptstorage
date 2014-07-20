@@ -25,7 +25,9 @@ hello.on "auth.login", (auth) ->
         console.log "Real sign in '#{n}'"
         on_signin(r)
         #go back
-        window.location.href = document.referrer
+        #window.location.href = document.referrer
+        # reload page
+        location.reload()
 
 
 # on logout ,===================================================================
@@ -34,7 +36,9 @@ hello.on "auth.logout", (auth) ->
     console.log auth
     on_signout()
     #go back
-    window.location.href = document.referrer
+    #window.location.href = document.referrer
+    # reload page
+    location.reload()
 
 
 ### TEST is not used
@@ -132,19 +136,19 @@ build_oauth_panel = ->
         width:100%; 
         min-height:10px;
         background-color:white;
-        position:absolute;
+        position:absolute0;
         padding-top:10px;
         padding-bottom:10px;
         top:0px;
         left:0px;
-        display:none;
+        display:block;
         z-index:30000'
         ></div>").prependTo("body")
 
 @show_oauth_panel = ->
     $(".oauthHolder").show()
 
-hide_oauth_panel= ->
+@hide_oauth_panel= ->
     $(".oauthHolder").hide()
         
 # Sign in/out logic =========================================
@@ -165,7 +169,7 @@ on_signout = -> delete_cookie(); adjust_ui()
 
 
 # on page load ==================================================================   
-$ -> 
+$ ->
     build_oauth_panel()
     on_page_load()
 
