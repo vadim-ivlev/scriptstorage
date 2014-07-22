@@ -30,7 +30,8 @@ inote = undefined
 
 @saveNotebook = (event) ->
     notebookName = $("#notebookName").text()
-    notebookOwner = $(".notebookOwner").text()
+    #notebookOwner = $(".notebookOwner").text()
+    notebookOwner = $(".user_social_name").text()
     notebookAccess = $("#notebookAccess").val()
     
     # If it was the button who initiated the event then dont pass the version

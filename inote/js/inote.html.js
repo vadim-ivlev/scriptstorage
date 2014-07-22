@@ -29,7 +29,7 @@
   this.saveNotebook = function(event) {
     var notebookAccess, notebookName, notebookOwner, notebookVersion, xmlText;
     notebookName = $("#notebookName").text();
-    notebookOwner = $(".notebookOwner").text();
+    notebookOwner = $(".user_social_name").text();
     notebookAccess = $("#notebookAccess").val();
     notebookVersion = event ? null : $(".notebookVersion").text();
     xmlText = inote.getXmlText(notebookName);
