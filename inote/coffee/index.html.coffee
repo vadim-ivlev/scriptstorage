@@ -63,7 +63,10 @@ $ ->
     
     $("#btnCreate").click ->
         newName = "N" + (5000000 + Math.floor(999000 * Math.random()))
-        document.location.href = "/page?owner=" + encodeURIComponent($("#userName").text()) + "&access=" + encodeURIComponent("public") + "&name=" + encodeURIComponent(newName)
+        newName = prompt "Change the name", newName
+        if newName
+            #document.location.href = "/page?owner=" + encodeURIComponent($("#userName").text()) + "&access=" + encodeURIComponent("public") + "&name=" + encodeURIComponent(newName)
+            document.location.href = "/page?owner=" + encodeURIComponent($(".user_social_name").text()) + "&access=" + encodeURIComponent("public") + "&name=" + encodeURIComponent(newName)
     
     # check if login text has login 
     #loginHolder.addClass(if loginHolder.text().match(/login/i) then "icon-login" else "icon-logout")

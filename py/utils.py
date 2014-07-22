@@ -1,4 +1,5 @@
 #import logging
+import json
 from notebook import NoteBook
 from google.appengine.ext import db
 from google.appengine.api import users
@@ -54,7 +55,39 @@ def get_list_of_notebooks(o):
         
         #self.response.out.write("%s\n" % key_name)
     return s
+
+
+def get_list_of_public_notebooks(offset_n, limit_n):
+    """
+    returns list of public notebooks, 
+    starting with offset_n record, 
+    returning max limit_n records 
+    """
+
+    q=db.Query(NoteBook, projection=('user_nickname', 'access', 'notebook_name', 'version'))
+    q.filter('access !=', 'private')
+
+    #q=db.GqlQuery("""
+    #SELECT user_nickname, access, notebook_name, version
+    #FROM NoteBook
+    #WHERE access != 'private'
+    #""")
     
+    recs=[]
+    for r in q.run( offset=offset_n, limit=limit_n ):
+        o={}
+        o['key']=str(r.key())
+        o['key_name']=r.key().name()
+        o['user_nickname']=r.user_nickname
+        o['notebook_name']=r.notebook_name
+        o['access']=r.access
+        o['version']=r.version
+        recs.append(o)
+        
+    return json.dumps(recs, sort_keys=True, indent=2)
+
+
+
 
 
 def access_allowed(o, notebook_access,notebook_owner) :

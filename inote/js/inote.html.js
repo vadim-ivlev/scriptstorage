@@ -124,7 +124,7 @@
   };
 
   $(function() {
-    var page, userName, xmlText;
+    var page, xmlText;
     page = $("#page");
     xmlText = page.html();
     page.html("");
@@ -135,19 +135,21 @@
     inote.setKeyMap("default");
     restoreNotebookFromXml(xmlText);
     $("#notebookAccess").val(getNotebookAccessFromUrl());
-    $("body").keydown(function(event) {
+    return $("body").keydown(function(event) {
       if (event.ctrlKey && event.keyCode === 83) {
         saveNotebook();
         return false;
       }
     });
-    userName = $("#userName").text();
-    if (!userName) {
-      $("#saveGroup").hide();
-    }
-    if (userName !== getNotebookOwnerFromUrl()) {
-      return $("#saveGroup").hide();
-    }
+
+    /*
+    userName= $(".user_social_name").text()
+    if not userName
+        $("#saveGroup").hide()
+    
+    if userName != getNotebookOwnerFromUrl()
+        $("#saveGroup").hide()
+     */
   });
 
 }).call(this);

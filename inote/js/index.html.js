@@ -67,7 +67,10 @@
     return $("#btnCreate").click(function() {
       var newName;
       newName = "N" + (5000000 + Math.floor(999000 * Math.random()));
-      return document.location.href = "/page?owner=" + encodeURIComponent($("#userName").text()) + "&access=" + encodeURIComponent("public") + "&name=" + encodeURIComponent(newName);
+      newName = prompt("Change the name", newName);
+      if (newName) {
+        return document.location.href = "/page?owner=" + encodeURIComponent($(".user_social_name").text()) + "&access=" + encodeURIComponent("public") + "&name=" + encodeURIComponent(newName);
+      }
     });
   });
 

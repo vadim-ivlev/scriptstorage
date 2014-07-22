@@ -162,13 +162,18 @@ $ ->
     
     
     # hide save button if the user is not loginned
-    userName= $("#userName").text()
+    #userName= $("#userName").text()
+    
+    ###
+    userName= $(".user_social_name").text()
     if not userName
         $("#saveGroup").hide()
     
     if userName != getNotebookOwnerFromUrl()
         $("#saveGroup").hide()
-        
+    ###
+    
+    
     #$("#btnClear").click(clearAndInit);
 
     # page transition
