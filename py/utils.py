@@ -1,10 +1,23 @@
-#import logging
+import logging
 import json
 from notebook import NoteBook
 from google.appengine.ext import db
 from google.appengine.api import users
 import xml.etree.ElementTree as ET
 from urllib2 import unquote
+
+def print_object(c):
+    s=""
+    for p in dir(c):
+        if p.startswith('__'): continue
+        val=getattr(c,p)
+        if callable(val):
+            s+="%s()->%s\n" % (p,val())
+        else:
+            s+="%s=%s\n" % (p,val)
+    return s
+
+
 
 def get_login_link():
     """
@@ -63,7 +76,9 @@ def get_list_of_public_notebooks(offset_n, limit_n):
     starting with offset_n record, 
     returning max limit_n records 
     """
-
+    u=users.get_current_user()
+    s=print_object(u)
+    logging.info(s)
     q=db.Query(NoteBook, projection=('user_nickname', 'access', 'notebook_name', 'version'))
     q.filter('access !=', 'private')
 
