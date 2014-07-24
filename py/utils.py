@@ -230,18 +230,13 @@ def get_user_social_id(o):
 
 
 def get_user(o):
-    r={
-        socid:"||",
-        id:None,
-        name:None,
-        network:None
-      }
-    gu=users.get_current_user()
-    if gu:
-        r.name=gu.nickname()
+    r={}
+    u=users.get_current_user()
+    if u:
+        r.name=u.nickname()
         r.network="gmail"
-        r.id=gu.user_id()
-        r.socid= "%s|%s|%s" % (r.name,r.network,r.id),
+        r.id=u.user_id()
+        r.name_network_id= "%s|%s|%s" % (r.name,r.network,r.id),
         return  r
      
     _c = o.request.cookies
@@ -252,6 +247,6 @@ def get_user(o):
     r.name = _c.get("name")
     r.network = _c.get("network")
     r.id = _c.get("id")
-    r.socid= "%s|%s|%s" % (r.name,r.network,r.id),
+    r.name_network_id= "%s|%s|%s" % (r.name,r.network,r.id),
     return  r
 
