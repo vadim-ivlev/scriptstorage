@@ -227,3 +227,31 @@ def get_user_social_id(o):
         return ""
     
     return "%s|%s|%s" % (unq(_name), unq(_network), unq(_id) )
+
+
+def get_user(o):
+    r={
+        socid:"||",
+        id:None,
+        name:None,
+        network:None
+      }
+    gu=users.get_current_user()
+    if gu:
+        r.name=gu.nickname()
+        r.network="gmail"
+        r.id=gu.user_id()
+        r.socid= "%s|%s|%s" % (r.name,r.network,r.id),
+        return  r
+     
+    _c = o.request.cookies
+    
+    if _c == None:
+        return r
+    
+    r.name = _c.get("name")
+    r.network = _c.get("network")
+    r.id = _c.get("id")
+    r.socid= "%s|%s|%s" % (r.name,r.network,r.id),
+    return  r
+
