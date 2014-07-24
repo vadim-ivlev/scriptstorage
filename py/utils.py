@@ -197,46 +197,26 @@ def get_mime_type(element_id):
 
 
 def get_user_social_name(o):
-    s= get_user_social_id(o)
-    a=s.split("|")
-    return a[0]
-
+    return get_user(o)['name']
 def unq(s):
     return unquote(s) #.decode('utf-8')
 
 def get_user_social_id(o):
-    
-    if users.get_current_user():
-        return users.get_current_user().nickname()
-    
-    _c = o.request.cookies
-    
-    if _c == None:
-        return ""
-    
-    _network = _c.get("network")
-    if _network == None:
-        return ""
-    
-    _id = _c.get("id")
-    if _id == None:
-        return ""
-
-    _name = _c.get("name")
-    if _name == None:
-        return ""
-    
-    return "%s|%s|%s" % (unq(_name), unq(_network), unq(_id) )
-
+    return get_user(o)['name_network_id']
 
 def get_user(o):
-    r={}
+    r=  {
+        #'name':None,
+        #'network':None,
+        #'id':None,
+        #'name_network_id':None
+        }
     u=users.get_current_user()
     if u:
-        r.name=u.nickname()
-        r.network="gmail"
-        r.id=u.user_id()
-        r.name_network_id= "%s|%s|%s" % (r.name,r.network,r.id),
+        r['name']='' if u.nickname() is None else u.nickname()
+        r['network']="gmail"
+        r['id']='' if u.user_id() is None else u.user_id()
+        r['name_network_id']= "%s|%s|%s" % (r['name'],r['network'],r['id']),
         return  r
      
     _c = o.request.cookies
@@ -244,9 +224,10 @@ def get_user(o):
     if _c == None:
         return r
     
-    r.name = _c.get("name")
-    r.network = _c.get("network")
-    r.id = _c.get("id")
-    r.name_network_id= "%s|%s|%s" % (r.name,r.network,r.id),
+    r['name']= '' if _c.get("name") is None else _c.get("name")
+    r['network']= '' if _c.get("network") is None else _c.get("network")
+    r['id']= '' if _c.get("id") is None else _c.get("id")
+    import pdb; pdb.set_trace()
+    r['name_network_id']= "%s|%s|%s" % (r['name'],r['network'],r['id']),
     return  r
 
