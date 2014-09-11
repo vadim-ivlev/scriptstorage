@@ -10,6 +10,7 @@ hello.init
         redirect_uri:'http://inote.vadimivlev.com/'
         #redirect_uri:'http://inote.vadimivlev.com/inote/html/login.html'
         display: 'popup'
+        #display: 'page'
 
 
 # on login ,call user information for the given network =======================
@@ -99,12 +100,12 @@ adjust_ui = ->
         addLogoutLink =($container) ->
             r = read_cookie()
             $("""<span id='profile_#{r.id}' title='id: #{r.id}' class='icon-#{r.network}' >
-                    <img src='#{r.thumbnail}' style='width:30px; height:30px; border-radius:25px;vertical-align:middle;'/>
-                    <span class='toolButton'>#{r.name}</span>
                 </span>""").appendTo($container)
+            #<img src='#{r.thumbnail}' style='width:30px; height:30px; border-radius:25px;vertical-align:middle;'/>
+            #<span class='toolButton'>#{r.name}</span>
 
             $("<a id='#{r.network}_logout' href='' class='toolButton'>logout</a>")
-                .click (e) -> e.preventDefault(); hello.logout(r.network, {force:true})
+                .click (e) -> e.preventDefault(); delete_cookie(); hello.logout(r.network, {force:true})
                 .appendTo($container)
         
         c=$('.oauthHolder').html('')
@@ -119,17 +120,26 @@ adjust_ui = ->
         
         c=$('.oauthHolder').html('')
         addLoginLink c, "windows"
-        addLoginLink c, "googleplus"
+        #addLoginLink c, "googleplus"
         addLoginLink c, "github"
-        addLoginLink c, "wordpress"
-        addLoginLink c, "twitter"
-        addLoginLink c, "linkedin"
+        #addLoginLink c, "wordpress"
+        #addLoginLink c, "twitter"
+        #addLoginLink c, "linkedin"
+        
     
     if network_name = get_signed_network_name()
+        # hide google login holder
+        $('.loginHolder').hide()
         build_signout_ui(network_name)
     else
+        # hide google login holder
+        $('.loginHolder').show()
         build_signin_ui()
 
+    if $('.user_network').text() is 'gmail'
+        $('.oauthHolder').hide()
+    else
+        $('.oauthHolder').show()
 
 build_oauth_panel = ->
     # if there is not a oauthHolder on the page create one

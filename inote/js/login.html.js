@@ -108,9 +108,10 @@
       addLogoutLink = function($container) {
         var r;
         r = read_cookie();
-        $("<span id='profile_" + r.id + "' title='id: " + r.id + "' class='icon-" + r.network + "' >\n    <img src='" + r.thumbnail + "' style='width:30px; height:30px; border-radius:25px;vertical-align:middle;'/>\n    <span class='toolButton'>" + r.name + "</span>\n</span>").appendTo($container);
+        $("<span id='profile_" + r.id + "' title='id: " + r.id + "' class='icon-" + r.network + "' >\n</span>").appendTo($container);
         return $("<a id='" + r.network + "_logout' href='' class='toolButton'>logout</a>").click(function(e) {
           e.preventDefault();
+          delete_cookie();
           return hello.logout(r.network, {
             force: true
           });
@@ -129,16 +130,19 @@
       };
       c = $('.oauthHolder').html('');
       addLoginLink(c, "windows");
-      addLoginLink(c, "googleplus");
-      addLoginLink(c, "github");
-      addLoginLink(c, "wordpress");
-      addLoginLink(c, "twitter");
-      return addLoginLink(c, "linkedin");
+      return addLoginLink(c, "github");
     };
     if (network_name = get_signed_network_name()) {
-      return build_signout_ui(network_name);
+      $('.loginHolder').hide();
+      build_signout_ui(network_name);
     } else {
-      return build_signin_ui();
+      $('.loginHolder').show();
+      build_signin_ui();
+    }
+    if ($('.user_network').text() === 'gmail') {
+      return $('.oauthHolder').hide();
+    } else {
+      return $('.oauthHolder').show();
     }
   };
 

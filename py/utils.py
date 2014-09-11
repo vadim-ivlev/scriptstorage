@@ -25,9 +25,10 @@ def get_login_link():
     """
 
     if users.get_current_user():
-        s="<span id='userName'>%s</span> <a class='toolButton00' href='/logout'>Logout</a>"  %  users.get_current_user().nickname()
+        #s="<span id='userName'>%s</span> <a class='toolButton00' href='/logout'>Logout</a>"  %  users.get_current_user().nickname()
+        s="<a class='icon-google-right' href='/logout'>Logout</a>"
     else:
-        s="<a class='toolButton00' href='/login'>Login</a>"
+        s="Login with <a  style='text-decoration:none' href='/login'><span class='icon-google'></span></a>"
     return s
 
 
@@ -118,7 +119,7 @@ def access_allowed(o, notebook_access,notebook_owner) :
     #else:
     #    return False # the user is not loginned
 
-    return (get_user_social_id(o) == notebook_owner)
+    return (get_user_social_name_network_id(o) == notebook_owner)
 
 
 
@@ -132,6 +133,7 @@ def get_notebook_content(owner_nickname, notebook_access, notebook_name, noteboo
     content = "" #content of the book
 
     # calculate the key to retrieve content from db
+    #import pdb; pdb.set_trace()
     key_name=owner_nickname+"/"+notebook_access+"/"+notebook_name
     
     #import pdb; pdb.set_trace()
@@ -195,14 +197,42 @@ def get_mime_type(element_id):
 
 
 
-
-def get_user_social_name(o):
-    return get_user(o)['name']
 def unq(s):
     return unquote(s) #.decode('utf-8')
 
-def get_user_social_id(o):
+
+def get_user_name(o):
+    return get_user(o)['name']
+
+
+def get_user_network(o):
+    return get_user(o)['network']
+
+
+def get_user_id(o):
+    return get_user(o)['id']
+
+
+def get_user_name_network_id(o):
     return get_user(o)['name_network_id']
+
+
+def get_user_nickname(o):
+    return get_user(o)['name_network_id']
+
+
+
+
+
+def get_user_social_name(o):
+    return get_user(o)['name']
+
+
+
+def get_user_social_name_network_id(o):
+    return get_user(o)['name_network_id']
+
+
 
 def get_user(o):
     r=  {
@@ -216,7 +246,7 @@ def get_user(o):
         r['name']='' if u.nickname() is None else u.nickname()
         r['network']="gmail"
         r['id']='' if u.user_id() is None else u.user_id()
-        r['name_network_id']= "%s|%s|%s" % (r['name'],r['network'],r['id']),
+        r['name_network_id']= "%s|%s|%s" % (r['name'],r['network'],r['id']) if r['name'] else None
         return  r
      
     _c = o.request.cookies
@@ -224,10 +254,10 @@ def get_user(o):
     if _c == None:
         return r
     
-    r['name']= '' if _c.get("name") is None else _c.get("name")
-    r['network']= '' if _c.get("network") is None else _c.get("network")
-    r['id']= '' if _c.get("id") is None else _c.get("id")
-    import pdb; pdb.set_trace()
-    r['name_network_id']= "%s|%s|%s" % (r['name'],r['network'],r['id']),
+    r['name']= '' if _c.get("name") is None else unq(_c.get("name"))
+    r['network']= '' if _c.get("network") is None else unq(_c.get("network"))
+    r['id']= '' if _c.get("id") is None else unq(_c.get("id"))
+    #import pdb; pdb.set_trace()
+    r['name_network_id']= "%s|%s|%s" % (r['name'],r['network'],r['id']) if r['name'] else None
     return  r
 

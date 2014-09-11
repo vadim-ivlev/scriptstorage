@@ -14,6 +14,7 @@ class IndexPage(webapp2.RequestHandler):
         debug=self.request.get('debug')
         template_values = {
             'user_social_name': utils.get_user_social_name(self),    
+            'user_network': utils.get_user_network(self),    
             'notebook_list': utils.get_list_of_notebooks(self),
             'login_link': utils.get_login_link()
             }

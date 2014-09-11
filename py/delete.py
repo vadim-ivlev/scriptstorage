@@ -11,7 +11,7 @@ class DeleteHandler(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = 'text/plain'
 
         #get the user nick name
-        nickname=utils.get_user_social_id(self)
+        nickname=utils.get_user_social_name_network_id(self)
 
         #if users.get_current_user():
         #    nickname=users.get_current_user().nickname()

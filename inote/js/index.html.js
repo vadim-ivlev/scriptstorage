@@ -19,7 +19,7 @@
         notebook_access = name_parts[1];
         notebook_name = name_parts[2];
         if (last_owner !== notebook_owner) {
-          s += "<div style='padding-left: 0px;'>" + notebook_owner + "</div>";
+          s += "<div style='padding-left: 0px;'>" + notebook_owner.replace(/\|.*/, "") + "</div>";
           last_owner = notebook_owner;
         }
         if (last_access !== notebook_access) {

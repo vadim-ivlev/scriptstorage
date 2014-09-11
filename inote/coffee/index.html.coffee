@@ -14,7 +14,7 @@ buildNotebookList = (data) =>
         notebook_name = name_parts[2]
         
         unless last_owner is notebook_owner
-            s += "<div style='padding-left: 0px;'>" + notebook_owner + "</div>"
+            s += "<div style='padding-left: 0px;'>" + notebook_owner.replace(/\|.*/,"") + "</div>"
             last_owner = notebook_owner
         unless last_access is notebook_access
             s += "<div  style='padding-left: 25px; color:" + ((if notebook_access is "private" then "black" else "")) + ";  '>" + notebook_access + "</div>"
