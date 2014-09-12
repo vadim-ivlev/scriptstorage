@@ -382,6 +382,18 @@ input {
   font-size: 130%;
   color: #F44;
 }
+.icon-google-before::before {
+  font-family: icomoon;
+  font-size: 15px;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 4px;
+  margin-right: 4px;
+  opacity: 0.7;
+  content: 'G';
+  font-size: 130%;
+  color: #F44;
+}
 .icon-facebook::after {
   font-family: icomoon;
   font-size: 15px;

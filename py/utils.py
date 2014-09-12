@@ -26,7 +26,7 @@ def get_login_link():
 
     if users.get_current_user():
         #s="<span id='userName'>%s</span> <a class='toolButton00' href='/logout'>Logout</a>"  %  users.get_current_user().nickname()
-        s="<a class='icon-google-right' href='/logout'>Logout</a>"
+        s="<a class='toolButton icon-google-before' href='/logout'>Logout</a>"
     else:
         s="Login with <a  style='text-decoration:none' href='/login'><span class='icon-google'></span></a>"
     return s
