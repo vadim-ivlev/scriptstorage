@@ -1,6 +1,7 @@
 import logging
 import json
 from notebook import NoteBook
+from notebook import NoteBookVersion
 from google.appengine.ext import db
 from google.appengine.api import users
 import xml.etree.ElementTree as ET
@@ -112,23 +113,21 @@ def access_allowed(o, notebook_access,notebook_owner) :
     """
     if notebook_access == "public":          # if access is public
         return True
-    # access is private 
-    
-    #if users.get_current_user():                 # check if the user is logined.    
-    #    return users.get_current_user().nickname() == notebook_owner   # make sure the user is the owner.
-    #else:
-    #    return False # the user is not loginned
 
-    return (get_user_social_name_network_id(o) == notebook_owner)
+    notebook_owner_name_network=extract_name_network(notebook_owner)
+
+    return (get_user_name_network(o) == notebook_owner_name_network)
 
 
+def extract_name_network(s):
+    i = s.rfind("|")
+    ss = s if i==-1 else s[:i]
+    return s
 
 
-
-
-def get_notebook_content(owner_nickname, notebook_access, notebook_name, notebook_version):
+def get_notebook(owner_nickname, notebook_access, notebook_name, notebook_version):
     """
-    Returns content of the notebook.
+    Returns the notebook.
     """
     content = "" #content of the book
 
@@ -146,13 +145,23 @@ def get_notebook_content(owner_nickname, notebook_access, notebook_name, noteboo
 
 
     if not key:
-        return (content, 0)
+        return None
     
     notebook = NoteBook.get( key )          # get the notebook.
     if notebook:                            # if notebook is found
-        return  (notebook.content, notebook.version)    # return its content. 
+        return  notebook                    # return it. 
+    else:
+        return NoteBookVersion.get( key )
 
-    return (content, 0)
+
+def get_notebook_content(owner_nickname, notebook_access, notebook_name, notebook_version):
+    """
+    Returns content of the notebook.
+    """
+
+    b = get_notebook(owner_nickname, notebook_access, notebook_name, notebook_version)
+    r = (b.content, b.version) if b else ("",0)
+    return r
 
 
 
@@ -211,6 +220,10 @@ def get_user_network(o):
 
 def get_user_id(o):
     return get_user(o)['id']
+
+
+def get_user_name_network(o):
+    return get_user_name(o)+"|"+get_user_network(o)
 
 
 def get_user_name_network_id(o):

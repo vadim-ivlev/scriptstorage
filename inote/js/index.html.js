@@ -54,16 +54,22 @@
   storage = new NoteBookStorage();
 
   $(function() {
-    var loginHolder;
-    loginHolder = $(".loginHolder");
-    if (loginHolder.text().match(/^{{/)) {
-      loginHolder.load("/getloginlink");
-    }
-    if ($("#notebookList").text().match(/^{{/)) {
-      storage.list(buildNotebookList);
-    } else {
-      buildNotebookList($("#notebookList").text());
-    }
+
+    /*
+    loginHolder =$(".loginHolder")
+     * check if login text contains python server template 
+    if loginHolder.text().match(/^{{/)
+        loginHolder.load "/getloginlink"
+     */
+
+    /*
+     * check if notebook list contains python server template 
+    if $("#notebookList").text().match(/^{{/)
+        storage.list buildNotebookList
+    else
+        buildNotebookList  $("#notebookList").text()
+     */
+    buildNotebookList($("#notebookList").text());
     return $("#btnCreate").click(function() {
       var newName;
       newName = "N" + (5000000 + Math.floor(999000 * Math.random()));

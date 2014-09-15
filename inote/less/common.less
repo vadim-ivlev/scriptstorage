@@ -56,6 +56,7 @@ input {
 
 // HEADER---------------------------------------------
 .header {
+    padding-top:5px;
     padding-left: 20px;
     padding-right: 20px;
     min-height: 30px;
@@ -102,18 +103,19 @@ input {
     -moz-appearance: window;
     appearance: none;
     vertical-align: middle;
+    border-radius:0px;
 }
 
 .selectButton:hover {
-    border-color: @LINKCOLOR;
+    //border-color: @LINKCOLOR;
 }
-/*
-.selectButton::before { 
+
+.arrowDown::before { 
     content: '▼'; 
     font-size: 70%;
     opacity: 0.7;
 }
-*/
+
 
 // SMALL BUTTONS
 .smallButton {
@@ -130,7 +132,7 @@ input {
 .oauthHolder {
     font-family:@BUTTONFONT;
     text-align: right;
-    height:30px; 
+    //height:30px; 
     display:inline-block;  
     color:@LINKCOLOR;
 }

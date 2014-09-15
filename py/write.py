@@ -16,7 +16,8 @@ class WriteHandler(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = 'text/plain'
 
 
-        user_nickname=utils.get_user_nickname(self)
+        #user_nickname=utils.get_user_nickname(self)
+        user_nickname=utils.get_user_name_network(self)
         if not user_nickname:
             self.response.out.write("{'error':'Please login to save changes'}")
             return
@@ -25,6 +26,12 @@ class WriteHandler(webapp2.RequestHandler):
         user_id=utils.get_user_id(self)
         user_name_network_id=utils.get_user_name_network_id(self)
 
+
+        # TODO: check if the notebook exists and the user is the same as owner???
+        #b=utils.get_notebook(user_nickname, access, notebook_name, None)
+        #if b and b.user_id != user_id:
+        #    self.response.out.write("{'error':'Sorry, Only owners can save changes.'}")
+        #    return
 
 
         # find the last version

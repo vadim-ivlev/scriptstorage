@@ -153,26 +153,35 @@ $ ->
     
     $("#notebookAccess").val getNotebookAccessFromUrl()
 
-    
+    ###
     # Save if the user press Ctrl-S
     $("body").keydown (event) ->
         if event.ctrlKey and event.keyCode is 83 #Ctrl-S
             saveNotebook()
             false
+    ###
     
-    
-    # hide save button if the user is not loginned
     #userName= $("#userName").text()
     
-    ###
+    # hide save buttons if the user is not loginned
+    #$("#saveGroup").hide()
     userName= $(".user_social_name").text()
-    if not userName
-        $("#saveGroup").hide()
-    
-    if userName != getNotebookOwnerFromUrl()
+    userNetwork= $(".user_network").text()
+    userId= $(".user_id").text()
+    userNameNetwork="#{userName}|#{userNetwork}"
+    notebookOwner=getNotebookOwnerFromUrl()
+
+    if userNameNetwork and userNameNetwork is notebookOwner
+        $("#saveGroup").show()
+        # Save if the user press Ctrl-S
+        $("body").keydown (event) ->
+            if event.ctrlKey and event.keyCode is 83 #Ctrl-S
+                saveNotebook()
+                false
+    ### 
+    if userName != 
         $("#saveGroup").hide()
     ###
-    
     
     #$("#btnClear").click(clearAndInit);
 

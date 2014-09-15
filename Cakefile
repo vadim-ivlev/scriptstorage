@@ -46,6 +46,10 @@ js_files_text ="""
             script(src='inote/js/inote.js')
             script(src='inote/js/notebookstorage.js')
             script(src='inote/js/inote.html.js')
+
+            script(src='inote/libs/hello.min.js')
+            script(src='inote/libs/jquery.cookie.js')
+            script(src='inote/js/login.html.js')
         else
 """
     

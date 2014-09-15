@@ -18,13 +18,7 @@ html
         script(src='js/login.html.js')
 
     body(style='padding:10px;')
-        div(style='float:right;text-align:right;')
-            //div(style='text-align:right')
-            span.user_social_name {{user_social_name}}
-            span.user_network {{user_network}}
-            span.loginHolder {{login_link}}
-            //a.toolButton(href='/inote/html/login.html') login2
-            span.oauthHolder
+        include login_block.jade
         #page.page
             #divHeader.header(style='padding: 0px;height:110px;')
                     div(style='float:left')

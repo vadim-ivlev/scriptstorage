@@ -140,22 +140,6 @@ adjust_ui = ->
         $('.oauthHolder').hide()
     else
         $('.oauthHolder').show()
-
-build_oauth_panel = ->
-    # if there is not a oauthHolder on the page create one
-    if $(".oauthHolder").length == 0
-        $("<div class='oauthHolder' 
-            style='border:0px solid silver; 
-            width:100%; 
-            height:30px;
-            background-color:white;
-            position:absolute0;
-            top:0px;
-            left:0px;
-            display:block;
-            z-index:30000'
-            ></div>").prependTo("body")
-
 @show_oauth_panel = ->
     $(".oauthHolder").show()
 
@@ -181,6 +165,5 @@ on_signout = -> delete_cookie(); adjust_ui()
 
 # on page load ==================================================================   
 $ ->
-    build_oauth_panel()
     on_page_load()
 

@@ -124,7 +124,7 @@
   };
 
   $(function() {
-    var page, xmlText;
+    var notebookOwner, page, userId, userName, userNameNetwork, userNetwork, xmlText;
     page = $("#page");
     xmlText = page.html();
     page.html("");
@@ -135,19 +135,31 @@
     inote.setKeyMap("default");
     restoreNotebookFromXml(xmlText);
     $("#notebookAccess").val(getNotebookAccessFromUrl());
-    return $("body").keydown(function(event) {
-      if (event.ctrlKey && event.keyCode === 83) {
-        saveNotebook();
-        return false;
-      }
-    });
 
     /*
-    userName= $(".user_social_name").text()
-    if not userName
-        $("#saveGroup").hide()
-    
-    if userName != getNotebookOwnerFromUrl()
+     * Save if the user press Ctrl-S
+    $("body").keydown (event) ->
+        if event.ctrlKey and event.keyCode is 83 #Ctrl-S
+            saveNotebook()
+            false
+     */
+    userName = $(".user_social_name").text();
+    userNetwork = $(".user_network").text();
+    userId = $(".user_id").text();
+    userNameNetwork = "" + userName + "|" + userNetwork;
+    notebookOwner = getNotebookOwnerFromUrl();
+    if (userNameNetwork && userNameNetwork === notebookOwner) {
+      $("#saveGroup").show();
+      return $("body").keydown(function(event) {
+        if (event.ctrlKey && event.keyCode === 83) {
+          saveNotebook();
+          return false;
+        }
+      });
+    }
+
+    /* 
+    if userName != 
         $("#saveGroup").hide()
      */
   });

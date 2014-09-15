@@ -51,16 +51,22 @@ html
             script(src='js/inote.js')
             script(src='js/notebookstorage.js')
             script(src='js/inote.html.js')
+                
+            script(src='libs/hello.min.js')
+            script(src='libs/jquery.cookie.js')
+            script(src='js/login.html.js')
         else
             script(src='js/all.js')
         
+        
     body
+        include login_block.jade
         #divHeader.header
-            div(style='float: right; white-space: nowrap')
-                span.notebookOwner {{notebook_owner}}
-                span.user_social_name.toolButton {{user_social_name}}
-                span.loginHolder.toolButton {{login_link}}
-                a.toolButton(href='/inote/html/login.html') login2
+            //div(style='float: right; white-space: nowrap')
+            //    span.notebookOwner {{notebook_owner}}
+            //    span.user_social_name.toolButton {{user_social_name}}
+            //    span.loginHolder.toolButton {{login_link}}
+            //    a.toolButton(href='/inote/html/login.html') login2
         
             a.icon-home(href='/',style='text-decoration:none;')
             span#saveIndicator
