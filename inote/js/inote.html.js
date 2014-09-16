@@ -143,6 +143,7 @@
             saveNotebook()
             false
      */
+    $("#saveGroup").hide();
     userName = $(".user_social_name").text();
     userNetwork = $(".user_network").text();
     userId = $(".user_id").text();

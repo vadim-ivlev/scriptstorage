@@ -40,13 +40,8 @@ class WriteHandler(webapp2.RequestHandler):
         if not last_version:
              last_version= 0
         
-        # if version is not specified in the  request     
-        if version == '' or version is None:
-            version =last_version+1
-
-
-        
-        version = int(version)
+        # if version is not specified in the request make it more than last_version by 1
+        version = int(version) if version != '' else last_version + 1
         
         key_name=user_nickname+"/"+access+"/"+notebook_name
        

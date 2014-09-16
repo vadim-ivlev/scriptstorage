@@ -39,7 +39,7 @@ class GetUserNamePage(webapp2.RequestHandler):
 
         self.response.headers['Content-Type'] = 'text/plain'
         if user:
-            self.response.out.write(user.nickname())
+            self.response.out.write(utils.get_user_name_network_id(self))
 
 
 
@@ -59,7 +59,7 @@ class Test(webapp2.RequestHandler):
         
         self.response.headers['Content-Type'] = 'text/plain'
         s='=======================\n'
-        s+="[%s]\n" % utils.get_user_social_name_network_id(self)
+        s+="[%s]\n" % utils.get_user_name_network_id(self)
         s+='=======================\n'
         self.response.out.write(s)
 

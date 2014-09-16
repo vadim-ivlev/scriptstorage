@@ -39,12 +39,7 @@ def get_list_of_notebooks(o):
     returns list of notebooks
     """
 
-    #get the user nick name
-    #nickname=u''
-    #if users.get_current_user():
-    #    nickname=users.get_current_user().nickname()
-    
-    nickname=get_user_social_name(o)
+    user_name_network=get_user_name_network(o)
 
 #        notebooks = db.GqlQuery("SELECT * FROM NoteBook")
 #        notebooks= NoteBook.all()
@@ -57,18 +52,16 @@ def get_list_of_notebooks(o):
     s=""
     keys=db.Query(NoteBook, keys_only=True)
     for key in keys:
-        key_name=key.name()
+        key_name= key.name()
         if not key_name: continue
 
         key_name_parts=key_name.split("/")
         if len(key_name_parts)<2: continue
 
         access=key_name_parts[1]
-        notebook_owner=key_name_parts[0]
-        if access=="private" and notebook_owner!=nickname: continue
-        s=s+key_name+"\n"
-        
-        #self.response.out.write("%s\n" % key_name)
+        owner_name_network=extract_name_network(key_name_parts[0])
+        if access=="private" and owner_name_network != user_name_network: continue
+        s += key_name+"\n"
     return s
 
 
@@ -120,9 +113,8 @@ def access_allowed(o, notebook_access,notebook_owner) :
 
 
 def extract_name_network(s):
-    i = s.rfind("|")
-    ss = s if i==-1 else s[:i]
-    return s
+    a = s.split('|',2)
+    return  '|'.join(a[:2])
 
 
 def get_notebook(owner_nickname, notebook_access, notebook_name, notebook_version):
@@ -223,7 +215,11 @@ def get_user_id(o):
 
 
 def get_user_name_network(o):
-    return get_user_name(o)+"|"+get_user_network(o)
+    name= get_user_name(o)
+    if not name: return ''
+    netw= get_user_network(o)
+    if not netw: return ''
+    return name+"|"+netw
 
 
 def get_user_name_network_id(o):

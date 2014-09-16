@@ -8,33 +8,27 @@ import utils
 
 class DeleteHandler(webapp2.RequestHandler):
     def get(self):
+
         self.response.headers['Content-Type'] = 'text/plain'
 
-        #get the user nick name
-        nickname=utils.get_user_social_name_network_id(self)
-
-        #if users.get_current_user():
-        #    nickname=users.get_current_user().nickname()
-
-        key_name=self.request.get('key_name')
+        key_name = self.request.get('key_name')
         if not key_name: return
+        key_name_parts = key_name.split("/")
+        if len(key_name_parts) < 2: return
+        owner_name_network = utils.extract_name_network(key_name_parts[0])
+        user_name_network = utils.get_user_name_network(self)
 
-        key_name_parts=key_name.split("/")
-        if len(key_name_parts)<2: return
+        if owner_name_network == user_name_network :
+            db.delete(db.Key.from_path("NoteBook", key_name))
+            self.response.out.write("OK")
+        else:
+            self.response.out.write("The notebook can be deleted by its owner only.")
 
-        notebook_owner=key_name_parts[0]
-        if notebook_owner!=nickname: return
 
 
-        #delete notebook
-
-        k=db.Key.from_path("NoteBook",key_name);
-        db.delete(k);
-
-        self.response.out.write("OK")
 
 app = webapp2.WSGIApplication(
     [
         ('/delete.*', DeleteHandler),
-    ],  debug=True )
+    ], debug=True)
 

@@ -164,7 +164,7 @@ $ ->
     #userName= $("#userName").text()
     
     # hide save buttons if the user is not loginned
-    #$("#saveGroup").hide()
+    $("#saveGroup").hide()
     userName= $(".user_social_name").text()
     userNetwork= $(".user_network").text()
     userId= $(".user_id").text()
