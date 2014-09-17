@@ -62,56 +62,55 @@ html
     body
         include login_block.jade
         #divHeader.header
-            //div(style='float: right; white-space: nowrap')
-            //    span.notebookOwner {{notebook_owner}}
-            //    span.user_social_name.toolButton {{user_social_name}}
-            //    span.loginHolder.toolButton {{login_link}}
-            //    a.toolButton(href='/inote/html/login.html') login2
         
-            a.icon-home(href='/',style='text-decoration:none;')
+            span#btnMenu.icon-menu(style='cursor:pointer;margin-right:20px;')
             span#saveIndicator
             span#notebookName.notebookName(onclick='changeName()') {{notebook_name}}
             span.notebookVersion {{notebook_version}}
             // <span id="btnClear" class="toolButton" >clear</span>
             // <span id="btnOpen" class="toolButton" >restore</span>
             div#saveGroup
+                a.icon-home(href='/',style='text-decoration:none;')
                 span#btnSave.toolButton(onclick='saveNotebook()',title='Ctrl-S') save
                 span.toolButton(style='white-space:nowrap;')
                     input#autoSave(type='checkbox')
                     label(for='autoSave') autosave
                 span#btnSave.toolButton(onclick='saveNotebook(event)',title='Save a new version.') new version
-                select#notebookAccess.selectButton(title='Access')
-                    option(value='public') public
-                    option(value='private') private
-                select#notebookEditor.selectButton(title='Editor',onchange='selectKeyMap()')
-                    option(value='default') default editor
-                    option(value='vim') vim
-                    option(value='sublime') sublime
-                select#selectTheme_button.selectButton(onchange='selectTheme()')
-                    option(value='default') default theme
-                    option(value='3024-day') 3024-day
-                    option(value='3024-night') 3024-night
-                    option(value='ambiance') ambiance
-                    option(value='base16-dark') base16-dark
-                    option(value='base16-light') base16-light
-                    option(value='blackboard') blackboard
-                    option(value='cobalt') cobalt
-                    option(value='eclipse') eclipse
-                    option(value='elegant') elegant
-                    option(value='erlang-dark') erlang-dark
-                    option(value='lesser-dark') lesser-dark
-                    option(value='midnight') midnight
-                    option(value='monokai') monokai
-                    option(value='neat') neat
-                    option(value='night') night
-                    option(value='rubyblue') rubyblue
-                    option(value='solarized dark') solarized dark
-                    option(value='solarized light') solarized light
-                    option(value='tomorrow-night-eighties') tomorrow-night-eighties
-                    option(value='twilight') twilight
-                    option(value='vibrant-ink') vibrant-ink
-                    option(value='xq-dark') xq-dark
-                    option(value='xq-light') xq-light
+                span.arrowDown
+                    select#notebookAccess.selectButton(title='Access')
+                        option(value='public') public
+                        option(value='private') private
+                span.arrowDown
+                    select#notebookEditor.selectButton(title='Editor',onchange='selectKeyMap()')
+                        option(value='default') default editor
+                        option(value='vim') vim
+                        option(value='sublime') sublime
+                span.arrowDown
+                    select#selectTheme_button.selectButton(onchange='selectTheme()')
+                        option(value='default') default theme
+                        option(value='3024-day') 3024-day
+                        option(value='3024-night') 3024-night
+                        option(value='ambiance') ambiance
+                        option(value='base16-dark') base16-dark
+                        option(value='base16-light') base16-light
+                        option(value='blackboard') blackboard
+                        option(value='cobalt') cobalt
+                        option(value='eclipse') eclipse
+                        option(value='elegant') elegant
+                        option(value='erlang-dark') erlang-dark
+                        option(value='lesser-dark') lesser-dark
+                        option(value='midnight') midnight
+                        option(value='monokai') monokai
+                        option(value='neat') neat
+                        option(value='night') night
+                        option(value='rubyblue') rubyblue
+                        option(value='solarized dark') solarized dark
+                        option(value='solarized light') solarized light
+                        option(value='tomorrow-night-eighties') tomorrow-night-eighties
+                        option(value='twilight') twilight
+                        option(value='vibrant-ink') vibrant-ink
+                        option(value='xq-dark') xq-dark
+                        option(value='xq-light') xq-light
 
             
         

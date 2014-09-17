@@ -17,53 +17,47 @@
   </head>
   <body>
     <div style="padding-right:10px;float:right;"><span class="user_social_name">{{user_social_name}}</span><span style="display:none" class="user_network">{{user_network}}</span><span style="display:none" class="user_id">{{user_id}}</span><span class="loginHolder">{{login_link}}</span><span class="oauthHolder"></span></div>
-    <div id="divHeader" class="header">
-      <!--div(style='float: right; white-space: nowrap')-->
-      <!--    span.notebookOwner {{notebook_owner}}-->
-      <!--    span.user_social_name.toolButton {{user_social_name}}-->
-      <!--    span.loginHolder.toolButton {{login_link}}-->
-      <!--    a.toolButton(href='/inote/html/login.html') login2--><a href="/" style="text-decoration:none;" class="icon-home"></a><span id="saveIndicator"></span><span id="notebookName" onclick="changeName()" class="notebookName">{{notebook_name}}</span><span class="notebookVersion">{{notebook_version}}</span>
+    <div id="divHeader" class="header"><span id="btnMenu" style="cursor:pointer;margin-right:20px;" class="icon-menu"></span><span id="saveIndicator"></span><span id="notebookName" onclick="changeName()" class="notebookName">{{notebook_name}}</span><span class="notebookVersion">{{notebook_version}}</span>
       <!-- <span id="btnClear" class="toolButton" >clear</span>-->
       <!-- <span id="btnOpen" class="toolButton" >restore</span>-->
-      <div id="saveGroup"><span id="btnSave" onclick="saveNotebook()" title="Ctrl-S" class="toolButton">save</span><span style="white-space:nowrap;" class="toolButton">
+      <div id="saveGroup"><a href="/" style="text-decoration:none;" class="icon-home"></a><span id="btnSave" onclick="saveNotebook()" title="Ctrl-S" class="toolButton">save</span><span style="white-space:nowrap;" class="toolButton">
           <input id="autoSave" type="checkbox">
-          <label for="autoSave">autosave</label></span><span id="btnSave" onclick="saveNotebook(event)" title="Save a new version." class="toolButton">new version</span>
-        <select id="notebookAccess" title="Access" class="selectButton">
-          <option value="public">public</option>
-          <option value="private">private</option>
-        </select>
-        <select id="notebookEditor" title="Editor" onchange="selectKeyMap()" class="selectButton">
-          <option value="default">default editor</option>
-          <option value="vim">vim</option>
-          <option value="sublime">sublime</option>
-        </select>
-        <select id="selectTheme_button" onchange="selectTheme()" class="selectButton">
-          <option value="default">default theme</option>
-          <option value="3024-day">3024-day</option>
-          <option value="3024-night">3024-night</option>
-          <option value="ambiance">ambiance</option>
-          <option value="base16-dark">base16-dark</option>
-          <option value="base16-light">base16-light</option>
-          <option value="blackboard">blackboard</option>
-          <option value="cobalt">cobalt</option>
-          <option value="eclipse">eclipse</option>
-          <option value="elegant">elegant</option>
-          <option value="erlang-dark">erlang-dark</option>
-          <option value="lesser-dark">lesser-dark</option>
-          <option value="midnight">midnight</option>
-          <option value="monokai">monokai</option>
-          <option value="neat">neat</option>
-          <option value="night">night</option>
-          <option value="rubyblue">rubyblue</option>
-          <option value="solarized dark">solarized dark</option>
-          <option value="solarized light">solarized light</option>
-          <option value="tomorrow-night-eighties">tomorrow-night-eighties</option>
-          <option value="twilight">twilight</option>
-          <option value="vibrant-ink">vibrant-ink</option>
-          <option value="xq-dark">xq-dark</option>
-          <option value="xq-light">xq-light</option>
-        </select>
-      </div>
+          <label for="autoSave">autosave</label></span><span id="btnSave" onclick="saveNotebook(event)" title="Save a new version." class="toolButton">new version</span><span class="arrowDown">
+          <select id="notebookAccess" title="Access" class="selectButton">
+            <option value="public">public</option>
+            <option value="private">private</option>
+          </select></span><span class="arrowDown">
+          <select id="notebookEditor" title="Editor" onchange="selectKeyMap()" class="selectButton">
+            <option value="default">default editor</option>
+            <option value="vim">vim</option>
+            <option value="sublime">sublime</option>
+          </select></span><span class="arrowDown">
+          <select id="selectTheme_button" onchange="selectTheme()" class="selectButton">
+            <option value="default">default theme</option>
+            <option value="3024-day">3024-day</option>
+            <option value="3024-night">3024-night</option>
+            <option value="ambiance">ambiance</option>
+            <option value="base16-dark">base16-dark</option>
+            <option value="base16-light">base16-light</option>
+            <option value="blackboard">blackboard</option>
+            <option value="cobalt">cobalt</option>
+            <option value="eclipse">eclipse</option>
+            <option value="elegant">elegant</option>
+            <option value="erlang-dark">erlang-dark</option>
+            <option value="lesser-dark">lesser-dark</option>
+            <option value="midnight">midnight</option>
+            <option value="monokai">monokai</option>
+            <option value="neat">neat</option>
+            <option value="night">night</option>
+            <option value="rubyblue">rubyblue</option>
+            <option value="solarized dark">solarized dark</option>
+            <option value="solarized light">solarized light</option>
+            <option value="tomorrow-night-eighties">tomorrow-night-eighties</option>
+            <option value="twilight">twilight</option>
+            <option value="vibrant-ink">vibrant-ink</option>
+            <option value="xq-dark">xq-dark</option>
+            <option value="xq-light">xq-light</option>
+          </select></span></div>
     </div>
     <div id="page" class="page">{{notebook_content}} </div>
   </body>

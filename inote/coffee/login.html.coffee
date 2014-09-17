@@ -105,7 +105,7 @@ adjust_ui = ->
             #<span class='toolButton'>#{r.name}</span>
 
             $("<a id='#{r.network}_logout' href='' class='toolButton'>logout</a>")
-                .click (e) -> e.preventDefault(); delete_cookie(); hello.logout(r.network, {force:true})
+                .click (e) -> e.preventDefault();  hello.logout(r.network, {force:true})
                 .appendTo($container)
         
         c=$('.oauthHolder').html('')

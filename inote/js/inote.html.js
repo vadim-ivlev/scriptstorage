@@ -135,34 +135,33 @@
     inote.setKeyMap("default");
     restoreNotebookFromXml(xmlText);
     $("#notebookAccess").val(getNotebookAccessFromUrl());
-
-    /*
-     * Save if the user press Ctrl-S
-    $("body").keydown (event) ->
-        if event.ctrlKey and event.keyCode is 83 #Ctrl-S
-            saveNotebook()
-            false
-     */
-    $("#saveGroup").hide();
     userName = $(".user_social_name").text();
     userNetwork = $(".user_network").text();
     userId = $(".user_id").text();
     userNameNetwork = "" + userName + "|" + userNetwork;
     notebookOwner = getNotebookOwnerFromUrl();
     if (userNameNetwork && userNameNetwork === notebookOwner) {
-      $("#saveGroup").show();
-      return $("body").keydown(function(event) {
+      $("body").keydown(function(event) {
         if (event.ctrlKey && event.keyCode === 83) {
           saveNotebook();
           return false;
         }
       });
     }
-
-    /* 
-    if userName != 
-        $("#saveGroup").hide()
-     */
+    $("#btnMenu").click(function(event) {
+      event.stopPropagation();
+      return $("#saveGroup").animate({
+        left: 0
+      }, 50);
+    });
+    $("html").click(function(event) {
+      return $("#saveGroup").animate({
+        left: '-210px'
+      }, 50);
+    });
+    return $("#saveGroup").click(function(event) {
+      return event.stopPropagation();
+    });
   });
 
 }).call(this);

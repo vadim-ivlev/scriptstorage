@@ -111,7 +111,6 @@
         $("<span id='profile_" + r.id + "' title='id: " + r.id + "' class='icon-" + r.network + "' >\n</span>").appendTo($container);
         return $("<a id='" + r.network + "_logout' href='' class='toolButton'>logout</a>").click(function(e) {
           e.preventDefault();
-          delete_cookie();
           return hello.logout(r.network, {
             force: true
           });

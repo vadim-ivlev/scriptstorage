@@ -1363,8 +1363,9 @@ input {
 }
 .arrowDown::before {
   content: '▼';
-  font-size: 70%;
-  opacity: 0.7;
+  font-size: 50%;
+  opacity: 0.5;
+  color: #777777;
 }
 .smallButton {
   margin: 0px;
@@ -1434,17 +1435,16 @@ input {
   opacity: 0.7;
   content: 'i';
 }
-.icon-home::after {
+.icon-home::before {
   font-family: icomoon;
   font-size: 15px;
   color: #777777;
   vertical-align: middle;
   margin-left: 4px;
   margin-right: 4px;
-  opacity: 0.7;
   content: 'h';
-  font-size: 25px;
-  margin-left: 0;
+  opacity: 0.7;
+  font-size: 120%;
 }
 .icon-pencil::after {
   font-family: icomoon;
@@ -1556,6 +1556,8 @@ input {
   margin-right: 4px;
   opacity: 0.7;
   content: 'm';
+  font-size: 130%;
+  opacity: 0.5;
 }
 .icon-link::after {
   font-family: icomoon;
@@ -2024,6 +2026,23 @@ input {
   overflow: hidden;
   font-size: 22px;
   color: #777777;
+}
+#saveGroup {
+  border-right: 1px solid rgba(200, 200, 200, 0.7);
+  top: 0;
+  left: -210px;
+  width: 200px;
+  height: 100%;
+  position: fixed;
+  background-color: white;
+  padding-left: 10px;
+  padding-bottom: 20px;
+  z-index: 1000;
+}
+#saveGroup a,
+#saveGroup span {
+  display: block;
+  margin-top: 20px;
 }
 .notebookName {
   position: relative;
