@@ -55,9 +55,13 @@ inote = undefined
 
     return
 
-@changeName = ->
-    newName = prompt "Change the name", $("#notebookName").text()
+@saveAs = ->
+    newName = prompt "Save as", $("#notebookName").text()
     $("#notebookName").text newName if newName
+
+
+@rename = ->
+    alert "Not implemented"
 
 
 openNotebook = (notebookOwner, notebookAccess, notebookName) ->
@@ -124,6 +128,11 @@ clearAndInit = ->
     inote.init()
     return
 
+showMenu = ->
+    $("#saveGroup").animate({left:0, easing:'linear'}, 100)
+
+hideMenu = ->
+    $("#saveGroup").animate({left:'-225px', easing:'linear'}, 100)
 
 
 
@@ -171,14 +180,16 @@ $ ->
                 saveNotebook()
                 false
     
+    $("#btnHideMenu").click (event) ->
+        event.stopPropagation()
+        hideMenu()
+
     $("#btnMenu").click (event) ->
         event.stopPropagation()
-        #$("#saveGroup").show()
-        $("#saveGroup").animate({left:0}, 50)
+        showMenu()
 
     $("html").click (event) ->
-        $("#saveGroup").animate({left:'-210px'}, 50)
-        #$("#saveGroup").hide()
+        hideMenu()
 
     $("#saveGroup").click (event) ->
         event.stopPropagation()

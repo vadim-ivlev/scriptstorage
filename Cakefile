@@ -55,7 +55,7 @@ js_files_text ="""
     
 js_files = js_files_text.match(/inote\/[^']*js/g)
 
-console.log js_files
+#console.log js_files
 
 
 fs = require "fs"

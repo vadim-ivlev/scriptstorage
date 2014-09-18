@@ -65,26 +65,42 @@ html
         
             span#btnMenu.icon-menu(style='cursor:pointer;margin-right:20px;')
             span#saveIndicator
-            span#notebookName.notebookName(onclick='changeName()') {{notebook_name}}
+            span#notebookName.notebookName(onclick='saveAs()') {{notebook_name}}
             span.notebookVersion {{notebook_version}}
             // <span id="btnClear" class="toolButton" >clear</span>
             // <span id="btnOpen" class="toolButton" >restore</span>
             div#saveGroup
-                a.icon-home(href='/',style='text-decoration:none;')
-                span#btnSave.toolButton(onclick='saveNotebook()',title='Ctrl-S') save
-                span.toolButton(style='white-space:nowrap;')
+                span#btnHideMenu.toolButton
+                    span.icon-close
+                br
+                br
+                span#btnSave.toolButton(onclick='saveNotebook()',title='Ctrl-S') Save &nbsp;&nbsp;Ctrl-S
+                span.toolButton(style='white-space:nowrap;float:right')
+                    label(for='autoSave',title='autosave') auto
                     input#autoSave(type='checkbox')
-                    label(for='autoSave') autosave
-                span#btnSave.toolButton(onclick='saveNotebook(event)',title='Save a new version.') new version
+                br
+                br
+                span.toolButton(onclick='saveAs()') Save As ...
+                br
+                br
+                span.toolButton(onclick='rename()') Rename ...
+                br
+                br
+                span.toolButton(onclick='saveNotebook(event)',title='Save a new version.') Save as new version
+                hr
                 span.arrowDown
                     select#notebookAccess.selectButton(title='Access')
                         option(value='public') public
                         option(value='private') private
+                br
+                br
                 span.arrowDown
                     select#notebookEditor.selectButton(title='Editor',onchange='selectKeyMap()')
                         option(value='default') default editor
                         option(value='vim') vim
                         option(value='sublime') sublime
+                br
+                br
                 span.arrowDown
                     select#selectTheme_button.selectButton(onchange='selectTheme()')
                         option(value='default') default theme
@@ -111,9 +127,14 @@ html
                         option(value='vibrant-ink') vibrant-ink
                         option(value='xq-dark') xq-dark
                         option(value='xq-light') xq-light
+                hr
+                br
+                div(style='text-align:left')
+                    a.icon-home(href='/',style='text-decoration:none;opacity:0.7;')
+                br
 
-            
-        
+
+
         #page.page {{notebook_content}} 
 
 
