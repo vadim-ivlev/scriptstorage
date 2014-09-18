@@ -33,6 +33,15 @@ indexes:
   - name: access
   - name: date
   - name: notebook_name
+  - name: user_name
+  - name: user_network
+  - name: version
+
+- kind: NoteBook
+  properties:
+  - name: access
+  - name: date
+  - name: notebook_name
   - name: user_nickname
   - name: version
 
@@ -48,6 +57,14 @@ indexes:
   properties:
   - name: access
   - name: notebook_name
+  - name: user_name
+  - name: user_network
+  - name: version
+
+- kind: NoteBook
+  properties:
+  - name: access
+  - name: notebook_name
   - name: user_nickname
   - name: version
 
@@ -57,4 +74,13 @@ indexes:
   - name: access
   - name: notebook_name
   - name: user_nickname
+  - name: version
+
+- kind: NoteBook
+  properties:
+  - name: user_name_network_id
+  - name: access
+  - name: notebook_name
+  - name: user_name
+  - name: user_network
   - name: version

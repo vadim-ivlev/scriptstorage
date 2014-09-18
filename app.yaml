@@ -22,6 +22,9 @@ handlers:
 - url: /publiclist.*
   script: py.publiclist.app
 
+- url: /userlist.*
+  script: py.userlist.app
+
 - url: /mylist.*
   script: py.mylist.app
 

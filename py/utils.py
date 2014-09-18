@@ -65,39 +65,66 @@ def get_list_of_notebooks(o):
     return s
 
 
-def get_list_of_public_notebooks(offset_n, limit_n):
+def get_notebooks( o, of_signed_user, is_public, offset_n, limit_n):
     """
-    returns list of public notebooks, 
-    starting with offset_n record, 
-    returning max limit_n records 
+    returns list of notebooks,
+    starting with offset_n record,
+    returning max limit_n records
+
+    :param o:  self of caller
+    :param of_signed_user: if True returns notebooks of signed in  user
+    :param is_public: if True public notebooks only
+    :param offset_n: offset
+    :param limit_n: number of notebooks to return
     """
-    u=users.get_current_user()
-    s=print_object(u)
-    logging.info(s)
-    q=db.Query(NoteBook, projection=('user_nickname', 'access', 'notebook_name', 'version'))
-    q.filter('access !=', 'private')
+
+
+    q=db.Query(NoteBook, projection=('user_name', 'user_network', 'access', 'notebook_name', 'version'))
+
+    if of_signed_user :
+        user_name_network_id = get_user_name_network_id(o)
+        q.filter ( 'user_name_network_id ==', user_name_network_id )
+
+    if is_public :
+        q.filter('access !=', 'private')
 
     #q=db.GqlQuery("""
     #SELECT user_nickname, access, notebook_name, version
     #FROM NoteBook
     #WHERE access != 'private'
     #""")
-    
+
     recs=[]
     for r in q.run( offset=offset_n, limit=limit_n ):
         o={}
-        o['key']=str(r.key())
-        o['key_name']=r.key().name()
-        o['user_nickname']=r.user_nickname
-        o['notebook_name']=r.notebook_name
+        o['user_name']=r.user_name
+        o['user_network']=r.user_network
         o['access']=r.access
+        o['notebook_name']=r.notebook_name
         o['version']=r.version
         recs.append(o)
-        
+
     return json.dumps(recs, sort_keys=True, indent=2)
 
 
 
+def get_list_of_public_notebooks( o, offset_n, limit_n):
+    """
+    returns list of public notebooks, 
+    starting with offset_n record, 
+    returning max limit_n records 
+    """
+    return get_notebooks ( o, False, True , offset_n, limit_n)
+
+
+
+def get_list_of_user_notebooks( o, offset_n, limit_n):
+    """
+    returns list of public notebooks,
+    starting with offset_n record,
+    returning max limit_n records
+    """
+    return get_notebooks ( o, True, False , offset_n, limit_n)
 
 
 def access_allowed(o, notebook_access,notebook_owner) :
