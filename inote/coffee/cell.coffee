@@ -49,29 +49,29 @@ window?.clear = null
             <div class='cell' locked="false">
 
                 <span class='input_header'>
-                    <span class='hideInputButton hidable000 toolButton uppertab' ></span> 
+                    <span class='hideInputButton hide-on-view toolButton uppertab' ></span> 
                     <!-- SUPPORTER -->
                     <div style='width:1px; height:22px; background-color:transparent;display: inline-block;vertical-align: middle;'></div>
                     <span class='editControls'>
-                        <select class='selectButton hidable000'>
+                        <select class='selectButton hide-on-view'>
                             <option value='javascript'>JavaScript</option>
                             <option value='text/x-coffeescript'>CoffeeScript</option>
                             <option value='text/html'>HTML</option>
                             <option value='markdown'>Markdown</option>
                         </select>
-                        <span class='showJavascriptButton toolButton hidable000' >Show Javascript</span>
-                        <span class='deleteButton toolButton  hidable000 icon-close' style='padding-right:0;' title='delete cell' ></span>
+                        <span class='showJavascriptButton toolButton hide-on-view' >Show Javascript</span>
+                        <span class='deleteButton toolButton  hide-on-view icon-close' style='padding-right:0;' title='delete cell' ></span>
                         <!--
-                        <span class='toolButton hidable000 icon-expand' style='float:right' title='Fullscreen on/of'>Alt-F11</span>
+                        <span class='toolButton hide-on-view icon-expand' style='float:right' title='Fullscreen on/of'>Alt-F11</span>
                         -->
-                        <span class='keyMap toolButton hidable000' style='float:right; display:none;' title='editor mode'></span>
+                        <span class='keyMap toolButton hide-on-view' style='float:right; display:none;' title='editor mode'></span>
                     </span>
                 </span>
                 
                 <table class='codeArea' > 
                     <tr>
                         <td id='in_' class='inputCell position_relative'>
-                        <span class='toolButton hidable000 position_absolute_100 icon-expand' 
+                        <span class='toolButton hide-on-view position_absolute_100 icon-expand' 
                             style='right:0px; top:2px;;' 
                             title='Fullscreen on/of'>Alt-F11</span>
                         </td>
@@ -81,14 +81,14 @@ window?.clear = null
                 
 
                 <span class='output_header' output_label="" >
-                    <span class='hideOutputButton toolButton hidable000 uppertab'></span> 
+                    <span class='hideOutputButton toolButton hide-on-view uppertab'></span> 
                     <span class='clearOutputButton toolButton icon-close ' title='clear output'>
-                         <span class='hidable000'>
+                         <span class='hide-on-view'>
                             clear
                         </span>
                     </span>
                     <span class='toolButton icon-play' title='<Ctrl-Ent> to run.  <Shift-Ent> to run and go to the next cell. '>
-                        <span class='hidable000'>
+                        <span class='hide-on-view'>
                             run
                          </span>
                     </span>
@@ -98,8 +98,8 @@ window?.clear = null
                 <div id='out_' class='outputCell'></div>
                 
                 
-                <div class='insertBefore smallButton  hidable000 icon-plus' title='add cell'></div>
-                <div class='insertAfter smallButton  hidable000 icon-plus' title='add cell'></div>
+                <div class='insertBefore smallButton  hide-on-view icon-plus' title='add cell'></div>
+                <div class='insertAfter smallButton  hide-on-view icon-plus' title='add cell'></div>
                 <div class='lockButton smallButton icon-pencil' title='edit/lock' style='position:absolute;top:0px;left:-27px;'></div>
             </div>
         """)
@@ -287,7 +287,7 @@ window?.clear = null
 
     # make it read only ======================================================
     _lock = ->
-        _jQueryCell.find(".hidable000").removeClass "visible"
+        _jQueryCell.find(".hide-on-view").removeClass "visible"
         _jQueryCell.find(".codeArea").removeClass "visibleBorder"
         _jQueryCell.removeClass "visibleBorder shadow"
         _codemirror.setOption "readOnly", "nocursor"
@@ -299,7 +299,7 @@ window?.clear = null
 
     # make it  editable =======================================================
     _unlock = ->
-        _jQueryCell.find(".hidable000").addClass "visible"
+        _jQueryCell.find(".hide-on-view").addClass "visible"
         _jQueryCell.find(".codeArea").addClass "visibleBorder"
         _jQueryCell.addClass "visibleBorder shadow"
         _codemirror.setOption "readOnly", false

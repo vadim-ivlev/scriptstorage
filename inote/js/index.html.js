@@ -57,7 +57,7 @@
       dataType: 'json',
       success: function(d) {
         var t;
-        t = $('<table class="hover" width="100%" ></table>');
+        t = $('<table class="hover compact" width="100%" ></table>');
         t.hide();
         $(selector).append(t);
         t.dataTable({

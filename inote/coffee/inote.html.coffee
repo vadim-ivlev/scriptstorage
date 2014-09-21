@@ -132,7 +132,7 @@ showMenu = ->
     $("#saveGroup").animate({left:0, easing:'linear'}, 100)
 
 hideMenu = ->
-    $("#saveGroup").animate({left:'-225px', easing:'linear'}, 100)
+    $("#saveGroup").animate({left:'-255px', easing:'linear'}, 100)
 
 
 
@@ -150,10 +150,10 @@ $ ->
     inote = new iNote($("#page"))
     
     $("#selectTheme_button").val("default")
-    inote.setTheme "default" 
+    inote.setTheme "default"
     
     $("#notebookEditor").val("default")
-    inote.setKeyMap "default" 
+    inote.setKeyMap "default"
 
     #inote=new iNote($(document.body));
 
@@ -165,7 +165,6 @@ $ ->
     
     
     # hide save buttons if the user is not loginned
-    #$("#saveGroup").hide()
     userName= $(".user_social_name").text()
     userNetwork= $(".user_network").text()
     userId= $(".user_id").text()
@@ -173,7 +172,6 @@ $ ->
     notebookOwner=getNotebookOwnerFromUrl()
 
     if userNameNetwork and userNameNetwork is notebookOwner
-        #$("#saveGroup").show()
         # Save if the user press Ctrl-S
         $("body").keydown (event) ->
             if event.ctrlKey and event.keyCode is 83 #Ctrl-S

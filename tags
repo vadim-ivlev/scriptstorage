@@ -87,13 +87,13 @@ if	inote/coffee/cell.coffee	/^        if fs$/;"	b	line:350	language:coffee
 if	inote/coffee/cell.coffee	/^        if javaScriptText.is(":visible")$/;"	b	line:647	language:coffee
 if	inote/coffee/cell.coffee	/^        if o instanceof jQuery$/;"	b	line:569	language:coffee
 if	inote/coffee/index.html.coffee	/^        if newName$/;"	b	line:116	language:coffee
-if	inote/coffee/inote.html.coffee	/^            if event.ctrlKey and event.keyCode is 83 #Ctrl-S$/;"	b	line:179	language:coffee
+if	inote/coffee/inote.html.coffee	/^            if event.ctrlKey and event.keyCode is 83 #Ctrl-S$/;"	b	line:177	language:coffee
 if	inote/coffee/inote.html.coffee	/^        if keyMap then \$("#notebookEditor").val keyMap$/;"	b	line:90	language:coffee
 if	inote/coffee/inote.html.coffee	/^        if o.error$/;"	b	line:49	language:coffee
 if	inote/coffee/inote.html.coffee	/^        if themeName then \$("#selectTheme_button").val themeName$/;"	b	line:87	language:coffee
 if	inote/coffee/inote.html.coffee	/^    if \$("#autoSave").is(":checked")$/;"	b	line:26	language:coffee
 if	inote/coffee/inote.html.coffee	/^    if not empty$/;"	b	line:81	language:coffee
-if	inote/coffee/inote.html.coffee	/^    if userNameNetwork and userNameNetwork is notebookOwner$/;"	b	line:175	language:coffee
+if	inote/coffee/inote.html.coffee	/^    if userNameNetwork and userNameNetwork is notebookOwner$/;"	b	line:174	language:coffee
 openNotebook	inote/coffee/inote.html.coffee	/^openNotebook = (notebookOwner, notebookAccess, notebookName) ->$/;"	f	line:67	language:coffee	object:window
 restoreNotebookFromXml	inote/coffee/inote.html.coffee	/^restoreNotebookFromXml = (xmlText) ->$/;"	f	line:79	language:coffee	object:window
 s	inote/coffee/cell.coffee	/^                    s = JSON.stringify(o, (key, value) ->$/;"	f	line:578	language:coffee	object:@Cell._print

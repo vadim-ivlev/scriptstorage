@@ -1920,11 +1920,11 @@ hr {
   border-style: none;
   border-bottom: 1px dotted rgba(200, 200, 200, 0.7);
 }
-.hidable000 {
+.hide-on-view {
   display: none;
 }
 .visible {
-  display: initial;
+  display: inline;
 }
 .visibleBorder {
   border-color: rgba(200, 200, 200, 0.7);
@@ -2047,7 +2047,7 @@ hr {
   border: 1px solid rgba(200, 200, 200, 0.7);
   top: 0;
   left: -225px;
-  width: 200px;
+  width: 230px;
   position: fixed;
   background-color: white;
   padding-top: 0px;

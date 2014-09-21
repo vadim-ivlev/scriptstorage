@@ -136,7 +136,7 @@
 
   hideMenu = function() {
     return $("#saveGroup").animate({
-      left: '-225px',
+      left: '-255px',
       easing: 'linear'
     }, 100);
   };

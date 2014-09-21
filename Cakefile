@@ -63,8 +63,8 @@ fs = require "fs"
 uglify = require("uglify-js")
 
 
-task "server", "type: dev_appserver.py #{curDirSymbol}", ->
-    execOut "dev_appserver.py #{curDirSymbol}"
+task "server", "type: dev_appserver.py --host=0.0.0.0 #{curDirSymbol}", ->
+    execOut "dev_appserver.py --host=0.0.0.0 #{curDirSymbol}"
 
 
 task "rebuild", "rebuild all", ->
