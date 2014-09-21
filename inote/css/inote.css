@@ -1828,6 +1828,9 @@ hr {
   font-size: 16px;
   cursor: default;
 }
+select::-ms-expand {
+  display: none;
+}
 /*------------cell----------------------*/
 .cell {
   position: relative;
