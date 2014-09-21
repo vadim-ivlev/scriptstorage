@@ -4,10 +4,23 @@
 @import url(http://fonts.googleapis.com/css?family=Cousine&;subset=latin,cyrillic);
 @font-face {
   font-family: 'icomoon';
-  src: url('../fonts/icomoon.eot?c52rba');
-  src: url('../fonts/icomoon.eot?#iefixc52rba') format('embedded-opentype'), url('../fonts/icomoon.woff?c52rba') format('woff'), url('../fonts/icomoon.ttf?c52rba') format('truetype'), url('../fonts/icomoon.svg?c52rba#icomoon') format('svg');
+  src: url('../fonts/icomoon.eot?lv15ky');
+  src: url('../fonts/icomoon.eot?#iefixlv15ky') format('embedded-opentype'), url('../fonts/icomoon.ttf?lv15ky') format('truetype'), url('../fonts/icomoon.svg?lv15ky#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
+}
+[class^="icon-"],
+[class*=" icon-"] {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 body {
   background-color: white;
@@ -551,13 +564,17 @@ hr {
   color: black;
 }
 #btnCreate {
-  border: 1px solid rgba(200, 200, 200, 0.7);
-  padding: 10px;
+  border: 0px solid rgba(200, 200, 200, 0.7);
+  padding-top: 8px;
+  padding-bottom: 12px;
   padding-left: 20px;
   padding-right: 20px;
   margin-left: 60px;
-  border-radius: 12px;
+  border-radius: 4px;
   font-variant: small-caps;
+  color: white;
+  background-color: #222;
+  white-space: nowrap;
 }
 #btnCreate:hover {
   border-color: rgba(200, 200, 200, 0.7);

@@ -96,12 +96,16 @@ def get_notebooks( o, of_signed_user, is_public, offset_n, limit_n):
 
     recs=[]
     for r in q.run( offset=offset_n, limit=limit_n ):
+        k=r.key()
+        kn=k.name()
         o={}
         o['user_name']=r.user_name
         o['user_network']=r.user_network
         o['access']=r.access
         o['notebook_name']=r.notebook_name
         o['version']=r.version
+        o['key_name']=kn
+        o['key']=str(k)
         recs.append(o)
 
     return json.dumps(recs, sort_keys=True, indent=2)

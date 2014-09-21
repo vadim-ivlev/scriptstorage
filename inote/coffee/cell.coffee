@@ -83,16 +83,16 @@ window?.clear = null
                 <span class='output_header' output_label="" >
                     <span class='hideOutputButton toolButton hidable000 uppertab'></span> 
                     <span class='clearOutputButton toolButton icon-close ' title='clear output'>
-                        <span class='hidable000'>
+                         <span class='hidable000'>
                             clear
                         </span>
                     </span>
                     <span class='toolButton icon-play' title='<Ctrl-Ent> to run.  <Shift-Ent> to run and go to the next cell. '>
                         <span class='hidable000'>
                             run
-                        </span>
+                         </span>
                     </span>
-                    <span class='cellLabel' contenteditable='true'></span>
+                     <span class='cellLabel' contenteditable='true'></span>
                 </span>
                 
                 <div id='out_' class='outputCell'></div>
@@ -160,6 +160,7 @@ window?.clear = null
         _javascriptTextViewer.refresh()
         _compile_CoffeeScript()
         _jQueryCell.find(".codeArea").colResizable()
+        #_jQueryCell.find(".codeArea").resizableColumns()
         return
     
     
@@ -246,7 +247,7 @@ window?.clear = null
                  @cell_state(JSON.parse(s))
             else
                 return JSON.stringify(@cell_state())
-    ###        
+    ###
 
     # collapse output iarea ===================================================
     _CPLTIME=100
@@ -313,7 +314,7 @@ window?.clear = null
             _unlock()
 
 
-    # attach events to buttons ================================================
+    # attacgh events to buttons ================================================
     _attachEvents = ->
         _inputCell.keydown _keyHandler
         _lockButton.click _lockUnlock
@@ -365,6 +366,14 @@ window?.clear = null
         else
             _hideJavascriptText()
             _jQueryCell.find(".showJavascriptButton").hide()
+        
+        if _mode is "markdown"
+            _jQueryCell.find(".clearOutputButton").hide()
+            _jQueryCell.find(".icon-play").hide()
+        else
+            _jQueryCell.find(".clearOutputButton").show()
+            _jQueryCell.find(".icon-play").show()
+
         saveNotebookLater?()
         return
 

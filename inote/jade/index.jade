@@ -6,15 +6,17 @@ html
         meta(name='viewport', content='width=device-width, initial-scale=1')
         title i Note Book list
 
+        link(rel='stylesheet', href='inote/libs/datatable/css/jquery.dataTables.css')
         link(rel='stylesheet', href='css/index.css')
         
-        script(src='//code.jquery.com/jquery-1.11.0.min.js')
-        script window.jQuery || document.write('<script src="libs/jquery-1.11.0.min.js"><\/script>')
-        //script(src='libs/hello.min.js')
-        script(src='js/notebookstorage.js')
-        script(src='js/index.html.js')
+        //script(src='//code.jquery.com/jquery-1.11.0.min.js')
+        //script window.jQuery || document.write('<script src="libs/jquery-1.11.0.min.js"><\/script>')
+        script(src='libs/jquery-1.11.0.min.js')
         script(src='libs/hello.min.js')
         script(src='libs/jquery.cookie.js')
+        script(src='inote/libs/datatable/js/jquery.dataTables.min.js')
+        script(src='js/notebookstorage.js')
+        script(src='js/index.html.js')
         script(src='js/login.html.js')
 
     body(style='padding:10px;')
@@ -23,5 +25,10 @@ html
             #divHeader.header(style='padding: 0px;height:110px;')
                     div(style='float:left')
                         span#appTitle iNote
-                        span#btnCreate.toolButton Create new notebook
+                        span#btnCreate.toolButton create new
             #notebookList {{notebook_list}}
+            br
+            #publicList
+            br
+            h3 Your notebooks
+            #userList

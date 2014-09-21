@@ -4,17 +4,89 @@
 !_TAG_PROGRAM_NAME	CoffeeTags	//
 !_TAG_PROGRAM_URL	https://github.com/lukaszkorecki/CoffeeTags	/GitHub repository/
 !_TAG_PROGRAM_VERSION	0.5.0	//
+@Cell	inote/coffee/cell.coffee	/^@Cell = (cellNumber, themeName, keyMap) ->$/;"	f	line:17	language:coffee	object:window
+@deleteNotebook	inote/coffee/index.html.coffee	/^@deleteNotebook = (key_name) ->$/;"	f	line:35	language:coffee	object:window
 @rename	inote/coffee/inote.html.coffee	/^@rename = ->$/;"	f	line:63	language:coffee	object:window
 @saveAs	inote/coffee/inote.html.coffee	/^@saveAs = ->$/;"	f	line:58	language:coffee	object:window
 @saveNotebook	inote/coffee/inote.html.coffee	/^@saveNotebook = (event) ->$/;"	f	line:31	language:coffee	object:window
 @saveNotebookLater	inote/coffee/inote.html.coffee	/^@saveNotebookLater = ->$/;"	f	line:21	language:coffee	object:window
 @selectKeyMap	inote/coffee/inote.html.coffee	/^@selectKeyMap = ->$/;"	f	line:15	language:coffee	object:window
 @selectTheme	inote/coffee/inote.html.coffee	/^@selectTheme = ->$/;"	f	line:9	language:coffee	object:window
+_attachEvents	inote/coffee/cell.coffee	/^    _attachEvents = ->$/;"	f	line:318	language:coffee	object:@Cell
+_call	inote/coffee/cell.coffee	/^    _call = (f, param) ->$/;"	f	line:137	language:coffee	object:@Cell
+_clearPrintArea	inote/coffee/cell.coffee	/^    _clearPrintArea = ->$/;"	f	line:554	language:coffee	object:@Cell
+_compileLater	inote/coffee/cell.coffee	/^    _compileLater = ->$/;"	f	line:623	language:coffee	object:@Cell
+_compile_CoffeeScript	inote/coffee/cell.coffee	/^    _compile_CoffeeScript = ->$/;"	f	line:645	language:coffee	object:@Cell
+_compile_Markdown	inote/coffee/cell.coffee	/^    _compile_Markdown = ->$/;"	f	line:633	language:coffee	object:@Cell
+_create	inote/coffee/cell.coffee	/^    _create = (celNum, theme, keyM) ->$/;"	f	line:47	language:coffee	object:@Cell
+_createPrintArea	inote/coffee/cell.coffee	/^    _createPrintArea = ->$/;"	f	line:558	language:coffee	object:@Cell
+_cursorOnFirstLine	inote/coffee/cell.coffee	/^    _cursorOnFirstLine = ->$/;"	f	line:600	language:coffee	object:@Cell
+_cursorOnLastLine	inote/coffee/cell.coffee	/^    _cursorOnLastLine = ->$/;"	f	line:592	language:coffee	object:@Cell
+_executeCode	inote/coffee/cell.coffee	/^    _executeCode = ->$/;"	f	line:522	language:coffee	object:@Cell
+_getNumber	inote/coffee/cell.coffee	/^    _getNumber = ->$/;"	f	line:496	language:coffee	object:@Cell
+_getSelectedRange	inote/coffee/cell.coffee	/^    _getSelectedRange = ->$/;"	f	line:466	language:coffee	object:@Cell
+_getXml	inote/coffee/cell.coffee	/^    _getXml = ->$/;"	f	line:386	language:coffee	object:@Cell
+_getXml0	inote/coffee/cell.coffee	/^    _getXml0 = ->$/;"	f	line:401	language:coffee	object:@Cell
+_getXml1	inote/coffee/cell.coffee	/^    _getXml1 = ->$/;"	f	line:424	language:coffee	object:@Cell
+_hideJavascriptText	inote/coffee/cell.coffee	/^    _hideJavascriptText = ->$/;"	f	line:167	language:coffee	object:@Cell
+_keyHandler	inote/coffee/cell.coffee	/^    _keyHandler = (event) ->$/;"	f	line:478	language:coffee	object:@Cell
+_lock	inote/coffee/cell.coffee	/^    _lock = ->$/;"	f	line:289	language:coffee	object:@Cell
+_lockUnlock	inote/coffee/cell.coffee	/^    _lockUnlock = ->$/;"	f	line:310	language:coffee	object:@Cell
+_print	inote/coffee/cell.coffee	/^    _print = (o) ->$/;"	f	line:565	language:coffee	object:@Cell
+_printError	inote/coffee/cell.coffee	/^    _printError = (o) ->$/;"	f	line:587	language:coffee	object:@Cell
+_removeFocus	inote/coffee/cell.coffee	/^    _removeFocus = ->$/;"	f	line:519	language:coffee	object:@Cell
+_setCursorOnFirstLine	inote/coffee/cell.coffee	/^    _setCursorOnFirstLine = (charPos) ->$/;"	f	line:613	language:coffee	object:@Cell
+_setCursorOnLastLine	inote/coffee/cell.coffee	/^    _setCursorOnLastLine = (charPos) ->$/;"	f	line:607	language:coffee	object:@Cell
+_setFocus	inote/coffee/cell.coffee	/^    _setFocus = (lineNumber, charNumber) ->$/;"	f	line:510	language:coffee	object:@Cell
+_setInputCollapsed	inote/coffee/cell.coffee	/^    _setInputCollapsed = (collapsed) ->$/;"	f	line:271	language:coffee	object:@Cell
+_setKeyMap	inote/coffee/cell.coffee	/^    _setKeyMap = (v)->$/;"	f	line:141	language:coffee	object:@Cell
+_setMode	inote/coffee/cell.coffee	/^    _setMode = (mode) ->$/;"	f	line:360	language:coffee	object:@Cell
+_setNumber	inote/coffee/cell.coffee	/^    _setNumber = (n) ->$/;"	f	line:500	language:coffee	object:@Cell
+_setOutputCollapsed	inote/coffee/cell.coffee	/^    _setOutputCollapsed = (collapsed) ->$/;"	f	line:255	language:coffee	object:@Cell
+_setTheme	inote/coffee/cell.coffee	/^    _setTheme = (themeName) ->$/;"	f	line:150	language:coffee	object:@Cell
+_setXml	inote/coffee/cell.coffee	/^    _setXml = (cell) ->$/;"	f	line:394	language:coffee	object:@Cell
+_setXml0	inote/coffee/cell.coffee	/^    _setXml0 = (cell) ->$/;"	f	line:408	language:coffee	object:@Cell
+_setXml1	inote/coffee/cell.coffee	/^    _setXml1 = (cell) ->$/;"	f	line:435	language:coffee	object:@Cell
+_showJavascriptText	inote/coffee/cell.coffee	/^    _showJavascriptText = ->$/;"	f	line:157	language:coffee	object:@Cell
+_switchFullsreen	inote/coffee/cell.coffee	/^    _switchFullsreen = ->$/;"	f	line:347	language:coffee	object:@Cell
+_switchJavascriptText	inote/coffee/cell.coffee	/^    _switchJavascriptText = ->$/;"	f	line:173	language:coffee	object:@Cell
+_unlock	inote/coffee/cell.coffee	/^    _unlock = ->$/;"	f	line:301	language:coffee	object:@Cell
+buildNotebookList	inote/coffee/index.html.coffee	/^buildNotebookList = (data) =>$/;"	f	line:3	language:coffee	object:window
 clearAndInit	inote/coffee/inote.html.coffee	/^clearAndInit = ->$/;"	f	line:126	language:coffee	object:window
+createdRow	inote/coffee/index.html.coffee	/^                createdRow: (row, d, i) ->$/;"	f	line:61	language:coffee	object:show_list.success.
+data	inote/coffee/index.html.coffee	/^        data:$/;"	v	line:41	language:coffee
+do	inote/coffee/index.html.coffee	/^            document.location.href = "/page?owner=" + encodeURIComponent(\$(".user_social_name").text()) + "&access=" + encodeURIComponent("public") + "&name=" + encodeURIComponent(newName)$/;"	b	line:118	language:coffee
+error	inote/coffee/index.html.coffee	/^        error: (e) -> alert(e)$/;"	f	line:45	language:coffee	object:@deleteNotebook
+getCursor	inote/coffee/cell.coffee	/^    getCursor: -> _codemirror.getCursor()$/;"	f	line:681	language:coffee	object:@Cell
+getEditor	inote/coffee/cell.coffee	/^    getEditor: -> _codemirror$/;"	f	line:668	language:coffee	object:@Cell
+getInputValue	inote/coffee/cell.coffee	/^    getInputValue: -> _codemirror.getValue()$/;"	f	line:671	language:coffee	object:@Cell
+getJQueryCell	inote/coffee/cell.coffee	/^    getJQueryCell: -> _jQueryCell$/;"	f	line:667	language:coffee	object:@Cell
+getJavascriptTextViewer	inote/coffee/cell.coffee	/^    getJavascriptTextViewer: -> _javascriptTextViewer$/;"	f	line:669	language:coffee	object:@Cell
+getLineCount	inote/coffee/cell.coffee	/^    getLineCount: -> _codemirror.lineCount()$/;"	f	line:686	language:coffee	object:@Cell
 getNotebookAccessFromUrl	inote/coffee/inote.html.coffee	/^getNotebookAccessFromUrl = ->$/;"	f	line:97	language:coffee	object:window
 getNotebookNameFromUrl	inote/coffee/inote.html.coffee	/^getNotebookNameFromUrl = ->$/;"	f	line:107	language:coffee	object:window
 getNotebookOwnerFromUrl	inote/coffee/inote.html.coffee	/^getNotebookOwnerFromUrl = ->$/;"	f	line:116	language:coffee	object:window
+getOutputValue	inote/coffee/cell.coffee	/^    getOutputValue: -> _outputCell.html()$/;"	f	line:676	language:coffee	object:@Cell
 hideMenu	inote/coffee/inote.html.coffee	/^hideMenu = ->$/;"	f	line:134	language:coffee	object:window
+if	inote/coffee/cell.coffee	/^                if a$/;"	b	line:489	language:coffee
+if	inote/coffee/cell.coffee	/^                if c or s$/;"	b	line:485	language:coffee
+if	inote/coffee/cell.coffee	/^            if _mode is "text/html"$/;"	b	line:531	language:coffee
+if	inote/coffee/cell.coffee	/^            if typeof(o) is "string"$/;"	b	line:572	language:coffee
+if	inote/coffee/cell.coffee	/^        if _VER is "1"$/;"	b	line:387	language:coffee
+if	inote/coffee/cell.coffee	/^        if _jQueryCell.find(".showJavascriptButton").text() is "Show Javascript"$/;"	b	line:174	language:coffee
+if	inote/coffee/cell.coffee	/^        if _keyMap is "undefined" then _keyMap = "default"$/;"	b	line:143	language:coffee
+if	inote/coffee/cell.coffee	/^        if _lockButton.hasClass('unlocked')$/;"	b	line:311	language:coffee
+if	inote/coffee/cell.coffee	/^        if _mode is "markdown"$/;"	b	line:370	language:coffee
+if	inote/coffee/cell.coffee	/^        if _mode is "text/x-coffeescript"$/;"	b	line:364	language:coffee
+if	inote/coffee/cell.coffee	/^        if _mode is "text/x-coffeescript"$/;"	b	line:625	language:coffee
+if	inote/coffee/cell.coffee	/^        if cell.attr("version") is "1"$/;"	b	line:395	language:coffee
+if	inote/coffee/cell.coffee	/^        if cell.attr('unlocked') is "false"$/;"	b	line:454	language:coffee
+if	inote/coffee/cell.coffee	/^        if collapsed$/;"	b	line:257	language:coffee
+if	inote/coffee/cell.coffee	/^        if collapsed$/;"	b	line:273	language:coffee
+if	inote/coffee/cell.coffee	/^        if fs$/;"	b	line:350	language:coffee
+if	inote/coffee/cell.coffee	/^        if javaScriptText.is(":visible")$/;"	b	line:647	language:coffee
+if	inote/coffee/cell.coffee	/^        if o instanceof jQuery$/;"	b	line:569	language:coffee
+if	inote/coffee/index.html.coffee	/^        if newName$/;"	b	line:116	language:coffee
 if	inote/coffee/inote.html.coffee	/^            if event.ctrlKey and event.keyCode is 83 #Ctrl-S$/;"	b	line:179	language:coffee
 if	inote/coffee/inote.html.coffee	/^        if keyMap then \$("#notebookEditor").val keyMap$/;"	b	line:90	language:coffee
 if	inote/coffee/inote.html.coffee	/^        if o.error$/;"	b	line:49	language:coffee
@@ -24,4 +96,18 @@ if	inote/coffee/inote.html.coffee	/^    if not empty$/;"	b	line:81	language:coff
 if	inote/coffee/inote.html.coffee	/^    if userNameNetwork and userNameNetwork is notebookOwner$/;"	b	line:175	language:coffee
 openNotebook	inote/coffee/inote.html.coffee	/^openNotebook = (notebookOwner, notebookAccess, notebookName) ->$/;"	f	line:67	language:coffee	object:window
 restoreNotebookFromXml	inote/coffee/inote.html.coffee	/^restoreNotebookFromXml = (xmlText) ->$/;"	f	line:79	language:coffee	object:window
+s	inote/coffee/cell.coffee	/^                    s = JSON.stringify(o, (key, value) ->$/;"	f	line:578	language:coffee	object:@Cell._print
+setCursor	inote/coffee/cell.coffee	/^    setCursor: (obj_line_ch) ->$/;"	f	line:682	language:coffee	object:@Cell
+setDeleteCallback	inote/coffee/cell.coffee	/^    setDeleteCallback: (f) ->$/;"	f	line:712	language:coffee	object:@Cell
+setInputValue	inote/coffee/cell.coffee	/^    setInputValue: (code) ->$/;"	f	line:672	language:coffee	object:@Cell
+setInsertAfterCallback	inote/coffee/cell.coffee	/^    setInsertAfterCallback: (f) ->$/;"	f	line:704	language:coffee	object:@Cell
+setInsertBeforeCallback	inote/coffee/cell.coffee	/^    setInsertBeforeCallback: (f) ->$/;"	f	line:708	language:coffee	object:@Cell
+setOutputValue	inote/coffee/cell.coffee	/^    setOutputValue: (code) ->$/;"	f	line:677	language:coffee	object:@Cell
 showMenu	inote/coffee/inote.html.coffee	/^showMenu = ->$/;"	f	line:131	language:coffee	object:window
+show_list	inote/coffee/index.html.coffee	/^show_list = (url, selector) ->$/;"	f	line:48	language:coffee	object:window
+success	inote/coffee/index.html.coffee	/^        success: (d)->$/;"	f	line:52	language:coffee	object:show_list
+success	inote/coffee/index.html.coffee	/^        success: (data) -> setTimeout('location.reload(true)',100)$/;"	f	line:44	language:coffee	object:@deleteNotebook
+switch	inote/coffee/cell.coffee	/^        switch event.which$/;"	b	line:483	language:coffee
+toXmlString	inote/coffee/cell.coffee	/^    toXmlString = (data) ->$/;"	f	line:618	language:coffee	object:@Cell
+unless	inote/coffee/index.html.coffee	/^        unless last_access is notebook_access$/;"	b	line:19	language:coffee
+unless	inote/coffee/index.html.coffee	/^        unless last_owner is notebook_owner$/;"	b	line:16	language:coffee
