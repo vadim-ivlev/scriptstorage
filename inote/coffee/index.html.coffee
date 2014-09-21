@@ -1,5 +1,5 @@
 
-# Build a lisy of notebooks on HTML page ========================================
+# Build a list of notebooks on HTML page ========================================
 buildNotebookList = (data) =>
     key_names = data .split("\n")
     s = ""
