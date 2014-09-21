@@ -117,11 +117,16 @@ hr {
 // SELECT BUTTON --------------------------
 .selectButton {
     .toolButton;
-    -webkit-appearance: none;
-    -moz-appearance: window;
+    -webkit-appearance: none;  //* Removes default chrome and safari style*/
+    -moz-appearance: none;  //* Removes default style Firefox*/
     appearance: none;
     vertical-align: middle;
     border-radius:0px;
+}
+
+// remove arrow in IE select
+.selectButton::-ms-expand {
+    display: none;
 }
 
 .selectButton:hover {
@@ -217,6 +222,6 @@ hr {
 }
 
 // remove arrow in IE select
-select::-ms-expand {
-    display: none;
-}
+//select::-ms-expand {
+//    display: none;
+//}

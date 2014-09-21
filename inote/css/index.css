@@ -84,10 +84,13 @@ hr {
   font-family: Roboto, sans-serif;
   font-size: 16px;
   -webkit-appearance: none;
-  -moz-appearance: window;
+  -moz-appearance: none;
   appearance: none;
   vertical-align: middle;
   border-radius: 0px;
+}
+.selectButton::-ms-expand {
+  display: none;
 }
 .arrowDown::before {
   content: '▼';
@@ -545,9 +548,6 @@ hr {
   font-family: Roboto, sans-serif;
   font-size: 16px;
   cursor: default;
-}
-select::-ms-expand {
-  display: none;
 }
 #appTitle {
   font-family: Roboto, sans-serif;
