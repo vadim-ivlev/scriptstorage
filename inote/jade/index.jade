@@ -27,10 +27,20 @@ html
             #divHeader.header(style='padding: 0px;height:110px;')
                     div(style='float:left')
                         span#appTitle iNote
-                        span#btnCreate.toolButton create new
+                        span#btnCreate.toolButton.btn.btn-danger(role='button') create new
+                        //span.btn.btn-success.btn-lg(role='button',style='font-family:Roboto;') CREATE NEW
             #notebookList {{notebook_list}}
             br
-            #publicList
-            br
-            h3 Your notebooks
-            #userList
+            //tab navs
+            ul.nav.nav-tabs(role="tablist")
+                li.active
+                    a(href="#publicPane",role='tab',data-toggle='tab') Public notebooks
+                li
+                    a(href="#userPane",role='tab',data-toggle='tab') Yours
+            //tab panes
+            .tab-content
+                br
+                #publicPane.tab-pane.active
+                    #publicList
+                #userPane.tab-pane
+                    #userList

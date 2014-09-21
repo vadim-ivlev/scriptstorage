@@ -23,12 +23,25 @@
     <div style="padding-right:10px;float:right;"><span class="user_social_name">{{user_social_name}}</span><span style="display:none" class="user_network">{{user_network}}</span><span style="display:none" class="user_id">{{user_id}}</span><span class="loginHolder">{{login_link}}</span><span class="oauthHolder"></span></div>
     <div id="page" class="page">
       <div id="divHeader" style="padding: 0px;height:110px;" class="header">
-        <div style="float:left"><span id="appTitle">iNote</span><span id="btnCreate" class="toolButton">create new</span></div>
+        <div style="float:left"><span id="appTitle">iNote</span><span id="btnCreate" role="button" class="toolButton btn btn-danger">create new</span>
+          <!--span.btn.btn-success.btn-lg(role='button',style='font-family:Roboto;') CREATE NEW-->
+        </div>
       </div>
       <div id="notebookList">{{notebook_list}}</div><br>
-      <div id="publicList"></div><br>
-      <h3>Your notebooks</h3>
-      <div id="userList"></div>
+      <!--tab navs-->
+      <ul role="tablist" class="nav nav-tabs">
+        <li class="active"><a href="#publicPane" role="tab" data-toggle="tab">Public notebooks</a></li>
+        <li><a href="#userPane" role="tab" data-toggle="tab">Yours</a></li>
+      </ul>
+      <!--tab panes-->
+      <div class="tab-content"><br>
+        <div id="publicPane" class="tab-pane active">
+          <div id="publicList"></div>
+        </div>
+        <div id="userPane" class="tab-pane">
+          <div id="userList"></div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
