@@ -51,7 +51,7 @@ show_list = (url, selector) ->
         dataType: 'json'
         success: (d)->
             # build a table
-            t=$ '<table class="hover compact" width="100%" ></table>'
+            t=$ '<table class="hover" width="100%" ></table>'
             t.hide()
             $(selector).append t
             # fill it with data usinf dataTable library
