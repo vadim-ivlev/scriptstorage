@@ -1,4 +1,5 @@
 import webapp2
+import json
 from google.appengine.api import users
 import notebook as NB
 import utils
@@ -79,19 +80,20 @@ class WriteHandler(webapp2.RequestHandler):
 
 
         #output
+        r = {}
+        r['key_name']=key_name
+        r['notebook_name']=notebook_name
+        r['user_nickname']=user_nickname
+        r['user_name']=user_name
+        r['user_network']=user_network
+        r['user_id']=user_id
+        r['user_name_network_id']=user_name_network_id
+        r['access']=access
+        #r['content']=content
+        r['version']=version
 
         self.response.headers['Content-Version'] =str(version)
-
-        self.response.out.write("{'key_name': '%s',\n" % key_name)
-        self.response.out.write("'notebook_name': '%s',\n" % notebook_name)
-        self.response.out.write("'user_name': '%s',\n" % user_name)
-        self.response.out.write("'user_network': '%s',\n" % user_network)
-        self.response.out.write("'user_id': '%s',\n" % user_id)
-        self.response.out.write("'user_name_network_id': '%s',\n" % user_name_network_id)
-        self.response.out.write("'user_nickname': '%s',\n" % user_nickname)
-        self.response.out.write("'access': '%s',\n" % access)
-        #self.response.out.write("'content': '%s',\n" % content)
-        self.response.out.write("'version': '%s'}" % version)
+        self.response.out.write( json.dumps(r, indent=2) )
 
 
 

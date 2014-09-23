@@ -335,10 +335,6 @@ window?.clear = null
             _setMode mode
             _codemirror.focus()
         
-        #$('.cellLabel',_jQueryCell).change  (e) ->
-        #    saveNotebookLater?()
-        #    console.log "descr changed"
-        
         $('.cellLabel',_jQueryCell).keypress  (e) ->
             saveNotebookLater?()
             console.log "descr changed"
@@ -425,7 +421,8 @@ window?.clear = null
 
         unlk=if _lockButton.hasClass('unlocked') then "true" else "false"
 
-        cell = $("<div class='cell' id='#{_jQueryCell.attr('id')}'  version='1' number='#{_n}' mode='#{_mode}' unlocked='#{unlk}' celllabel='#{$('.cellLabel',_jQueryCell).text()}'/>") # cell_state='#{_state.str()}'
+        cell = $("<div class='cell' id='#{_jQueryCell.attr('id')}'  version='1' number='#{_n}' mode='#{_mode}' unlocked='#{unlk}' />") # cell_state='#{_state.str()}'
+        cell.attr 'celllabel', $('.cellLabel',_jQueryCell).text()
         $("<div class='inputCell'  id='#{_inputCell.attr('id')}' collapsed='#{_inCollapsed}'/>").text(_codemirror.getValue()).appendTo cell
         $("<div class='javascriptCell' id='#{_javascriptCell.attr('id')}'/>").text(_javascriptTextViewer.getValue()).appendTo cell
         $("<div class='outputCell' id='#{_outputCell.attr('id')}' collapsed='#{_outCollapsed}'/>").text(_outputCell.html()).appendTo cell
@@ -454,7 +451,7 @@ window?.clear = null
         if cell.attr('unlocked') is "false"
             _lock()
         else
-            _unlock();
+            _unlock()
 
 
         return

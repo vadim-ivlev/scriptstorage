@@ -64,21 +64,23 @@
           data: d,
           paging: false,
           createdRow: function(row, d, i) {
-            var a, key_name, n, net, td0, td0_html, td1, td1_html, tds, u, unet;
-            tds = $(row).find('td');
-            td0 = tds.first();
-            td1 = tds.last();
-            u = encodeURIComponent(d.user_name);
-            net = encodeURIComponent(d.user_network);
+            var a, access, name, tds, unet, x;
             unet = encodeURIComponent(d.user_name + '|' + d.user_network);
-            a = encodeURIComponent(d.access);
-            n = encodeURIComponent(d.notebook_name);
-            key_name = d.key_name;
-            td0_html = "<a href='/page?owner=" + unet + "&access=" + a + "&name=" + n + "' >" + d.notebook_name + "</a>&nbsp;&nbsp;&nbsp;";
-            td1_html = "<span class='toolButton' title='delete' onclick='deleteNotebook(\"" + key_name + "\")'>&#x00D7</span>";
-            td0.html(td0_html);
-            td1.html(td1_html);
-            return td1.css('text-align', 'right');
+            access = encodeURIComponent(d.access);
+            name = encodeURIComponent(d.notebook_name);
+            tds = $(row).find('td');
+            tds.first().html('');
+            a = $('<a></a>');
+            a.appendTo(tds.first());
+            a.attr('href', "/page?owner=" + unet + "&access=" + access + "&name=" + name);
+            a.text(d.notebook_name);
+            tds.last().html('');
+            tds.last().css('text-align', 'right');
+            x = $("<span class='toolButton' title='delete' >&#x00D7</span>");
+            x.appendTo(tds.last());
+            return x.click(function() {
+              return deleteNotebook(d.key_name);
+            });
           },
           columns: [
             {

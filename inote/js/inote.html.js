@@ -18,6 +18,10 @@
     this.saveNotebookLater();
   };
 
+  this.clearSaveIndicator = function() {
+    return $("#saveIndicator").text("");
+  };
+
   this.saveNotebookLater = function() {
     $("#saveIndicator").text("*");
     clearTimeout(saveNotebookTimeout);
@@ -36,7 +40,7 @@
     console.log("saveNotebook");
     storage.put(notebookAccess, notebookName, xmlText, notebookVersion, function(d) {
       var o;
-      o = eval("a=" + d);
+      o = d;
       if (!o) {
         return;
       }
@@ -90,6 +94,7 @@
     if ($(".cell").length === 0) {
       inote.init();
     }
+    this.clearSaveIndicator();
   };
 
   getNotebookAccessFromUrl = function() {
@@ -177,9 +182,14 @@
     $("html").click(function(event) {
       return hideMenu();
     });
-    return $("#saveGroup").click(function(event) {
+    $("#saveGroup").click(function(event) {
       return event.stopPropagation();
     });
+    return window.onbeforeunload = function() {
+      if ($("#saveIndicator").text()) {
+        return "You have unsaved changes.";
+      }
+    };
   });
 
 }).call(this);

@@ -31,7 +31,7 @@ class @NoteBookStorage
         r =
             type: "POST"
             url: "/write"
-            dataType: "text"
+            dataType: "json"
             data:
                 name: notebook_name
                 access: notebook_access
@@ -50,7 +50,7 @@ class @NoteBookStorage
         $.ajax
             url: "/delete"
             data:{ key_name: key_name }
-            success:  -> onsuccess?() 
+            success:  -> onsuccess?()
             error: (e) -> onerror?(e)
 
 

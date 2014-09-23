@@ -343,7 +343,8 @@ keyMap - default| vim | sublime | emac
     _getXml1 = function() {
       var cell, unlk;
       unlk = _lockButton.hasClass('unlocked') ? "true" : "false";
-      cell = $("<div class='cell' id='" + (_jQueryCell.attr('id')) + "'  version='1' number='" + _n + "' mode='" + _mode + "' unlocked='" + unlk + "' celllabel='" + ($('.cellLabel', _jQueryCell).text()) + "'/>");
+      cell = $("<div class='cell' id='" + (_jQueryCell.attr('id')) + "'  version='1' number='" + _n + "' mode='" + _mode + "' unlocked='" + unlk + "' />");
+      cell.attr('celllabel', $('.cellLabel', _jQueryCell).text());
       $("<div class='inputCell'  id='" + (_inputCell.attr('id')) + "' collapsed='" + _inCollapsed + "'/>").text(_codemirror.getValue()).appendTo(cell);
       $("<div class='javascriptCell' id='" + (_javascriptCell.attr('id')) + "'/>").text(_javascriptTextViewer.getValue()).appendTo(cell);
       $("<div class='outputCell' id='" + (_outputCell.attr('id')) + "' collapsed='" + _outCollapsed + "'/>").text(_outputCell.html()).appendTo(cell);

@@ -32,7 +32,7 @@
       r = {
         type: "POST",
         url: "/write",
-        dataType: "text",
+        dataType: "json",
         data: {
           name: notebook_name,
           access: notebook_access,

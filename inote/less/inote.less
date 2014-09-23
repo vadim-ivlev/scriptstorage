@@ -88,10 +88,24 @@
     cursor:pointer;
 }
 
+.nbAccess {
+    .notebookName;
+    opacity: 0.3;
+    margin-left:20px;
+    cursor: default;
+}
+
 .notebookVersion {
     .notebookName;
-    font-size:10px;
-    vertical-align:top;
+    //font-size:10px;
+    //vertical-aligin:top;
+    opacity: 0.3;
+    margin-left:20px;
+}
+
+.notebookVersion::before {
+    content: 'ver';
+    margin-right:5px;
 }
 
 .notebookName:hover {

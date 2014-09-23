@@ -1866,6 +1866,9 @@ hr {
   overflow: auto;
   padding: 0;
   border: 1px solid transparent;
+  box-sizing: border-box;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .noerror {
   white-space: pre-wrap;
@@ -2073,6 +2076,18 @@ hr {
   -webkit-appearance: none;
   cursor: pointer;
 }
+.nbAccess {
+  position: relative;
+  border: 1px solid transparent;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  cursor: pointer;
+  opacity: 0.3;
+  margin-left: 20px;
+  cursor: default;
+}
 .notebookVersion {
   position: relative;
   border: 1px solid transparent;
@@ -2081,8 +2096,12 @@ hr {
   vertical-align: middle;
   -webkit-appearance: none;
   cursor: pointer;
-  font-size: 10px;
-  vertical-align: top;
+  opacity: 0.3;
+  margin-left: 20px;
+}
+.notebookVersion::before {
+  content: 'ver';
+  margin-right: 5px;
 }
 .notebookName:hover {
   border-bottom: 1px dotted #777777;

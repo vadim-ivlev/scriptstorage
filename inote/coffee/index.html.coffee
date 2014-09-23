@@ -59,24 +59,24 @@ show_list = (url, selector) ->
                 data: d,
                 paging:false
                 createdRow: (row, d, i) ->
-                    tds=$(row).find('td')
-                    td0=tds.first()
-                    td1=tds.last()
-                    u=encodeURIComponent(d.user_name)
-                    net=encodeURIComponent(d.user_network)
                     unet=encodeURIComponent(d.user_name+'|'+d.user_network)
-                    a=encodeURIComponent(d.access)
-                    n=encodeURIComponent(d.notebook_name)
-                    key_name=d.key_name
-                    td0_html = """
-                       <a href='/page?owner=#{unet}&access=#{a}&name=#{n}' >#{d.notebook_name}</a>&nbsp;&nbsp;&nbsp;
-                    """
-                    td1_html = """
-                       <span class='toolButton' title='delete' onclick='deleteNotebook("#{key_name}")'>&#x00D7</span>
-                    """
-                    td0.html(td0_html)
-                    td1.html(td1_html)
-                    td1.css('text-align','right')
+                    access=encodeURIComponent(d.access)
+                    name=encodeURIComponent(d.notebook_name)
+                    tds=$(row).find('td')
+                    
+# create a link in the first cell
+                    tds.first().html('')
+                    a=$('<a></a>')
+                    a.appendTo(tds.first())
+                    a.attr 'href', "/page?owner=#{unet}&access=#{access}&name=#{name}"
+                    a.text d.notebook_name
+
+# create a span with a cross in the last cell
+                    tds.last().html('')
+                    tds.last().css('text-align','right')
+                    x = $ "<span class='toolButton' title='delete' >&#x00D7</span>"
+                    x.appendTo(tds.last())
+                    x.click -> deleteNotebook(d.key_name)
                 columns: [
                     { title: 'Name', data:'notebook_name' }
                     { title: 'Acc', data:'access', width:60 }
