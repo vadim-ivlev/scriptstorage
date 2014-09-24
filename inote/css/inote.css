@@ -2109,3 +2109,55 @@ hr {
 .notebookOwner {
   display: none;
 }
+.modalDialog {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.7);
+  z-index: 99999;
+  font-family: Roboto, sans-serif;
+}
+.modalDialog input,
+.modalDialog button {
+  font-family: Roboto, sans-serif;
+  background-color: white;
+  border: 1px solid rgba(200, 200, 200, 0.7);
+  font-size: 16px;
+}
+.modalDialog button {
+  border-radius: 4px;
+}
+.modalDialog input {
+  font-size: 130%;
+}
+.modalDialog .icon-close {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 200%;
+  opacity: 0.6;
+}
+.modalDialog button {
+  padding: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.modalDialog .btnOk {
+  background-color: #4a8bf5;
+  color: white;
+}
+.modalDialog .btnCancel {
+  background-color: #F4F4F4;
+}
+.modalDialog > div {
+  max-width: 600px;
+  position: relative;
+  margin: 0 auto;
+  padding: 0px 20px 20px 20px;
+  border: 1px solid rgba(200, 200, 200, 0.7);
+  background: #fff;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}

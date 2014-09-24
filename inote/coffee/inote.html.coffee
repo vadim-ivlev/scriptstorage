@@ -4,7 +4,10 @@ saveNotebookTimeout = undefined
 inote = undefined
 
 
-
+@preventClick = (event) ->
+    #event.preventDefault()
+    event.stopPropagation()
+    return
 
 @selectTheme = ->
     inote.setTheme $("#selectTheme_button").val()
@@ -64,9 +67,15 @@ inote = undefined
     $("#notebookName").text newName if newName
 
 
+@showRenameDialog = (btnOkText, callback) ->
+    b = $("#renameDialog .btnOk")
+    b.text(btnOkText)
+    b.unbind()
+    b.bind('click', callback)
+    $("#renameDialog").show()
+
 @rename = ->
     alert "Not implemented"
-
 
 openNotebook = (notebookOwner, notebookAccess, notebookName) ->
     clearAndInit()

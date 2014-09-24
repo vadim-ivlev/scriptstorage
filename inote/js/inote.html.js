@@ -8,6 +8,10 @@
 
   inote = void 0;
 
+  this.preventClick = function(event) {
+    event.stopPropagation();
+  };
+
   this.selectTheme = function() {
     inote.setTheme($("#selectTheme_button").val());
     this.saveNotebookLater();
@@ -59,6 +63,15 @@
     if (newName) {
       return $("#notebookName").text(newName);
     }
+  };
+
+  this.showRenameDialog = function(btnOkText, callback) {
+    var b;
+    b = $("#renameDialog .btnOk");
+    b.text(btnOkText);
+    b.unbind();
+    b.bind('click', callback);
+    return $("#renameDialog").show();
   };
 
   this.rename = function() {

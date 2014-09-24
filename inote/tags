@@ -1,0 +1,32 @@
+!_TAG_FILE_FORMAT	2	/extended format/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Łukasz Korecki	/lukasz@coffeesounds.com/
+!_TAG_PROGRAM_NAME	CoffeeTags	//
+!_TAG_PROGRAM_URL	https://github.com/lukaszkorecki/CoffeeTags	/GitHub repository/
+!_TAG_PROGRAM_VERSION	0.5.0	//
+@clearSaveIndicator	coffee/inote.html.coffee	/^@clearSaveIndicator = ->$/;"	f	line:24	language:coffee	object:window
+@preventClick	coffee/inote.html.coffee	/^@preventClick = (event) ->$/;"	f	line:7	language:coffee	object:window
+@rename	coffee/inote.html.coffee	/^@rename = ->$/;"	f	line:77	language:coffee	object:window
+@saveAs	coffee/inote.html.coffee	/^@saveAs = ->$/;"	f	line:65	language:coffee	object:window
+@saveNotebook	coffee/inote.html.coffee	/^@saveNotebook = (event) ->$/;"	f	line:38	language:coffee	object:window
+@saveNotebookLater	coffee/inote.html.coffee	/^@saveNotebookLater = ->$/;"	f	line:28	language:coffee	object:window
+@selectKeyMap	coffee/inote.html.coffee	/^@selectKeyMap = ->$/;"	f	line:18	language:coffee	object:window
+@selectTheme	coffee/inote.html.coffee	/^@selectTheme = ->$/;"	f	line:12	language:coffee	object:window
+@showRenameDialog	coffee/inote.html.coffee	/^@showRenameDialog = (btnOkText, callback) ->$/;"	f	line:70	language:coffee	object:window
+clearAndInit	coffee/inote.html.coffee	/^clearAndInit = ->$/;"	f	line:141	language:coffee	object:window
+getNotebookAccessFromUrl	coffee/inote.html.coffee	/^getNotebookAccessFromUrl = ->$/;"	f	line:112	language:coffee	object:window
+getNotebookNameFromUrl	coffee/inote.html.coffee	/^getNotebookNameFromUrl = ->$/;"	f	line:122	language:coffee	object:window
+getNotebookOwnerFromUrl	coffee/inote.html.coffee	/^getNotebookOwnerFromUrl = ->$/;"	f	line:131	language:coffee	object:window
+hideMenu	coffee/inote.html.coffee	/^hideMenu = ->$/;"	f	line:149	language:coffee	object:window
+if	coffee/inote.html.coffee	/^            if event.ctrlKey and event.keyCode is 83 #Ctrl-S$/;"	b	line:192	language:coffee
+if	coffee/inote.html.coffee	/^        if \$("#saveIndicator").text()$/;"	b	line:212	language:coffee
+if	coffee/inote.html.coffee	/^        if keyMap then \$("#notebookEditor").val keyMap$/;"	b	line:103	language:coffee
+if	coffee/inote.html.coffee	/^        if o.error$/;"	b	line:56	language:coffee
+if	coffee/inote.html.coffee	/^        if themeName then \$("#selectTheme_button").val themeName$/;"	b	line:100	language:coffee
+if	coffee/inote.html.coffee	/^    if \$("#autoSave").is(":checked")$/;"	b	line:33	language:coffee
+if	coffee/inote.html.coffee	/^    if not empty$/;"	b	line:94	language:coffee
+if	coffee/inote.html.coffee	/^    if userNameNetwork and userNameNetwork is notebookOwner$/;"	b	line:189	language:coffee
+onbeforeunload	coffee/inote.html.coffee	/^    window.onbeforeunload = ->$/;"	f	line:211	language:coffee	object:hideMenu
+openNotebook	coffee/inote.html.coffee	/^openNotebook = (notebookOwner, notebookAccess, notebookName) ->$/;"	f	line:80	language:coffee	object:window
+restoreNotebookFromXml	coffee/inote.html.coffee	/^restoreNotebookFromXml = (xmlText) ->$/;"	f	line:92	language:coffee	object:window
+showMenu	coffee/inote.html.coffee	/^showMenu = ->$/;"	f	line:146	language:coffee	object:window
