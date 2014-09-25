@@ -142,6 +142,30 @@ def access_allowed(o, notebook_access,notebook_owner) :
 
     return (get_user_name_network(o) == notebook_owner_name_network)
 
+def parse_key(key_name):
+    """ For the key 'UserName|NetworkName/public/fileName'
+    returns a dictionary of fields: user_name 
+    """
+    r = {'user_name':'a', 'user_network':'', 'user_name_network':'', 'notebook_name':'', 'access':'' }
+    
+    if not key_name: return r
+
+    # split into 3 parts    
+    a = key_name.split("/",2) 
+    
+    # if not a valid key_name
+    if len(a) < 3:  return r
+
+    r['user_name_network'] = a[0]
+    r['access'] = a[1]
+    r['notebook_name'] = a[2]
+
+    nn=a[0].split('|',1)
+    r['user_name']=nn[0]
+    if len(nn)>1 : r['user_network'] = nn[1]
+    return r
+
+
 
 def extract_name_network(s):
     a = s.split('|',2)

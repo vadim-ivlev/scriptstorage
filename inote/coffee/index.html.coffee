@@ -1,17 +1,28 @@
 
+store = new NoteBookStorage()
 
+onsuccess = (d) ->
+    console.log d
+
+    if d.error
+        alert (d.error)
+    else
+        setTimeout('location.reload(true)',100)
 # click handler to delete a notebook ============================================
 @deleteNotebook = (key_name) ->
     return    unless confirm("Are you sure?")
-    #storage.del(key_name, location.reload, alert)
+
+
+    #store.del(key_name, location.reload, alert)
     $.ajax
         url: "/delete"
-        dataType: "text"
+        dataType: "json"
         data:
             key_name: key_name
 
-        success: (data) -> setTimeout('location.reload(true)',100)
-        error: (e) -> alert(e)
+        success: onsuccess
+        error: (e) ->
+            alert("error:"+e)
     return
 
 show_list = (url, selector) ->
@@ -42,7 +53,8 @@ show_list = (url, selector) ->
 
 # create a span with a cross in the last cell
                     tds.last().html('')
-                    if $(".user_social_name").text()==d.user_name and $('.user_network').text()==d.user_network
+                    #if $(".user_social_name").text()==d.user_name and $('.user_network').text()==d.user_network
+                    if true
                         tds.last().css('text-align','right')
                         x = $ "<span class='toolButton' title='delete' >&#x00D7</span>"
                         x.appendTo(tds.last())
@@ -58,7 +70,6 @@ show_list = (url, selector) ->
             return
 
 
-storage = new NoteBookStorage()
 # on page load ==================================================================
 $ ->
     ###
