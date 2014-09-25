@@ -1,35 +1,4 @@
 
-# Build a list of notebooks on HTML page ========================================
-buildNotebookList = (data) =>
-    key_names = data .split("\n")
-    s = ""
-    last_owner = ""
-    last_access = ""
-
-    for key_name in key_names
-        name_parts =  key_name.split("/")
-        continue    if name_parts.length < 3
-        notebook_owner = name_parts[0]
-        notebook_access = name_parts[1]
-        notebook_name = name_parts[2]
-        
-        unless last_owner is notebook_owner
-            s += "<div  style='padding-left: 0px;'>" + notebook_owner.replace(/\|.*/,"") + "</div>"
-            last_owner = notebook_owner
-        unless last_access is notebook_access
-            s += "<div   style='padding-left: 25px; color:" + ((if notebook_access is "private" then "black" else "")) + ";  '>" + notebook_access + "</div>"
-            last_access = notebook_access
-        s += """
-        <div style='padding-left: 50px;'>
-           <a 
-           href='/page?owner=#{encodeURIComponent(notebook_owner)}&access=#{encodeURIComponent(notebook_access)}&name=#{encodeURIComponent(notebook_name)}'
-           >#{notebook_name}</a>&nbsp;&nbsp;&nbsp;
-           <span class='toolButton' title='delete' onclick='deleteNotebook("#{key_name}")'>&#x00D7</span>
-        </div>
-        """
-        
-        
-    $("#notebookList").html s
 
 # click handler to delete a notebook ============================================
 @deleteNotebook = (key_name) ->
@@ -73,10 +42,12 @@ show_list = (url, selector) ->
 
 # create a span with a cross in the last cell
                     tds.last().html('')
-                    tds.last().css('text-align','right')
-                    x = $ "<span class='toolButton' title='delete' >&#x00D7</span>"
-                    x.appendTo(tds.last())
-                    x.click -> deleteNotebook(d.key_name)
+                    if $(".user_social_name").text()==d.user_name and $('.user_network').text()==d.user_network
+                        tds.last().css('text-align','right')
+                        x = $ "<span class='toolButton' title='delete' >&#x00D7</span>"
+                        x.appendTo(tds.last())
+                        x.click -> deleteNotebook(d.key_name)
+
                 columns: [
                     { title: 'Name', data:'notebook_name' }
                     { title: 'Acc', data:'access', width:60 }
@@ -96,15 +67,10 @@ $ ->
     if loginHolder.text().match(/^{{/)
         loginHolder.load "/getloginlink"
     ###
-    ###
-    # check if notebook list contains python server template 
-    if $("#notebookList").text().match(/^{{/)
-        storage.list buildNotebookList
-    else
-        buildNotebookList  $("#notebookList").text()
-    ###
     
-    #buildNotebookList  $("#notebookList").text()
+    # Hide user tab if he is not signed in
+    if not $(".user_social_name").text()
+        $('.userTab').hide()
     
     $("#notebookList").hide()
     show_list('/publiclist','#publicList')
