@@ -172,6 +172,29 @@ def extract_name_network(s):
     return  '|'.join(a[:2])
 
 
+
+def delete_notebook(key_name,o):
+    """
+    Deletes the notebook by it's key name
+    """
+    r={}
+    if not key_name :
+        r['error']='No key_name specified.'
+        return r
+
+    owner_name_network = parse_key(key_name)['user_name_network']
+    user_name_network = get_user_name_network(o)
+
+    if owner_name_network == user_name_network :
+        db.delete(db.Key.from_path("NoteBook", key_name))
+        r['result'] = 'Ok'
+    else:
+        r['error'] = 'The notebook can be deleted by its owner only.'
+
+    return r
+
+
+
 def get_notebook(owner_nickname, notebook_access, notebook_name, notebook_version):
     """
     Returns the notebook.
@@ -228,7 +251,91 @@ def get_notebook_element(owner_nickname, notebook_access, notebook_name, element
     
     return (s, version)
 
+def save_notebook(access, notebook_name, content, version, o):
+    #user_nickname=get_user_nickname(o)
+    user_nickname=get_user_name_network(o)
+    if not user_nickname:
+        return {'error':'Please login to save changes'}
+    user_name=get_user_name(o)
+    user_network=get_user_network(o)
+    user_id=get_user_id(o)
+    user_name_network_id=get_user_name_network_id(o)
 
+
+    # TODO: check if the notebook exists and the user is the same as owner???
+    #b=get_notebook(user_nickname, access, notebook_name, None)
+    #if b and b.user_id != user_id:
+    #    o.response.out.write("{'error':'Sorry, Only owners can save changes.'}")
+    #    return
+
+
+    # find the last version
+    last_version=0
+    (last_content, last_version)=get_notebook_content(user_nickname, access, notebook_name, None)
+    if not last_version:
+        last_version= 0
+
+    # if version is not specified in the request make it more than last_version by 1
+    version = int(version) if version != '' else last_version + 1
+
+    key_name=user_nickname+"/"+access+"/"+notebook_name
+
+    # if this is a new version save it in NoteBook
+    if version >= last_version:
+        #create a new NoteBook. key_name must go in constructor
+        n=NoteBook(key_name=key_name)
+        n.notebook_name=notebook_name
+        n.user_nickname=user_nickname
+        n.user_name=user_name
+        n.user_network=user_network
+        n.user_id=user_id
+        n.user_name_network_id=user_name_network_id
+        n.access=access
+        n.content=content
+        n.version=version
+        #save it
+        #import pdb; pdb.set_trace()
+        n.put()
+
+    # No matter if it is a new or an old version save it in NoteBookVersion
+    n=NoteBookVersion(key_name=key_name+"/"+str(version))
+    n.notebook_name=notebook_name
+    n.user_nickname=user_nickname
+    n.user_name=user_name
+    n.user_network=user_network
+    n.user_id=user_id
+    n.user_name_network_id=user_name_network_id
+    n.access=access
+    n.content=content
+    n.version=version
+    #save it
+    n.put()
+
+    #output
+    r = {}
+    r['key_name']=key_name
+    r['notebook_name']=notebook_name
+    r['user_nickname']=user_nickname
+    r['user_name']=user_name
+    r['user_network']=user_network
+    r['user_id']=user_id
+    r['user_name_network_id']=user_name_network_id
+    r['access']=access
+    #r['content']=content
+    r['version']=version
+
+    return r
+
+
+def rename_notebook(key_name, access, notebook_name, content, version, o):
+    r = save_notebook(access, notebook_name, content, version, o)
+    user_name_network = get_user_name_network(o)
+
+    # if the new key_name is different from the old one
+    # delete the old notebook
+    if r['key_name'] != key_name :
+        delete_notebook(key_name,o)
+    return r
 
 
 def get_mime_type(element_id):

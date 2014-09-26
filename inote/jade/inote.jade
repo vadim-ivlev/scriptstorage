@@ -94,7 +94,7 @@ html
                 span.toolButton(onclick='saveAs()') Save As ...
                 br
                 br
-                span.toolButton(onclick='showRenameDialog("Rename",rename)') Rename ...
+                span.toolButton(onclick='rename2()') Rename ...
                 br
                 br
                 span.toolButton(onclick='saveNotebook(event)',title='Save a new version.') Save as new version
@@ -147,7 +147,8 @@ html
 
 
         #page.page {{notebook_content}} 
-        
+        #notebookOwner.toolButton {{notebook_owner}}
+
         #renameDialog.modalDialog(onclick='$(".modalDialog").hide()')
             div(onclick='preventClick(event)')
                 span.toolButton.icon-close(onclick='$(".modalDialog").hide()')
@@ -159,7 +160,7 @@ html
                 br
                 br
                 input#checkboxAccess(type='checkbox',checked='yes')
-                label(for='checkboxAccess') Make it public
+                label(for='checkboxAccess') public
                 br
                 br
                 button.btnCancel(onclick='$(".modalDialog").hide()') Cancel

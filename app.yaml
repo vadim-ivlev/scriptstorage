@@ -34,6 +34,9 @@ handlers:
 - url: /write.*
   script: py.write.app
 
+- url: /rename.*
+  script: py.rename.app
+
 - url: /delete.*
   script: py.delete.app
 

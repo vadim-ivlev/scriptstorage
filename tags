@@ -3,12 +3,16 @@
 !_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
-!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+!_TAG_PROGRAM_VERSION	5.8	//
 CELLS	inote/coffee/inote.coffee	/^        CELLS = []$/;"	v
 CELLS	inote/coffee/inote.coffee	/^    CELLS = []$/;"	v
 CTor	inote/libs/codemirror-4.3/demo/tern.html	/^function CTor() { this.size = 10; }$/;"	f
+CURR_HEAD	node_modules/qunit/node_modules/istanbul/node_modules/js-yaml/Makefile	/^CURR_HEAD   := $(firstword $(shell git show-ref --hash HEAD | cut -b -6) master)$/;"	m
 CodeMirror.commands.autocomplete	inote/coffee/cdmirror.coffee	/^CodeMirror.commands.autocomplete = (cm) ->$/;"	f
 DeleteHandler	py/delete.py	/^class DeleteHandler(webapp2.RequestHandler):$/;"	c
+Detector	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^class Detector(object):$/;"	c
+ET	py/utils.py	/^import xml.etree.ElementTree as ET$/;"	i
+GITHUB_PROJ	node_modules/qunit/node_modules/istanbul/node_modules/js-yaml/Makefile	/^GITHUB_PROJ := https:\/\/github.com\/nodeca\/${NPM_PACKAGE}$/;"	m
 GetLoginLink	py/login.py	/^class GetLoginLink(webapp2.RequestHandler):$/;"	c
 GetUserNamePage	py/login.py	/^class GetUserNamePage(webapp2.RequestHandler):$/;"	c
 IndexPage	py/indexpage.py	/^class IndexPage(webapp2.RequestHandler):$/;"	c
@@ -18,25 +22,45 @@ ListHandler	py/proxy.py	/^class ListHandler(webapp2.RequestHandler):$/;"	c
 LoginPage	py/login.py	/^class LoginPage(webapp2.RequestHandler):$/;"	c
 LogoutPage	py/login.py	/^class LogoutPage(webapp2.RequestHandler):$/;"	c
 MainPage	py/main.py	/^class MainPage(webapp2.RequestHandler):$/;"	c
+NB	py/write.py	/^import notebook as NB$/;"	i
+NPM_PACKAGE	node_modules/qunit/node_modules/istanbul/node_modules/js-yaml/Makefile	/^NPM_PACKAGE := $(shell node -e 'process.stdout.write(require(".\/package.json").name)')$/;"	m
+NPM_VERSION	node_modules/qunit/node_modules/istanbul/node_modules/js-yaml/Makefile	/^NPM_VERSION := $(shell node -e 'process.stdout.write(require(".\/package.json").version)')$/;"	m
+NoteBook	py/list.py	/^from notebook import NoteBook$/;"	i
+NoteBook	py/main.py	/^from notebook import NoteBook$/;"	i
 NoteBook	py/notebook.py	/^class NoteBook(db.Model):$/;"	c
+NoteBook	py/utils.py	/^from notebook import NoteBook$/;"	i
 NoteBookVersion	py/notebook.py	/^class NoteBookVersion(NoteBook):$/;"	c
+NoteBookVersion	py/utils.py	/^from notebook import NoteBookVersion$/;"	i
+PATH	node_modules/qunit/node_modules/istanbul/node_modules/js-yaml/Makefile	/^PATH        := .\/node_modules\/.bin:${PATH}$/;"	m
 Page	py/page.py	/^class Page(webapp2.RequestHandler):$/;"	c
 PublicListHandler	py/publiclist.py	/^class PublicListHandler(webapp2.RequestHandler):$/;"	c
+REMOTE_NAME	node_modules/qunit/node_modules/istanbul/node_modules/js-yaml/Makefile	/^REMOTE_NAME ?= origin$/;"	m
+REMOTE_REPO	node_modules/qunit/node_modules/istanbul/node_modules/js-yaml/Makefile	/^REMOTE_REPO ?= $(shell git config --get remote.${REMOTE_NAME}.url)$/;"	m
 ReadHandler	py/read.py	/^class ReadHandler(webapp2.RequestHandler):$/;"	c
+RegExpGenerator	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^class RegExpGenerator(object):$/;"	c
 SRW	node_modules/qunit/node_modules/istanbul/node_modules/escodegen/node_modules/esutils/test/keyword.coffee	/^SRW = [$/;"	v
 StringStream	inote/libs/codemirror-4.3/mode/javascript/index.html	/^function StringStream(string) {$/;"	f
 T	inote/coffee/qunit-tests.coffee	/^T = this$/;"	v
+TMP_PATH	node_modules/qunit/node_modules/istanbul/node_modules/js-yaml/Makefile	/^TMP_PATH    := \/tmp\/${NPM_PACKAGE}-$(shell date +%s)$/;"	m
 Test	py/login.py	/^class Test(webapp2.RequestHandler):$/;"	c
 UserListHandler	py/userlist.py	/^class UserListHandler(webapp2.RequestHandler):$/;"	c
 WriteHandler	py/write.py	/^class WriteHandler(webapp2.RequestHandler):$/;"	c
+__init__	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def __init__(self, data):$/;"	m	class:Detector
+__init__	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def __init__(self, detector):$/;"	m	class:RegExpGenerator
+_generate_range	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def _generate_range(self, r):$/;"	m	class:RegExpGenerator
+_is_non_ascii_identifier_part	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def _is_non_ascii_identifier_part(self, ch):$/;"	m	class:Detector
+_is_non_ascii_identifier_start	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def _is_non_ascii_identifier_start(self, ch):$/;"	m	class:Detector
 a	inote/coffee/qunit-tests.coffee	/^a=[1,2,3]$/;"	v
 access	py/notebook.py	/^    access=db.StringProperty()$/;"	v	class:NoteBook
 access_allowed	py/utils.py	/^def access_allowed(o, notebook_access,notebook_owner) :$/;"	f
+addComment	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function addComment(type, value, start, end, loc) {$/;"	f
 addLoginLink	inote/coffee/login.html.coffee	/^        addLoginLink =($container, network) ->$/;"	f
 addLogoutLink	inote/coffee/login.html.coffee	/^        addLogoutLink =($container) ->$/;"	f
 addOutput	inote/libs/codemirror-4.3/test/index.html	/^      function addOutput(name, className, code){$/;"	f
 adjust_ui	inote/coffee/login.html.coffee	/^adjust_ui = ->$/;"	f
+advance	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function advance() {$/;"	f
 ality	inote/libs/codemirror-4.3/doc/manual.html	/^    functionality (on top of extension functions$/;"	f
+analyze	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^def analyze(source):$/;"	f
 app	py/delete.py	/^app = webapp2.WSGIApplication($/;"	v
 app	py/indexpage.py	/^app = webapp2.WSGIApplication($/;"	v
 app	py/list.py	/^app = webapp2.WSGIApplication($/;"	v
@@ -49,8 +73,14 @@ app	py/read.py	/^app = webapp2.WSGIApplication($/;"	v
 app	py/userlist.py	/^app = webapp2.WSGIApplication($/;"	v
 app	py/write.py	/^app = webapp2.WSGIApplication($/;"	v
 appendNewCell	inote/coffee/inote.coffee	/^    appendNewCell = (cellNumber) ->$/;"	f
+assert	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function assert(condition, message) {$/;"	f
+binaryPrecedence	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function binaryPrecedence(token, allowIn) {$/;"	f
 blablabla3	inote/libs/codemirror-4.3/mode/lua/index.html	/^function blablabla3()$/;"	f
 blahblahblah	inote/libs/codemirror-4.3/mode/lua/index.html	/^function blahblahblah(x)$/;"	f
+bubbleSort	node_modules/qunit/node_modules/istanbul/node_modules/esprima/demo/functiontrace.html	/^function bubbleSort(list) {$/;"	f
+bubbleSort	node_modules/qunit/node_modules/istanbul/node_modules/esprima/demo/minify.html	/^function bubbleSort    (list) {$/;"	f
+bubbleSort	node_modules/qunit/node_modules/istanbul/node_modules/esprima/demo/rewrite.html	/^function bubbleSort    (list) {$/;"	f
+buildTable	inote/coffee/index.html.coffee	/^buildTable = (d, selector)->$/;"	f
 build_signin_ui	inote/coffee/login.html.coffee	/^    build_signin_ui = ->$/;"	f
 build_signout_ui	inote/coffee/login.html.coffee	/^    build_signout_ui = ->$/;"	f
 c	inote/coffee/login.html.coffee	/^        c=$('.oauthHolder').html('')$/;"	v
@@ -58,6 +88,7 @@ callback	inote/libs/codemirror-4.3/mode/vb/index.html	/^  function callback(toke
 cased	inote/libs/codemirror-4.3/mode/javascript/index.html	/^      function cased(str) {return caseInsensitive ? str.toLowerCase() : str;}$/;"	f
 cell	inote/coffee/inote.coffee	/^            cell = $(c)$/;"	v
 cell	inote/coffee/inote.coffee	/^        cell = ci.cell$/;"	v
+cgi	py/proxy.py	/^import cgi$/;"	i
 change	inote/libs/codemirror-4.3/demo/loadmode.html	/^function change() {$/;"	f
 characters	node_modules/qunit/node_modules/istanbul/node_modules/escodegen/node_modules/esutils/test/code.coffee	/^            characters = [$/;"	v
 checkNetwork	inote/coffee/login.html.coffee	/^checkNetwork = (network) ->$/;"	f
@@ -67,37 +98,62 @@ close_modal	inote/libs/jquery.leanModal.coffee	/^        close_modal = (modal_id
 code	inote/coffee/cell.coffee	/^            code = _codemirror.getValue()$/;"	v
 code	inote/coffee/cell.coffee	/^        code = _codemirror.getValue()$/;"	v
 codes	node_modules/qunit/node_modules/istanbul/node_modules/escodegen/node_modules/esutils/test/code.coffee	/^            codes = [$/;"	v
+collectRegex	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function collectRegex() {$/;"	f
+collectToken	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function collectToken() {$/;"	f
 compiledCode	inote/coffee/cell.coffee	/^                compiledCode = CoffeeScript.compile(code,$/;"	v
 compiledCode	inote/coffee/cell.coffee	/^            compiledCode = ""$/;"	v
 completeAfter	inote/libs/codemirror-4.3/demo/xmlcomplete.html	/^      function completeAfter(cm, pred) {$/;"	f
 completeIfAfterLt	inote/libs/codemirror-4.3/demo/xmlcomplete.html	/^      function completeIfAfterLt(cm) {$/;"	f
 completeIfInTag	inote/libs/codemirror-4.3/demo/xmlcomplete.html	/^      function completeIfInTag(cm) {$/;"	f
 config	inote/coffee/cdmirror.coffee	/^    config =$/;"	v
+consumeSemicolon	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function consumeSemicolon() {$/;"	f
 content	py/notebook.py	/^    content=db.TextProperty()$/;"	v	class:NoteBook
+createLocationMarker	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function createLocationMarker() {$/;"	f
 createNewCell	inote/coffee/inote.coffee	/^    createNewCell = (cellNumber) ->$/;"	f
 date	py/notebook.py	/^    date=db.DateTimeProperty(auto_now_add=True)$/;"	v	class:NoteBook
+db	py/list.py	/^from google.appengine.ext import db$/;"	i
+db	py/main.py	/^from google.appengine.ext import db$/;"	i
+db	py/notebook.py	/^from google.appengine.ext import db$/;"	i
+db	py/read.py	/^from google.appengine.ext import db$/;"	i
+db	py/utils.py	/^from google.appengine.ext import db$/;"	i
 debug	py/login.py	/^    debug=True)$/;"	v
 defaults	inote/libs/jquery.leanModal.coffee	/^        defaults =$/;"	v
 deleteCell	inote/coffee/inote.coffee	/^    deleteCell = (cellNumber) ->$/;"	f
 delete_cookie	inote/coffee/login.html.coffee	/^delete_cookie = ->$/;"	f
+delete_notebook	py/utils.py	/^def delete_notebook(key_name,o):$/;"	f
 displayTest	inote/libs/codemirror-4.3/test/index.html	/^      function displayTest(type, name, customMessage) {$/;"	f
 doHighlight	inote/libs/codemirror-4.3/demo/runmode.html	/^function doHighlight() {$/;"	f
 document.documentElement.style.overflow	inote/coffee/cdmirror.coffee	/^        document.documentElement.style.overflow = ""$/;"	v
+done	node_modules/qunit/node_modules/istanbul/test/browser/support/index.html	/^        function done() {$/;"	f
 drawTree	inote/libs/codemirror-4.3/demo/btree.html	/^  function drawTree(out, node) {$/;"	f
 editorHeight	inote/libs/codemirror-4.3/demo/merge.html	/^  function editorHeight(editor) {$/;"	f
 esc	inote/libs/codemirror-4.3/test/index.html	/^      function esc(str) {$/;"	f
 esutils	node_modules/qunit/node_modules/istanbul/node_modules/escodegen/node_modules/esutils/test/code.coffee	/^esutils = require '..\/'$/;"	v
 esutils	node_modules/qunit/node_modules/istanbul/node_modules/escodegen/node_modules/esutils/test/keyword.coffee	/^esutils = require '..\/'$/;"	v
+etree	py/utils.py	/^import xml.etree.ElementTree as ET$/;"	i
 expect	node_modules/qunit/node_modules/istanbul/node_modules/escodegen/node_modules/esutils/test/code.coffee	/^expect = require('chai').expect$/;"	v
 expect	node_modules/qunit/node_modules/istanbul/node_modules/escodegen/node_modules/esutils/test/keyword.coffee	/^expect = require('chai').expect$/;"	v
+expect	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function expect(value) {$/;"	f
+expectKeyword	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function expectKeyword(keyword) {$/;"	f
 expr	py/ptags.py	/^expr = '^[ \\t]*(def|class)[ \\t]+([a-zA-Z0-9_]+)[ \\t]*[:\\(]'$/;"	v
 extract_name_network	py/utils.py	/^def extract_name_network(s):$/;"	f
+f	node_modules/qunit/node_modules/istanbul/node_modules/esprima/demo/validate.html	/^function f() {$/;"	f
 fillEditor	inote/libs/codemirror-4.3/demo/btree.html	/^function fillEditor() {$/;"	f
+filterCommentLocation	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function filterCommentLocation() {$/;"	f
+filterGroup	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function filterGroup(node) {$/;"	f
+filterTokenLocation	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function filterTokenLocation() {$/;"	f
 find	inote/libs/codemirror-4.3/demo/theme.html	/^  function find(start, history) {$/;"	f
 findSequence	inote/libs/codemirror-4.3/demo/theme.html	/^function findSequence(goal) {$/;"	f
+foobar	node_modules/qunit/node_modules/istanbul/node_modules/js-yaml/demo/index.html	/^  function foobar() {$/;"	f
 fullScreen	inote/coffee/inote.coffee	/^    fullScreen = (index) ->$/;"	f
 gatherCompletions	inote/libs/codemirror-4.3/demo/complete.html	/^  function gatherCompletions(obj) {$/;"	f
+gcd	node_modules/qunit/node_modules/istanbul/node_modules/esprima/demo/autocomplete.html	/^function gcd(a, b) {$/;"	f
 generateHeader	inote/libs/codemirror-4.3/doc/compress.html	/^       function generateHeader() {$/;"	f
+generate_identifier_part	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def generate_identifier_part(self):$/;"	m	class:RegExpGenerator
+generate_identifier_start	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def generate_identifier_start(self):$/;"	m	class:RegExpGenerator
+generate_non_ascii_identifier_part	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def generate_non_ascii_identifier_part(self):$/;"	m	class:RegExpGenerator
+generate_non_ascii_identifier_start	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def generate_non_ascii_identifier_start(self):$/;"	m	class:RegExpGenerator
+generate_non_ascii_separator_space	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def generate_non_ascii_separator_space(self):$/;"	m	class:RegExpGenerator
 get	py/delete.py	/^    def get(self):$/;"	m	class:DeleteHandler
 get	py/indexpage.py	/^    def get(self):$/;"	m	class:IndexPage
 get	py/list.py	/^    def get(self):$/;"	m	class:ListHandler
@@ -113,14 +169,20 @@ get	py/publiclist.py	/^    def get(self):$/;"	m	class:PublicListHandler
 get	py/read.py	/^    def get(self):$/;"	m	class:ReadHandler
 get	py/userlist.py	/^    def get(self):$/;"	m	class:UserListHandler
 getCellInfo	inote/coffee/inote.coffee	/^    getCellInfo = (event) ->$/;"	f
+getCode	node_modules/qunit/node_modules/istanbul/test/browser/support/index.html	/^        function getCode(file, callback) {$/;"	f
+getColumns	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^        function getColumns(theadNode) {$/;"	f
 getCompletions	inote/libs/codemirror-4.3/demo/complete.html	/^function getCompletions(token, context) {$/;"	f
+getData	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^        function getData(tbodyNode, cols) {$/;"	f
+getEscapedIdentifier	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function getEscapedIdentifier() {$/;"	f
 getFoo	inote/libs/codemirror-4.3/mode/haxe/index.html	/^	function getFoo():Int {$/;"	f
+getIdentifier	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function getIdentifier() {$/;"	f
 getIndexByCellNumber	inote/coffee/inote.coffee	/^    getIndexByCellNumber = (cellNumber) ->$/;"	f
 getKeyMap	inote/coffee/inote.coffee	/^    getKeyMap = ->$/;"	f
 getNewCellNumber	inote/coffee/inote.coffee	/^    getNewCellNumber = ->$/;"	f
 getNotebookAccessFromUrl	inote/coffee/inote.html.coffee	/^getNotebookAccessFromUrl = ->$/;"	f
 getNotebookNameFromUrl	inote/coffee/inote.html.coffee	/^getNotebookNameFromUrl = ->$/;"	f
 getNotebookOwnerFromUrl	inote/coffee/inote.html.coffee	/^getNotebookOwnerFromUrl = ->$/;"	f
+getRowData	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^        function getRowData(trNode, cols) {$/;"	f
 getTheme	inote/coffee/inote.coffee	/^    getTheme = ->$/;"	f
 getURL	inote/libs/codemirror-4.3/demo/tern.html	/^  function getURL(url, c) {$/;"	f
 getXmlText	inote/coffee/inote.coffee	/^    getXmlText = (notebookName) ->$/;"	f
@@ -155,19 +217,61 @@ initText	inote/libs/codemirror-4.3/mode/vb/index.html	/^function initText(editor
 initUI	inote/libs/codemirror-4.3/demo/merge.html	/^function initUI(panes) {$/;"	f
 inserCellAfter	inote/coffee/inote.coffee	/^    inserCellAfter = (cellNumber) ->$/;"	f
 insertCellBefore	inote/coffee/inote.coffee	/^    insertCellBefore = (cellNumber) ->$/;"	f
+instrument	node_modules/qunit/node_modules/istanbul/test/browser/support/index.html	/^        function instrument(file, callback) {$/;"	f
+instrumentNext	node_modules/qunit/node_modules/istanbul/test/browser/support/index.html	/^        function instrumentNext(err) {$/;"	f
+isBinary	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^            function isBinary(node) {$/;"	f
 isCellFirst	inote/coffee/inote.coffee	/^    isCellFirst = (index) ->$/;"	f
 isCellLast	inote/coffee/inote.coffee	/^    isCellLast = (index) ->$/;"	f
+isDecimalDigit	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function isDecimalDigit(ch) {$/;"	f
+isFutureReservedWord	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function isFutureReservedWord(id) {$/;"	f
+isHexDigit	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function isHexDigit(ch) {$/;"	f
+isIdentifierName	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function isIdentifierName(token) {$/;"	f
+isIdentifierPart	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function isIdentifierPart(ch) {$/;"	f
+isIdentifierStart	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function isIdentifierStart(ch) {$/;"	f
+isKeyword	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function isKeyword(id) {$/;"	f
+isLeftHandSide	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function isLeftHandSide(expr) {$/;"	f
+isLineTerminator	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function isLineTerminator(ch) {$/;"	f
+isOctalDigit	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function isOctalDigit(ch) {$/;"	f
+isRestrictedWord	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function isRestrictedWord(id) {$/;"	f
+isStrictModeReservedWord	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function isStrictModeReservedWord(id) {$/;"	f
+isWhiteSpace	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function isWhiteSpace(ch) {$/;"	f
+is_ascii	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def is_ascii(self, ch):$/;"	m	class:Detector
+is_ascii_alpha	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def is_ascii_alpha(self, ch):$/;"	m	class:Detector
+is_ascii_alphanumeric	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def is_ascii_alphanumeric(self, ch):$/;"	m	class:Detector
+is_decimal_digit	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def is_decimal_digit(self, ch):$/;"	m	class:Detector
+is_digit	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def is_digit(self, ch):$/;"	m	class:Detector
+is_hex_digit	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def is_hex_digit(self, ch):$/;"	m	class:Detector
+is_identifier_part	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def is_identifier_part(self, ch):$/;"	m	class:Detector
+is_identifier_start	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def is_identifier_start(self, ch):$/;"	m	class:Detector
+is_line_or_paragraph_terminator	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def is_line_or_paragraph_terminator(self, ch):$/;"	m	class:Detector
+is_line_terminator	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def is_line_terminator(self, ch):$/;"	m	class:Detector
+is_octal_digit	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def is_octal_digit(self, ch):$/;"	m	class:Detector
+is_separator_space	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def is_separator_space(self, ch):$/;"	m	class:Detector
+is_white_space	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def is_white_space(self, ch):$/;"	m	class:Detector
 javaScriptText	inote/coffee/cell.coffee	/^        javaScriptText = _javascriptCell$/;"	v
+jinja2	py/indexpage.py	/^import jinja2$/;"	i
+jinja2	py/main.py	/^import jinja2$/;"	i
+jinja2	py/page.py	/^import jinja2$/;"	i
 jinja_environment	py/indexpage.py	/^jinja_environment = jinja2.Environment($/;"	v
 jinja_environment	py/main.py	/^jinja_environment = jinja2.Environment($/;"	v
 jinja_environment	py/page.py	/^jinja_environment = jinja2.Environment($/;"	v
 jsFunc	inote/libs/codemirror-4.3/mode/htmlmixed/index.html	/^      function jsFunc(arg1, arg2) {$/;"	f
+json	py/delete.py	/^import json$/;"	i
+json	py/utils.py	/^import json$/;"	i
+json	py/write.py	/^import json$/;"	i
+lex	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function lex() {$/;"	f
 loader	py/indexpage.py	/^    loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))$/;"	v
 loader	py/main.py	/^    loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))$/;"	v
 loader	py/page.py	/^    loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))$/;"	v
+logging	py/login.py	/^import logging$/;"	i
+logging	py/utils.py	/^import logging$/;"	i
 looksLikeScheme	inote/libs/codemirror-4.3/demo/changemode.html	/^  function looksLikeScheme(code) {$/;"	f
+main	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^def main(source):$/;"	f
 main	py/ptags.py	/^def main():$/;"	f
 makeMarker	inote/libs/codemirror-4.3/demo/marker.html	/^function makeMarker() {$/;"	f
+match	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function match(value) {$/;"	f
+matchAssign	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function matchAssign() {$/;"	f
+matchKeyword	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function matchKeyword(keyword) {$/;"	f
 matcher	py/ptags.py	/^matcher = re.compile(expr)$/;"	v
 maybeAdd	inote/libs/codemirror-4.3/demo/complete.html	/^  function maybeAdd(str) {$/;"	f
 mergeViewHeight	inote/libs/codemirror-4.3/demo/merge.html	/^function mergeViewHeight(mergeView) {$/;"	f
@@ -193,17 +297,83 @@ on_signin	inote/coffee/login.html.coffee	/^on_signin = (r) -> write_cookie(r); a
 on_signout	inote/coffee/login.html.coffee	/^on_signout = -> delete_cookie(); adjust_ui()$/;"	f
 openBuffer	inote/libs/codemirror-4.3/demo/buffers.html	/^function openBuffer(name, text, mode) {$/;"	f
 openNotebook	inote/coffee/inote.html.coffee	/^openNotebook = (notebookOwner, notebookAccess, notebookName) ->$/;"	f
+os	py/indexpage.py	/^import os$/;"	i
+os	py/main.py	/^import os$/;"	i
+os	py/page.py	/^import os$/;"	i
+os	py/ptags.py	/^import sys, re, os$/;"	i
 outputValue	inote/coffee/cell.coffee	/^        outputValue = output.text()$/;"	v
 page	inote/coffee/inote.html.coffee	/^    page = $("#page")$/;"	v
+parse	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parse(code, options) {$/;"	f
+parseArguments	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseArguments() {$/;"	f
+parseArrayInitialiser	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseArrayInitialiser() {$/;"	f
+parseAssignmentExpression	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseAssignmentExpression() {$/;"	f
+parseBinaryExpression	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseBinaryExpression() {$/;"	f
+parseBlock	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseBlock() {$/;"	f
+parseBreakStatement	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseBreakStatement() {$/;"	f
+parseCatchClause	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseCatchClause() {$/;"	f
+parseComputedMember	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseComputedMember() {$/;"	f
+parseConditionalExpression	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseConditionalExpression() {$/;"	f
+parseConstLetDeclaration	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseConstLetDeclaration(kind) {$/;"	f
+parseContinueStatement	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseContinueStatement() {$/;"	f
+parseDebuggerStatement	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseDebuggerStatement() {$/;"	f
+parseDoWhileStatement	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseDoWhileStatement() {$/;"	f
+parseEmptyStatement	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseEmptyStatement() {$/;"	f
+parseExpression	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseExpression() {$/;"	f
+parseExpressionStatement	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseExpressionStatement() {$/;"	f
+parseForStatement	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseForStatement() {$/;"	f
+parseForVariableDeclaration	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseForVariableDeclaration() {$/;"	f
+parseFunctionDeclaration	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseFunctionDeclaration() {$/;"	f
+parseFunctionExpression	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseFunctionExpression() {$/;"	f
+parseFunctionSourceElements	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseFunctionSourceElements() {$/;"	f
+parseGroupExpression	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseGroupExpression() {$/;"	f
+parseIfStatement	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseIfStatement() {$/;"	f
+parseLeftHandSideExpression	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseLeftHandSideExpression() {$/;"	f
+parseLeftHandSideExpressionAllowCall	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseLeftHandSideExpressionAllowCall() {$/;"	f
+parseNewExpression	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseNewExpression() {$/;"	f
+parseNonComputedMember	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseNonComputedMember() {$/;"	f
+parseNonComputedProperty	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseNonComputedProperty() {$/;"	f
+parseObjectInitialiser	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseObjectInitialiser() {$/;"	f
+parseObjectProperty	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseObjectProperty() {$/;"	f
+parseObjectPropertyKey	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseObjectPropertyKey() {$/;"	f
+parseParams	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseParams(firstRestricted) {$/;"	f
+parsePostfixExpression	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parsePostfixExpression() {$/;"	f
+parsePrimaryExpression	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parsePrimaryExpression() {$/;"	f
+parseProgram	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseProgram() {$/;"	f
+parsePropertyFunction	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parsePropertyFunction(param, first) {$/;"	f
+parseReturnStatement	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseReturnStatement() {$/;"	f
+parseSourceElement	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseSourceElement() {$/;"	f
+parseSourceElements	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseSourceElements() {$/;"	f
+parseStatement	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseStatement() {$/;"	f
+parseStatementList	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseStatementList() {$/;"	f
+parseSwitchCase	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseSwitchCase() {$/;"	f
+parseSwitchStatement	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseSwitchStatement() {$/;"	f
+parseThrowStatement	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseThrowStatement() {$/;"	f
+parseTryStatement	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseTryStatement() {$/;"	f
+parseUnaryExpression	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseUnaryExpression() {$/;"	f
+parseVariableDeclaration	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseVariableDeclaration(kind) {$/;"	f
+parseVariableDeclarationList	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseVariableDeclarationList(kind) {$/;"	f
+parseVariableIdentifier	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseVariableIdentifier() {$/;"	f
+parseVariableStatement	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseVariableStatement() {$/;"	f
+parseWhileStatement	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseWhileStatement() {$/;"	f
+parseWithStatement	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseWithStatement() {$/;"	f
+parse_key	py/utils.py	/^def parse_key(key_name):$/;"	f
+patch	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function patch() {$/;"	f
+peek	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function peek() {$/;"	f
+peekLineTerminator	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function peekLineTerminator() {$/;"	f
 post	py/write.py	/^    def post(self):$/;"	m	class:WriteHandler
+postResults	node_modules/qunit/node_modules/istanbul/test/browser/support/index.html	/^        function postResults(url, data, callback) {$/;"	f
 print_object	py/utils.py	/^def print_object(c):$/;"	f
 r	inote/coffee/login.html.coffee	/^            r = read_cookie()$/;"	v
 r	inote/coffee/notebookstorage.coffee	/^        r =$/;"	v
+re	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^import re$/;"	i
+re	py/ptags.py	/^import sys, re, os$/;"	i
 read_cookie	inote/coffee/login.html.coffee	/^read_cookie = ->$/;"	f
+replaceTable	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^        function replaceTable(node) {$/;"	f
 resize	inote/libs/codemirror-4.3/demo/merge.html	/^function resize(mergeView) {$/;"	f
 restoreNotebookFromXml	inote/coffee/inote.html.coffee	/^restoreNotebookFromXml = (xmlText) ->$/;"	f
 runHarness	inote/libs/codemirror-4.3/test/index.html	/^      function runHarness(){$/;"	f
 runTest	inote/libs/codemirror-4.3/mode/vb/index.html	/^function runTest() {$/;"	f
+runTests	node_modules/qunit/node_modules/istanbul/test/browser/support/index.html	/^        function runTests(testFiles) {$/;"	f
 s	inote/coffee/cell.coffee	/^                    s = JSON.stringify(o, (key, value) ->$/;"	f
 s	inote/coffee/cell.coffee	/^                s = o$/;"	v
 s	inote/coffee/cell.coffee	/^            s = "{jQuery}"$/;"	v
@@ -211,6 +381,13 @@ s	inote/coffee/cell.coffee	/^        s = ""$/;"	v
 s	inote/libs/codemirror-4.3/doc/manual.html	/^      functions (the <code>hint<\/code> option), which is a function$/;"	f
 saveNotebookTimeout	inote/coffee/inote.html.coffee	/^        saveNotebookTimeout = setTimeout saveNotebook , 2000$/;"	v
 scan	inote/libs/codemirror-4.3/demo/anywordhint.html	/^    function scan(dir) {$/;"	f
+scanComment	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function scanComment() {$/;"	f
+scanHexEscape	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function scanHexEscape(prefix) {$/;"	f
+scanIdentifier	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function scanIdentifier() {$/;"	f
+scanNumericLiteral	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function scanNumericLiteral() {$/;"	f
+scanPunctuator	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function scanPunctuator() {$/;"	f
+scanRegExp	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function scanRegExp() {$/;"	f
+scanStringLiteral	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function scanStringLiteral() {$/;"	f
 selectBuffer	inote/libs/codemirror-4.3/demo/buffers.html	/^function selectBuffer(editor, name) {$/;"	f
 selectFontsize	inote/libs/codemirror-4.3/mode/cobol/index.html	/^      function selectFontsize() {$/;"	f
 selectReadOnly	inote/libs/codemirror-4.3/mode/cobol/index.html	/^      function selectReadOnly() {$/;"	f
@@ -225,7 +402,11 @@ setXmlText0	inote/coffee/inote.coffee	/^    setXmlText0 = (xmlText) ->$/;"	f
 setXmlText1	inote/coffee/inote.coffee	/^    setXmlText1 = (xmlText) ->$/;"	f
 showMenu	inote/coffee/inote.html.coffee	/^showMenu = ->$/;"	f
 show_list	inote/coffee/index.html.coffee	/^show_list = (url, selector) ->$/;"	f
+skipComment	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function skipComment() {$/;"	f
+string	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^import string$/;"	i
 style	inote/coffee/cell.coffee	/^                            style='right:0px; top:2px;;' $/;"	v
+sys	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^import sys$/;"	i
+sys	py/ptags.py	/^import sys, re, os$/;"	i
 tabToIndentSpace	inote/libs/codemirror-4.3/mode/cobol/index.html	/^      function tabToIndentSpace() {$/;"	f
 tags	py/ptags.py	/^tags = []    # Modified global variable!$/;"	v
 test	inote/libs/codemirror-4.3/mode/smarty/index.html	/^function test() {$/;"	f
@@ -234,16 +415,26 @@ testAll	inote/libs/codemirror-4.3/mode/vb/index.html	/^function testAll(){$/;"	f
 testDecl	inote/libs/codemirror-4.3/mode/vb/index.html	/^function testDecl(){$/;"	f
 testIf	inote/libs/codemirror-4.3/mode/vb/index.html	/^function testIf(){$/;"	f
 testTypes	inote/libs/codemirror-4.3/mode/vb/index.html	/^function testTypes() {$/;"	f
+throwError	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function throwError(token, messageFormat) {$/;"	f
+throwErrorTolerant	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function throwErrorTolerant() {$/;"	f
+throwUnexpected	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function throwUnexpected(token) {$/;"	f
 toREElt	inote/libs/codemirror-4.3/demo/spanaffectswrapping_shim.html	/^      function toREElt(str) {$/;"	f
 toXmlString	inote/coffee/cell.coffee	/^    toXmlString = (data) ->$/;"	f
 toggleDifferences	inote/libs/codemirror-4.3/demo/merge.html	/^function toggleDifferences() {$/;"	f
+trackGroupExpression	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function trackGroupExpression() {$/;"	f
+trackLeftHandSideExpression	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function trackLeftHandSideExpression() {$/;"	f
+trackLeftHandSideExpressionAllowCall	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function trackLeftHandSideExpressionAllowCall() {$/;"	f
 treat_file	py/ptags.py	/^def treat_file(filename):$/;"	f
+unpatch	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function unpatch() {$/;"	f
 unq	py/utils.py	/^def unq(s):$/;"	f
+unquote	py/utils.py	/^from urllib2 import unquote$/;"	i
 update	inote/libs/codemirror-4.3/demo/changemode.html	/^  function update() {$/;"	f
 updateHints	inote/libs/codemirror-4.3/demo/lint.html	/^function updateHints() {$/;"	f
 updateHints	inote/libs/codemirror-4.3/demo/widget.html	/^function updateHints() {$/;"	f
 updatePreview	inote/libs/codemirror-4.3/demo/preview.html	/^      function updatePreview() {$/;"	f
 updateVisual	inote/libs/codemirror-4.3/demo/btree.html	/^function updateVisual() {$/;"	f
+urlfetch	py/proxy.py	/^from google.appengine.api import urlfetch$/;"	i
+urllib	py/main.py	/^import urllib$/;"	i
 user	py/notebook.py	/^    user=db.UserProperty(auto_current_user_add=True)$/;"	v	class:NoteBook
 userId	inote/coffee/inote.html.coffee	/^    userId= $(".user_id").text()$/;"	v
 userNameNetwork	inote/coffee/inote.html.coffee	/^    userNameNetwork="#{userName}|#{userNetwork}"$/;"	v
@@ -252,10 +443,39 @@ user_name	py/notebook.py	/^    user_name=db.StringProperty()$/;"	v	class:NoteBoo
 user_name_network_id	py/notebook.py	/^    user_name_network_id=db.StringProperty()$/;"	v	class:NoteBook
 user_network	py/notebook.py	/^    user_network=db.StringProperty()$/;"	v	class:NoteBook
 user_nickname	py/notebook.py	/^    user_nickname=db.StringProperty()$/;"	v	class:NoteBook
+users	py/list.py	/^from google.appengine.api import users$/;"	i
+users	py/login.py	/^from google.appengine.api import users$/;"	i
+users	py/main.py	/^from google.appengine.api import users$/;"	i
+users	py/read.py	/^from google.appengine.api import users$/;"	i
+users	py/utils.py	/^from google.appengine.api import users$/;"	i
+users	py/write.py	/^from google.appengine.api import users$/;"	i
+utils	py/delete.py	/^import utils$/;"	i
+utils	py/indexpage.py	/^import utils$/;"	i
+utils	py/list.py	/^import utils$/;"	i
+utils	py/login.py	/^import utils$/;"	i
+utils	py/page.py	/^import utils$/;"	i
+utils	py/publiclist.py	/^import utils$/;"	i
+utils	py/read.py	/^import utils$/;"	i
+utils	py/userlist.py	/^import utils$/;"	i
+utils	py/write.py	/^import utils$/;"	i
 version	py/notebook.py	/^    version=db.IntegerProperty()$/;"	v	class:NoteBook
+visit	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^            function visit(node) {$/;"	f
+webapp2	py/delete.py	/^import webapp2$/;"	i
+webapp2	py/indexpage.py	/^import webapp2$/;"	i
+webapp2	py/list.py	/^import webapp2$/;"	i
+webapp2	py/login.py	/^import webapp2$/;"	i
+webapp2	py/main.py	/^import webapp2$/;"	i
+webapp2	py/page.py	/^import webapp2$/;"	i
+webapp2	py/proxy.py	/^import webapp2$/;"	i
+webapp2	py/publiclist.py	/^import webapp2$/;"	i
+webapp2	py/read.py	/^import webapp2$/;"	i
+webapp2	py/userlist.py	/^import webapp2$/;"	i
+webapp2	py/write.py	/^import webapp2$/;"	i
 winHeight	inote/coffee/cdmirror.coffee	/^winHeight = ->$/;"	f
 window.onbeforeunload	inote/coffee/inote.html.coffee	/^    window.onbeforeunload = ->$/;"	f
 words	node_modules/qunit/node_modules/istanbul/node_modules/escodegen/node_modules/esutils/test/keyword.coffee	/^            words = [$/;"	v
 wrap.style.height	inote/coffee/cdmirror.coffee	/^        wrap.style.height = ""$/;"	v
+wrapTrackingFunction	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function wrapTrackingFunction(range, loc) {$/;"	f
 write_cookie	inote/coffee/login.html.coffee	/^write_cookie = (r) ->$/;"	f
+xml	py/utils.py	/^import xml.etree.ElementTree as ET$/;"	i
 xmlText	inote/coffee/inote.html.coffee	/^    xmlText = page.html()$/;"	v
