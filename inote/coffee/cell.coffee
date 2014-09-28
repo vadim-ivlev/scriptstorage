@@ -60,6 +60,7 @@ window?.clear = null
                             <option value='markdown'>Markdown</option>
                         </select>
                         <span class='showJavascriptButton toolButton hide-on-view' >Show Javascript</span>
+                        <span class='shareSourceButton toolButton icon-share hide-on-view' ></span>
                         <span class='deleteButton toolButton  hide-on-view icon-close' style='padding-right:0;' title='delete cell' ></span>
                         <!--
                         <span class='toolButton hide-on-view icon-expand' style='float:right' title='Fullscreen on/of'>Alt-F11</span>
@@ -280,6 +281,7 @@ window?.clear = null
             _jQueryCell.find(".hideInputButton").html "hide [in#{_n}]" #Hide input &nbsp;&nbsp;&#x25BC
             _jQueryCell.find(".hideInputButton").addClass('uppertab')
             _jQueryCell.find(".editControls").show()
+            _codemirror.refresh()
         @saveNotebookLater?()
         return
 
@@ -338,6 +340,8 @@ window?.clear = null
         $('.cellLabel',_jQueryCell).keypress  (e) ->
             saveNotebookLater?()
             console.log "descr changed"
+        
+        $(".shareSourceButton", _jQueryCell).click -> showShareSourceDialog()
 
 
     _switchFullsreen = ->

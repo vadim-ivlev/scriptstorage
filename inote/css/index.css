@@ -319,6 +319,28 @@ hr {
   opacity: 0.7;
   content: 'O';
 }
+.icon-eye-before::before {
+  font-family: icomoon;
+  font-size: 15px;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 4px;
+  margin-right: 4px;
+  opacity: 0.7;
+  content: 'O';
+  color: #2a6496;
+}
+.icon-eye-transparent::before {
+  font-family: icomoon;
+  font-size: 15px;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 4px;
+  margin-right: 4px;
+  opacity: 0.7;
+  content: 'O';
+  opacity: 0.0;
+}
 .icon-eye-blocked::after {
   font-family: icomoon;
   font-size: 15px;
@@ -534,7 +556,7 @@ hr {
   opacity: 0.7;
   content: '>';
 }
-.user_social_name,
+.user_name,
 .user_network {
   margin: 0px;
   border: none;

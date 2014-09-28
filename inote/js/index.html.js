@@ -26,15 +26,43 @@
   };
 
   buildTable = function(d, selector) {
-    var t;
+    var col_, col_Acc, col_User, columns, t;
     t = $('<table class="hover compact" width="100%" ></table>');
     t.hide();
     $(selector).append(t);
+    columns = [
+      {
+        title: 'Name',
+        data: 'notebook_name'
+      }
+    ];
+    col_Acc = {
+      title: 'Acc',
+      data: 'access',
+      width: 60
+    };
+    col_User = {
+      title: 'User',
+      data: 'user_name',
+      width: 120
+    };
+    col_ = {
+      title: '',
+      data: 'access',
+      width: 26
+    };
+    if (selector === "#publicList") {
+      columns.push(col_User);
+      columns.push(col_);
+    } else {
+      columns.push(col_Acc);
+      columns.push(col_);
+    }
     t.dataTable({
       data: d,
       paging: false,
       createdRow: function(row, d, i) {
-        var a, access, name, tds, unet, x;
+        var a, access, name, td1, tds, unet, x;
         unet = encodeURIComponent(d.user_name + '|' + d.user_network);
         access = encodeURIComponent(d.access);
         name = encodeURIComponent(d.notebook_name);
@@ -45,39 +73,32 @@
         a.attr('href', "/page?owner=" + unet + "&access=" + access + "&name=" + name);
         a.text(d.notebook_name);
         tds.last().html('');
-        if (true) {
+        if ($(".user_name").text() === d.user_name && $('.user_network').text() === d.user_network) {
           tds.last().css('text-align', 'right');
           x = $("<span class='toolButton' title='delete' >&#x00D7</span>");
           x.appendTo(tds.last());
-          return x.click(function() {
+          x.click(function() {
             return deleteNotebook(d.key_name);
           });
         }
-      },
-      columns: [
-        {
-          title: 'Name',
-          data: 'notebook_name'
-        }, {
-          title: 'Acc',
-          data: 'access',
-          width: 60
-        }, {
-          title: 'User',
-          data: 'user_name',
-          width: 120
-        }, {
-          title: '',
-          data: 'access',
-          width: 26
+        if (selector === "#userList") {
+          td1 = $(tds[1]);
+          console.log("cell:" + td1.text());
+          if (td1.text() === "public") {
+            td1.addClass("cell_public");
+            return td1.addClass("icon-eye-before");
+          } else {
+            return td1.addClass("icon-eye-transparent");
+          }
         }
-      ]
+      },
+      columns: columns
     });
     t.show();
   };
 
   $(function() {
-    if (!$(".user_social_name").text()) {
+    if (!$(".user_name").text()) {
       $('.userTab').hide();
     }
     $("#notebookList").hide();
@@ -88,7 +109,7 @@
       newName = "N" + (5000000 + Math.floor(999000 * Math.random()));
       newName = prompt("Change the name", newName);
       if (newName) {
-        return document.location.href = "/page?owner=" + encodeURIComponent($(".user_social_name").text()) + "&access=" + encodeURIComponent("public") + "&name=" + encodeURIComponent(newName);
+        return document.location.href = "/page?owner=" + encodeURIComponent($(".user_name").text()) + "&access=" + encodeURIComponent("public") + "&name=" + encodeURIComponent(newName);
       }
     });
   });

@@ -38,7 +38,7 @@ inote = undefined
 @saveNotebook = (event) ->
     notebookName = $("#notebookName").text()
     #notebookOwner = $(".notebookOwner").text()
-    notebookOwner = $(".user_social_name").text()
+    notebookOwner = $(".user_name").text()
     notebookAccess = $("#notebookAccess").val()
     
     # If it was the button who initiated the event then dont pass the version
@@ -68,6 +68,12 @@ inote = undefined
     $("#notebookName").text newName if newName
     @saveNotebook(true)
     hideMenu()
+
+
+
+@showShareSourceDialog =  ->
+    $("#shareSourceDialog").show()
+
 
 @showRenameDialog = (btnOkText, callback) ->
     b = $("#renameDialog .btnOk")
@@ -116,7 +122,7 @@ inote = undefined
             $("#saveIndicator").text ""
             $(".notebookVersion").text o.version
             $(".nbAccess").text notebookAccess
-            user_name = $(".user_social_name").text()
+            user_name = $(".user_name").text()
             user_network = $(".user_network").text()
             newUrl = getPageUrl(user_name, user_network, notebookAccess, notebookName)
             window.history.replaceState(null, notebookAccess, newUrl )
@@ -230,18 +236,27 @@ $ ->
     
     
     # hide save buttons if the user is not loginned
-    userName= $(".user_social_name").text()
+    userName= $(".user_name").text()
     userNetwork= $(".user_network").text()
-    userId= $(".user_id").text()
-    userNameNetwork="#{userName}|#{userNetwork}"
-    notebookOwner=getNotebookOwnerFromUrl()
+    #userId= $(".user_id").text()
+    userNameNetwork = "#{userName}|#{userNetwork}"
+    
+    # first check if notebookOwner was returned by the server
+    notebookOwner = $("#notebookOwner").text()
+    if not notebookOwner
+        notebookOwner = getNotebookOwnerFromUrl()
 
-    if userNameNetwork and userNameNetwork is notebookOwner
-        # Save if the user press Ctrl-S
-        $("body").keydown (event) ->
-            if event.ctrlKey and event.keyCode is 83 #Ctrl-S
-                saveNotebook()
-                false
+    # Save if the user press Ctrl-S
+    $("body").keydown (event) ->
+        if event.ctrlKey and event.keyCode is 83 #Ctrl-S
+            if not userNameNetwork
+                alert "Please log in to save changes."
+                return
+            if userNameNetwork != notebookOwner
+                alert "Only '#{notebookOwner}' can save changes"
+                return
+            saveNotebook()
+            false
     
     $("#btnHideMenu").click (event) ->
         event.stopPropagation()

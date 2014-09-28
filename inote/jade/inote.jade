@@ -166,3 +166,18 @@ html
                 button.btnCancel(onclick='$(".modalDialog").hide()') Cancel
                 button.btnOk Ok
 
+
+        #shareSourceDialog.modalDialog(onclick='$(".modalDialog").hide()')
+            div(onclick='preventClick(event)')
+                span.toolButton.icon-close(onclick='$(".modalDialog").hide()')
+                br
+                span Insert the links in your HTML page
+                br
+                br
+                span  Input: 
+                a#cellSourceLink(href='/page?') page
+                br
+                br
+                button.btnCancel(onclick='$(".modalDialog").hide()') Cancel
+                button.btnOk Copy to clipboard
+

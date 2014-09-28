@@ -37,7 +37,7 @@
   this.saveNotebook = function(event) {
     var notebookAccess, notebookName, notebookOwner, notebookVersion, xmlText;
     notebookName = $("#notebookName").text();
-    notebookOwner = $(".user_social_name").text();
+    notebookOwner = $(".user_name").text();
     notebookAccess = $("#notebookAccess").val();
     notebookVersion = event ? null : $(".notebookVersion").text();
     xmlText = inote.getXmlText(notebookName);
@@ -66,6 +66,10 @@
     }
     this.saveNotebook(true);
     return hideMenu();
+  };
+
+  this.showShareSourceDialog = function() {
+    return $("#shareSourceDialog").show();
   };
 
   this.showRenameDialog = function(btnOkText, callback) {
@@ -120,7 +124,7 @@
         $("#saveIndicator").text("");
         $(".notebookVersion").text(o.version);
         $(".nbAccess").text(notebookAccess);
-        user_name = $(".user_social_name").text();
+        user_name = $(".user_name").text();
         user_network = $(".user_network").text();
         newUrl = getPageUrl(user_name, user_network, notebookAccess, notebookName);
         window.history.replaceState(null, notebookAccess, newUrl);
@@ -211,7 +215,7 @@
   };
 
   $(function() {
-    var notebookOwner, page, userId, userName, userNameNetwork, userNetwork, xmlText;
+    var notebookOwner, page, userName, userNameNetwork, userNetwork, xmlText;
     page = $("#page");
     xmlText = page.html();
     page.html("");
@@ -222,19 +226,27 @@
     inote.setKeyMap("default");
     restoreNotebookFromXml(xmlText);
     $("#notebookAccess").val(getNotebookAccessFromUrl());
-    userName = $(".user_social_name").text();
+    userName = $(".user_name").text();
     userNetwork = $(".user_network").text();
-    userId = $(".user_id").text();
     userNameNetwork = "" + userName + "|" + userNetwork;
-    notebookOwner = getNotebookOwnerFromUrl();
-    if (userNameNetwork && userNameNetwork === notebookOwner) {
-      $("body").keydown(function(event) {
-        if (event.ctrlKey && event.keyCode === 83) {
-          saveNotebook();
-          return false;
-        }
-      });
+    notebookOwner = $("#notebookOwner").text();
+    if (!notebookOwner) {
+      notebookOwner = getNotebookOwnerFromUrl();
     }
+    $("body").keydown(function(event) {
+      if (event.ctrlKey && event.keyCode === 83) {
+        if (!userNameNetwork) {
+          alert("Please log in to save changes.");
+          return;
+        }
+        if (userNameNetwork !== notebookOwner) {
+          alert("Only '" + notebookOwner + "' can save changes");
+          return;
+        }
+        saveNotebook();
+        return false;
+      }
+    });
     $("#btnHideMenu").click(function(event) {
       event.stopPropagation();
       return hideMenu();

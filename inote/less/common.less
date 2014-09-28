@@ -194,6 +194,8 @@ hr {
 .icon-link::after { .ic; content: 'n'; }
 .icon-attachment::after { .ic; content: '@'; }
 .icon-eye::after { .ic; content: 'O'; }
+.icon-eye-before::before { .ic; content: 'O'; color:#2a6496; }
+.icon-eye-transparent::before { .ic; content: 'O'; opacity:0.0; }
 .icon-eye-blocked::after { .ic; content: 'o'; }
 .icon-star::after { .ic; content: 't'; }
 .icon-close::after { .ic; content: 'x'; font-size:50%; }
@@ -216,7 +218,7 @@ hr {
 .icon-login::after { .ic; content: '>'; }
 
 
-.user_social_name, .user_network {
+.user_name, .user_network {
     .toolButton;
     cursor: default;
 }

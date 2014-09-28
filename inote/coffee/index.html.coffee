@@ -28,6 +28,20 @@ buildTable = (d, selector)->
     t=$ '<table class="hover compact" width="100%" ></table>'
     t.hide()
     $(selector).append t
+
+    # for user list show one more column
+    columns = [ { title: 'Name',    data:'notebook_name' } ]
+    col_Acc =   { title: 'Acc',     data:'access', width:60 }
+    col_User =  { title: 'User',    data:'user_name', width:120 }
+    col_ =      { title: '',        data:'access',  width:26 }
+    if selector is "#publicList"
+        columns.push col_User
+        columns.push col_
+    else
+        columns.push col_Acc
+        columns.push col_
+
+
     # fill it with data usinf dataTable library
     t.dataTable
         data: d,
@@ -47,19 +61,25 @@ buildTable = (d, selector)->
 
             # create a span with a cross in the last cell
             tds.last().html('')
-            #if $(".user_social_name").text()==d.user_name and $('.user_network').text()==d.user_network
-            if true
+            if $(".user_name").text()==d.user_name and $('.user_network').text()==d.user_network
+            #if true
                 tds.last().css('text-align','right')
                 x = $ "<span class='toolButton' title='delete' >&#x00D7</span>"
                 x.appendTo(tds.last())
                 x.click -> deleteNotebook(d.key_name)
 
-        columns: [
-            { title: 'Name', data:'notebook_name' }
-            { title: 'Acc', data:'access', width:60 }
-            { title: 'User', data:'user_name', width:120 }
-            { title: '', data:'access',  width:26 }
-        ]
+            # if it is a user's list change style of public notebooks
+            if selector is "#userList"
+                td1=$(tds[1])
+                console.log "cell:"+td1.text()
+                if td1.text() == "public"
+                    td1.addClass "cell_public"
+                    td1.addClass "icon-eye-before"
+                else 
+                    td1.addClass "icon-eye-transparent"
+
+        columns: columns
+        
     t.show()
     return
 
@@ -67,7 +87,7 @@ buildTable = (d, selector)->
 # on page load ==================================================================
 $ ->
     # Hide user tab if he is not signed in
-    if not $(".user_social_name").text()
+    if not $(".user_name").text()
         $('.userTab').hide()
 
     $("#notebookList").hide()
@@ -79,5 +99,5 @@ $ ->
         newName = prompt "Change the name", newName
         if newName
             #document.location.href = "/page?owner=" + encodeURIComponent($("#userName").text()) + "&access=" + encodeURIComponent("public") + "&name=" + encodeURIComponent(newName)
-            document.location.href = "/page?owner=" + encodeURIComponent($(".user_social_name").text()) + "&access=" + encodeURIComponent("public") + "&name=" + encodeURIComponent(newName)
+            document.location.href = "/page?owner=" + encodeURIComponent($(".user_name").text()) + "&access=" + encodeURIComponent("public") + "&name=" + encodeURIComponent(newName)
     

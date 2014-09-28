@@ -1,9 +1,10 @@
-!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
-!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
-!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
-!_TAG_PROGRAM_NAME	Exuberant Ctags	//
-!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
-!_TAG_PROGRAM_VERSION	5.8	//
+!_TAG_FILE_FORMAT	2	/extended format/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Łukasz Korecki	/lukasz@coffeesounds.com/
+!_TAG_PROGRAM_NAME	CoffeeTags	//
+!_TAG_PROGRAM_URL	https://github.com/lukaszkorecki/CoffeeTags	/GitHub repository/
+!_TAG_PROGRAM_VERSION	0.5.0	//
+@Cell	inote/coffee/cell.coffee	/^@Cell = (cellNumber, themeName, keyMap) ->$/;"	f	line:17	language:coffee	object:window
 CELLS	inote/coffee/inote.coffee	/^        CELLS = []$/;"	v
 CELLS	inote/coffee/inote.coffee	/^    CELLS = []$/;"	v
 CTor	inote/libs/codemirror-4.3/demo/tern.html	/^function CTor() { this.size = 10; }$/;"	f
@@ -47,9 +48,48 @@ UserListHandler	py/userlist.py	/^class UserListHandler(webapp2.RequestHandler):$
 WriteHandler	py/write.py	/^class WriteHandler(webapp2.RequestHandler):$/;"	c
 __init__	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def __init__(self, data):$/;"	m	class:Detector
 __init__	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def __init__(self, detector):$/;"	m	class:RegExpGenerator
+_attachEvents	inote/coffee/cell.coffee	/^    _attachEvents = ->$/;"	f	line:320	language:coffee	object:@Cell
+_call	inote/coffee/cell.coffee	/^    _call = (f, param) ->$/;"	f	line:138	language:coffee	object:@Cell
+_clearPrintArea	inote/coffee/cell.coffee	/^    _clearPrintArea = ->$/;"	f	line:555	language:coffee	object:@Cell
+_compileLater	inote/coffee/cell.coffee	/^    _compileLater = ->$/;"	f	line:624	language:coffee	object:@Cell
+_compile_CoffeeScript	inote/coffee/cell.coffee	/^    _compile_CoffeeScript = ->$/;"	f	line:646	language:coffee	object:@Cell
+_compile_Markdown	inote/coffee/cell.coffee	/^    _compile_Markdown = ->$/;"	f	line:634	language:coffee	object:@Cell
+_create	inote/coffee/cell.coffee	/^    _create = (celNum, theme, keyM) ->$/;"	f	line:47	language:coffee	object:@Cell
+_createPrintArea	inote/coffee/cell.coffee	/^    _createPrintArea = ->$/;"	f	line:559	language:coffee	object:@Cell
+_cursorOnFirstLine	inote/coffee/cell.coffee	/^    _cursorOnFirstLine = ->$/;"	f	line:601	language:coffee	object:@Cell
+_cursorOnLastLine	inote/coffee/cell.coffee	/^    _cursorOnLastLine = ->$/;"	f	line:593	language:coffee	object:@Cell
+_executeCode	inote/coffee/cell.coffee	/^    _executeCode = ->$/;"	f	line:523	language:coffee	object:@Cell
 _generate_range	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def _generate_range(self, r):$/;"	m	class:RegExpGenerator
+_getNumber	inote/coffee/cell.coffee	/^    _getNumber = ->$/;"	f	line:497	language:coffee	object:@Cell
+_getSelectedRange	inote/coffee/cell.coffee	/^    _getSelectedRange = ->$/;"	f	line:467	language:coffee	object:@Cell
+_getXml	inote/coffee/cell.coffee	/^    _getXml = ->$/;"	f	line:386	language:coffee	object:@Cell
+_getXml0	inote/coffee/cell.coffee	/^    _getXml0 = ->$/;"	f	line:401	language:coffee	object:@Cell
+_getXml1	inote/coffee/cell.coffee	/^    _getXml1 = ->$/;"	f	line:424	language:coffee	object:@Cell
+_hideJavascriptText	inote/coffee/cell.coffee	/^    _hideJavascriptText = ->$/;"	f	line:168	language:coffee	object:@Cell
 _is_non_ascii_identifier_part	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def _is_non_ascii_identifier_part(self, ch):$/;"	m	class:Detector
 _is_non_ascii_identifier_start	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def _is_non_ascii_identifier_start(self, ch):$/;"	m	class:Detector
+_keyHandler	inote/coffee/cell.coffee	/^    _keyHandler = (event) ->$/;"	f	line:479	language:coffee	object:@Cell
+_lock	inote/coffee/cell.coffee	/^    _lock = ->$/;"	f	line:291	language:coffee	object:@Cell
+_lockUnlock	inote/coffee/cell.coffee	/^    _lockUnlock = ->$/;"	f	line:312	language:coffee	object:@Cell
+_print	inote/coffee/cell.coffee	/^    _print = (o) ->$/;"	f	line:566	language:coffee	object:@Cell
+_printError	inote/coffee/cell.coffee	/^    _printError = (o) ->$/;"	f	line:588	language:coffee	object:@Cell
+_removeFocus	inote/coffee/cell.coffee	/^    _removeFocus = ->$/;"	f	line:520	language:coffee	object:@Cell
+_setCursorOnFirstLine	inote/coffee/cell.coffee	/^    _setCursorOnFirstLine = (charPos) ->$/;"	f	line:614	language:coffee	object:@Cell
+_setCursorOnLastLine	inote/coffee/cell.coffee	/^    _setCursorOnLastLine = (charPos) ->$/;"	f	line:608	language:coffee	object:@Cell
+_setFocus	inote/coffee/cell.coffee	/^    _setFocus = (lineNumber, charNumber) ->$/;"	f	line:511	language:coffee	object:@Cell
+_setInputCollapsed	inote/coffee/cell.coffee	/^    _setInputCollapsed = (collapsed) ->$/;"	f	line:272	language:coffee	object:@Cell
+_setKeyMap	inote/coffee/cell.coffee	/^    _setKeyMap = (v)->$/;"	f	line:142	language:coffee	object:@Cell
+_setMode	inote/coffee/cell.coffee	/^    _setMode = (mode) ->$/;"	f	line:360	language:coffee	object:@Cell
+_setNumber	inote/coffee/cell.coffee	/^    _setNumber = (n) ->$/;"	f	line:501	language:coffee	object:@Cell
+_setOutputCollapsed	inote/coffee/cell.coffee	/^    _setOutputCollapsed = (collapsed) ->$/;"	f	line:256	language:coffee	object:@Cell
+_setTheme	inote/coffee/cell.coffee	/^    _setTheme = (themeName) ->$/;"	f	line:151	language:coffee	object:@Cell
+_setXml	inote/coffee/cell.coffee	/^    _setXml = (cell) ->$/;"	f	line:394	language:coffee	object:@Cell
+_setXml0	inote/coffee/cell.coffee	/^    _setXml0 = (cell) ->$/;"	f	line:408	language:coffee	object:@Cell
+_setXml1	inote/coffee/cell.coffee	/^    _setXml1 = (cell) ->$/;"	f	line:436	language:coffee	object:@Cell
+_showJavascriptText	inote/coffee/cell.coffee	/^    _showJavascriptText = ->$/;"	f	line:158	language:coffee	object:@Cell
+_switchFullsreen	inote/coffee/cell.coffee	/^    _switchFullsreen = ->$/;"	f	line:347	language:coffee	object:@Cell
+_switchJavascriptText	inote/coffee/cell.coffee	/^    _switchJavascriptText = ->$/;"	f	line:174	language:coffee	object:@Cell
+_unlock	inote/coffee/cell.coffee	/^    _unlock = ->$/;"	f	line:303	language:coffee	object:@Cell
 a	inote/coffee/qunit-tests.coffee	/^a=[1,2,3]$/;"	v
 access	py/notebook.py	/^    access=db.StringProperty()$/;"	v	class:NoteBook
 access_allowed	py/utils.py	/^def access_allowed(o, notebook_access,notebook_owner) :$/;"	f
@@ -95,13 +135,9 @@ checkNetwork	inote/coffee/login.html.coffee	/^checkNetwork = (network) ->$/;"	f
 clear	inote/coffee/inote.coffee	/^    clear = ->$/;"	f
 clearAndInit	inote/coffee/inote.html.coffee	/^clearAndInit = ->$/;"	f
 close_modal	inote/libs/jquery.leanModal.coffee	/^        close_modal = (modal_id) ->$/;"	f
-code	inote/coffee/cell.coffee	/^            code = _codemirror.getValue()$/;"	v
-code	inote/coffee/cell.coffee	/^        code = _codemirror.getValue()$/;"	v
 codes	node_modules/qunit/node_modules/istanbul/node_modules/escodegen/node_modules/esutils/test/code.coffee	/^            codes = [$/;"	v
 collectRegex	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function collectRegex() {$/;"	f
 collectToken	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function collectToken() {$/;"	f
-compiledCode	inote/coffee/cell.coffee	/^                compiledCode = CoffeeScript.compile(code,$/;"	v
-compiledCode	inote/coffee/cell.coffee	/^            compiledCode = ""$/;"	v
 completeAfter	inote/libs/codemirror-4.3/demo/xmlcomplete.html	/^      function completeAfter(cm, pred) {$/;"	f
 completeIfAfterLt	inote/libs/codemirror-4.3/demo/xmlcomplete.html	/^      function completeIfAfterLt(cm) {$/;"	f
 completeIfInTag	inote/libs/codemirror-4.3/demo/xmlcomplete.html	/^      function completeIfInTag(cm) {$/;"	f
@@ -172,16 +208,23 @@ getCellInfo	inote/coffee/inote.coffee	/^    getCellInfo = (event) ->$/;"	f
 getCode	node_modules/qunit/node_modules/istanbul/test/browser/support/index.html	/^        function getCode(file, callback) {$/;"	f
 getColumns	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^        function getColumns(theadNode) {$/;"	f
 getCompletions	inote/libs/codemirror-4.3/demo/complete.html	/^function getCompletions(token, context) {$/;"	f
+getCursor	inote/coffee/cell.coffee	/^    getCursor: -> _codemirror.getCursor()$/;"	f	line:682	language:coffee	object:@Cell
 getData	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^        function getData(tbodyNode, cols) {$/;"	f
+getEditor	inote/coffee/cell.coffee	/^    getEditor: -> _codemirror$/;"	f	line:669	language:coffee	object:@Cell
 getEscapedIdentifier	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function getEscapedIdentifier() {$/;"	f
 getFoo	inote/libs/codemirror-4.3/mode/haxe/index.html	/^	function getFoo():Int {$/;"	f
 getIdentifier	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function getIdentifier() {$/;"	f
 getIndexByCellNumber	inote/coffee/inote.coffee	/^    getIndexByCellNumber = (cellNumber) ->$/;"	f
+getInputValue	inote/coffee/cell.coffee	/^    getInputValue: -> _codemirror.getValue()$/;"	f	line:672	language:coffee	object:@Cell
+getJQueryCell	inote/coffee/cell.coffee	/^    getJQueryCell: -> _jQueryCell$/;"	f	line:668	language:coffee	object:@Cell
+getJavascriptTextViewer	inote/coffee/cell.coffee	/^    getJavascriptTextViewer: -> _javascriptTextViewer$/;"	f	line:670	language:coffee	object:@Cell
 getKeyMap	inote/coffee/inote.coffee	/^    getKeyMap = ->$/;"	f
+getLineCount	inote/coffee/cell.coffee	/^    getLineCount: -> _codemirror.lineCount()$/;"	f	line:687	language:coffee	object:@Cell
 getNewCellNumber	inote/coffee/inote.coffee	/^    getNewCellNumber = ->$/;"	f
 getNotebookAccessFromUrl	inote/coffee/inote.html.coffee	/^getNotebookAccessFromUrl = ->$/;"	f
 getNotebookNameFromUrl	inote/coffee/inote.html.coffee	/^getNotebookNameFromUrl = ->$/;"	f
 getNotebookOwnerFromUrl	inote/coffee/inote.html.coffee	/^getNotebookOwnerFromUrl = ->$/;"	f
+getOutputValue	inote/coffee/cell.coffee	/^    getOutputValue: -> _outputCell.html()$/;"	f	line:677	language:coffee	object:@Cell
 getRowData	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^        function getRowData(trNode, cols) {$/;"	f
 getTheme	inote/coffee/inote.coffee	/^    getTheme = ->$/;"	f
 getURL	inote/libs/codemirror-4.3/demo/tern.html	/^  function getURL(url, c) {$/;"	f
@@ -212,6 +255,24 @@ globalKeyHandler	inote/coffee/inote.coffee	/^    globalKeyHandler = (event) ->$/
 hello	inote/libs/codemirror-4.3/mode/htmlembedded/index.html	/^function hello(who) {$/;"	f
 hello	inote/libs/codemirror-4.3/mode/php/index.html	/^function hello($who) {$/;"	f
 hideMenu	inote/coffee/inote.html.coffee	/^hideMenu = ->$/;"	f
+if	inote/coffee/cell.coffee	/^                if a$/;"	b	line:490	language:coffee
+if	inote/coffee/cell.coffee	/^                if c or s$/;"	b	line:486	language:coffee
+if	inote/coffee/cell.coffee	/^            if _mode is "text/html"$/;"	b	line:532	language:coffee
+if	inote/coffee/cell.coffee	/^            if typeof(o) is "string"$/;"	b	line:573	language:coffee
+if	inote/coffee/cell.coffee	/^        if _VER is "1"$/;"	b	line:387	language:coffee
+if	inote/coffee/cell.coffee	/^        if _jQueryCell.find(".showJavascriptButton").text() is "Show Javascript"$/;"	b	line:175	language:coffee
+if	inote/coffee/cell.coffee	/^        if _keyMap is "undefined" then _keyMap = "default"$/;"	b	line:144	language:coffee
+if	inote/coffee/cell.coffee	/^        if _lockButton.hasClass('unlocked')$/;"	b	line:313	language:coffee
+if	inote/coffee/cell.coffee	/^        if _mode is "markdown"$/;"	b	line:370	language:coffee
+if	inote/coffee/cell.coffee	/^        if _mode is "text/x-coffeescript"$/;"	b	line:364	language:coffee
+if	inote/coffee/cell.coffee	/^        if _mode is "text/x-coffeescript"$/;"	b	line:626	language:coffee
+if	inote/coffee/cell.coffee	/^        if cell.attr("version") is "1"$/;"	b	line:395	language:coffee
+if	inote/coffee/cell.coffee	/^        if cell.attr('unlocked') is "false"$/;"	b	line:455	language:coffee
+if	inote/coffee/cell.coffee	/^        if collapsed$/;"	b	line:258	language:coffee
+if	inote/coffee/cell.coffee	/^        if collapsed$/;"	b	line:274	language:coffee
+if	inote/coffee/cell.coffee	/^        if fs$/;"	b	line:350	language:coffee
+if	inote/coffee/cell.coffee	/^        if javaScriptText.is(":visible")$/;"	b	line:648	language:coffee
+if	inote/coffee/cell.coffee	/^        if o instanceof jQuery$/;"	b	line:570	language:coffee
 init	inote/libs/codemirror-4.3/mode/vb/index.html	/^function init() {$/;"	f
 initText	inote/libs/codemirror-4.3/mode/vb/index.html	/^function initText(editor) {$/;"	f
 initUI	inote/libs/codemirror-4.3/demo/merge.html	/^function initUI(panes) {$/;"	f
@@ -248,7 +309,6 @@ is_line_terminator	node_modules/qunit/node_modules/istanbul/node_modules/esprima
 is_octal_digit	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def is_octal_digit(self, ch):$/;"	m	class:Detector
 is_separator_space	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def is_separator_space(self, ch):$/;"	m	class:Detector
 is_white_space	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def is_white_space(self, ch):$/;"	m	class:Detector
-javaScriptText	inote/coffee/cell.coffee	/^        javaScriptText = _javascriptCell$/;"	v
 jinja2	py/indexpage.py	/^import jinja2$/;"	i
 jinja2	py/main.py	/^import jinja2$/;"	i
 jinja2	py/page.py	/^import jinja2$/;"	i
@@ -301,7 +361,6 @@ os	py/indexpage.py	/^import os$/;"	i
 os	py/main.py	/^import os$/;"	i
 os	py/page.py	/^import os$/;"	i
 os	py/ptags.py	/^import sys, re, os$/;"	i
-outputValue	inote/coffee/cell.coffee	/^        outputValue = output.text()$/;"	v
 page	inote/coffee/inote.html.coffee	/^    page = $("#page")$/;"	v
 parse	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parse(code, options) {$/;"	f
 parseArguments	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseArguments() {$/;"	f
@@ -374,10 +433,7 @@ restoreNotebookFromXml	inote/coffee/inote.html.coffee	/^restoreNotebookFromXml =
 runHarness	inote/libs/codemirror-4.3/test/index.html	/^      function runHarness(){$/;"	f
 runTest	inote/libs/codemirror-4.3/mode/vb/index.html	/^function runTest() {$/;"	f
 runTests	node_modules/qunit/node_modules/istanbul/test/browser/support/index.html	/^        function runTests(testFiles) {$/;"	f
-s	inote/coffee/cell.coffee	/^                    s = JSON.stringify(o, (key, value) ->$/;"	f
-s	inote/coffee/cell.coffee	/^                s = o$/;"	v
-s	inote/coffee/cell.coffee	/^            s = "{jQuery}"$/;"	v
-s	inote/coffee/cell.coffee	/^        s = ""$/;"	v
+s	inote/coffee/cell.coffee	/^                    s = JSON.stringify(o, (key, value) ->$/;"	f	line:579	language:coffee	object:@Cell._print
 s	inote/libs/codemirror-4.3/doc/manual.html	/^      functions (the <code>hint<\/code> option), which is a function$/;"	f
 saveNotebookTimeout	inote/coffee/inote.html.coffee	/^        saveNotebookTimeout = setTimeout saveNotebook , 2000$/;"	v
 scan	inote/libs/codemirror-4.3/demo/anywordhint.html	/^    function scan(dir) {$/;"	f
@@ -393,7 +449,13 @@ selectFontsize	inote/libs/codemirror-4.3/mode/cobol/index.html	/^      function 
 selectReadOnly	inote/libs/codemirror-4.3/mode/cobol/index.html	/^      function selectReadOnly() {$/;"	f
 selectTheme	inote/libs/codemirror-4.3/demo/theme.html	/^  function selectTheme() {$/;"	f
 selectTheme	inote/libs/codemirror-4.3/mode/cobol/index.html	/^      function selectTheme() {$/;"	f
+setCursor	inote/coffee/cell.coffee	/^    setCursor: (obj_line_ch) ->$/;"	f	line:683	language:coffee	object:@Cell
+setDeleteCallback	inote/coffee/cell.coffee	/^    setDeleteCallback: (f) ->$/;"	f	line:713	language:coffee	object:@Cell
+setInputValue	inote/coffee/cell.coffee	/^    setInputValue: (code) ->$/;"	f	line:673	language:coffee	object:@Cell
+setInsertAfterCallback	inote/coffee/cell.coffee	/^    setInsertAfterCallback: (f) ->$/;"	f	line:705	language:coffee	object:@Cell
+setInsertBeforeCallback	inote/coffee/cell.coffee	/^    setInsertBeforeCallback: (f) ->$/;"	f	line:709	language:coffee	object:@Cell
 setKeyMap	inote/coffee/inote.coffee	/^    setKeyMap = (keyMap) ->$/;"	f
+setOutputValue	inote/coffee/cell.coffee	/^    setOutputValue: (code) ->$/;"	f	line:678	language:coffee	object:@Cell
 setStatus	inote/libs/codemirror-4.3/test/index.html	/^      function setStatus(message, className, force){$/;"	f
 setTheme	inote/coffee/inote.coffee	/^    setTheme = (themeName) ->$/;"	f
 setVersion	inote/libs/codemirror-4.3/doc/compress.html	/^      function setVersion(ver) {$/;"	f
@@ -404,7 +466,7 @@ showMenu	inote/coffee/inote.html.coffee	/^showMenu = ->$/;"	f
 show_list	inote/coffee/index.html.coffee	/^show_list = (url, selector) ->$/;"	f
 skipComment	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function skipComment() {$/;"	f
 string	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^import string$/;"	i
-style	inote/coffee/cell.coffee	/^                            style='right:0px; top:2px;;' $/;"	v
+switch	inote/coffee/cell.coffee	/^        switch event.which$/;"	b	line:484	language:coffee
 sys	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^import sys$/;"	i
 sys	py/ptags.py	/^import sys, re, os$/;"	i
 tabToIndentSpace	inote/libs/codemirror-4.3/mode/cobol/index.html	/^      function tabToIndentSpace() {$/;"	f
@@ -419,7 +481,7 @@ throwError	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/es
 throwErrorTolerant	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function throwErrorTolerant() {$/;"	f
 throwUnexpected	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function throwUnexpected(token) {$/;"	f
 toREElt	inote/libs/codemirror-4.3/demo/spanaffectswrapping_shim.html	/^      function toREElt(str) {$/;"	f
-toXmlString	inote/coffee/cell.coffee	/^    toXmlString = (data) ->$/;"	f
+toXmlString	inote/coffee/cell.coffee	/^    toXmlString = (data) ->$/;"	f	line:619	language:coffee	object:@Cell
 toggleDifferences	inote/libs/codemirror-4.3/demo/merge.html	/^function toggleDifferences() {$/;"	f
 trackGroupExpression	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function trackGroupExpression() {$/;"	f
 trackLeftHandSideExpression	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function trackLeftHandSideExpression() {$/;"	f

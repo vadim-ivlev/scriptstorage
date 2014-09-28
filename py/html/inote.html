@@ -21,7 +21,7 @@
     <script src="js/all.js"></script>
   </head>
   <body>
-    <div style="padding-right:10px;float:right;"><span class="user_social_name">{{user_social_name}}</span><span style="display:none" class="user_network">{{user_network}}</span><span style="display:none" class="user_id">{{user_id}}</span><span class="loginHolder">{{login_link}}</span><span class="oauthHolder"></span></div>
+    <div style="padding-right:10px;float:right;"><span class="user_name">{{user_name}}</span><span style="display:none" class="user_network">{{user_network}}</span><span style="display:none" class="user_id">{{user_id}}</span><span class="loginHolder">{{login_link}}</span><span class="oauthHolder"></span></div>
     <div id="divHeader" class="header"><span id="btnMenu" style="cursor:pointer;margin-right:20px;" class="icon-menu"></span><span id="saveIndicator"></span><span id="notebookName" onclick="saveAs()" class="notebookName">{{notebook_name}}</span><span class="notebookVersion">{{notebook_version}}</span><span class="nbAccess">{{notebook_access}}</span>
       <!-- <span id="btnClear" class="toolButton" >clear</span>-->
       <!-- <span id="btnOpen" class="toolButton" >restore</span>-->
@@ -77,6 +77,12 @@
         <label for="checkboxAccess">public</label><br><br>
         <button onclick="$(&quot;.modalDialog&quot;).hide()" class="btnCancel">Cancel</button>
         <button class="btnOk">Ok</button>
+      </div>
+    </div>
+    <div id="shareSourceDialog" onclick="$(&quot;.modalDialog&quot;).hide()" class="modalDialog">
+      <div onclick="preventClick(event)"><span onclick="$(&quot;.modalDialog&quot;).hide()" class="toolButton icon-close"></span><br><span>Insert the links in your HTML page</span><br><br><span> Input: </span><a id="cellSourceLink" href="/page?">page</a><br><br>
+        <button onclick="$(&quot;.modalDialog&quot;).hide()" class="btnCancel">Cancel</button>
+        <button class="btnOk">Copy to clipboard</button>
       </div>
     </div>
   </body>

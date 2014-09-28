@@ -28,7 +28,7 @@ class Page(webapp2.RequestHandler):
             version = "0"
 
         template_values = {
-            'user_social_name': utils.get_user_name(self),
+            'user_name': utils.get_user_name(self),
             'user_network': utils.get_user_network(self),    
             'user_id': utils.get_user_id(self),    
             'notebook_content': content,

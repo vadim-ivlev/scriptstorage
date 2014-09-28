@@ -1601,6 +1601,28 @@ hr {
   opacity: 0.7;
   content: 'O';
 }
+.icon-eye-before::before {
+  font-family: icomoon;
+  font-size: 15px;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 4px;
+  margin-right: 4px;
+  opacity: 0.7;
+  content: 'O';
+  color: #2a6496;
+}
+.icon-eye-transparent::before {
+  font-family: icomoon;
+  font-size: 15px;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 4px;
+  margin-right: 4px;
+  opacity: 0.7;
+  content: 'O';
+  opacity: 0.0;
+}
 .icon-eye-blocked::after {
   font-family: icomoon;
   font-size: 15px;
@@ -1816,7 +1838,7 @@ hr {
   opacity: 0.7;
   content: '>';
 }
-.user_social_name,
+.user_name,
 .user_network {
   margin: 0px;
   border: none;
@@ -1983,6 +2005,16 @@ hr {
 .cellLabel:hover {
   border-color: rgba(200, 200, 200, 0.7);
 }
+/*
+.shareOutputButton {
+    float:right;
+    font-size:80%;
+    padding-right:0;
+}
+*/
+.shareSourceButton {
+  font-size: 80%;
+}
 .CodeMirror {
   height: auto;
   width: 100%;
@@ -2116,7 +2148,7 @@ hr {
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(0, 0, 0, 0.4);
   z-index: 99999;
   font-family: Roboto, sans-serif;
 }
