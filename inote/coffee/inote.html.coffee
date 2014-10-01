@@ -39,7 +39,7 @@ inote = undefined
     notebookName = $("#notebookName").text()
     #notebookOwner = $(".notebookOwner").text()
     notebookOwner = $(".user_name").text()
-    notebookAccess = $("#notebookAccess").val()
+    notebookAccess = $(".nbAccess").text()
     
     # If it was the button who initiated the event then dont pass the version
     notebookVersion = if event then null else $(".notebookVersion").text()
@@ -71,7 +71,17 @@ inote = undefined
 
 
 
-@showShareSourceDialog =  ->
+@showShareSourceDialog = (cellNumber) ->
+    aInp=$('#shareSourceDialog #cellSourceLink')
+    inpHref =  '/read' + getPageQueryString() + '&element_id=in'+cellNumber
+    aInp.text inpHref
+    aInp.attr 'href', inpHref
+
+    aOut=$('#shareSourceDialog #cellOutputLink')
+    outHref =  '/read' + getPageQueryString() + '&element_id=out'+cellNumber
+    aOut.text outHref
+    aOut.attr 'href', outHref
+
     $("#shareSourceDialog").show()
 
 
@@ -86,6 +96,21 @@ inote = undefined
     alert "Not implemented"
 
 
+
+getPageQueryString = ->
+    
+    user_name = $(".user_name").text()
+    user_network = $(".user_network").text()
+    notebook_name = $("#notebookName").text()
+    notebook_access = $(".nbAccess").text()
+    
+    unet=encodeURIComponent(user_name+'|'+user_network)
+    access=encodeURIComponent(notebook_access )
+    name=encodeURIComponent(notebook_name)
+    return "?owner=#{unet}&access=#{access}&name=#{name}"
+
+
+
 @getPageUrl = (user_name, user_network, access, notebook_name) ->
     unet=encodeURIComponent(user_name+'|'+user_network)
     access=encodeURIComponent(access)
@@ -93,23 +118,22 @@ inote = undefined
     return "/page?owner=#{unet}&access=#{access}&name=#{name}"
 
 @rename2 = (accessChanged) ->
-
-    if not accessChanged
-        newName = prompt "Rename", $("#notebookName").text()
-        $("#notebookName").text newName if newName
-
-    notebookName = $("#notebookName").text()
-    notebookAccess = $("#notebookAccess").val()
-    old_notebookAccess = notebookAccess
+    notebookName = old_notebookName =$("#notebookName").text()
+    notebookAccess = old_notebookAccess = $(".nbAccess").text()
+    
     if (accessChanged)
-        old_notebookAccess = if notebookAccess is "public" then "private" else "public"
+        notebookAccess = if old_notebookAccess is "public" then "private" else "public"
+    else
+        notebookName = prompt 'Rename', old_notebookName
+        if not notebookName
+            return
 
 
     notebookVersion = null
     xmlText = inote.getXmlText(notebookName)
     notebookOwner = $("#notebookOwner").text()
 
-    key_name = notebookOwner + "/" + old_notebookAccess + "/" + notebookName
+    key_name = notebookOwner + "/" + old_notebookAccess + "/" + old_notebookName
 
     console.log "Rename Notebook: " +key_name
 
@@ -119,14 +143,11 @@ inote = undefined
         if o.error
             alert o.error
         else
+            $("#notebookName").text notebookName
             $("#saveIndicator").text ""
             $(".notebookVersion").text o.version
             $(".nbAccess").text notebookAccess
-            user_name = $(".user_name").text()
-            user_network = $(".user_network").text()
-            newUrl = getPageUrl(user_name, user_network, notebookAccess, notebookName)
-            window.history.replaceState(null, notebookAccess, newUrl )
-            #openNotebook()
+            window.history.replaceState(null, notebookAccess, '/page'+getPageQueryString() )
         return
     hideMenu()
     return
@@ -138,7 +159,7 @@ openNotebook = (notebookOwner, notebookAccess, notebookName) ->
     return    unless notebookName
     $(".notebookOwner").text notebookOwner
     $("#notebookName").text notebookName
-    $("#notebookAccess").val notebookAccess
+    #$("#notebookAccess").val notebookAccess
     #storage.get notebookOwner, notebookName, restoreNotebookFromXml
     return
 
@@ -231,7 +252,7 @@ $ ->
     #openNotebook getNotebookOwnerFromUrl(), getNotebookAccessFromUrl(), getNotebookNameFromUrl()
     restoreNotebookFromXml(xmlText)
     
-    $("#notebookAccess").val getNotebookAccessFromUrl()
+    #$("#notebookAccess").val getNotebookAccessFromUrl()
 
     
     
@@ -275,8 +296,8 @@ $ ->
     #$("#notebookAccess").on "focus", (event) ->
 
 
-    $("#notebookAccess").change (event) ->
-        rename2(true)
+    #$("#notebookAccess").change (event) ->
+    #    rename2(true)
 
     window.onbeforeunload = ->
         if $("#saveIndicator").text()

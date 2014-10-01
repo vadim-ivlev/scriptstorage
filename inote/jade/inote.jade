@@ -75,9 +75,9 @@ html
         
             span#btnMenu.icon-menu(style='cursor:pointer;margin-right:20px;')
             span#saveIndicator
-            span#notebookName.notebookName(onclick='saveAs()') {{notebook_name}}
+            span#notebookName.notebookName(onclick='rename2()') {{notebook_name}}
             span.notebookVersion {{notebook_version}}
-            span.nbAccess {{notebook_access}}
+            span.nbAccess(onclick='rename2(true)') {{notebook_access}}
             // <span id="btnClear" class="toolButton" >clear</span>
             // <span id="btnOpen" class="toolButton" >restore</span>
             div#saveGroup
@@ -94,17 +94,17 @@ html
                 span.toolButton(onclick='saveAs()') Save As ...
                 br
                 br
-                span.toolButton(onclick='rename2()') Rename ...
-                br
-                br
+                //span.toolButton(onclick='rename2()') Rename ...
+                //br
+                //br
                 span.toolButton(onclick='saveNotebook(event)',title='Save a new version.') Save as new version
                 hr
-                span.arrowDown
-                    select#notebookAccess.selectButton(title='Access')
-                        option(value='public') public
-                        option(value='private') private
-                br
-                br
+                //span.arrowDown
+                //    select#notebookAccess.selectButton(title='Access')
+                //        option(value='public') public
+                //        option(value='private') private
+                //br
+                //br
                 span.arrowDown
                     select#notebookEditor.selectButton(title='Editor',onchange='selectKeyMap()')
                         option(value='default') default editor
@@ -171,13 +171,17 @@ html
             div(onclick='preventClick(event)')
                 span.toolButton.icon-close(onclick='$(".modalDialog").hide()')
                 br
-                span Insert the links in your HTML page
+                span Direct links to input and output. Paste them to your HTML. Make sure the notebook is saved.
                 br
                 br
                 span  Input: 
-                a#cellSourceLink(href='/page?') page
+                a#cellSourceLink(href='/',target='_blank') input
                 br
                 br
-                button.btnCancel(onclick='$(".modalDialog").hide()') Cancel
-                button.btnOk Copy to clipboard
+                span  Output: 
+                a#cellOutputLink(href='/',target='_blank') output
+                //br
+                //br
+                //button.btnCancel(onclick='$(".modalDialog").hide()') Cancel
+                //button.btnOk Copy to clipboard
 

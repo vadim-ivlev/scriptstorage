@@ -16,6 +16,7 @@ class ReadHandler(webapp2.RequestHandler):
         version=self.request.get('version')
         content=""
 
+
         
         
         self.response.headers['Content-Type'] = utils.get_mime_type( element_id )
@@ -27,13 +28,13 @@ class ReadHandler(webapp2.RequestHandler):
         else:
             # return the whole page if it is allowed 
             if utils.access_allowed(self, notebook_access, notebook_owner):
-                (element,version)=utils.get_notebook_content(notebook_owner, notebook_access, notebook_name, version)
+                (content,version)=utils.get_notebook_content(notebook_owner, notebook_access, notebook_name, version)
                 
 
         if not version:
             version = "0"
         self.response.headers['Content-Version'] = str(version)
-        self.response.out.write(element)
+        self.response.out.write(content)
         
 
 

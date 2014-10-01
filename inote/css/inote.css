@@ -1324,10 +1324,14 @@ hr {
   padding: 10px;
   padding-left: 30px;
   padding-right: 30px;
-  max-width: 1000px;
+  max-width: 899px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 30px;
+  border: 0px solid rgba(200, 200, 200, 0.7);
+  border-radius: 6px;
   clear: both;
+  box-sizing: border-box;
 }
 .header {
   padding-left: 8px;
@@ -1856,11 +1860,14 @@ hr {
 /*------------cell----------------------*/
 .cell {
   position: relative;
-  border: 0px solid transparent;
-  margin-top: 20px;
+  border: 1px solid transparent;
+  margin-top: 0px;
+  margin-bottom: 40px;
   overflow: visible;
-  padding: 0px;
+  padding: 5px;
   width: 100%;
+  box-sizing: border-box;
+  border-radius: 12px;
 }
 .codeArea {
   border: 1px solid transparent;
@@ -1908,15 +1915,18 @@ hr {
   width: 90px;
   display: inline-block;
 }
+.hideInputButton {
+  margin-left: 27px;
+}
 .insertBefore {
   position: absolute;
   left: 50%;
   border: 1px solid rgba(200, 200, 200, 0.7);
   background-color: transparent;
   font-size: 0px;
-  top: 0px;
-  border-bottom-right-radius: 7px;
-  border-bottom-left-radius: 7px;
+  top: -12px;
+  border-top-right-radius: 7px;
+  border-top-left-radius: 7px;
 }
 .insertBefore:after {
   font-size: 10px;
@@ -1927,9 +1937,9 @@ hr {
   border: 1px solid rgba(200, 200, 200, 0.7);
   background-color: transparent;
   font-size: 0px;
-  bottom: 0px;
-  border-top-right-radius: 7px;
-  border-top-left-radius: 7px;
+  bottom: -12px;
+  border-bottom-right-radius: 7px;
+  border-bottom-left-radius: 7px;
 }
 .insertAfter:after {
   font-size: 10px;
@@ -2014,6 +2024,9 @@ hr {
 */
 .shareSourceButton {
   font-size: 80%;
+}
+.clearOutputButton {
+  margin-left: 30px;
 }
 .CodeMirror {
   height: auto;
@@ -2122,7 +2135,6 @@ hr {
   cursor: pointer;
   opacity: 0.3;
   margin-left: 20px;
-  cursor: default;
 }
 .notebookVersion {
   position: relative;
@@ -2171,6 +2183,7 @@ hr {
 }
 .modalDialog .icon-close {
   position: absolute;
+  padding-right: 6px;
   top: 4px;
   right: 4px;
   font-size: 200%;
@@ -2189,11 +2202,10 @@ hr {
   background-color: #F4F4F4;
 }
 .modalDialog > div {
-  max-width: 600px;
-  position: relative;
-  margin: 0 auto;
+  width: 100%;
+  margin: auto;
   padding: 0px 20px 20px 20px;
-  border: 1px solid rgba(200, 200, 200, 0.7);
+  border: 0px solid rgba(200, 200, 200, 0.7);
   background: #fff;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
 }

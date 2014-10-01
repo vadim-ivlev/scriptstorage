@@ -22,17 +22,22 @@
   </head>
   <body>
     <div style="padding-right:10px;float:right;"><span class="user_name">{{user_name}}</span><span style="display:none" class="user_network">{{user_network}}</span><span style="display:none" class="user_id">{{user_id}}</span><span class="loginHolder">{{login_link}}</span><span class="oauthHolder"></span></div>
-    <div id="divHeader" class="header"><span id="btnMenu" style="cursor:pointer;margin-right:20px;" class="icon-menu"></span><span id="saveIndicator"></span><span id="notebookName" onclick="saveAs()" class="notebookName">{{notebook_name}}</span><span class="notebookVersion">{{notebook_version}}</span><span class="nbAccess">{{notebook_access}}</span>
+    <div id="divHeader" class="header"><span id="btnMenu" style="cursor:pointer;margin-right:20px;" class="icon-menu"></span><span id="saveIndicator"></span><span id="notebookName" onclick="rename2()" class="notebookName">{{notebook_name}}</span><span class="notebookVersion">{{notebook_version}}</span><span onclick="rename2(true)" class="nbAccess">{{notebook_access}}</span>
       <!-- <span id="btnClear" class="toolButton" >clear</span>-->
       <!-- <span id="btnOpen" class="toolButton" >restore</span>-->
       <div id="saveGroup"><span id="btnHideMenu" class="toolButton"><span class="icon-close"></span></span><br><br><span id="btnSave" onclick="saveNotebook()" title="Ctrl-S" class="toolButton">Save &nbsp;&nbsp;Ctrl-S</span><span style="white-space:nowrap;float:right" class="toolButton">
           <label for="autoSave" title="autosave">auto</label>
-          <input id="autoSave" type="checkbox"></span><br><br><span onclick="saveAs()" class="toolButton">Save As ...</span><br><br><span onclick="rename2()" class="toolButton">Rename ...</span><br><br><span onclick="saveNotebook(event)" title="Save a new version." class="toolButton">Save as new version</span>
-        <hr><span class="arrowDown">
-          <select id="notebookAccess" title="Access" class="selectButton">
-            <option value="public">public</option>
-            <option value="private">private</option>
-          </select></span><br><br><span class="arrowDown">
+          <input id="autoSave" type="checkbox"></span><br><br><span onclick="saveAs()" class="toolButton">Save As ...</span><br><br>
+        <!--span.toolButton(onclick='rename2()') Rename ...-->
+        <!--br-->
+        <!--br--><span onclick="saveNotebook(event)" title="Save a new version." class="toolButton">Save as new version</span>
+        <hr>
+        <!--span.arrowDown-->
+        <!--    select#notebookAccess.selectButton(title='Access')-->
+        <!--        option(value='public') public-->
+        <!--        option(value='private') private-->
+        <!--br-->
+        <!--br--><span class="arrowDown">
           <select id="notebookEditor" title="Editor" onchange="selectKeyMap()" class="selectButton">
             <option value="default">default editor</option>
             <option value="vim">vim</option>
@@ -80,9 +85,11 @@
       </div>
     </div>
     <div id="shareSourceDialog" onclick="$(&quot;.modalDialog&quot;).hide()" class="modalDialog">
-      <div onclick="preventClick(event)"><span onclick="$(&quot;.modalDialog&quot;).hide()" class="toolButton icon-close"></span><br><span>Insert the links in your HTML page</span><br><br><span> Input: </span><a id="cellSourceLink" href="/page?">page</a><br><br>
-        <button onclick="$(&quot;.modalDialog&quot;).hide()" class="btnCancel">Cancel</button>
-        <button class="btnOk">Copy to clipboard</button>
+      <div onclick="preventClick(event)"><span onclick="$(&quot;.modalDialog&quot;).hide()" class="toolButton icon-close"></span><br><span>Direct links to input and output. Paste them to your HTML. Make sure the notebook is saved.</span><br><br><span> Input: </span><a id="cellSourceLink" href="/" target="_blank">input</a><br><br><span> Output: </span><a id="cellOutputLink" href="/" target="_blank">output</a>
+        <!--br-->
+        <!--br-->
+        <!--button.btnCancel(onclick='$(".modalDialog").hide()') Cancel-->
+        <!--button.btnOk Copy to clipboard-->
       </div>
     </div>
   </body>

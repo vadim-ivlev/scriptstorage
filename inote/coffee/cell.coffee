@@ -101,7 +101,7 @@ window?.clear = null
                 
                 <div class='insertBefore smallButton  hide-on-view icon-plus' title='add cell'></div>
                 <div class='insertAfter smallButton  hide-on-view icon-plus' title='add cell'></div>
-                <div class='lockButton smallButton icon-pencil' title='edit/lock' style='position:absolute;top:0px;left:-27px;'></div>
+                <div class='lockButton smallButton icon-pencil' title='edit/lock' style='position:absolute;top:5px;left:5px;'></div>
             </div>
         """)
     
@@ -341,7 +341,7 @@ window?.clear = null
             saveNotebookLater?()
             console.log "descr changed"
         
-        $(".shareSourceButton", _jQueryCell).click -> showShareSourceDialog()
+        $(".shareSourceButton", _jQueryCell).click -> showShareSourceDialog(_n)
 
 
     _switchFullsreen = ->
