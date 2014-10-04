@@ -108,7 +108,7 @@
       addLogoutLink = function($container) {
         var r;
         r = read_cookie();
-        $("<span id='profile_" + r.id + "' title='id: " + r.id + "' class='icon-" + r.network + "' >\n</span>").appendTo($container);
+        $("<span id='profile_" + r.id + "' title='id: " + r.id + "' class='i_con-" + r.network + "' >\n</span>").appendTo($container);
         return $("<a id='" + r.network + "_logout' href='' class='toolButton'>logout</a>").click(function(e) {
           e.preventDefault();
           return hello.logout(r.network, {

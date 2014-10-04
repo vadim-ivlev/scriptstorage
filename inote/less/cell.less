@@ -1,7 +1,7 @@
 /*------------cell----------------------*/
 .cell {
     position:relative;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
     margin-top:0px;
     margin-bottom:40px;
     overflow:visible;
@@ -38,7 +38,7 @@
     width:100%;
     border-radius: 0px;
     overflow: auto;
-    padding:0;
+    padding:3px;
     border: 1px solid transparent;
     //padding-left:5px;
     //padding-right:5px;
@@ -132,6 +132,13 @@
 {
     border-color: @BORDERCOLOR;
 }
+
+.danger-border
+{
+    border-color: red;
+}
+
+
 .shadow
 {
     //box-shadow:0px 0px 3px 3px rgba(0,0,0,0.04);
@@ -171,16 +178,20 @@
     border-top-right-radius: 9px;
     border-bottom-color: white;
     padding-left:10px;
+    position:relative;
+    top:1px;
+    height: 22px;
+    //display: inline-block;
     &:hover {
         border-bottom-color: white;
     }
 }    
 .cellLabel {
     border:1px solid transparent;
-    border-bottom-style: none;
+    //border-bottom-style: none;
     color: @LINKCOLOR;
     font-family:@BUTTONFONT; 
-    font-size:@BUTTONFONTSIZE;
+    font-size:90%;
     min-height:20px;
     vertical-align: middle;
     margin:0px;

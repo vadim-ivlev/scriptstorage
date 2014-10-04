@@ -99,7 +99,7 @@ adjust_ui = ->
         # And the network logout link to contain
         addLogoutLink =($container) ->
             r = read_cookie()
-            $("""<span id='profile_#{r.id}' title='id: #{r.id}' class='icon-#{r.network}' >
+            $("""<span id='profile_#{r.id}' title='id: #{r.id}' class='i_con-#{r.network}' >
                 </span>""").appendTo($container)
             #<img src='#{r.thumbnail}' style='width:30px; height:30px; border-radius:25px;vertical-align:middle;'/>
             #<span class='toolButton'>#{r.name}</span>
@@ -116,12 +116,12 @@ adjust_ui = ->
         addLoginLink =($container, network) ->
             $("<a id='#{network}_login' class='icon-#{network}' href='' style='text-decoration:none; margin:3px'></a>")
             .click (e) -> e.preventDefault(); hello.login(network)
-            .appendTo($container)
+            .appendTo($container) 
         
         c=$('.oauthHolder').html('')
         addLoginLink c, "windows"
         #addLoginLink c, "googleplus"
-        addLoginLink c, "github"
+        addLoginLink c, "github" 
         #addLoginLink c, "wordpress"
         #addLoginLink c, "twitter"
         #addLoginLink c, "linkedin"

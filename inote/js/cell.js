@@ -209,6 +209,8 @@ keyMap - default| vim | sublime | emac
     _lock = function() {
       _jQueryCell.find(".hide-on-view").removeClass("visible");
       _jQueryCell.find(".codeArea").removeClass("visibleBorder");
+      _jQueryCell.find(".cellLabel").removeClass("visibleBorder");
+      _jQueryCell.find(".cellLabel").removeAttr("contenteditable");
       _jQueryCell.removeClass("visibleBorder shadow");
       _codemirror.setOption("readOnly", "nocursor");
       _outputCell.removeClass('visibleBorder');
@@ -218,7 +220,8 @@ keyMap - default| vim | sublime | emac
     _unlock = function() {
       _jQueryCell.find(".hide-on-view").addClass("visible");
       _jQueryCell.find(".codeArea").addClass("visibleBorder");
-      _jQueryCell.addClass("visibleBorder shadow");
+      _jQueryCell.find(".cellLabel").addClass("visibleBorder");
+      _jQueryCell.find(".cellLabel").attr("contenteditable", true);
       _codemirror.setOption("readOnly", false);
       _outputCell.addClass('visibleBorder');
       _lockButton.addClass('unlocked');
@@ -237,6 +240,12 @@ keyMap - default| vim | sublime | emac
       _fullscreenButton.click(_switchFullsreen);
       $(".deleteButton", _jQueryCell).click(function() {
         return _call(_deleteCallback, _n);
+      });
+      $(".deleteButton", _jQueryCell).mouseover(function() {
+        return _jQueryCell.addClass('danger-border');
+      });
+      $(".deleteButton", _jQueryCell).mouseout(function() {
+        return _jQueryCell.removeClass('danger-border');
       });
       $(".insertBefore", _jQueryCell).click(function() {
         return _call(_insertBeforeCallback, _n);
@@ -268,8 +277,14 @@ keyMap - default| vim | sublime | emac
         }
         return console.log("descr changed");
       });
-      return $(".shareSourceButton", _jQueryCell).click(function() {
+      $(".shareSourceButton", _jQueryCell).click(function() {
         return showShareSourceDialog(_n);
+      });
+      _jQueryCell.focusin(function() {
+        return _jQueryCell.addClass('visibleBorder');
+      });
+      return _jQueryCell.focusout(function() {
+        return _jQueryCell.removeClass('visibleBorder');
       });
     };
     _switchFullsreen = function() {

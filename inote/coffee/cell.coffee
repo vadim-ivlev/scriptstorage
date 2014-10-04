@@ -291,6 +291,8 @@ window?.clear = null
     _lock = ->
         _jQueryCell.find(".hide-on-view").removeClass "visible"
         _jQueryCell.find(".codeArea").removeClass "visibleBorder"
+        _jQueryCell.find(".cellLabel").removeClass "visibleBorder"
+        _jQueryCell.find(".cellLabel").removeAttr "contenteditable"
         _jQueryCell.removeClass "visibleBorder shadow"
         _codemirror.setOption "readOnly", "nocursor"
         _outputCell.removeClass('visibleBorder')
@@ -303,12 +305,15 @@ window?.clear = null
     _unlock = ->
         _jQueryCell.find(".hide-on-view").addClass "visible"
         _jQueryCell.find(".codeArea").addClass "visibleBorder"
-        _jQueryCell.addClass "visibleBorder shadow"
+        _jQueryCell.find(".cellLabel").addClass "visibleBorder"
+        _jQueryCell.find(".cellLabel").attr "contenteditable", true
+        #_jQueryCell.addClass "visibleBorder shadow"
         _codemirror.setOption "readOnly", false
         _outputCell.addClass('visibleBorder')
         _lockButton.addClass('unlocked')
         @saveNotebookLater?()
     
+
     _lockUnlock = ->
         if _lockButton.hasClass('unlocked')
             _lock()
@@ -322,6 +327,8 @@ window?.clear = null
         _lockButton.click _lockUnlock
         _fullscreenButton.click _switchFullsreen
         $(".deleteButton", _jQueryCell).click -> _call _deleteCallback, _n
+        $(".deleteButton", _jQueryCell).mouseover ->  _jQueryCell.addClass 'danger-border'
+        $(".deleteButton", _jQueryCell).mouseout ->  _jQueryCell.removeClass 'danger-border'
         $(".insertBefore", _jQueryCell).click -> _call _insertBeforeCallback, _n
         $(".insertAfter", _jQueryCell).click -> _call _insertAfterCallback, _n
         $(".icon-play", _jQueryCell).click _executeCode
@@ -343,7 +350,16 @@ window?.clear = null
         
         $(".shareSourceButton", _jQueryCell).click -> showShareSourceDialog(_n)
 
+        _jQueryCell.focusin ->
+            _jQueryCell.addClass 'visibleBorder'
+        
+        _jQueryCell.focusout ->
+            _jQueryCell.removeClass 'visibleBorder'
 
+    
+    
+    
+    
     _switchFullsreen = ->
         fs = not isFullScreen(_codemirror)
         setFullScreen(_codemirror, fs)
@@ -356,6 +372,8 @@ window?.clear = null
             _inputCell.addClass('position_relative')
             _fullscreenButton.addClass("position_absolute_100")
 
+    
+    
     
     _setMode = (mode) ->
         _mode = mode

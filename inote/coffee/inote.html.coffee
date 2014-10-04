@@ -153,7 +153,7 @@ getPageQueryString = ->
     return
 
 
-
+###
 openNotebook = (notebookOwner, notebookAccess, notebookName) ->
     clearAndInit()
     return    unless notebookName
@@ -162,7 +162,7 @@ openNotebook = (notebookOwner, notebookAccess, notebookName) ->
     #$("#notebookAccess").val notebookAccess
     #storage.get notebookOwner, notebookName, restoreNotebookFromXml
     return
-
+###
 
 
 
@@ -179,8 +179,13 @@ restoreNotebookFromXml = (xmlText) ->
         keyMap= notebook.attr("keyMap")
         if keyMap then $("#notebookEditor").val keyMap
 
-    inote.init()  if $(".cell").length is 0
-    
+    # if there is no cells do full init, oterwise just assign keys
+    if $(".cell").length is 0
+        inote.init()
+    else
+        inote.bindKeys()
+
+
     @clearSaveIndicator()
     return
 
@@ -214,12 +219,12 @@ getNotebookOwnerFromUrl = ->
 
 
 
-
+###
 clearAndInit = ->
     inote.clear()
     inote.init()
     return
-
+###
 showMenu = ->
     $("#saveGroup").animate({left:0, easing:'linear'}, 100)
 

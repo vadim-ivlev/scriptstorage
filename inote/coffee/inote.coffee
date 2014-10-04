@@ -197,13 +197,18 @@
 
 
    # ===================================================== 
+   # creates a new empty notebook with one empty cell
     _init = ->
         nc=appendNewCell(getNewCellNumber())
-        _container.bind "keydown", globalKeyHandler
+        _bindKeys()
         nc.setFocus 0, 0
         nc.unlock()
         return
-    
+   
+    # binds keys to container
+    _bindKeys = ->
+        _container.bind "keydown", globalKeyHandler
+
     
     clear = ->
         cells = _container.find(".cell").remove()
@@ -231,6 +236,7 @@
     @getXmlText = getXmlText
     @clear = clear
     @init = _init
+    @bindKeys = _bindKeys
     @setTheme = setTheme
     @getTheme = getTheme
     @setKeyMap = setKeyMap
