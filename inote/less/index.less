@@ -3,7 +3,6 @@
 #appTitle {
     font-family: @FONT;
     width:100%;
-    vertical-align: middle;
     font-size: 70px; 
     font-weight: normal;
 }
@@ -24,12 +23,13 @@
     padding-bottom: 12px;
     padding-left: 20px;
     padding-right: 20px;
-    margin-left: 60px;
+    margin-left: 30px;
     border-radius: 4px;
     font-variant: small-caps;
     color:white;
     background-color:#222;
     white-space: nowrap;
+    vertical-align: text-bottom;
     &:hover {
         border-color: @BORDERCOLOR;
     }
@@ -39,6 +39,7 @@ li a {
     font-family: @FONT;
 }
 
-// access column in the list of user's notebooks
-.cell_public {
+#page {
+    max-width:899px;
 }
+

@@ -24,24 +24,22 @@
   <body style="padding:10px;">
     <div style="padding-right:10px;float:right;"><span class="user_name">{{user_name}}</span><span style="display:none" class="user_network">{{user_network}}</span><span style="display:none" class="user_id">{{user_id}}</span><span class="loginHolder">{{login_link}}</span><span class="oauthHolder"></span></div>
     <div id="page" class="page">
-      <div id="divHeader" style="padding: 0px;height:110px;" class="header">
-        <div style="float:left"><span id="appTitle">iNote</span><span id="btnCreate" role="button" class="toolButton btn btn-danger">create new</span>
-          <!--span.btn.btn-success.btn-lg(role='button',style='font-family:Roboto;') CREATE NEW-->
-        </div>
+      <div id="divHeader" style="padding: 0px;height:110px;"><span id="appTitle">iNote</span><span id="btnCreate" role="button" class="toolButton btn btn-danger">create new</span>
+        <!--span.btn.btn-success.btn-lg(role='button',style='font-family:Roboto;') CREATE NEW-->
       </div>
       <div id="notebookList">{{notebook_list}}</div><br>
       <!--tab navs-->
       <ul role="tablist" class="nav nav-tabs">
-        <li class="publicTab active"><a href="#publicPane" role="tab" data-toggle="tab">Public notebooks</a></li>
-        <li class="userTab"><a href="#userPane" role="tab" data-toggle="tab">Yours</a></li>
+        <li class="userTab active"><a href="#userPane" role="tab" data-toggle="tab">Yours</a></li>
+        <li class="publicTab"><a href="#publicPane" role="tab" data-toggle="tab">Public notebooks</a></li>
       </ul>
       <!--tab panes-->
       <div class="tab-content"><br>
-        <div id="publicPane" class="tab-pane active">
-          <div id="publicList"></div>
-        </div>
-        <div id="userPane" class="tab-pane">
+        <div id="userPane" class="tab-pane active">
           <div id="userList"></div>
+        </div>
+        <div id="publicPane" class="tab-pane">
+          <div id="publicList"></div>
         </div>
       </div>
     </div>

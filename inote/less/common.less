@@ -49,7 +49,6 @@ body {
     background-color: white;
     padding:0;
     margin:0;
-    padding-bottom: 200px;
 }
 
 input {
@@ -63,9 +62,9 @@ hr {
 /*PAGE----------------------*/
 .page {
     padding:10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    max-width:899px;
+    padding-left: 5px;
+    padding-right: 5px;
+    max-width:2000px;
     margin-left:auto;
     margin-right:auto;
     margin-top:30px;
@@ -183,11 +182,16 @@ hr {
     opacity:0.7;
 }
 
+.icon-pencil::after { .ic; content: '1'; cursor:pointer; opacity:0.6; }
+.icon-folder::before { .ic; content: 'D'; cursor:pointer; }
+.icon-folder-open::before { .ic; content: '2'; cursor:pointer; }
+.icon-file-css::before { .ic; content: 'c'; cursor:pointer; }
+
 .icon-play::after { .ic; content: 'r'; cursor:pointer; }
 .icon-question-circle::after { .ic; content: '?'; }
 .icon-info-circle::after { .ic; content: 'i'; }
 .icon-home::before { .ic; content: 'h'; opacity:0.7; font-size:120%; }
-.icon-pencil::after { .ic; content: 'e'; opacity:0.7 }
+.icon-pencil22::after { .ic; content: 'e'; opacity:0.7 }
 .icon-image::after { .ic; content: 'p'; }
 .icon-file::after { .ic; content: 'f'; }
 .icon-expand::after { .ic; content: 'X'; font-size:80%;  }
@@ -208,7 +212,7 @@ hr {
 .icon-close::after { .ic; content: 'x'; font-size:50%; }
 .icon-plus::after { .ic; content: '+'; }
 .icon-embed::after { .ic; content: '['; }
-.icon-share::after { .ic; content: 's'; }
+.icon-share::after { .ic; content: 's'; font-size:90% }
 .icon-google::after { .ic; content: 'G'; font-size:130%; color:#F44; }
 .icon-google-before::before { .ic; content: 'G'; font-size:130%; color:#F44; }
 .icon-facebook::after { .ic; content: 'F'; font-size:130%; }
@@ -234,3 +238,12 @@ hr {
 //select::-ms-expand {
 //    display: none;
 //}
+
+.markdown { 
+    max-width:899px;
+    line-height:1.5;
+    font-size:18px;
+    margin:auto;
+    text-align: justify;
+}
+

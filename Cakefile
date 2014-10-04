@@ -125,7 +125,7 @@ generateCss = ->
 
 generateJs = ->
     removeGeneratedJsFiles()
-    generateJsFiles ->
+    try generateJsFiles ->
         uglify_minify()
 
 
@@ -139,13 +139,8 @@ generateJsFiles = (onDone)->
 # removes generatet js files
 removeGeneratedJsFiles = ->
     for file in fs.readdirSync("inote/coffee") when /\.coffee$/.test file
-        try
-            fs.unlinkSync "inote/js/#{file.replace('.coffee','.js')}"
-        catch err
-
-        try
-            fs.unlinkSync "inote/js/#{file.replace('.coffee','.map')}"
-        catch err
+        try fs.unlinkSync "inote/js/#{file.replace('.coffee','.js')}"
+        try fs.unlinkSync "inote/js/#{file.replace('.coffee','.map')}"
 
     
 # uglify minify js files
@@ -157,7 +152,7 @@ uglify_minify = ->
 # Выполняет команду OS и печатает вывод и сообщения об ошибках
 execOut = (commandLine, cb) ->
     console.log("> #{commandLine}")
-    exec commandLine, (err, stdout, stderr) ->
+    try exec commandLine, (err, stdout, stderr) ->
         if stdout
             console.log(stdout)
         if stderr

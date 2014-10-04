@@ -1,0 +1,154 @@
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot?-1kmtrc');
+	src:url('fonts/icomoon.eot?#iefix-1kmtrc') format('embedded-opentype'),
+		url('fonts/icomoon.woff?-1kmtrc') format('woff'),
+		url('fonts/icomoon.ttf?-1kmtrc') format('truetype'),
+		url('fonts/icomoon.svg?-1kmtrc#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-pencil:before {
+	content: "\31";
+}
+.icon-folder-open:before {
+	content: "\32";
+}
+.icon-file-css:before {
+	content: "\63";
+}
+.icon-pencil2:before {
+	content: "\45";
+}
+.icon-folder:before {
+	content: "\44";
+}
+.icon-eye:before {
+	content: "\e604";
+}
+.icon-home:before {
+	content: "\68";
+}
+.icon-pencil22:before {
+	content: "\65";
+}
+.icon-image:before {
+	content: "\70";
+}
+.icon-file:before {
+	content: "\66";
+}
+.icon-expand:before {
+	content: "\58";
+}
+.icon-contract:before {
+	content: "\5f";
+}
+.icon-lock:before {
+	content: "\4c";
+}
+.icon-unlocked:before {
+	content: "\75";
+}
+.icon-cog:before {
+	content: "\67";
+}
+.icon-food:before {
+	content: "\64";
+}
+.icon-remove:before {
+	content: "\62";
+}
+.icon-menu:before {
+	content: "\6d";
+}
+.icon-link:before {
+	content: "\6e";
+}
+.icon-attachment:before {
+	content: "\40";
+}
+.icon-eye2:before {
+	content: "\4f";
+}
+.icon-eye-blocked:before {
+	content: "\6f";
+}
+.icon-star:before {
+	content: "\74";
+}
+.icon-close:before {
+	content: "\78";
+}
+.icon-plus:before {
+	content: "\2b";
+}
+.icon-embed:before {
+	content: "\5b";
+}
+.icon-share:before {
+	content: "\73";
+}
+.icon-googleplus:before {
+	content: "\47";
+}
+.icon-facebook:before {
+	content: "\46";
+}
+.icon-twitter:before {
+	content: "\54";
+}
+.icon-youtube:before {
+	content: "\59";
+}
+.icon-github:before {
+	content: "\48";
+}
+.icon-wordpress:before {
+	content: "\50";
+}
+.icon-blogger:before {
+	content: "\42";
+}
+.icon-windows:before {
+	content: "\57";
+}
+.icon-linkedin:before {
+	content: "\49";
+}
+.icon-file-xml:before {
+	content: "\4e";
+}
+.icon-html5:before {
+	content: "\35";
+}
+.icon-play:before {
+	content: "\72";
+}
+.icon-question-circle:before {
+	content: "\3f";
+}
+.icon-info-circle:before {
+	content: "\69";
+}
+.icon-logout:before {
+	content: "\3c";
+}
+.icon-login:before {
+	content: "\3e";
+}

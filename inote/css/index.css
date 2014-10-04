@@ -26,7 +26,6 @@ body {
   background-color: white;
   padding: 0;
   margin: 0;
-  padding-bottom: 200px;
 }
 input {
   background: transparent;
@@ -38,9 +37,9 @@ hr {
 /*PAGE----------------------*/
 .page {
   padding: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  max-width: 899px;
+  padding-left: 5px;
+  padding-right: 5px;
+  max-width: 2000px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 30px;
@@ -139,6 +138,51 @@ hr {
   margin-right: 4px;
   opacity: 0.7;
 }
+.icon-pencil::after {
+  font-family: icomoon;
+  font-size: 15px;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 4px;
+  margin-right: 4px;
+  opacity: 0.7;
+  content: '1';
+  cursor: pointer;
+  opacity: 0.6;
+}
+.icon-folder::before {
+  font-family: icomoon;
+  font-size: 15px;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 4px;
+  margin-right: 4px;
+  opacity: 0.7;
+  content: 'D';
+  cursor: pointer;
+}
+.icon-folder-open::before {
+  font-family: icomoon;
+  font-size: 15px;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 4px;
+  margin-right: 4px;
+  opacity: 0.7;
+  content: '2';
+  cursor: pointer;
+}
+.icon-file-css::before {
+  font-family: icomoon;
+  font-size: 15px;
+  color: #777777;
+  vertical-align: middle;
+  margin-left: 4px;
+  margin-right: 4px;
+  opacity: 0.7;
+  content: 'c';
+  cursor: pointer;
+}
 .icon-play::after {
   font-family: icomoon;
   font-size: 15px;
@@ -181,7 +225,7 @@ hr {
   opacity: 0.7;
   font-size: 120%;
 }
-.icon-pencil::after {
+.icon-pencil22::after {
   font-family: icomoon;
   font-size: 15px;
   color: #777777;
@@ -406,6 +450,7 @@ hr {
   margin-right: 4px;
   opacity: 0.7;
   content: 's';
+  font-size: 90%;
 }
 .icon-google::after {
   font-family: icomoon;
@@ -576,10 +621,16 @@ hr {
   font-size: 16px;
   cursor: default;
 }
+.markdown {
+  max-width: 899px;
+  line-height: 1.5;
+  font-size: 18px;
+  margin: auto;
+  text-align: justify;
+}
 #appTitle {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   width: 100%;
-  vertical-align: middle;
   font-size: 70px;
   font-weight: normal;
 }
@@ -599,16 +650,20 @@ hr {
   padding-bottom: 12px;
   padding-left: 20px;
   padding-right: 20px;
-  margin-left: 60px;
+  margin-left: 30px;
   border-radius: 4px;
   font-variant: small-caps;
   color: white;
   background-color: #222;
   white-space: nowrap;
+  vertical-align: text-bottom;
 }
 #btnCreate:hover {
   border-color: rgba(200, 200, 200, 0.7);
 }
 li a {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+#page {
+  max-width: 899px;
 }

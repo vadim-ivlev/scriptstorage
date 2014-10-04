@@ -27,23 +27,22 @@ html
     body(style='padding:10px;')
         include login_block.jade
         #page.page
-            #divHeader.header(style='padding: 0px;height:110px;')
-                    div(style='float:left')
-                        span#appTitle iNote
-                        span#btnCreate.toolButton.btn.btn-danger(role='button') create new
-                        //span.btn.btn-success.btn-lg(role='button',style='font-family:Roboto;') CREATE NEW
+            #divHeader(style='padding: 0px;height:110px;')
+                span#appTitle iNote
+                span#btnCreate.toolButton.btn.btn-danger(role='button') create new
+                //span.btn.btn-success.btn-lg(role='button',style='font-family:Roboto;') CREATE NEW
             #notebookList {{notebook_list}}
             br
             //tab navs
             ul.nav.nav-tabs(role="tablist")
-                li.publicTab.active
-                    a(href="#publicPane",role='tab',data-toggle='tab') Public notebooks
-                li.userTab
+                li.userTab.active
                     a(href="#userPane",role='tab',data-toggle='tab') Yours
+                li.publicTab
+                    a(href="#publicPane",role='tab',data-toggle='tab') Public notebooks
             //tab panes
             .tab-content
                 br
-                #publicPane.tab-pane.active
-                    #publicList
-                #userPane.tab-pane
+                #userPane.tab-pane.active
                     #userList
+                #publicPane.tab-pane
+                    #publicList

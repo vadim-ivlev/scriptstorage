@@ -4,24 +4,9 @@
 !_TAG_PROGRAM_NAME	CoffeeTags	//
 !_TAG_PROGRAM_URL	https://github.com/lukaszkorecki/CoffeeTags	/GitHub repository/
 !_TAG_PROGRAM_VERSION	0.5.0	//
-@Cell	inote/coffee/cell.coffee	/^@Cell = (cellNumber, themeName, keyMap) ->$/;"	f	line:17	language:coffee	object:window
-@clearSaveIndicator	inote/coffee/inote.html.coffee	/^@clearSaveIndicator = ->$/;"	f	line:24	language:coffee	object:window
-@delete_sample_cookies	inote/coffee/login.html.coffee	/^@delete_sample_cookies = ->$/;"	f	line:68	language:coffee	object:window
-@getPageUrl	inote/coffee/inote.html.coffee	/^@getPageUrl = (user_name, user_network, access, notebook_name) ->$/;"	f	line:114	language:coffee	object:window
-@hide_oauth_panel	inote/coffee/login.html.coffee	/^@hide_oauth_panel= ->$/;"	f	line:146	language:coffee	object:window
-@iNote	inote/coffee/inote.coffee	/^@iNote = (domContainer) ->$/;"	f	line:1	language:coffee	object:window
-@preventClick	inote/coffee/inote.html.coffee	/^@preventClick = (event) ->$/;"	f	line:7	language:coffee	object:window
-@rename	inote/coffee/inote.html.coffee	/^@rename = ->$/;"	f	line:95	language:coffee	object:window
-@rename2	inote/coffee/inote.html.coffee	/^@rename2 = (accessChanged) ->$/;"	f	line:120	language:coffee	object:window
-@saveAs	inote/coffee/inote.html.coffee	/^@saveAs = ->$/;"	f	line:66	language:coffee	object:window
-@saveNotebook	inote/coffee/inote.html.coffee	/^@saveNotebook = (event) ->$/;"	f	line:38	language:coffee	object:window
-@saveNotebookLater	inote/coffee/inote.html.coffee	/^@saveNotebookLater = ->$/;"	f	line:28	language:coffee	object:window
-@selectKeyMap	inote/coffee/inote.html.coffee	/^@selectKeyMap = ->$/;"	f	line:18	language:coffee	object:window
-@selectTheme	inote/coffee/inote.html.coffee	/^@selectTheme = ->$/;"	f	line:12	language:coffee	object:window
-@showRenameDialog	inote/coffee/inote.html.coffee	/^@showRenameDialog = (btnOkText, callback) ->$/;"	f	line:88	language:coffee	object:window
-@showShareSourceDialog	inote/coffee/inote.html.coffee	/^@showShareSourceDialog = (cellNumber) ->$/;"	f	line:74	language:coffee	object:window
-@show_oauth_panel	inote/coffee/login.html.coffee	/^@show_oauth_panel = ->$/;"	f	line:143	language:coffee	object:window
-@write_sample_cookies	inote/coffee/login.html.coffee	/^@write_sample_cookies = ->$/;"	f	line:61	language:coffee	object:window
+@deleteNotebook	inote/coffee/index.html.coffee	/^@deleteNotebook = (key_name) ->$/;"	f	line:6	language:coffee	object:window
+CELLS	inote/coffee/inote.coffee	/^        CELLS = []$/;"	v
+CELLS	inote/coffee/inote.coffee	/^    CELLS = []$/;"	v
 CTor	inote/libs/codemirror-4.3/demo/tern.html	/^function CTor() { this.size = 10; }$/;"	f
 CURR_HEAD	node_modules/qunit/node_modules/istanbul/node_modules/js-yaml/Makefile	/^CURR_HEAD   := $(firstword $(shell git show-ref --hash HEAD | cut -b -6) master)$/;"	m
 CodeMirror.commands.autocomplete	inote/coffee/cdmirror.coffee	/^CodeMirror.commands.autocomplete = (cm) ->$/;"	f
@@ -38,7 +23,6 @@ ListHandler	py/proxy.py	/^class ListHandler(webapp2.RequestHandler):$/;"	c
 LoginPage	py/login.py	/^class LoginPage(webapp2.RequestHandler):$/;"	c
 LogoutPage	py/login.py	/^class LogoutPage(webapp2.RequestHandler):$/;"	c
 MainPage	py/main.py	/^class MainPage(webapp2.RequestHandler):$/;"	c
-NB	py/write.py	/^import notebook as NB$/;"	i
 NPM_PACKAGE	node_modules/qunit/node_modules/istanbul/node_modules/js-yaml/Makefile	/^NPM_PACKAGE := $(shell node -e 'process.stdout.write(require(".\/package.json").name)')$/;"	m
 NPM_VERSION	node_modules/qunit/node_modules/istanbul/node_modules/js-yaml/Makefile	/^NPM_VERSION := $(shell node -e 'process.stdout.write(require(".\/package.json").version)')$/;"	m
 NoteBook	py/list.py	/^from notebook import NoteBook$/;"	i
@@ -54,6 +38,7 @@ REMOTE_NAME	node_modules/qunit/node_modules/istanbul/node_modules/js-yaml/Makefi
 REMOTE_REPO	node_modules/qunit/node_modules/istanbul/node_modules/js-yaml/Makefile	/^REMOTE_REPO ?= $(shell git config --get remote.${REMOTE_NAME}.url)$/;"	m
 ReadHandler	py/read.py	/^class ReadHandler(webapp2.RequestHandler):$/;"	c
 RegExpGenerator	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^class RegExpGenerator(object):$/;"	c
+RenameHandler	py/rename.py	/^class RenameHandler(webapp2.RequestHandler):$/;"	c
 SRW	node_modules/qunit/node_modules/istanbul/node_modules/escodegen/node_modules/esutils/test/keyword.coffee	/^SRW = [$/;"	v
 StringStream	inote/libs/codemirror-4.3/mode/javascript/index.html	/^function StringStream(string) {$/;"	f
 T	inote/coffee/qunit-tests.coffee	/^T = this$/;"	v
@@ -63,58 +48,17 @@ UserListHandler	py/userlist.py	/^class UserListHandler(webapp2.RequestHandler):$
 WriteHandler	py/write.py	/^class WriteHandler(webapp2.RequestHandler):$/;"	c
 __init__	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def __init__(self, data):$/;"	m	class:Detector
 __init__	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def __init__(self, detector):$/;"	m	class:RegExpGenerator
-_attachEvents	inote/coffee/cell.coffee	/^    _attachEvents = ->$/;"	f	line:325	language:coffee	object:@Cell
-_bindKeys	inote/coffee/inote.coffee	/^    _bindKeys = ->$/;"	f	line:209	language:coffee	object:@iNote
-_call	inote/coffee/cell.coffee	/^    _call = (f, param) ->$/;"	f	line:138	language:coffee	object:@Cell
-_clearPrintArea	inote/coffee/cell.coffee	/^    _clearPrintArea = ->$/;"	f	line:573	language:coffee	object:@Cell
-_compileLater	inote/coffee/cell.coffee	/^    _compileLater = ->$/;"	f	line:642	language:coffee	object:@Cell
-_compile_CoffeeScript	inote/coffee/cell.coffee	/^    _compile_CoffeeScript = ->$/;"	f	line:664	language:coffee	object:@Cell
-_compile_Markdown	inote/coffee/cell.coffee	/^    _compile_Markdown = ->$/;"	f	line:652	language:coffee	object:@Cell
-_create	inote/coffee/cell.coffee	/^    _create = (celNum, theme, keyM) ->$/;"	f	line:47	language:coffee	object:@Cell
-_createPrintArea	inote/coffee/cell.coffee	/^    _createPrintArea = ->$/;"	f	line:577	language:coffee	object:@Cell
-_cursorOnFirstLine	inote/coffee/cell.coffee	/^    _cursorOnFirstLine = ->$/;"	f	line:619	language:coffee	object:@Cell
-_cursorOnLastLine	inote/coffee/cell.coffee	/^    _cursorOnLastLine = ->$/;"	f	line:611	language:coffee	object:@Cell
-_executeCode	inote/coffee/cell.coffee	/^    _executeCode = ->$/;"	f	line:541	language:coffee	object:@Cell
 _generate_range	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def _generate_range(self, r):$/;"	m	class:RegExpGenerator
-_getNumber	inote/coffee/cell.coffee	/^    _getNumber = ->$/;"	f	line:515	language:coffee	object:@Cell
-_getSelectedRange	inote/coffee/cell.coffee	/^    _getSelectedRange = ->$/;"	f	line:485	language:coffee	object:@Cell
-_getXml	inote/coffee/cell.coffee	/^    _getXml = ->$/;"	f	line:404	language:coffee	object:@Cell
-_getXml0	inote/coffee/cell.coffee	/^    _getXml0 = ->$/;"	f	line:419	language:coffee	object:@Cell
-_getXml1	inote/coffee/cell.coffee	/^    _getXml1 = ->$/;"	f	line:442	language:coffee	object:@Cell
-_hideJavascriptText	inote/coffee/cell.coffee	/^    _hideJavascriptText = ->$/;"	f	line:168	language:coffee	object:@Cell
-_init	inote/coffee/inote.coffee	/^    _init = ->$/;"	f	line:201	language:coffee	object:@iNote
 _is_non_ascii_identifier_part	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def _is_non_ascii_identifier_part(self, ch):$/;"	m	class:Detector
 _is_non_ascii_identifier_start	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def _is_non_ascii_identifier_start(self, ch):$/;"	m	class:Detector
-_keyHandler	inote/coffee/cell.coffee	/^    _keyHandler = (event) ->$/;"	f	line:497	language:coffee	object:@Cell
-_lock	inote/coffee/cell.coffee	/^    _lock = ->$/;"	f	line:291	language:coffee	object:@Cell
-_lockUnlock	inote/coffee/cell.coffee	/^    _lockUnlock = ->$/;"	f	line:317	language:coffee	object:@Cell
-_print	inote/coffee/cell.coffee	/^    _print = (o) ->$/;"	f	line:584	language:coffee	object:@Cell
-_printError	inote/coffee/cell.coffee	/^    _printError = (o) ->$/;"	f	line:606	language:coffee	object:@Cell
-_removeFocus	inote/coffee/cell.coffee	/^    _removeFocus = ->$/;"	f	line:538	language:coffee	object:@Cell
-_setCursorOnFirstLine	inote/coffee/cell.coffee	/^    _setCursorOnFirstLine = (charPos) ->$/;"	f	line:632	language:coffee	object:@Cell
-_setCursorOnLastLine	inote/coffee/cell.coffee	/^    _setCursorOnLastLine = (charPos) ->$/;"	f	line:626	language:coffee	object:@Cell
-_setFocus	inote/coffee/cell.coffee	/^    _setFocus = (lineNumber, charNumber) ->$/;"	f	line:529	language:coffee	object:@Cell
-_setInputCollapsed	inote/coffee/cell.coffee	/^    _setInputCollapsed = (collapsed) ->$/;"	f	line:272	language:coffee	object:@Cell
-_setKeyMap	inote/coffee/cell.coffee	/^    _setKeyMap = (v)->$/;"	f	line:142	language:coffee	object:@Cell
-_setMode	inote/coffee/cell.coffee	/^    _setMode = (mode) ->$/;"	f	line:378	language:coffee	object:@Cell
-_setNumber	inote/coffee/cell.coffee	/^    _setNumber = (n) ->$/;"	f	line:519	language:coffee	object:@Cell
-_setOutputCollapsed	inote/coffee/cell.coffee	/^    _setOutputCollapsed = (collapsed) ->$/;"	f	line:256	language:coffee	object:@Cell
-_setTheme	inote/coffee/cell.coffee	/^    _setTheme = (themeName) ->$/;"	f	line:151	language:coffee	object:@Cell
-_setXml	inote/coffee/cell.coffee	/^    _setXml = (cell) ->$/;"	f	line:412	language:coffee	object:@Cell
-_setXml0	inote/coffee/cell.coffee	/^    _setXml0 = (cell) ->$/;"	f	line:426	language:coffee	object:@Cell
-_setXml1	inote/coffee/cell.coffee	/^    _setXml1 = (cell) ->$/;"	f	line:454	language:coffee	object:@Cell
-_showJavascriptText	inote/coffee/cell.coffee	/^    _showJavascriptText = ->$/;"	f	line:158	language:coffee	object:@Cell
-_switchFullsreen	inote/coffee/cell.coffee	/^    _switchFullsreen = ->$/;"	f	line:363	language:coffee	object:@Cell
-_switchJavascriptText	inote/coffee/cell.coffee	/^    _switchJavascriptText = ->$/;"	f	line:174	language:coffee	object:@Cell
-_unlock	inote/coffee/cell.coffee	/^    _unlock = ->$/;"	f	line:305	language:coffee	object:@Cell
 a	inote/coffee/qunit-tests.coffee	/^a=[1,2,3]$/;"	v
 access	py/notebook.py	/^    access=db.StringProperty()$/;"	v	class:NoteBook
 access_allowed	py/utils.py	/^def access_allowed(o, notebook_access,notebook_owner) :$/;"	f
 addComment	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function addComment(type, value, start, end, loc) {$/;"	f
-addLoginLink	inote/coffee/login.html.coffee	/^        addLoginLink =(\$container, network) ->$/;"	f	line:116	language:coffee	object:adjust_ui.build_signin_ui
-addLogoutLink	inote/coffee/login.html.coffee	/^        addLogoutLink =(\$container) ->$/;"	f	line:100	language:coffee	object:adjust_ui.build_signout_ui
+addLoginLink	inote/coffee/login.html.coffee	/^        addLoginLink =($container, network) ->$/;"	f
+addLogoutLink	inote/coffee/login.html.coffee	/^        addLogoutLink =($container) ->$/;"	f
 addOutput	inote/libs/codemirror-4.3/test/index.html	/^      function addOutput(name, className, code){$/;"	f
-adjust_ui	inote/coffee/login.html.coffee	/^adjust_ui = ->$/;"	f	line:97	language:coffee	object:window
+adjust_ui	inote/coffee/login.html.coffee	/^adjust_ui = ->$/;"	f
 advance	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function advance() {$/;"	f
 ality	inote/libs/codemirror-4.3/doc/manual.html	/^    functionality (on top of extension functions$/;"	f
 analyze	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^def analyze(source):$/;"	f
@@ -127,9 +71,10 @@ app	py/page.py	/^app = webapp2.WSGIApplication($/;"	v
 app	py/proxy.py	/^app = webapp2.WSGIApplication($/;"	v
 app	py/publiclist.py	/^app = webapp2.WSGIApplication($/;"	v
 app	py/read.py	/^app = webapp2.WSGIApplication($/;"	v
+app	py/rename.py	/^app = webapp2.WSGIApplication($/;"	v
 app	py/userlist.py	/^app = webapp2.WSGIApplication($/;"	v
 app	py/write.py	/^app = webapp2.WSGIApplication($/;"	v
-appendNewCell	inote/coffee/inote.coffee	/^    appendNewCell = (cellNumber) ->$/;"	f	line:76	language:coffee	object:@iNote
+appendNewCell	inote/coffee/inote.coffee	/^    appendNewCell = (cellNumber) ->$/;"	f
 assert	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function assert(condition, message) {$/;"	f
 binaryPrecedence	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function binaryPrecedence(token, allowIn) {$/;"	f
 blablabla3	inote/libs/codemirror-4.3/mode/lua/index.html	/^function blablabla3()$/;"	f
@@ -137,19 +82,31 @@ blahblahblah	inote/libs/codemirror-4.3/mode/lua/index.html	/^function blahblahbl
 bubbleSort	node_modules/qunit/node_modules/istanbul/node_modules/esprima/demo/functiontrace.html	/^function bubbleSort(list) {$/;"	f
 bubbleSort	node_modules/qunit/node_modules/istanbul/node_modules/esprima/demo/minify.html	/^function bubbleSort    (list) {$/;"	f
 bubbleSort	node_modules/qunit/node_modules/istanbul/node_modules/esprima/demo/rewrite.html	/^function bubbleSort    (list) {$/;"	f
-buildTable	inote/coffee/index.html.coffee	/^buildTable = (d, selector)->$/;"	f
-build_signin_ui	inote/coffee/login.html.coffee	/^    build_signin_ui = ->$/;"	f	line:114	language:coffee	object:adjust_ui
-build_signout_ui	inote/coffee/login.html.coffee	/^    build_signout_ui = ->$/;"	f	line:98	language:coffee	object:adjust_ui
+buildTable	inote/coffee/index.html.coffee	/^buildTable = (d, selector)->$/;"	f	line:80	language:coffee	object:window
+build_delete_button	inote/coffee/index.html.coffee	/^build_delete_button = (td, d) ->$/;"	f	line:60	language:coffee	object:window
+build_notebook_name_field	inote/coffee/index.html.coffee	/^build_notebook_name_field = (td,d) ->$/;"	f	line:39	language:coffee	object:window
+build_signin_ui	inote/coffee/login.html.coffee	/^    build_signin_ui = ->$/;"	f
+build_signout_ui	inote/coffee/login.html.coffee	/^    build_signout_ui = ->$/;"	f
+build_user_name_field	inote/coffee/index.html.coffee	/^build_user_name_field = (td, d) ->$/;"	f	line:71	language:coffee	object:window
+c	inote/coffee/login.html.coffee	/^        c=$('.oauthHolder').html('')$/;"	v
 callback	inote/libs/codemirror-4.3/mode/vb/index.html	/^  function callback(token, style, lineNo, pos){$/;"	f
 cased	inote/libs/codemirror-4.3/mode/javascript/index.html	/^      function cased(str) {return caseInsensitive ? str.toLowerCase() : str;}$/;"	f
+cell	inote/coffee/inote.coffee	/^            cell = $(c)$/;"	v
+cell	inote/coffee/inote.coffee	/^        cell = ci.cell$/;"	v
 cgi	py/proxy.py	/^import cgi$/;"	i
 change	inote/libs/codemirror-4.3/demo/loadmode.html	/^function change() {$/;"	f
 characters	node_modules/qunit/node_modules/istanbul/node_modules/escodegen/node_modules/esutils/test/code.coffee	/^            characters = [$/;"	v
-clear	inote/coffee/inote.coffee	/^    clear = ->$/;"	f	line:213	language:coffee	object:@iNote
+checkNetwork	inote/coffee/login.html.coffee	/^checkNetwork = (network) ->$/;"	f
+clear	inote/coffee/inote.coffee	/^    clear = ->$/;"	f
+clearAndInit	inote/coffee/inote.html.coffee	/^clearAndInit = ->$/;"	f
 close_modal	inote/libs/jquery.leanModal.coffee	/^        close_modal = (modal_id) ->$/;"	f
+code	inote/coffee/cell.coffee	/^            code = _codemirror.getValue()$/;"	v
+code	inote/coffee/cell.coffee	/^        code = _codemirror.getValue()$/;"	v
 codes	node_modules/qunit/node_modules/istanbul/node_modules/escodegen/node_modules/esutils/test/code.coffee	/^            codes = [$/;"	v
 collectRegex	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function collectRegex() {$/;"	f
 collectToken	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function collectToken() {$/;"	f
+compiledCode	inote/coffee/cell.coffee	/^                compiledCode = CoffeeScript.compile(code,$/;"	v
+compiledCode	inote/coffee/cell.coffee	/^            compiledCode = ""$/;"	v
 completeAfter	inote/libs/codemirror-4.3/demo/xmlcomplete.html	/^      function completeAfter(cm, pred) {$/;"	f
 completeIfAfterLt	inote/libs/codemirror-4.3/demo/xmlcomplete.html	/^      function completeIfAfterLt(cm) {$/;"	f
 completeIfInTag	inote/libs/codemirror-4.3/demo/xmlcomplete.html	/^      function completeIfInTag(cm) {$/;"	f
@@ -157,7 +114,8 @@ config	inote/coffee/cdmirror.coffee	/^    config =$/;"	v
 consumeSemicolon	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function consumeSemicolon() {$/;"	f
 content	py/notebook.py	/^    content=db.TextProperty()$/;"	v	class:NoteBook
 createLocationMarker	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function createLocationMarker() {$/;"	f
-createNewCell	inote/coffee/inote.coffee	/^    createNewCell = (cellNumber) ->$/;"	f	line:67	language:coffee	object:@iNote
+createNewCell	inote/coffee/inote.coffee	/^    createNewCell = (cellNumber) ->$/;"	f
+createdRow	inote/coffee/index.html.coffee	/^        createdRow: (row, d, i) ->$/;"	f	line:90	language:coffee	object:buildTable.
 date	py/notebook.py	/^    date=db.DateTimeProperty(auto_now_add=True)$/;"	v	class:NoteBook
 db	py/list.py	/^from google.appengine.ext import db$/;"	i
 db	py/main.py	/^from google.appengine.ext import db$/;"	i
@@ -166,10 +124,11 @@ db	py/read.py	/^from google.appengine.ext import db$/;"	i
 db	py/utils.py	/^from google.appengine.ext import db$/;"	i
 debug	py/login.py	/^    debug=True)$/;"	v
 defaults	inote/libs/jquery.leanModal.coffee	/^        defaults =$/;"	v
-deleteCell	inote/coffee/inote.coffee	/^    deleteCell = (cellNumber) ->$/;"	f	line:20	language:coffee	object:@iNote
-delete_cookie	inote/coffee/login.html.coffee	/^delete_cookie = ->$/;"	f	line:82	language:coffee	object:window
+deleteCell	inote/coffee/inote.coffee	/^    deleteCell = (cellNumber) ->$/;"	f
+delete_cookie	inote/coffee/login.html.coffee	/^delete_cookie = ->$/;"	f
 delete_notebook	py/utils.py	/^def delete_notebook(key_name,o):$/;"	f
 displayTest	inote/libs/codemirror-4.3/test/index.html	/^      function displayTest(type, name, customMessage) {$/;"	f
+do	inote/coffee/index.html.coffee	/^            document.location.href = "/page?owner=" + encodeURIComponent(\$(".user_name").text()) + "&access=" + encodeURIComponent("public") + "&name=" + encodeURIComponent(newName)$/;"	b	line:118	language:coffee
 doHighlight	inote/libs/codemirror-4.3/demo/runmode.html	/^function doHighlight() {$/;"	f
 document.documentElement.style.overflow	inote/coffee/cdmirror.coffee	/^        document.documentElement.style.overflow = ""$/;"	v
 done	node_modules/qunit/node_modules/istanbul/test/browser/support/index.html	/^        function done() {$/;"	f
@@ -193,7 +152,7 @@ filterTokenLocation	node_modules/qunit/node_modules/istanbul/node_modules/esprim
 find	inote/libs/codemirror-4.3/demo/theme.html	/^  function find(start, history) {$/;"	f
 findSequence	inote/libs/codemirror-4.3/demo/theme.html	/^function findSequence(goal) {$/;"	f
 foobar	node_modules/qunit/node_modules/istanbul/node_modules/js-yaml/demo/index.html	/^  function foobar() {$/;"	f
-fullScreen	inote/coffee/inote.coffee	/^    fullScreen = (index) ->$/;"	f	line:128	language:coffee	object:@iNote
+fullScreen	inote/coffee/inote.coffee	/^    fullScreen = (index) ->$/;"	f
 gatherCompletions	inote/libs/codemirror-4.3/demo/complete.html	/^  function gatherCompletions(obj) {$/;"	f
 gcd	node_modules/qunit/node_modules/istanbul/node_modules/esprima/demo/autocomplete.html	/^function gcd(a, b) {$/;"	f
 generateHeader	inote/libs/codemirror-4.3/doc/compress.html	/^       function generateHeader() {$/;"	f
@@ -216,34 +175,27 @@ get	py/proxy.py	/^    def get(self):$/;"	m	class:ListHandler
 get	py/publiclist.py	/^    def get(self):$/;"	m	class:PublicListHandler
 get	py/read.py	/^    def get(self):$/;"	m	class:ReadHandler
 get	py/userlist.py	/^    def get(self):$/;"	m	class:UserListHandler
-getCellInfo	inote/coffee/inote.coffee	/^    getCellInfo = (event) ->$/;"	f	line:85	language:coffee	object:@iNote
+getCellInfo	inote/coffee/inote.coffee	/^    getCellInfo = (event) ->$/;"	f
 getCode	node_modules/qunit/node_modules/istanbul/test/browser/support/index.html	/^        function getCode(file, callback) {$/;"	f
 getColumns	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^        function getColumns(theadNode) {$/;"	f
 getCompletions	inote/libs/codemirror-4.3/demo/complete.html	/^function getCompletions(token, context) {$/;"	f
-getCursor	inote/coffee/cell.coffee	/^    getCursor: -> _codemirror.getCursor()$/;"	f	line:700	language:coffee	object:@Cell
 getData	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^        function getData(tbodyNode, cols) {$/;"	f
-getEditor	inote/coffee/cell.coffee	/^    getEditor: -> _codemirror$/;"	f	line:687	language:coffee	object:@Cell
 getEscapedIdentifier	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function getEscapedIdentifier() {$/;"	f
 getFoo	inote/libs/codemirror-4.3/mode/haxe/index.html	/^	function getFoo():Int {$/;"	f
 getIdentifier	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function getIdentifier() {$/;"	f
-getIndexByCellNumber	inote/coffee/inote.coffee	/^    getIndexByCellNumber = (cellNumber) ->$/;"	f	line:16	language:coffee	object:@iNote
-getInputValue	inote/coffee/cell.coffee	/^    getInputValue: -> _codemirror.getValue()$/;"	f	line:690	language:coffee	object:@Cell
-getJQueryCell	inote/coffee/cell.coffee	/^    getJQueryCell: -> _jQueryCell$/;"	f	line:686	language:coffee	object:@Cell
-getJavascriptTextViewer	inote/coffee/cell.coffee	/^    getJavascriptTextViewer: -> _javascriptTextViewer$/;"	f	line:688	language:coffee	object:@Cell
-getKeyMap	inote/coffee/inote.coffee	/^    getKeyMap = ->$/;"	f	line:231	language:coffee	object:@iNote
-getLineCount	inote/coffee/cell.coffee	/^    getLineCount: -> _codemirror.lineCount()$/;"	f	line:705	language:coffee	object:@Cell
-getNewCellNumber	inote/coffee/inote.coffee	/^    getNewCellNumber = ->$/;"	f	line:9	language:coffee	object:@iNote
-getNotebookAccessFromUrl	inote/coffee/inote.html.coffee	/^getNotebookAccessFromUrl = ->$/;"	f	line:194	language:coffee	object:window
-getNotebookNameFromUrl	inote/coffee/inote.html.coffee	/^getNotebookNameFromUrl = ->$/;"	f	line:204	language:coffee	object:window
-getNotebookOwnerFromUrl	inote/coffee/inote.html.coffee	/^getNotebookOwnerFromUrl = ->$/;"	f	line:213	language:coffee	object:window
-getOutputValue	inote/coffee/cell.coffee	/^    getOutputValue: -> _outputCell.html()$/;"	f	line:695	language:coffee	object:@Cell
-getPageQueryString	inote/coffee/inote.html.coffee	/^getPageQueryString = ->$/;"	f	line:100	language:coffee	object:window
+getIndexByCellNumber	inote/coffee/inote.coffee	/^    getIndexByCellNumber = (cellNumber) ->$/;"	f
+getKeyMap	inote/coffee/inote.coffee	/^    getKeyMap = ->$/;"	f
+getNewCellNumber	inote/coffee/inote.coffee	/^    getNewCellNumber = ->$/;"	f
+getNotebookAccessFromUrl	inote/coffee/inote.html.coffee	/^getNotebookAccessFromUrl = ->$/;"	f
+getNotebookNameFromUrl	inote/coffee/inote.html.coffee	/^getNotebookNameFromUrl = ->$/;"	f
+getNotebookOwnerFromUrl	inote/coffee/inote.html.coffee	/^getNotebookOwnerFromUrl = ->$/;"	f
+getPageQueryString	inote/coffee/inote.html.coffee	/^getPageQueryString = ->$/;"	f
 getRowData	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^        function getRowData(trNode, cols) {$/;"	f
-getTheme	inote/coffee/inote.coffee	/^    getTheme = ->$/;"	f	line:223	language:coffee	object:@iNote
+getTheme	inote/coffee/inote.coffee	/^    getTheme = ->$/;"	f
 getURL	inote/libs/codemirror-4.3/demo/tern.html	/^  function getURL(url, c) {$/;"	f
-getXmlText	inote/coffee/inote.coffee	/^    getXmlText = (notebookName) ->$/;"	f	line:140	language:coffee	object:@iNote
-getXmlText0	inote/coffee/inote.coffee	/^    getXmlText0 = (notebookName) ->$/;"	f	line:169	language:coffee	object:@iNote
-getXmlText1	inote/coffee/inote.coffee	/^    getXmlText1 = (notebookName) ->$/;"	f	line:189	language:coffee	object:@iNote
+getXmlText	inote/coffee/inote.coffee	/^    getXmlText = (notebookName) ->$/;"	f
+getXmlText0	inote/coffee/inote.coffee	/^    getXmlText0 = (notebookName) ->$/;"	f
+getXmlText1	inote/coffee/inote.coffee	/^    getXmlText1 = (notebookName) ->$/;"	f
 get_list_of_notebooks	py/utils.py	/^def get_list_of_notebooks(o):$/;"	f
 get_list_of_public_notebooks	py/utils.py	/^def get_list_of_public_notebooks( o, offset_n, limit_n):$/;"	f
 get_list_of_user_notebooks	py/utils.py	/^def get_list_of_user_notebooks( o, offset_n, limit_n):$/;"	f
@@ -254,7 +206,7 @@ get_notebook_content	py/utils.py	/^def get_notebook_content(owner_nickname, note
 get_notebook_element	py/utils.py	/^def get_notebook_element(owner_nickname, notebook_access, notebook_name, element_id, notebook_version):$/;"	f
 get_notebook_list	py/main.py	/^    def get_notebook_list(self):$/;"	m	class:MainPage
 get_notebooks	py/utils.py	/^def get_notebooks( o, of_signed_user, is_public, offset_n, limit_n):$/;"	f
-get_signed_network_name	inote/coffee/login.html.coffee	/^get_signed_network_name = ->$/;"	f	line:91	language:coffee	object:window
+get_signed_network_name	inote/coffee/login.html.coffee	/^get_signed_network_name = ->$/;"	f
 get_user	py/utils.py	/^def get_user(o):$/;"	f
 get_user_id	py/utils.py	/^def get_user_id(o):$/;"	f
 get_user_name	py/utils.py	/^def get_user_name(o):$/;"	f
@@ -264,60 +216,25 @@ get_user_network	py/utils.py	/^def get_user_network(o):$/;"	f
 get_user_nickname	py/utils.py	/^def get_user_nickname(o):$/;"	f
 get_user_social_name	py/utils.py	/^def get_user_social_name(o):$/;"	f
 get_user_social_name_network_id	py/utils.py	/^def get_user_social_name_network_id(o):$/;"	f
-globalKeyHandler	inote/coffee/inote.coffee	/^    globalKeyHandler = (event) ->$/;"	f	line:49	language:coffee	object:@iNote
+globalKeyHandler	inote/coffee/inote.coffee	/^    globalKeyHandler = (event) ->$/;"	f
 hello	inote/libs/codemirror-4.3/mode/htmlembedded/index.html	/^function hello(who) {$/;"	f
 hello	inote/libs/codemirror-4.3/mode/php/index.html	/^function hello($who) {$/;"	f
-hideMenu	inote/coffee/inote.html.coffee	/^hideMenu = ->$/;"	f	line:231	language:coffee	object:window
-if	inote/coffee/cell.coffee	/^                if a$/;"	b	line:508	language:coffee
-if	inote/coffee/cell.coffee	/^                if c or s$/;"	b	line:504	language:coffee
-if	inote/coffee/cell.coffee	/^            if _mode is "text/html"$/;"	b	line:550	language:coffee
-if	inote/coffee/cell.coffee	/^            if typeof(o) is "string"$/;"	b	line:591	language:coffee
-if	inote/coffee/cell.coffee	/^        if _VER is "1"$/;"	b	line:405	language:coffee
-if	inote/coffee/cell.coffee	/^        if _jQueryCell.find(".showJavascriptButton").text() is "Show Javascript"$/;"	b	line:175	language:coffee
-if	inote/coffee/cell.coffee	/^        if _keyMap is "undefined" then _keyMap = "default"$/;"	b	line:144	language:coffee
-if	inote/coffee/cell.coffee	/^        if _lockButton.hasClass('unlocked')$/;"	b	line:318	language:coffee
-if	inote/coffee/cell.coffee	/^        if _mode is "markdown"$/;"	b	line:388	language:coffee
-if	inote/coffee/cell.coffee	/^        if _mode is "text/x-coffeescript"$/;"	b	line:382	language:coffee
-if	inote/coffee/cell.coffee	/^        if _mode is "text/x-coffeescript"$/;"	b	line:644	language:coffee
-if	inote/coffee/cell.coffee	/^        if cell.attr("version") is "1"$/;"	b	line:413	language:coffee
-if	inote/coffee/cell.coffee	/^        if cell.attr('unlocked') is "false"$/;"	b	line:473	language:coffee
-if	inote/coffee/cell.coffee	/^        if collapsed$/;"	b	line:258	language:coffee
-if	inote/coffee/cell.coffee	/^        if collapsed$/;"	b	line:274	language:coffee
-if	inote/coffee/cell.coffee	/^        if fs$/;"	b	line:366	language:coffee
-if	inote/coffee/cell.coffee	/^        if javaScriptText.is(":visible")$/;"	b	line:666	language:coffee
-if	inote/coffee/cell.coffee	/^        if o instanceof jQuery$/;"	b	line:588	language:coffee
-if	inote/coffee/inote.coffee	/^            if cellNumber is C.getNumber()$/;"	b	line:91	language:coffee
-if	inote/coffee/inote.coffee	/^        if CELLS.length is 0 then 0 else  1+Math.max (c.getNumber() for c in CELLS)...$/;"	b	line:10	language:coffee
-if	inote/coffee/inote.coffee	/^        if \$(xmlText).attr("version") is "1"$/;"	b	line:149	language:coffee
-if	inote/coffee/inote.coffee	/^        if _VER is "1"$/;"	b	line:141	language:coffee
-if	inote/coffee/inote.coffee	/^        if key is 13 and event.shiftKey$/;"	b	line:57	language:coffee
-if	inote/coffee/inote.html.coffee	/^            if not userNameNetwork$/;"	b	line:278	language:coffee
-if	inote/coffee/inote.html.coffee	/^            if userNameNetwork != notebookOwner$/;"	b	line:281	language:coffee
-if	inote/coffee/inote.html.coffee	/^        if \$("#saveIndicator").text()$/;"	b	line:308	language:coffee
-if	inote/coffee/inote.html.coffee	/^        if event.ctrlKey and event.keyCode is 83 #Ctrl-S$/;"	b	line:277	language:coffee
-if	inote/coffee/inote.html.coffee	/^        if keyMap then \$("#notebookEditor").val keyMap$/;"	b	line:180	language:coffee
-if	inote/coffee/inote.html.coffee	/^        if not notebookName$/;"	b	line:128	language:coffee
-if	inote/coffee/inote.html.coffee	/^        if o.error$/;"	b	line:143	language:coffee
-if	inote/coffee/inote.html.coffee	/^        if o.error$/;"	b	line:56	language:coffee
-if	inote/coffee/inote.html.coffee	/^        if themeName then \$("#selectTheme_button").val themeName$/;"	b	line:177	language:coffee
-if	inote/coffee/inote.html.coffee	/^    if (accessChanged)$/;"	b	line:124	language:coffee
-if	inote/coffee/inote.html.coffee	/^    if \$("#autoSave").is(":checked")$/;"	b	line:33	language:coffee
-if	inote/coffee/inote.html.coffee	/^    if \$(".cell").length is 0$/;"	b	line:183	language:coffee
-if	inote/coffee/inote.html.coffee	/^    if not empty$/;"	b	line:171	language:coffee
-if	inote/coffee/inote.html.coffee	/^    if not notebookOwner$/;"	b	line:272	language:coffee
-if	inote/coffee/login.html.coffee	/^    if \$('.user_network').text() is 'gmail'$/;"	b	line:139	language:coffee
-if	inote/coffee/login.html.coffee	/^    if n=get_signed_network_name()$/;"	b	line:24	language:coffee
-if	inote/coffee/login.html.coffee	/^    if network_name = get_signed_network_name()$/;"	b	line:130	language:coffee
+hideMenu	inote/coffee/inote.html.coffee	/^hideMenu = ->$/;"	f
+if	inote/coffee/index.html.coffee	/^            if selector is "#userList"$/;"	b	line:95	language:coffee
+if	inote/coffee/index.html.coffee	/^        if newName$/;"	b	line:116	language:coffee
+if	inote/coffee/index.html.coffee	/^    if d.notebook_name.indexOf('/') is -1$/;"	b	line:50	language:coffee
+if	inote/coffee/index.html.coffee	/^    if not \$(".user_name").text()$/;"	b	line:106	language:coffee
+if	inote/coffee/index.html.coffee	/^    if td.text() == "public"$/;"	b	line:72	language:coffee
 init	inote/libs/codemirror-4.3/mode/vb/index.html	/^function init() {$/;"	f
 initText	inote/libs/codemirror-4.3/mode/vb/index.html	/^function initText(editor) {$/;"	f
 initUI	inote/libs/codemirror-4.3/demo/merge.html	/^function initUI(panes) {$/;"	f
-inserCellAfter	inote/coffee/inote.coffee	/^    inserCellAfter = (cellNumber) ->$/;"	f	line:28	language:coffee	object:@iNote
-insertCellBefore	inote/coffee/inote.coffee	/^    insertCellBefore = (cellNumber) ->$/;"	f	line:39	language:coffee	object:@iNote
+inserCellAfter	inote/coffee/inote.coffee	/^    inserCellAfter = (cellNumber) ->$/;"	f
+insertCellBefore	inote/coffee/inote.coffee	/^    insertCellBefore = (cellNumber) ->$/;"	f
 instrument	node_modules/qunit/node_modules/istanbul/test/browser/support/index.html	/^        function instrument(file, callback) {$/;"	f
 instrumentNext	node_modules/qunit/node_modules/istanbul/test/browser/support/index.html	/^        function instrumentNext(err) {$/;"	f
 isBinary	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^            function isBinary(node) {$/;"	f
-isCellFirst	inote/coffee/inote.coffee	/^    isCellFirst = (index) ->$/;"	f	line:98	language:coffee	object:@iNote
-isCellLast	inote/coffee/inote.coffee	/^    isCellLast = (index) ->$/;"	f	line:102	language:coffee	object:@iNote
+isCellFirst	inote/coffee/inote.coffee	/^    isCellFirst = (index) ->$/;"	f
+isCellLast	inote/coffee/inote.coffee	/^    isCellLast = (index) ->$/;"	f
 isDecimalDigit	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function isDecimalDigit(ch) {$/;"	f
 isFutureReservedWord	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function isFutureReservedWord(id) {$/;"	f
 isHexDigit	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function isHexDigit(ch) {$/;"	f
@@ -344,6 +261,7 @@ is_line_terminator	node_modules/qunit/node_modules/istanbul/node_modules/esprima
 is_octal_digit	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def is_octal_digit(self, ch):$/;"	m	class:Detector
 is_separator_space	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def is_separator_space(self, ch):$/;"	m	class:Detector
 is_white_space	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^  def is_white_space(self, ch):$/;"	m	class:Detector
+javaScriptText	inote/coffee/cell.coffee	/^        javaScriptText = _javascriptCell$/;"	v
 jinja2	py/indexpage.py	/^import jinja2$/;"	i
 jinja2	py/main.py	/^import jinja2$/;"	i
 jinja2	py/page.py	/^import jinja2$/;"	i
@@ -352,6 +270,7 @@ jinja_environment	py/main.py	/^jinja_environment = jinja2.Environment($/;"	v
 jinja_environment	py/page.py	/^jinja_environment = jinja2.Environment($/;"	v
 jsFunc	inote/libs/codemirror-4.3/mode/htmlmixed/index.html	/^      function jsFunc(arg1, arg2) {$/;"	f
 json	py/delete.py	/^import json$/;"	i
+json	py/rename.py	/^import json$/;"	i
 json	py/utils.py	/^import json$/;"	i
 json	py/write.py	/^import json$/;"	i
 lex	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function lex() {$/;"	f
@@ -373,21 +292,31 @@ mergeViewHeight	inote/libs/codemirror-4.3/demo/merge.html	/^function mergeViewHe
 modal_height	inote/libs/jquery.leanModal.coffee	/^                modal_height = $(modal_id).outerHeight()$/;"	v
 modal_id	inote/libs/jquery.leanModal.coffee	/^                modal_id = $(this).attr("href")$/;"	v
 modal_width	inote/libs/jquery.leanModal.coffee	/^                modal_width = $(modal_id).outerWidth()$/;"	v
-moveFocusToNextCell	inote/coffee/inote.coffee	/^    moveFocusToNextCell = (index) ->$/;"	f	line:106	language:coffee	object:@iNote
-moveFocusToPreviousCell	inote/coffee/inote.coffee	/^    moveFocusToPreviousCell = (index) ->$/;"	f	line:117	language:coffee	object:@iNote
+moveFocusToNextCell	inote/coffee/inote.coffee	/^    moveFocusToNextCell = (index) ->$/;"	f
+moveFocusToPreviousCell	inote/coffee/inote.coffee	/^    moveFocusToPreviousCell = (index) ->$/;"	f
 newBuf	inote/libs/codemirror-4.3/demo/buffers.html	/^function newBuf(where) {$/;"	f
+newCell	inote/coffee/inote.coffee	/^        newCell = createNewCell(cellNumber)$/;"	v
+newCell	inote/coffee/inote.coffee	/^        newCell = createNewCell(getNewCellNumber())$/;"	v
 nodeContent	inote/libs/codemirror-4.3/demo/buffers.html	/^function nodeContent(id) {$/;"	f
+notebook	inote/coffee/inote.coffee	/^        notebook = $(xmlText)$/;"	v
+notebook	inote/coffee/inote.html.coffee	/^        notebook = $(xmlText)$/;"	v
+notebook_access	inote/coffee/inote.html.coffee	/^    notebook_access = ""$/;"	v
+notebook_name	inote/coffee/inote.html.coffee	/^    notebook_name = ""$/;"	v
 notebook_name	py/notebook.py	/^    notebook_name=db.StringProperty()$/;"	v	class:NoteBook
+notebook_owner	inote/coffee/inote.html.coffee	/^    notebook_owner = ""$/;"	v
+o	inote/coffee/inote.html.coffee	/^        o=d$/;"	v
 onMouseDown	inote/libs/codemirror-4.3/mode/diff/index.html	/^     function onMouseDown(e) {$/;"	f
-on_page_load	inote/coffee/login.html.coffee	/^on_page_load = -> adjust_ui()$/;"	f	line:156	language:coffee	object:window
-on_signin	inote/coffee/login.html.coffee	/^on_signin = (r) -> write_cookie(r); adjust_ui()$/;"	f	line:152	language:coffee	object:window
-on_signout	inote/coffee/login.html.coffee	/^on_signout = -> delete_cookie(); adjust_ui()$/;"	f	line:160	language:coffee	object:window
-onbeforeunload	inote/coffee/inote.html.coffee	/^    window.onbeforeunload = ->$/;"	f	line:307	language:coffee	object:hideMenu
+on_page_load	inote/coffee/login.html.coffee	/^on_page_load = -> adjust_ui()$/;"	f
+on_signin	inote/coffee/login.html.coffee	/^on_signin = (r) -> write_cookie(r); adjust_ui()$/;"	f
+on_signout	inote/coffee/login.html.coffee	/^on_signout = -> delete_cookie(); adjust_ui()$/;"	f
 openBuffer	inote/libs/codemirror-4.3/demo/buffers.html	/^function openBuffer(name, text, mode) {$/;"	f
+openNotebook	inote/coffee/inote.html.coffee	/^openNotebook = (notebookOwner, notebookAccess, notebookName) ->$/;"	f
 os	py/indexpage.py	/^import os$/;"	i
 os	py/main.py	/^import os$/;"	i
 os	py/page.py	/^import os$/;"	i
 os	py/ptags.py	/^import sys, re, os$/;"	i
+outputValue	inote/coffee/cell.coffee	/^        outputValue = output.text()$/;"	v
+page	inote/coffee/inote.html.coffee	/^    page = $("#page")$/;"	v
 parse	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parse(code, options) {$/;"	f
 parseArguments	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseArguments() {$/;"	f
 parseArrayInitialiser	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function parseArrayInitialiser() {$/;"	f
@@ -445,21 +374,30 @@ parse_key	py/utils.py	/^def parse_key(key_name):$/;"	f
 patch	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function patch() {$/;"	f
 peek	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function peek() {$/;"	f
 peekLineTerminator	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function peekLineTerminator() {$/;"	f
+post	py/rename.py	/^    def post(self):$/;"	m	class:RenameHandler
 post	py/write.py	/^    def post(self):$/;"	m	class:WriteHandler
 postResults	node_modules/qunit/node_modules/istanbul/test/browser/support/index.html	/^        function postResults(url, data, callback) {$/;"	f
 print_object	py/utils.py	/^def print_object(c):$/;"	f
+public_columns	inote/coffee/index.html.coffee	/^public_columns =$/;"	v	line:24	language:coffee
+r	inote/coffee/login.html.coffee	/^            r = read_cookie()$/;"	v
 r	inote/coffee/notebookstorage.coffee	/^        r =$/;"	v
 re	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^import re$/;"	i
 re	py/ptags.py	/^import sys, re, os$/;"	i
-read_cookie	inote/coffee/login.html.coffee	/^read_cookie = ->$/;"	f	line:73	language:coffee	object:window
+read_cookie	inote/coffee/login.html.coffee	/^read_cookie = ->$/;"	f
+rename_notebook	py/utils.py	/^def rename_notebook(key_name, access, notebook_name, content, version, o):$/;"	f
 replaceTable	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^        function replaceTable(node) {$/;"	f
 resize	inote/libs/codemirror-4.3/demo/merge.html	/^function resize(mergeView) {$/;"	f
-restoreNotebookFromXml	inote/coffee/inote.html.coffee	/^restoreNotebookFromXml = (xmlText) ->$/;"	f	line:169	language:coffee	object:window
+restoreNotebookFromXml	inote/coffee/inote.html.coffee	/^restoreNotebookFromXml = (xmlText) ->$/;"	f
 runHarness	inote/libs/codemirror-4.3/test/index.html	/^      function runHarness(){$/;"	f
 runTest	inote/libs/codemirror-4.3/mode/vb/index.html	/^function runTest() {$/;"	f
 runTests	node_modules/qunit/node_modules/istanbul/test/browser/support/index.html	/^        function runTests(testFiles) {$/;"	f
-s	inote/coffee/cell.coffee	/^                    s = JSON.stringify(o, (key, value) ->$/;"	f	line:597	language:coffee	object:@Cell._print
+s	inote/coffee/cell.coffee	/^                    s = JSON.stringify(o, (key, value) ->$/;"	f
+s	inote/coffee/cell.coffee	/^                s = o$/;"	v
+s	inote/coffee/cell.coffee	/^            s = "{jQuery}"$/;"	v
+s	inote/coffee/cell.coffee	/^        s = ""$/;"	v
 s	inote/libs/codemirror-4.3/doc/manual.html	/^      functions (the <code>hint<\/code> option), which is a function$/;"	f
+saveNotebookTimeout	inote/coffee/inote.html.coffee	/^        saveNotebookTimeout = setTimeout saveNotebook , 2000$/;"	v
+save_notebook	py/utils.py	/^def save_notebook(access, notebook_name, content, version, o):$/;"	f
 scan	inote/libs/codemirror-4.3/demo/anywordhint.html	/^    function scan(dir) {$/;"	f
 scanComment	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function scanComment() {$/;"	f
 scanHexEscape	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function scanHexEscape(prefix) {$/;"	f
@@ -473,24 +411,18 @@ selectFontsize	inote/libs/codemirror-4.3/mode/cobol/index.html	/^      function 
 selectReadOnly	inote/libs/codemirror-4.3/mode/cobol/index.html	/^      function selectReadOnly() {$/;"	f
 selectTheme	inote/libs/codemirror-4.3/demo/theme.html	/^  function selectTheme() {$/;"	f
 selectTheme	inote/libs/codemirror-4.3/mode/cobol/index.html	/^      function selectTheme() {$/;"	f
-setCursor	inote/coffee/cell.coffee	/^    setCursor: (obj_line_ch) ->$/;"	f	line:701	language:coffee	object:@Cell
-setDeleteCallback	inote/coffee/cell.coffee	/^    setDeleteCallback: (f) ->$/;"	f	line:731	language:coffee	object:@Cell
-setInputValue	inote/coffee/cell.coffee	/^    setInputValue: (code) ->$/;"	f	line:691	language:coffee	object:@Cell
-setInsertAfterCallback	inote/coffee/cell.coffee	/^    setInsertAfterCallback: (f) ->$/;"	f	line:723	language:coffee	object:@Cell
-setInsertBeforeCallback	inote/coffee/cell.coffee	/^    setInsertBeforeCallback: (f) ->$/;"	f	line:727	language:coffee	object:@Cell
-setKeyMap	inote/coffee/inote.coffee	/^    setKeyMap = (keyMap) ->$/;"	f	line:226	language:coffee	object:@iNote
-setOutputValue	inote/coffee/cell.coffee	/^    setOutputValue: (code) ->$/;"	f	line:696	language:coffee	object:@Cell
+setKeyMap	inote/coffee/inote.coffee	/^    setKeyMap = (keyMap) ->$/;"	f
 setStatus	inote/libs/codemirror-4.3/test/index.html	/^      function setStatus(message, className, force){$/;"	f
-setTheme	inote/coffee/inote.coffee	/^    setTheme = (themeName) ->$/;"	f	line:218	language:coffee	object:@iNote
+setTheme	inote/coffee/inote.coffee	/^    setTheme = (themeName) ->$/;"	f
 setVersion	inote/libs/codemirror-4.3/doc/compress.html	/^      function setVersion(ver) {$/;"	f
-setXmlText	inote/coffee/inote.coffee	/^    setXmlText = (xmlText) ->$/;"	f	line:148	language:coffee	object:@iNote
-setXmlText0	inote/coffee/inote.coffee	/^    setXmlText0 = (xmlText) ->$/;"	f	line:156	language:coffee	object:@iNote
-setXmlText1	inote/coffee/inote.coffee	/^    setXmlText1 = (xmlText) ->$/;"	f	line:176	language:coffee	object:@iNote
-showMenu	inote/coffee/inote.html.coffee	/^showMenu = ->$/;"	f	line:228	language:coffee	object:window
-show_list	inote/coffee/index.html.coffee	/^show_list = (url, selector) ->$/;"	f
+setXmlText	inote/coffee/inote.coffee	/^    setXmlText = (xmlText) ->$/;"	f
+setXmlText0	inote/coffee/inote.coffee	/^    setXmlText0 = (xmlText) ->$/;"	f
+setXmlText1	inote/coffee/inote.coffee	/^    setXmlText1 = (xmlText) ->$/;"	f
+showMenu	inote/coffee/inote.html.coffee	/^showMenu = ->$/;"	f
+show_list	inote/coffee/index.html.coffee	/^show_list = (url, selector) ->$/;"	f	line:20	language:coffee	object:window
 skipComment	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function skipComment() {$/;"	f
 string	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^import string$/;"	i
-switch	inote/coffee/cell.coffee	/^        switch event.which$/;"	b	line:502	language:coffee
+style	inote/coffee/cell.coffee	/^                            style='right:0px; top:2px;;' $/;"	v
 sys	node_modules/qunit/node_modules/istanbul/node_modules/esprima/tools/generate-unicode-regex.py	/^import sys$/;"	i
 sys	py/ptags.py	/^import sys, re, os$/;"	i
 tabToIndentSpace	inote/libs/codemirror-4.3/mode/cobol/index.html	/^      function tabToIndentSpace() {$/;"	f
@@ -505,12 +437,13 @@ throwError	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/es
 throwErrorTolerant	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function throwErrorTolerant() {$/;"	f
 throwUnexpected	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function throwUnexpected(token) {$/;"	f
 toREElt	inote/libs/codemirror-4.3/demo/spanaffectswrapping_shim.html	/^      function toREElt(str) {$/;"	f
-toXmlString	inote/coffee/cell.coffee	/^    toXmlString = (data) ->$/;"	f	line:637	language:coffee	object:@Cell
+toXmlString	inote/coffee/cell.coffee	/^    toXmlString = (data) ->$/;"	f
 toggleDifferences	inote/libs/codemirror-4.3/demo/merge.html	/^function toggleDifferences() {$/;"	f
 trackGroupExpression	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function trackGroupExpression() {$/;"	f
 trackLeftHandSideExpression	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function trackLeftHandSideExpression() {$/;"	f
 trackLeftHandSideExpressionAllowCall	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function trackLeftHandSideExpressionAllowCall() {$/;"	f
 treat_file	py/ptags.py	/^def treat_file(filename):$/;"	f
+unless	inote/coffee/index.html.coffee	/^    unless \$(".user_name").text()==d.user_name and \$('.user_network').text()==d.user_network$/;"	b	line:63	language:coffee
 unpatch	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function unpatch() {$/;"	f
 unq	py/utils.py	/^def unq(s):$/;"	f
 unquote	py/utils.py	/^from urllib2 import unquote$/;"	i
@@ -522,6 +455,7 @@ updateVisual	inote/libs/codemirror-4.3/demo/btree.html	/^function updateVisual()
 urlfetch	py/proxy.py	/^from google.appengine.api import urlfetch$/;"	i
 urllib	py/main.py	/^import urllib$/;"	i
 user	py/notebook.py	/^    user=db.UserProperty(auto_current_user_add=True)$/;"	v	class:NoteBook
+userNameNetwork	inote/coffee/inote.html.coffee	/^    userNameNetwork = "#{userName}|#{userNetwork}"$/;"	v
 user_id	py/notebook.py	/^    user_id=db.StringProperty()$/;"	v	class:NoteBook
 user_name	py/notebook.py	/^    user_name=db.StringProperty()$/;"	v	class:NoteBook
 user_name_network_id	py/notebook.py	/^    user_name_network_id=db.StringProperty()$/;"	v	class:NoteBook
@@ -532,7 +466,6 @@ users	py/login.py	/^from google.appengine.api import users$/;"	i
 users	py/main.py	/^from google.appengine.api import users$/;"	i
 users	py/read.py	/^from google.appengine.api import users$/;"	i
 users	py/utils.py	/^from google.appengine.api import users$/;"	i
-users	py/write.py	/^from google.appengine.api import users$/;"	i
 utils	py/delete.py	/^import utils$/;"	i
 utils	py/indexpage.py	/^import utils$/;"	i
 utils	py/list.py	/^import utils$/;"	i
@@ -540,6 +473,7 @@ utils	py/login.py	/^import utils$/;"	i
 utils	py/page.py	/^import utils$/;"	i
 utils	py/publiclist.py	/^import utils$/;"	i
 utils	py/read.py	/^import utils$/;"	i
+utils	py/rename.py	/^import utils$/;"	i
 utils	py/userlist.py	/^import utils$/;"	i
 utils	py/write.py	/^import utils$/;"	i
 version	py/notebook.py	/^    version=db.IntegerProperty()$/;"	v	class:NoteBook
@@ -553,11 +487,14 @@ webapp2	py/page.py	/^import webapp2$/;"	i
 webapp2	py/proxy.py	/^import webapp2$/;"	i
 webapp2	py/publiclist.py	/^import webapp2$/;"	i
 webapp2	py/read.py	/^import webapp2$/;"	i
+webapp2	py/rename.py	/^import webapp2$/;"	i
 webapp2	py/userlist.py	/^import webapp2$/;"	i
 webapp2	py/write.py	/^import webapp2$/;"	i
 winHeight	inote/coffee/cdmirror.coffee	/^winHeight = ->$/;"	f
+window.onbeforeunload	inote/coffee/inote.html.coffee	/^    window.onbeforeunload = ->$/;"	f
 words	node_modules/qunit/node_modules/istanbul/node_modules/escodegen/node_modules/esutils/test/keyword.coffee	/^            words = [$/;"	v
 wrap.style.height	inote/coffee/cdmirror.coffee	/^        wrap.style.height = ""$/;"	v
 wrapTrackingFunction	node_modules/qunit/node_modules/istanbul/node_modules/esprima/test/esprima.js.html	/^    function wrapTrackingFunction(range, loc) {$/;"	f
-write_cookie	inote/coffee/login.html.coffee	/^write_cookie = (r) ->$/;"	f	line:54	language:coffee	object:window
+write_cookie	inote/coffee/login.html.coffee	/^write_cookie = (r) ->$/;"	f
 xml	py/utils.py	/^import xml.etree.ElementTree as ET$/;"	i
+xmlText	inote/coffee/inote.html.coffee	/^    xmlText = page.html()$/;"	v
