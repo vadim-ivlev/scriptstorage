@@ -131,7 +131,7 @@
       newName = "N" + (5000000 + Math.floor(999000 * Math.random()));
       newName = prompt("Change the name", newName);
       if (newName) {
-        return document.location.href = "/page?owner=" + encodeURIComponent($(".user_name").text()) + "&access=" + encodeURIComponent("public") + "&name=" + encodeURIComponent(newName);
+        return document.location.href = "/page?owner=" + encodeURIComponent($(".user_name").text() + "|" + $(".user_network").text()) + "&access=" + encodeURIComponent("public") + "&name=" + encodeURIComponent(newName);
       }
     });
   });

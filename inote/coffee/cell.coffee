@@ -70,7 +70,7 @@ window?.clear = null
                     <tr>
                         <td id='in_' class='inputCell position_relative'>
                         <span class='toolButton hide-on-view position_absolute_100 icon-expand' 
-                            style='right:0px; top:2px;padding:0;font-size:14px;' 
+                            style='right:0px; top:2px;padding:0;' 
                             title='Fullscreen Alt-F11'></span>
                         </td>
                         <td id='js_' class='javascriptCell'></td>
@@ -358,8 +358,13 @@ window?.clear = null
     
     
     _switchFullsreen = ->
-        fs = not isFullScreen(_codemirror)
-        setFullScreen(_codemirror, fs)
+        #fs = not isFullScreen(_codemirror)
+        #setFullScreen(_codemirror, fs)
+
+        fs = not _codemirror.getOption("fullScreen")
+        _codemirror.setOption("fullScreen", fs)
+
+
         if fs
             _fullscreenButton.addClass("fullscreen-top-right")
             _inputCell.removeClass('position_relative')

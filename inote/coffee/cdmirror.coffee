@@ -3,7 +3,7 @@
         value: "" #function myScript(){return 100;}
         mode: "javascript"
         vimMode: false
-        lineWrapping: true
+        lineWrapping: false
         lineNumbers: true
         autofocus: false
         matchBrackets: true
@@ -48,7 +48,7 @@
 CodeMirror.commands.autocomplete = (cm) ->
     CodeMirror.showHint cm, CodeMirror.hint.javascript
 
-
+###
 #FULL SCREEN functions//////////////BEGIN
 @isFullScreen = (cm) ->
     /\bCodeMirror-fullscreen\b/.test cm.getWrapperElement().className
@@ -76,3 +76,4 @@ CodeMirror.on window, "resize", ->
     return    unless showing
     showing.CodeMirror.getWrapperElement().style.height = winHeight() + "px"
 #FULL SCREEN functions//////////////END
+###

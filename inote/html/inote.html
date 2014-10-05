@@ -27,17 +27,8 @@
       <!-- <span id="btnOpen" class="toolButton" >restore</span>-->
       <div id="saveGroup"><span id="btnHideMenu" class="toolButton"><span class="icon-close"></span></span><br><br><span id="btnSave" onclick="saveNotebook()" title="Ctrl-S" class="toolButton">Save &nbsp;&nbsp;Ctrl-S</span><span style="white-space:nowrap;float:right" class="toolButton">
           <label for="autoSave" title="autosave">auto</label>
-          <input id="autoSave" type="checkbox"></span><br><br><span onclick="saveAs()" class="toolButton">Save As ...</span><br><br>
-        <!--span.toolButton(onclick='rename2()') Rename ...-->
-        <!--br-->
-        <!--br--><span onclick="saveNotebook(event)" title="Save a new version." class="toolButton">Save as new version</span>
-        <hr>
-        <!--span.arrowDown-->
-        <!--    select#notebookAccess.selectButton(title='Access')-->
-        <!--        option(value='public') public-->
-        <!--        option(value='private') private-->
-        <!--br-->
-        <!--br--><span class="arrowDown">
+          <input id="autoSave" type="checkbox"></span><br><br><span onclick="saveAs()" class="toolButton">Save As ...</span><br><br><span onclick="saveNotebook(event)" title="Save a new version." class="toolButton">Save as new version</span>
+        <hr><span class="arrowDown">
           <select id="notebookEditor" title="Editor" onchange="selectKeyMap()" class="selectButton">
             <option value="default">default editor</option>
             <option value="vim">vim</option>
@@ -47,6 +38,7 @@
             <option value="default">default theme</option>
             <option value="3024-day">3024-day</option>
             <option value="3024-night">3024-night</option>
+            <option value="ambiance-mobile">ambiance-mobile</option>
             <option value="ambiance">ambiance</option>
             <option value="base16-dark">base16-dark</option>
             <option value="base16-light">base16-light</option>
@@ -56,13 +48,19 @@
             <option value="elegant">elegant</option>
             <option value="erlang-dark">erlang-dark</option>
             <option value="lesser-dark">lesser-dark</option>
+            <option value="mbo">mbo</option>
+            <option value="mdn-like">mdn-like</option>
             <option value="midnight">midnight</option>
             <option value="monokai">monokai</option>
             <option value="neat">neat</option>
+            <option value="neo">neo</option>
             <option value="night">night</option>
+            <option value="paraiso-dark">paraiso-dark</option>
+            <option value="paraiso-light">paraiso-light</option>
+            <option value="pastel-on-dark">pastel-on-dark</option>
             <option value="rubyblue">rubyblue</option>
-            <option value="solarized dark">solarized dark</option>
-            <option value="solarized light">solarized light</option>
+            <option value="solarized">solarized</option>
+            <option value="the-matrix">the-matrix</option>
             <option value="tomorrow-night-eighties">tomorrow-night-eighties</option>
             <option value="twilight">twilight</option>
             <option value="vibrant-ink">vibrant-ink</option>

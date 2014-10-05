@@ -115,5 +115,5 @@ $ ->
         newName = prompt "Change the name", newName
         if newName
             #document.location.href = "/page?owner=" + encodeURIComponent($("#userName").text()) + "&access=" + encodeURIComponent("public") + "&name=" + encodeURIComponent(newName)
-            document.location.href = "/page?owner=" + encodeURIComponent($(".user_name").text()) + "&access=" + encodeURIComponent("public") + "&name=" + encodeURIComponent(newName)
+            document.location.href = "/page?owner=" + encodeURIComponent($(".user_name").text() + "|" + $(".user_network").text()) + "&access=" + encodeURIComponent("public") + "&name=" + encodeURIComponent(newName)
     

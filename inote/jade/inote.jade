@@ -26,45 +26,44 @@ html
         script(type='text/javascript'). 
             $.browser={ msie: ( navigator.appName == 'Microsoft Internet Explorer') ? true : false } ;
         if dbg            
-            script(src='libs/codemirror-4.3/lib/codemirror.js')
-            script(src='libs/codemirror-4.3/addon/hint/show-hint.js')
-            script(src='libs/codemirror-4.3/addon/hint/javascript-hint.js')
-            script(src='libs/codemirror-4.3/addon/comment/comment.js')
-            script(src='libs/codemirror-4.3/mode/xml/xml.js')
-            script(src='libs/codemirror-4.3/mode/javascript/javascript.js')
-            script(src='libs/codemirror-4.3/mode/css/css.js')
-            script(src='libs/codemirror-4.3/mode/htmlmixed/htmlmixed.js')
-            script(src='libs/codemirror-4.3/mode/coffeescript/coffeescript.js')
-            //script(src='libs/codemirror-4.3/addon/edit/formatting.js')
-            script(src='libs/codemirror-4.3/addon/edit/matchbrackets.js')
-            script(src='libs/codemirror-4.3/addon/edit/closetag.js')
-            script(src='libs/codemirror-4.3/addon/fold/foldcode.js')
-            script(src='libs/codemirror-4.3/addon/fold/foldgutter.js')
-            script(src='libs/codemirror-4.3/addon/fold/brace-fold.js')
-            script(src='libs/codemirror-4.3/addon/fold/xml-fold.js')
-            script(src='libs/codemirror-4.3/addon/fold/indent-fold.js')
-            script(src='libs/codemirror-4.3/addon/dialog/dialog.js')
-            script(src='libs/codemirror-4.3/addon/search/searchcursor.js')
-            script(src='libs/codemirror-4.3/addon/search/search.js')
-                
-            script(src='libs/codemirror-4.3/keymap/vim.js')
-            script(src='libs/codemirror-4.3/keymap/sublime.js')
+            script(src='libs/codemirror-4.6/lib/codemirror.js')
+            script(src='libs/codemirror-4.6/addon/hint/show-hint.js')
+            script(src='libs/codemirror-4.6/addon/hint/javascript-hint.js')
+            script(src='libs/codemirror-4.6/addon/comment/comment.js')
+            script(src='libs/codemirror-4.6/mode/xml/xml.js')
+            script(src='libs/codemirror-4.6/mode/javascript/javascript.js')
+            script(src='libs/codemirror-4.6/mode/css/css.js')
+            script(src='libs/codemirror-4.6/mode/htmlmixed/htmlmixed.js')
+            script(src='libs/codemirror-4.6/mode/coffeescript/coffeescript.js')
+            script(src='libs/codemirror-4.6/addon/edit/matchbrackets.js')
+            script(src='libs/codemirror-4.6/addon/edit/closetag.js')
+            script(src='libs/codemirror-4.6/addon/fold/foldcode.js')
+            script(src='libs/codemirror-4.6/addon/fold/foldgutter.js')
+            script(src='libs/codemirror-4.6/addon/fold/brace-fold.js')
+            script(src='libs/codemirror-4.6/addon/fold/xml-fold.js')
+            script(src='libs/codemirror-4.6/addon/fold/indent-fold.js')
+            script(src='libs/codemirror-4.6/addon/dialog/dialog.js')
+            script(src='libs/codemirror-4.6/addon/search/searchcursor.js')
+            script(src='libs/codemirror-4.6/addon/search/search.js')
+            script(src='libs/codemirror-4.6/addon/display/fullscreen.js')
+            script(src='libs/codemirror-4.6/keymap/vim.js')
+            script(src='libs/codemirror-4.6/keymap/sublime.js')
             
             script(src='libs/coffee-script.js')
             script(src='libs/json2.min.js')
             script(src='libs/showdown.js')
             script(src='libs/colResizable-1.3.min.js')
-            //script(src='libs/jquery.resizableColumns.js')
-                
+            script(src='libs/hello.min.js')
+            script(src='libs/jquery.cookie.js')
+            
             script(src='js/cdmirror.js')
             script(src='js/cell.js')
             script(src='js/inote.js')
             script(src='js/notebookstorage.js')
             script(src='js/inote.html.js')
-                
-            script(src='libs/hello.min.js')
-            script(src='libs/jquery.cookie.js')
             script(src='js/login.html.js')
+
+
         else
             script(src='js/all.js')
         
@@ -94,17 +93,8 @@ html
                 span.toolButton(onclick='saveAs()') Save As ...
                 br
                 br
-                //span.toolButton(onclick='rename2()') Rename ...
-                //br
-                //br
                 span.toolButton(onclick='saveNotebook(event)',title='Save a new version.') Save as new version
                 hr
-                //span.arrowDown
-                //    select#notebookAccess.selectButton(title='Access')
-                //        option(value='public') public
-                //        option(value='private') private
-                //br
-                //br
                 span.arrowDown
                     select#notebookEditor.selectButton(title='Editor',onchange='selectKeyMap()')
                         option(value='default') default editor
@@ -117,6 +107,7 @@ html
                         option(value='default') default theme
                         option(value='3024-day') 3024-day
                         option(value='3024-night') 3024-night
+                        option(value='ambiance-mobile') ambiance-mobile
                         option(value='ambiance') ambiance
                         option(value='base16-dark') base16-dark
                         option(value='base16-light') base16-light
@@ -126,13 +117,19 @@ html
                         option(value='elegant') elegant
                         option(value='erlang-dark') erlang-dark
                         option(value='lesser-dark') lesser-dark
+                        option(value='mbo') mbo
+                        option(value='mdn-like') mdn-like
                         option(value='midnight') midnight
                         option(value='monokai') monokai
                         option(value='neat') neat
+                        option(value='neo') neo
                         option(value='night') night
+                        option(value='paraiso-dark') paraiso-dark
+                        option(value='paraiso-light') paraiso-light
+                        option(value='pastel-on-dark') pastel-on-dark
                         option(value='rubyblue') rubyblue
-                        option(value='solarized dark') solarized dark
-                        option(value='solarized light') solarized light
+                        option(value='solarized') solarized
+                        option(value='the-matrix') the-matrix
                         option(value='tomorrow-night-eighties') tomorrow-night-eighties
                         option(value='twilight') twilight
                         option(value='vibrant-ink') vibrant-ink
