@@ -62,9 +62,6 @@ window?.clear = null
                         <span class='showJavascriptButton toolButton hide-on-view' >Show Javascript</span>
                         <span class='shareSourceButton toolButton icon-share hide-on-view' ></span>
                         <span class='deleteButton toolButton  hide-on-view icon-close' style='padding-right:0;' title='delete cell' ></span>
-                        <!--
-                        <span class='toolButton hide-on-view icon-expand' style='float:right' title='Fullscreen on/of'>Alt-F11</span>
-                        -->
                         <span class='keyMap toolButton hide-on-view' style='float:right; display:none;' title='editor mode'></span>
                     </span>
                 </span>
@@ -73,8 +70,8 @@ window?.clear = null
                     <tr>
                         <td id='in_' class='inputCell position_relative'>
                         <span class='toolButton hide-on-view position_absolute_100 icon-expand' 
-                            style='right:0px; top:2px;;' 
-                            title='Fullscreen on/of'>Alt-F11</span>
+                            style='right:0px; top:2px;padding:0;font-size:14px;' 
+                            title='Fullscreen Alt-F11'></span>
                         </td>
                         <td id='js_' class='javascriptCell'></td>
                     </tr>

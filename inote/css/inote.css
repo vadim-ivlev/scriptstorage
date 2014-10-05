@@ -37,8 +37,8 @@ hr {
 /*PAGE----------------------*/
 .page {
   padding: 10px;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
   max-width: 2000px;
   margin-left: auto;
   margin-right: auto;
@@ -739,7 +739,7 @@ hr {
   border-color: rgba(200, 200, 200, 0.7);
 }
 .danger-border {
-  border-color: red;
+  border-color: #c8c8c8;
 }
 .fullscreen-top-right {
   position: fixed;
@@ -2093,10 +2093,12 @@ view-port
   line-height: 120%;
   font-family: Menlo, monospace;
 }
+/*
 .CodeMirror-scroll {
-  overflow-y: hidden;
-  overflow-x: auto;
+    overflow-y: hidden;
+    overflow-x: auto;
 }
+*/
 .CodeMirror-gutters {
   background-color: transparent;
   border-right: 2px solid rgba(200, 200, 200, 0.7);
@@ -2122,12 +2124,23 @@ view-port
 .CodeMirror-foldgutter-folded:after {
   content: "\25B8";
 }
+/*
 .CodeMirror-fullscreen {
-  display: block;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+}
+*/
+.CodeMirror-fullscreen {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  right: 0;
+  bottom: 0;
+  height: auto;
   z-index: 9999;
 }
 .cm-tab {
