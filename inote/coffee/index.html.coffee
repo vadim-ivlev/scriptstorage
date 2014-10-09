@@ -97,19 +97,29 @@ buildTable = (d, selector)->
 
         
     t.show()
+    #showProperPane()
     return
+
+
+# Hide user tab if he is not signed in
+showProperPane = () ->
+    if not $(".user_name").text()
+        #$('.userTab').tab('show')
+        #$('.publicPane').hide()
+        $('.userTab').hide()
+
 
 
 # on page load ==================================================================
 $ ->
-    # Hide user tab if he is not signed in
-    if not $(".user_name").text()
-        $('.userTab').hide()
-
     $("#notebookList").hide()
     show_list('/publiclist','#publicList')
     show_list('/userlist','#userList')
     
+    # Hide user tab if he is not signed in
+    showProperPane()
+
+
     $("#btnCreate").click ->
         newName = "N" + (5000000 + Math.floor(999000 * Math.random()))
         newName = prompt "Change the name", newName

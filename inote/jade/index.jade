@@ -35,14 +35,14 @@ html
             br
             //tab navs
             ul.nav.nav-tabs(role="tablist")
-                li.userTab.active
-                    a(href="#userPane",role='tab',data-toggle='tab') Yours
-                li.publicTab
+                li.publicTab.active
                     a(href="#publicPane",role='tab',data-toggle='tab') Public notebooks
+                li.userTab
+                    a(href="#userPane",role='tab',data-toggle='tab') Yours
             //tab panes
             .tab-content
                 br
-                #userPane.tab-pane.active
-                    #userList
-                #publicPane.tab-pane
+                #publicPane.tab-pane.active
                     #publicList
+                #userPane.tab-pane
+                    #userList
