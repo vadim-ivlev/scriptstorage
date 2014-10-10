@@ -59,7 +59,7 @@ hr {
 }
 .loginHolder {
   white-space: nowrap;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: Roboto, sans-serif;
   color: #777777;
 }
 .toolButton {
@@ -72,7 +72,7 @@ hr {
   padding-right: 15px;
   border-bottom: 1px solid transparent;
   text-decoration: none;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 16px;
 }
 .selectButton {
@@ -84,7 +84,7 @@ hr {
   padding-right: 15px;
   border-bottom: 1px solid transparent;
   text-decoration: none;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 16px;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -111,7 +111,7 @@ hr {
   padding-right: 15px;
   border-bottom: 1px solid transparent;
   text-decoration: none;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 16px;
   padding-left: 0;
   padding-right: 0;
@@ -120,7 +120,7 @@ hr {
   border-color: #777777;
 }
 .oauthHolder {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: Roboto, sans-serif;
   text-align: right;
   display: inline-block;
   color: #777777;
@@ -616,18 +616,18 @@ hr {
   padding-right: 15px;
   border-bottom: 1px solid transparent;
   text-decoration: none;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 16px;
   cursor: default;
 }
 #appTitle {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: Roboto, sans-serif;
   width: 100%;
   font-size: 70px;
   font-weight: normal;
 }
 #notebookList {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: Roboto, sans-serif;
   color: #777777;
 }
 #notebookList a {
@@ -654,7 +654,7 @@ hr {
   border-color: rgba(200, 200, 200, 0.7);
 }
 li a {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: Roboto, sans-serif;
 }
 #page {
   max-width: 899px;

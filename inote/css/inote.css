@@ -1634,7 +1634,7 @@ hr {
 }
 .loginHolder {
   white-space: nowrap;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: Roboto, sans-serif;
   color: #777777;
 }
 .toolButton {
@@ -1647,7 +1647,7 @@ hr {
   padding-right: 15px;
   border-bottom: 1px solid transparent;
   text-decoration: none;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 16px;
 }
 .selectButton {
@@ -1659,7 +1659,7 @@ hr {
   padding-right: 15px;
   border-bottom: 1px solid transparent;
   text-decoration: none;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 16px;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -1686,7 +1686,7 @@ hr {
   padding-right: 15px;
   border-bottom: 1px solid transparent;
   text-decoration: none;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 16px;
   padding-left: 0;
   padding-right: 0;
@@ -1695,7 +1695,7 @@ hr {
   border-color: #777777;
 }
 .oauthHolder {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: Roboto, sans-serif;
   text-align: right;
   display: inline-block;
   color: #777777;
@@ -2191,7 +2191,7 @@ hr {
   padding-right: 15px;
   border-bottom: 1px solid transparent;
   text-decoration: none;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 16px;
   cursor: default;
 }
@@ -2288,10 +2288,10 @@ hr {
 .markdown {
   max-width: 899px;
   line-height: 1.5;
-  font-size: 20px;
+  font-size: 18px;
   margin: auto;
   text-align: justify;
-  font-family: Georgia, "Helvetica Neue", Helvetica, sans-serif;
+  font-family: Roboto, sans-serif;
 }
 .markdown hr {
   border-style: none;
@@ -2346,7 +2346,7 @@ hr {
 .cellLabel {
   border: 1px solid transparent;
   color: #777777;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 90%;
   min-height: 20px;
   vertical-align: middle;
@@ -2478,7 +2478,7 @@ hr {
 .notebookName {
   position: relative;
   border: 1px solid transparent;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 16px;
   vertical-align: middle;
   -webkit-appearance: none;
@@ -2487,7 +2487,7 @@ hr {
 .nbAccess {
   position: relative;
   border: 1px solid transparent;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 16px;
   vertical-align: middle;
   -webkit-appearance: none;
@@ -2498,7 +2498,7 @@ hr {
 .notebookVersion {
   position: relative;
   border: 1px solid transparent;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 16px;
   vertical-align: middle;
   -webkit-appearance: none;
@@ -2525,11 +2525,11 @@ hr {
   left: 0;
   background: rgba(0, 0, 0, 0.4);
   z-index: 99999;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: Roboto, sans-serif;
 }
 .modalDialog input,
 .modalDialog button {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: Roboto, sans-serif;
   background-color: white;
   border: 1px solid rgba(200, 200, 200, 0.7);
   font-size: 16px;
