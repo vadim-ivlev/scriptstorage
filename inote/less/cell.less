@@ -103,12 +103,17 @@
 }
 
 .markdown {
-    font-family: @FONT;
-    //color: #333;
-    & > * {
-        margin-left:10px;
-        margin-right:10px;
-    }
+    max-width:899px;
+    line-height:1.5;
+    font-size:20px;
+    margin:auto;
+    
+    text-align: justify;
+    font-family: Georgia, @FONT;
+    //& > * {
+    //    margin-left:10px;
+    //    margin-right:10px;
+    //}
     hr {
         border-style: none;
         border-bottom: 1px dotted @BORDERCOLOR;
