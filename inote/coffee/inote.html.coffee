@@ -245,6 +245,7 @@ $ ->
     xmlText = page.html()
     page.html("")
     inote = new iNote($("#page"))
+    window.runCell=inote.runCell
     
     $("#selectTheme_button").val("default")
     inote.setTheme "default"

@@ -24,6 +24,8 @@
         CELLS.splice i, 1
         return
 
+
+    
     
     inserCellAfter = (cellNumber) ->
         i = getIndexByCellNumber(cellNumber)
@@ -231,6 +233,13 @@
     getKeyMap = ->
         _keyMap
     
+    # executes the cell 
+    runCell = (cellNumber) ->
+        i = getIndexByCellNumber(cellNumber)
+        if i==-1
+            return
+        CELLS[i].execute()
+    
     #PUBLIC
     @setXmlText = setXmlText
     @getXmlText = getXmlText
@@ -241,4 +250,5 @@
     @getTheme = getTheme
     @setKeyMap = setKeyMap
     @getKeyMap = getKeyMap
+    @runCell = runCell
     return
