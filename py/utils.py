@@ -135,6 +135,9 @@ def access_allowed(o, notebook_access,notebook_owner) :
     """
     check if the user can read the the page
     """
+    # ALLOW access to every one
+    return True
+
     if notebook_access == "public":          # if access is public
         return True
 
