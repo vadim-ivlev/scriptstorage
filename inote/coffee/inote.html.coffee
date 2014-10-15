@@ -295,7 +295,6 @@ $ ->
 
     $("html").click (event) ->
         hideMenu()
-        hide_header()
 
     $("#saveGroup").click (event) ->
         event.stopPropagation()
@@ -316,16 +315,27 @@ $ ->
     headerTimeout=0
     hide_header_later = ->
         clearTimeout headerTimeout
-        headerTimeout = setTimeout hide_header , 2000
+        headerTimeout = setTimeout hide_header , 1000
     
     #hide header
     hide_header = ->
         if $(window).scrollTop() > 40
-            $('.header').animate({top:"-40px", opacity: 0.0 },400)
+            $('.header').stop().animate({top:"-40px", opacity: 0.0 },500)
 
     # show the header
-    show_header = ->
-        $('.header').animate({top:"0", opacity: 1.0 },400, hide_header_later)
+    show_header =(hide_later=false) ->
+         $('.header').css 'background-color', $('body').css('background-color')
+        
+
+        if $(window).scrollTop() < 10
+            $('.header').removeClass 'header_shadow'
+        else
+            $('.header').addClass 'header_shadow'
+        if hide_later
+            $('.header').stop().animate({top:"0", opacity: 1.0 },50, hide_header_later )
+        else
+            clearTimeout headerTimeout
+            $('.header').stop().animate({top:"0", opacity: 1.0 },50)
 
 
     # detect if the user scrolled down or up 
@@ -338,10 +348,10 @@ $ ->
             hide_header_later()
         else
             #console.log "up #{st}"
-            show_header()
+            show_header(true)
         lastScroll = st
     
-    $('.header').mouseenter show_header
+    $('.header').mouseenter -> show_header(false)
     $('.header').mouseleave hide_header
 
 
