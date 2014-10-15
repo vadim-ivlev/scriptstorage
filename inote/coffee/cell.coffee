@@ -12,6 +12,7 @@ keyMap - default| vim | sublime | emac
 
 
 window?.print = null
+window?.println = null
 window?.clear = null
 
 @Cell = (cellNumber, themeName, keyMap) ->
@@ -542,6 +543,7 @@ window?.clear = null
     
     _executeCode = ->
         window.print =_print
+        window.println  =_println
         window.clear = _clearPrintArea
 
         _clearPrintArea()
@@ -603,7 +605,11 @@ window?.clear = null
                     s = "Error: JSON.stringify\n"
         _printArea.text( _printArea.text() + s )
         return
-
+    
+    _println = (o) ->
+        print(o)
+        print('\n')
+        return
     
     _printError = (o) ->
         _outputCell.html "<div class='error'>" + o + "</div>"

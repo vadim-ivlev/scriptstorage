@@ -13,11 +13,15 @@ keyMap - default| vim | sublime | emac
   }
 
   if (typeof window !== "undefined" && window !== null) {
+    window.println = null;
+  }
+
+  if (typeof window !== "undefined" && window !== null) {
     window.clear = null;
   }
 
   this.Cell = function(cellNumber, themeName, keyMap) {
-    var toXmlString, _CPLTIME, _VER, _attachEvents, _call, _clearPrintArea, _codemirror, _compileLater, _compileTimeout, _compile_CoffeeScript, _compile_Markdown, _create, _createPrintArea, _cursorOnFirstLine, _cursorOnLastLine, _deleteCallback, _executeCode, _fullscreenButton, _getNumber, _getSelectedRange, _getXml, _getXml0, _getXml1, _hideJavascriptText, _inCollapsed, _inputCell, _insertAfterCallback, _insertBeforeCallback, _jQueryCell, _javascriptCell, _javascriptTextViewer, _keyHandler, _keyMap, _lock, _lockButton, _lockUnlock, _mode, _n, _onfirst, _onlast, _outCollapsed, _outputCell, _print, _printArea, _printError, _removeFocus, _setCursorOnFirstLine, _setCursorOnLastLine, _setFocus, _setInputCollapsed, _setKeyMap, _setMode, _setNumber, _setOutputCollapsed, _setTheme, _setXml, _setXml0, _setXml1, _showJavascriptText, _switchFullsreen, _switchJavascriptText, _unlock;
+    var toXmlString, _CPLTIME, _VER, _attachEvents, _call, _clearPrintArea, _codemirror, _compileLater, _compileTimeout, _compile_CoffeeScript, _compile_Markdown, _create, _createPrintArea, _cursorOnFirstLine, _cursorOnLastLine, _deleteCallback, _executeCode, _fullscreenButton, _getNumber, _getSelectedRange, _getXml, _getXml0, _getXml1, _hideJavascriptText, _inCollapsed, _inputCell, _insertAfterCallback, _insertBeforeCallback, _jQueryCell, _javascriptCell, _javascriptTextViewer, _keyHandler, _keyMap, _lock, _lockButton, _lockUnlock, _mode, _n, _onfirst, _onlast, _outCollapsed, _outputCell, _print, _printArea, _printError, _println, _removeFocus, _setCursorOnFirstLine, _setCursorOnLastLine, _setFocus, _setInputCollapsed, _setKeyMap, _setMode, _setNumber, _setOutputCollapsed, _setTheme, _setXml, _setXml0, _setXml1, _showJavascriptText, _switchFullsreen, _switchJavascriptText, _unlock;
     _n = void 0;
     _jQueryCell = void 0;
     _codemirror = void 0;
@@ -447,6 +451,7 @@ keyMap - default| vim | sublime | emac
     _executeCode = function() {
       var code, compiledCode, converter, e, html;
       window.print = _print;
+      window.println = _println;
       window.clear = _clearPrintArea;
       _clearPrintArea();
       _outputCell.html("");
@@ -512,6 +517,10 @@ keyMap - default| vim | sublime | emac
         }
       }
       _printArea.text(_printArea.text() + s);
+    };
+    _println = function(o) {
+      print(o);
+      print('\n');
     };
     _printError = function(o) {
       _outputCell.html("<div class='error'>" + o + "</div>");
