@@ -320,13 +320,11 @@ $ ->
     #hide header
     hide_header = ->
         if $(window).scrollTop() > 40
-            $('.header').stop().animate({top:"-40px", opacity: 0.0 },500)
+            $('.header').stop().animate({top:"-40px", opacity: 0.0 },400)
 
     # show the header
     show_header =(hide_later=false) ->
-         $('.header').css 'background-color', $('body').css('background-color')
-        
-
+        $('.header').css 'background-color', $('body').css('background-color')
         if $(window).scrollTop() < 10
             $('.header').removeClass 'header_shadow'
         else
@@ -345,7 +343,7 @@ $ ->
         st = $(this).scrollTop()
         if st > lastScroll and st > 40
             #console.log "down #{st}"
-            hide_header_later()
+            hide_header()
         else
             #console.log "up #{st}"
             show_header(true)

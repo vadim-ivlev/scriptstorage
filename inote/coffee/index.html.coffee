@@ -104,9 +104,13 @@ buildTable = (d, selector)->
 # Hide user tab if he is not signed in
 showProperPane = () ->
     if not $(".user_name").text()
-        #$('.userTab').tab('show')
         #$('.publicPane').hide()
         $('.userTab').hide()
+    else
+        $('.userTab').tab('show')
+        $('#publicPane').removeClass('active')
+        $('#userPane').addClass('active')
+
 
 
 

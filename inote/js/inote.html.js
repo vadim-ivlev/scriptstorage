@@ -300,38 +300,38 @@
         return $('.header').stop().animate({
           top: "-40px",
           opacity: 0.0
-        }, 500);
+        }, 400);
       }
     };
     show_header = function(hide_later) {
       if (hide_later == null) {
         hide_later = false;
       }
-      return $('.header').css('background-color', $('body').css('background-color'));
+      $('.header').css('background-color', $('body').css('background-color'));
+      if ($(window).scrollTop() < 10) {
+        $('.header').removeClass('header_shadow');
+      } else {
+        $('.header').addClass('header_shadow');
+      }
+      if (hide_later) {
+        return $('.header').stop().animate({
+          top: "0",
+          opacity: 1.0
+        }, 50, hide_header_later);
+      } else {
+        clearTimeout(headerTimeout);
+        return $('.header').stop().animate({
+          top: "0",
+          opacity: 1.0
+        }, 50);
+      }
     };
-    if ($(window).scrollTop() < 10) {
-      $('.header').removeClass('header_shadow');
-    } else {
-      $('.header').addClass('header_shadow');
-    }
-    if (hide_later) {
-      $('.header').stop().animate({
-        top: "0",
-        opacity: 1.0
-      }, 50, hide_header_later);
-    } else {
-      clearTimeout(headerTimeout);
-      $('.header').stop().animate({
-        top: "0",
-        opacity: 1.0
-      }, 50);
-    }
     lastScroll = 0;
     $(window).scroll(function(e) {
       var st;
       st = $(this).scrollTop();
       if (st > lastScroll && st > 40) {
-        hide_header_later();
+        hide_header();
       } else {
         show_header(true);
       }

@@ -122,6 +122,10 @@
   showProperPane = function() {
     if (!$(".user_name").text()) {
       return $('.userTab').hide();
+    } else {
+      $('.userTab').tab('show');
+      $('#publicPane').removeClass('active');
+      return $('#userPane').addClass('active');
     }
   };
 
