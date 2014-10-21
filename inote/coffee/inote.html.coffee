@@ -315,7 +315,7 @@ $ ->
     headerTimeout=0
     hide_header_later = ->
         clearTimeout headerTimeout
-        headerTimeout = setTimeout hide_header , 1000
+        headerTimeout = setTimeout hide_header , 3000
     
     #hide header
     hide_header = ->
