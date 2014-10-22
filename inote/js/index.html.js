@@ -31,8 +31,8 @@
 
   $(function() {
     $("#notebookList").hide();
-    show_list('/publiclist', '#publicList', store);
-    show_list('/userlist', '#userList', store);
+    show_public_list('/publiclist', '#publicList');
+    show_user_list('/userlist', '#userList');
     showProperPane();
     return $("#btnCreate").click(function() {
       var newName;

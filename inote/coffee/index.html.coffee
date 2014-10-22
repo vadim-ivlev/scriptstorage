@@ -31,9 +31,9 @@ showProperPane = () ->
 # on page load ==================================================================
 $ ->
     $("#notebookList").hide()
-    show_list('/publiclist','#publicList', store)
-    show_list('/userlist','#userList', store)
-    
+    show_public_list('/publiclist','#publicList')
+    show_user_list('/userlist','#userList')
+
     # Hide user tab if he is not signed in
     showProperPane()
 

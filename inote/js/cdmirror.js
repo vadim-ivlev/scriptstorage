@@ -6,6 +6,8 @@
       value: "",
       mode: "javascript",
       vimMode: false,
+      indentUnit: 4,
+      tabSize: 4,
       lineWrapping: true,
       lineNumbers: true,
       autofocus: false,
