@@ -37,17 +37,14 @@ html
             //tab navs
             ul.nav.nav-tabs(role="tablist")
                 li.publicTab.active
-                    a(href="#publicPane",role='tab',data-toggle='tab') Public notebooks
+                    a(href="#publicPane",role='tab',data-toggle='tab') Public
                 li.userTab
-                    a(href="#userPane",role='tab',data-toggle='tab') Yours
+                    a(href="#userPane",role='tab',data-toggle='tab') My
             //tab panes
             .tab-content
                 br
                 #publicPane.tab-pane.active
                     #publicList
                 #userPane.tab-pane
-                    ol.breadcrumb(style='background-color:transparent;margin-bottom:0;')
-                        li
-                            a(href='/') home
-                        li.current_user_folder
+                    .current_user_folder
                     #userList

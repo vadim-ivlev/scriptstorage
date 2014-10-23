@@ -31,8 +31,8 @@
       <div id="notebookList">{{notebook_list}}</div><br>
       <!--tab navs-->
       <ul role="tablist" class="nav nav-tabs">
-        <li class="publicTab active"><a href="#publicPane" role="tab" data-toggle="tab">Public notebooks</a></li>
-        <li class="userTab"><a href="#userPane" role="tab" data-toggle="tab">Yours</a></li>
+        <li class="publicTab active"><a href="#publicPane" role="tab" data-toggle="tab">Public</a></li>
+        <li class="userTab"><a href="#userPane" role="tab" data-toggle="tab">My</a></li>
       </ul>
       <!--tab panes-->
       <div class="tab-content"><br>
@@ -40,10 +40,7 @@
           <div id="publicList"></div>
         </div>
         <div id="userPane" class="tab-pane">
-          <ol style="background-color:transparent;margin-bottom:0;" class="breadcrumb">
-            <li><a href="/">home</a></li>
-            <li class="current_user_folder"></li>
-          </ol>
+          <div class="current_user_folder"></div>
           <div id="userList"></div>
         </div>
       </div>

@@ -320,7 +320,7 @@ $ ->
     #hide header
     hide_header = ->
         if $(window).scrollTop() > 40
-            $('.header').stop().animate({top:"-40px", opacity: 0.0 },400)
+            $('.header').stop().animate({top:"-40px"},400)
 
     # show the header
     show_header =(hide_later=false) ->
@@ -330,10 +330,10 @@ $ ->
         else
             $('.header').addClass 'header_shadow'
         if hide_later
-            $('.header').stop().animate({top:"0", opacity: 1.0 },50, hide_header_later )
+            $('.header').stop().animate({top:"0"},50, hide_header_later )
         else
             clearTimeout headerTimeout
-            $('.header').stop().animate({top:"0", opacity: 1.0 },50)
+            $('.header').stop().animate({top:"0"},50)
 
 
     # detect if the user scrolled down or up 

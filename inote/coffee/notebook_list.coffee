@@ -6,18 +6,51 @@
         success: (d) ->  buld_public_table(d, selector)
         dataType: 'json'
 
-raw_user_list = null
+raw_user_list       = null
 processed_user_list = null
-current_user_folder = ''
-set_current_user_folder = (folderName) ->
-    current_user_folder = folderName
-    a = $('<a href="/"></a>')
-    a.text current_user_folder
-    $('.current_user_folder').html ''
-    $('.current_user_folder').append a
+@current_user_folder = ''
 
-build_user_table2 = (raw_user_list, current_user_folder, selector) ->
-    processed_user_list = get_folder_content raw_user_list, current_user_folder
+set_current_user_folder = (folderName, selector) ->
+    @current_user_folder = folderName
+    $('.current_user_folder').html ''
+    ol = build_breadcrumbs @current_user_folder, selector
+    $('.current_user_folder').append ol
+
+# Builds a Bootstrap breadcrumbs element from a path string
+# ol.breadcrumb
+#    ul
+#        a
+build_breadcrumbs = (path, selector) ->
+    path_array = ('/'+path).split('/')
+    path_array.pop()
+    ol=$('<ol></ol>')
+    ol.addClass 'breadcrumb'
+    ol.css 'background-color', 'transparent'
+    ol.css 'margin-bottom', 0
+    i=0
+    for pa in path_array
+        li = $('<li></li>')
+        h = path_array[0..i].join('/')+'/'
+        #text = ''
+        #if path != ''
+        text = if pa == '' then 'home' else pa
+        a = $("<a>#{text}</a>") #make the root element visible
+        a.attr 'href', h[1..] # remove first slash from the path
+        a.click (event) ->
+            event.preventDefault()
+            folder = $(this).attr('href')
+            open_file {is_folder:true, folder_name:folder, path:'' }, selector
+        li.append a
+        ol.append li
+        i+=1
+
+
+    #ol.append $ '<li></li>'
+    return ol
+
+# TODO remove global variables
+build_user_table2 = (list, folder, selector) ->
+    processed_user_list = get_folder_content list, folder
     buld_user_table(processed_user_list, selector)
 
 
@@ -26,13 +59,14 @@ build_user_table2 = (raw_user_list, current_user_folder, selector) ->
         url:url
         success: (d) ->
             raw_user_list = d
-            build_user_table2 raw_user_list, current_user_folder, selector
+            set_current_user_folder '', selector
+            build_user_table2 raw_user_list, @current_user_folder, selector
         dataType: 'json'
 
 public_columns = [
-    { title: 'Name',    data:'notebook_name' }
-    { title: 'User',    data:'user_name', width:120 }
-    { title: '',        data:'access',  width:26 }
+    { title: 'Name' , data:'notebook_name'               }
+    { title: 'User' , data:'user_name'       , width:120 }
+    { title: ''     , data:'access'          , width:26  }
 ]
 
 user_columns = [
@@ -216,7 +250,7 @@ get_folder_content = (a, path) ->
 
 open_file = (o, selector) ->
   if o.is_folder
-    set_current_user_folder(o.path + o.folder_name)
-    build_user_table2 raw_user_list, current_user_folder, selector
+    set_current_user_folder(o.path + o.folder_name, selector)
+    build_user_table2 raw_user_list, @current_user_folder, selector
       
 

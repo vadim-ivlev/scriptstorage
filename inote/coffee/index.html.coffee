@@ -25,8 +25,30 @@ showProperPane = () ->
         $('#publicPane').removeClass('active')
         $('#userPane').addClass('active')
 
-
-
+    
+get_random_phrase = ->
+    phrases =[
+        'Deep thought'
+        'Hello world'
+        'Crutial experiment'
+        'Great idea'
+        'Insight'
+        'Inspiration'
+        'Hard life'
+        'Genuine guess'
+        'Ultimate answer'
+        'Last attempt'
+        'Where is my $'
+        'Digital dream'
+        'Important'
+        'Meaning of life'
+        'Love'
+        'Happiness'
+        'Sweet dream'
+        'Lucky number'
+    ]
+    i = Math.floor(phrases.length * Math.random())
+    return phrases[i]+" "
 
 # on page load ==================================================================
 $ ->
@@ -39,7 +61,7 @@ $ ->
 
 
     $("#btnCreate").click ->
-        newName = "N" + (5000000 + Math.floor(999000 * Math.random()))
+        newName = current_user_folder + get_random_phrase() + (100 + Math.floor(900 * Math.random()))
         newName = prompt "Change the name", newName
         if newName
             #document.location.href = "/page?owner=" + encodeURIComponent($("#userName").text()) + "&access=" + encodeURIComponent("public") + "&name=" + encodeURIComponent(newName)

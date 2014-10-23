@@ -298,8 +298,7 @@
     hide_header = function() {
       if ($(window).scrollTop() > 40) {
         return $('.header').stop().animate({
-          top: "-40px",
-          opacity: 0.0
+          top: "-40px"
         }, 400);
       }
     };
@@ -315,14 +314,12 @@
       }
       if (hide_later) {
         return $('.header').stop().animate({
-          top: "0",
-          opacity: 1.0
+          top: "0"
         }, 50, hide_header_later);
       } else {
         clearTimeout(headerTimeout);
         return $('.header').stop().animate({
-          top: "0",
-          opacity: 1.0
+          top: "0"
         }, 50);
       }
     };
