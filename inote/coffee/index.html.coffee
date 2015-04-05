@@ -30,7 +30,7 @@ get_random_phrase = ->
     phrases =[
         'Deep thought'
         'Hello world'
-        'Crutial experiment'
+        'Crucial experiment'
         'Great idea'
         'Insight'
         'Inspiration'

@@ -11,9 +11,9 @@ keyMap - default| vim | sublime | emac
 #@CLEAR
 
 
-window?.print = null
-window?.println = null
-window?.clear = null
+window?.print = ->
+window?.println = ->
+window?.clear = ->
 
 @Cell = (cellNumber, themeName, keyMap) ->
     
@@ -88,7 +88,7 @@ window?.clear = null
                     </span>
                     <span class='toolButton icon-play' title='<Ctrl-Ent> to run.  <Shift-Ent> to run and go to the next cell. '>
                         <span class='hide-on-view'>
-                            run
+                            ok
                          </span>
                     </span>
                      <span class='cellLabel' contenteditable='true'></span>
@@ -413,6 +413,9 @@ window?.clear = null
     
 
     _setXml = (cell) ->
+        #window.print =_print
+        #window.println  =_println
+        #window.clear = _clearPrintArea
         if cell.attr("version") is "1"
             _setXml1(cell)
         else
@@ -558,7 +561,8 @@ window?.clear = null
                 html = converter.makeHtml(code)
                 _outputCell.html "<div class='markdown'>" + html + "</div>"
             else if _mode is "javascript"
-                eval.call(window, code)
+                #eval.call(window, code)
+                _outputCell.html "<script>\n" + code + "\n</script>"
             else if _mode is "text/x-coffeescript"
                 _javascriptTextViewer.setValue ""
                 compiledCode = CoffeeScript.compile(code,
@@ -566,7 +570,8 @@ window?.clear = null
                 )
                 _javascriptTextViewer.setValue compiledCode
                 _javascriptTextViewer.refresh()
-                eval.call(window, compiledCode)
+                #eval.call(window, compiledCode)
+                _outputCell.html "<script>\n" + compiledCode + "\n</script>"
         catch e
             _printError "" + e
         return
