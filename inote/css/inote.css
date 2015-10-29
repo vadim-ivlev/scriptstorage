@@ -22,7 +22,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 body {
-  background-color: white;
+  background-color: #EEE;
   padding: 0;
   margin: 0;
 }
@@ -38,14 +38,15 @@ hr {
   padding: 10px;
   padding-left: 10px;
   padding-right: 10px;
-  max-width: 2000px;
+  max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 40px;
-  border: 0px solid rgba(200, 200, 200, 0.7);
-  border-radius: 6px;
+  margin-top: 33px;
+  border: 1px solid rgba(200, 200, 200, 0.7);
+  border-radius: 0px;
   clear: both;
   box-sizing: border-box;
+  background-color: white;
 }
 .header {
   padding: 5px;
@@ -2574,4 +2575,7 @@ THE SOFTWARE.
   border: 0px solid rgba(200, 200, 200, 0.7);
   background: #fff;
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
+}
+#divHeader.header {
+  background-color: white;
 }

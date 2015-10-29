@@ -3,8 +3,8 @@
         value: "" #function myScript(){return 100;}
         mode: "javascript"
         vimMode: false
-        indentUnit: 4
-        tabSize: 4
+        indentUnit: 2
+        tabSize: 2
         lineWrapping: true
         lineNumbers: true
         autofocus: false

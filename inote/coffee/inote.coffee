@@ -131,7 +131,7 @@
         editor = CELLS[index].getEditor()
         
         #TODO Check for full screen mode
-        isFullScreen editor
+        #isFullScreen editor
     
     
     

@@ -1,153 +1,128 @@
-!_TAG_FILE_FORMAT	2	/extended format/
-!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
-!_TAG_PROGRAM_AUTHOR	Łukasz Korecki	/lukasz@coffeesounds.com/
-!_TAG_PROGRAM_NAME	CoffeeTags	//
-!_TAG_PROGRAM_URL	https://github.com/lukaszkorecki/CoffeeTags	/GitHub repository/
-!_TAG_PROGRAM_VERSION	0.5.0	//
-@clearSaveIndicator	inote.html.coffee	/^@clearSaveIndicator = ->$/;"	f	line:24	language:coffee	object:window
-@deleteNotebook	index.html.coffee	/^@deleteNotebook = (key_name) ->$/;"	f	line:6	language:coffee	object:window
-@getPageUrl	inote.html.coffee	/^@getPageUrl = (user_name, user_network, access, notebook_name) ->$/;"	f	line:114	language:coffee	object:window
-@preventClick	inote.html.coffee	/^@preventClick = (event) ->$/;"	f	line:7	language:coffee	object:window
-@rename	inote.html.coffee	/^@rename = ->$/;"	f	line:95	language:coffee	object:window
-@rename2	inote.html.coffee	/^@rename2 = (accessChanged) ->$/;"	f	line:120	language:coffee	object:window
-@saveAs	inote.html.coffee	/^@saveAs = ->$/;"	f	line:66	language:coffee	object:window
-@saveNotebook	inote.html.coffee	/^@saveNotebook = (event) ->$/;"	f	line:38	language:coffee	object:window
-@saveNotebookLater	inote.html.coffee	/^@saveNotebookLater = ->$/;"	f	line:28	language:coffee	object:window
-@selectKeyMap	inote.html.coffee	/^@selectKeyMap = ->$/;"	f	line:18	language:coffee	object:window
-@selectTheme	inote.html.coffee	/^@selectTheme = ->$/;"	f	line:12	language:coffee	object:window
-@showRenameDialog	inote.html.coffee	/^@showRenameDialog = (btnOkText, callback) ->$/;"	f	line:88	language:coffee	object:window
-@showShareSourceDialog	inote.html.coffee	/^@showShareSourceDialog = (cellNumber) ->$/;"	f	line:74	language:coffee	object:window
-@show_public_list	notebook_list.coffee	/^@show_public_list = (url, selector) ->$/;"	f	line:3	language:coffee	object:window
-@show_user_list	notebook_list.coffee	/^@show_user_list = (url, selector) ->$/;"	f	line:57	language:coffee	object:window
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
 CELLS	inote.coffee	/^        CELLS = []$/;"	v
 CELLS	inote.coffee	/^    CELLS = []$/;"	v
 CodeMirror.commands.autocomplete	cdmirror.coffee	/^CodeMirror.commands.autocomplete = (cm) ->$/;"	f
 T	qunit-tests.coffee	/^T = this$/;"	v
+a	notebook_list.coffee	/^    a=[]$/;"	v
+a	notebook_list.coffee	/^  a = []$/;"	v
 a	qunit-tests.coffee	/^a=[1,2,3]$/;"	v
 addLoginLink	login.html.coffee	/^        addLoginLink =($container, network) ->$/;"	f
 addLogoutLink	login.html.coffee	/^        addLogoutLink =($container) ->$/;"	f
 adjust_ui	login.html.coffee	/^adjust_ui = ->$/;"	f
 appendNewCell	inote.coffee	/^    appendNewCell = (cellNumber) ->$/;"	f
-build_breadcrumbs	notebook_list.coffee	/^build_breadcrumbs = (path, selector) ->$/;"	f	line:23	language:coffee	object:window
-build_delete_button	notebook_list.coffee	/^build_delete_button = (td, d) ->$/;"	f	line:127	language:coffee	object:window
-build_public_notebook_name_field	notebook_list.coffee	/^build_public_notebook_name_field = (td,d) ->$/;"	f	line:88	language:coffee	object:window
+build_breadcrumbs	notebook_list.coffee	/^build_breadcrumbs = (path, selector) ->$/;"	f
+build_delete_button	notebook_list.coffee	/^build_delete_button = (td, d) ->$/;"	f
+build_public_notebook_name_field	notebook_list.coffee	/^build_public_notebook_name_field = (td,d) ->$/;"	f
 build_signin_ui	login.html.coffee	/^    build_signin_ui = ->$/;"	f
 build_signout_ui	login.html.coffee	/^    build_signout_ui = ->$/;"	f
-build_user_name_field	notebook_list.coffee	/^build_user_name_field = (td, d) ->$/;"	f	line:139	language:coffee	object:window
-build_user_notebook_name_field	notebook_list.coffee	/^build_user_notebook_name_field = (td,d, selector) ->$/;"	f	line:105	language:coffee	object:window
-build_user_table2	notebook_list.coffee	/^build_user_table2 = (list, folder, selector) ->$/;"	f	line:52	language:coffee	object:window
-buld_public_table	notebook_list.coffee	/^buld_public_table = (d, selector)->$/;"	f	line:151	language:coffee	object:window
-buld_user_table	notebook_list.coffee	/^buld_user_table = (d, selector)->$/;"	f	line:174	language:coffee	object:window
+build_user_name_field	notebook_list.coffee	/^build_user_name_field = (td, d) ->$/;"	f
+build_user_notebook_name_field	notebook_list.coffee	/^build_user_notebook_name_field = (td,d, selector) ->$/;"	f
+build_user_table2	notebook_list.coffee	/^build_user_table2 = (list, folder, selector) ->$/;"	f
+buld_public_table	notebook_list.coffee	/^buld_public_table = (d, selector)->$/;"	f
+buld_user_table	notebook_list.coffee	/^buld_user_table = (d, selector)->$/;"	f
 c	login.html.coffee	/^        c=$('.oauthHolder').html('')$/;"	v
+c	notebook_list.coffee	/^  c = {}$/;"	v
+c.folder_name	notebook_list.coffee	/^  c.folder_name = ''$/;"	v
+c.path	notebook_list.coffee	/^  c.path = path$/;"	v
 cell	inote.coffee	/^            cell = $(c)$/;"	v
 cell	inote.coffee	/^        cell = ci.cell$/;"	v
 checkNetwork	login.html.coffee	/^checkNetwork = (network) ->$/;"	f
 clear	inote.coffee	/^    clear = ->$/;"	f
-clone_object	notebook_list.coffee	/^clone_object = (o) ->$/;"	f	line:198	language:coffee	object:window
-clone_with_path	notebook_list.coffee	/^clone_with_path = (o, path='') ->$/;"	f	line:211	language:coffee	object:window
+clearAndInit	inote.html.coffee	/^clearAndInit = ->$/;"	f
+clone_object	notebook_list.coffee	/^clone_object = (o) ->$/;"	f
+clone_with_path	notebook_list.coffee	/^clone_with_path = (o, path='') ->$/;"	f
 code	cell.coffee	/^            code = _codemirror.getValue()$/;"	v
 code	cell.coffee	/^        code = _codemirror.getValue()$/;"	v
-collapse_folders	notebook_list.coffee	/^collapse_folders = (arr) ->$/;"	f	line:236	language:coffee	object:window
+collapse_folders	notebook_list.coffee	/^collapse_folders = (arr) ->$/;"	f
 compiledCode	cell.coffee	/^                compiledCode = CoffeeScript.compile(code,$/;"	v
 compiledCode	cell.coffee	/^            compiledCode = ""$/;"	v
 config	cdmirror.coffee	/^    config =$/;"	v
 createNewCell	inote.coffee	/^    createNewCell = (cellNumber) ->$/;"	f
-createdRow	notebook_list.coffee	/^        createdRow: (row, d, i) ->$/;"	f	line:163	language:coffee	object:buld_public_table.
-createdRow	notebook_list.coffee	/^        createdRow: (row, d, i) ->$/;"	f	line:185	language:coffee	object:buld_user_table.
 deleteCell	inote.coffee	/^    deleteCell = (cellNumber) ->$/;"	f
 delete_cookie	login.html.coffee	/^delete_cookie = ->$/;"	f
-do	index.html.coffee	/^            document.location.href = "/page?owner=" + encodeURIComponent(\$(".user_name").text() + "|" + \$(".user_network").text()) + "&access=" + encodeURIComponent("public") + "&name=" + encodeURIComponent(newName)$/;"	b	line:68	language:coffee
-document.documentElement.style.overflow	cdmirror.coffee	/^        document.documentElement.style.overflow = ""$/;"	v
-files_in_path	notebook_list.coffee	/^files_in_path = (arr, path) ->$/;"	f	line:228	language:coffee	object:window
+files_in_path	notebook_list.coffee	/^files_in_path = (arr, path) ->$/;"	f
+folder	notebook_list.coffee	/^            folder = $(this).attr('href')$/;"	v
+folders	notebook_list.coffee	/^    folders={}$/;"	v
 fullScreen	inote.coffee	/^    fullScreen = (index) ->$/;"	f
 getCellInfo	inote.coffee	/^    getCellInfo = (event) ->$/;"	f
 getIndexByCellNumber	inote.coffee	/^    getIndexByCellNumber = (cellNumber) ->$/;"	f
 getKeyMap	inote.coffee	/^    getKeyMap = ->$/;"	f
 getNewCellNumber	inote.coffee	/^    getNewCellNumber = ->$/;"	f
-getNotebookAccessFromUrl	inote.html.coffee	/^getNotebookAccessFromUrl = ->$/;"	f	line:194	language:coffee	object:window
-getNotebookNameFromUrl	inote.html.coffee	/^getNotebookNameFromUrl = ->$/;"	f	line:204	language:coffee	object:window
-getNotebookOwnerFromUrl	inote.html.coffee	/^getNotebookOwnerFromUrl = ->$/;"	f	line:213	language:coffee	object:window
-getPageQueryString	inote.html.coffee	/^getPageQueryString = ->$/;"	f	line:100	language:coffee	object:window
+getNotebookAccessFromUrl	inote.html.coffee	/^getNotebookAccessFromUrl = ->$/;"	f
+getNotebookNameFromUrl	inote.html.coffee	/^getNotebookNameFromUrl = ->$/;"	f
+getNotebookOwnerFromUrl	inote.html.coffee	/^getNotebookOwnerFromUrl = ->$/;"	f
+getPageQueryString	inote.html.coffee	/^getPageQueryString = ->$/;"	f
 getTheme	inote.coffee	/^    getTheme = ->$/;"	f
 getXmlText	inote.coffee	/^    getXmlText = (notebookName) ->$/;"	f
 getXmlText0	inote.coffee	/^    getXmlText0 = (notebookName) ->$/;"	f
 getXmlText1	inote.coffee	/^    getXmlText1 = (notebookName) ->$/;"	f
-get_folder_content	notebook_list.coffee	/^get_folder_content = (a, path) ->$/;"	f	line:248	language:coffee	object:window
-get_href	notebook_list.coffee	/^get_href =(d) ->$/;"	f	line:79	language:coffee	object:window
-get_random_phrase	index.html.coffee	/^get_random_phrase = ->$/;"	f	line:29	language:coffee	object:window
+get_folder_content	notebook_list.coffee	/^get_folder_content = (a, path) ->$/;"	f
+get_href	notebook_list.coffee	/^get_href =(d) ->$/;"	f
+get_random_phrase	index.html.coffee	/^get_random_phrase = ->$/;"	f
 get_signed_network_name	login.html.coffee	/^get_signed_network_name = ->$/;"	f
 globalKeyHandler	inote.coffee	/^    globalKeyHandler = (event) ->$/;"	f
-hideMenu	inote.html.coffee	/^hideMenu = ->$/;"	f	line:231	language:coffee	object:window
-hide_header	inote.html.coffee	/^    hide_header = ->$/;"	f	line:321	language:coffee	object:hideMenu
-hide_header_later	inote.html.coffee	/^    hide_header_later = ->$/;"	f	line:316	language:coffee	object:hideMenu
-if	index.html.coffee	/^        if newName$/;"	b	line:66	language:coffee
-if	index.html.coffee	/^    if not \$(".user_name").text()$/;"	b	line:20	language:coffee
-if	inote.html.coffee	/^            if not userNameNetwork$/;"	b	line:279	language:coffee
-if	inote.html.coffee	/^            if userNameNetwork != notebookOwner$/;"	b	line:282	language:coffee
-if	inote.html.coffee	/^        if \$("#saveIndicator").text()$/;"	b	line:309	language:coffee
-if	inote.html.coffee	/^        if \$(window).scrollTop() < 10$/;"	b	line:328	language:coffee
-if	inote.html.coffee	/^        if \$(window).scrollTop() > 40$/;"	b	line:322	language:coffee
-if	inote.html.coffee	/^        if event.ctrlKey and event.keyCode is 83 #Ctrl-S$/;"	b	line:278	language:coffee
-if	inote.html.coffee	/^        if hide_later$/;"	b	line:332	language:coffee
-if	inote.html.coffee	/^        if keyMap then \$("#notebookEditor").val keyMap$/;"	b	line:180	language:coffee
-if	inote.html.coffee	/^        if not notebookName$/;"	b	line:128	language:coffee
-if	inote.html.coffee	/^        if o.error$/;"	b	line:143	language:coffee
-if	inote.html.coffee	/^        if o.error$/;"	b	line:56	language:coffee
-if	inote.html.coffee	/^        if st > lastScroll and st > 40$/;"	b	line:344	language:coffee
-if	inote.html.coffee	/^        if themeName then \$("#selectTheme_button").val themeName$/;"	b	line:177	language:coffee
-if	inote.html.coffee	/^    if (accessChanged)$/;"	b	line:124	language:coffee
-if	inote.html.coffee	/^    if \$("#autoSave").is(":checked")$/;"	b	line:33	language:coffee
-if	inote.html.coffee	/^    if \$(".cell").length is 0$/;"	b	line:183	language:coffee
-if	inote.html.coffee	/^    if not empty$/;"	b	line:171	language:coffee
-if	inote.html.coffee	/^    if not notebookOwner$/;"	b	line:273	language:coffee
-if	notebook_list.coffee	/^        if not o.is_folder$/;"	b	line:240	language:coffee
-if	notebook_list.coffee	/^        if td.text() == "public"$/;"	b	line:143	language:coffee
-if	notebook_list.coffee	/^    if d.is_folder$/;"	b	line:109	language:coffee
-if	notebook_list.coffee	/^    if d.is_folder$/;"	b	line:140	language:coffee
-if	notebook_list.coffee	/^    if d.notebook_name.indexOf('/') is -1$/;"	b	line:95	language:coffee
-if	notebook_list.coffee	/^    if not d.is_folder$/;"	b	line:129	language:coffee
-if	notebook_list.coffee	/^  if c.is_folder$/;"	b	line:222	language:coffee
-if	notebook_list.coffee	/^  if not o then return$/;"	b	line:212	language:coffee
-if	notebook_list.coffee	/^  if o.is_folder$/;"	b	line:252	language:coffee
-if	notebook_list.coffee	/^  if o.notebook_name.indexOf(path) != 0 then return$/;"	b	line:214	language:coffee
+headerTimeout	inote.html.coffee	/^        headerTimeout = setTimeout hide_header , 3000$/;"	v
+headerTimeout	inote.html.coffee	/^    headerTimeout=0$/;"	v
+hideMenu	inote.html.coffee	/^hideMenu = ->$/;"	f
+hide_header	inote.html.coffee	/^    hide_header = ->$/;"	f
+hide_header_later	inote.html.coffee	/^    hide_header_later = ->$/;"	f
+i	notebook_list.coffee	/^    i=0$/;"	v
 inserCellAfter	inote.coffee	/^    inserCellAfter = (cellNumber) ->$/;"	f
 insertCellBefore	inote.coffee	/^    insertCellBefore = (cellNumber) ->$/;"	f
 isCellFirst	inote.coffee	/^    isCellFirst = (index) ->$/;"	f
 isCellLast	inote.coffee	/^    isCellLast = (index) ->$/;"	f
 javaScriptText	cell.coffee	/^        javaScriptText = _javascriptCell$/;"	v
+lastScroll	inote.html.coffee	/^        lastScroll = st$/;"	v
+lastScroll	inote.html.coffee	/^    lastScroll=0$/;"	v
 moveFocusToNextCell	inote.coffee	/^    moveFocusToNextCell = (index) ->$/;"	f
 moveFocusToPreviousCell	inote.coffee	/^    moveFocusToPreviousCell = (index) ->$/;"	f
 newCell	inote.coffee	/^        newCell = createNewCell(cellNumber)$/;"	v
 newCell	inote.coffee	/^        newCell = createNewCell(getNewCellNumber())$/;"	v
 notebook	inote.coffee	/^        notebook = $(xmlText)$/;"	v
+notebook	inote.html.coffee	/^        notebook = $(xmlText)$/;"	v
+notebook_access	inote.html.coffee	/^    notebook_access = ""$/;"	v
+notebook_name	inote.html.coffee	/^    notebook_name = ""$/;"	v
+notebook_owner	inote.html.coffee	/^    notebook_owner = ""$/;"	v
+o	inote.html.coffee	/^        o=d$/;"	v
 on_page_load	login.html.coffee	/^on_page_load = -> adjust_ui()$/;"	f
 on_signin	login.html.coffee	/^on_signin = (r) -> write_cookie(r); adjust_ui()$/;"	f
 on_signout	login.html.coffee	/^on_signout = -> delete_cookie(); adjust_ui()$/;"	f
-onbeforeunload	inote.html.coffee	/^    window.onbeforeunload = ->$/;"	f	line:308	language:coffee	object:hideMenu
-open_file	notebook_list.coffee	/^open_file = (o, selector) ->$/;"	f	line:251	language:coffee	object:window
+openNotebook	inote.html.coffee	/^openNotebook = (notebookOwner, notebookAccess, notebookName) ->$/;"	f
+open_file	notebook_list.coffee	/^open_file = (o, selector) ->$/;"	f
 outputValue	cell.coffee	/^        outputValue = output.text()$/;"	v
+page	inote.html.coffee	/^    page = $("#page")$/;"	v
+path_array	notebook_list.coffee	/^    path_array = ('\/'+path).split('\/')$/;"	v
+phrases	index.html.coffee	/^    phrases =[$/;"	v
+public_columns	notebook_list.coffee	/^public_columns = [$/;"	v
 r	login.html.coffee	/^            r = read_cookie()$/;"	v
 r	notebookstorage.coffee	/^        r =$/;"	v
+raw_user_list	notebook_list.coffee	/^            raw_user_list = d$/;"	v
 read_cookie	login.html.coffee	/^read_cookie = ->$/;"	f
-restoreNotebookFromXml	inote.html.coffee	/^restoreNotebookFromXml = (xmlText) ->$/;"	f	line:169	language:coffee	object:window
+restoreNotebookFromXml	inote.html.coffee	/^restoreNotebookFromXml = (xmlText) ->$/;"	f
+runCell	inote.coffee	/^    runCell = (cellNumber) ->$/;"	f
 s	cell.coffee	/^                    s = JSON.stringify(o, (key, value) ->$/;"	f
 s	cell.coffee	/^                s = o$/;"	v
 s	cell.coffee	/^            s = "{jQuery}"$/;"	v
 s	cell.coffee	/^        s = ""$/;"	v
+saveNotebookTimeout	inote.html.coffee	/^        saveNotebookTimeout = setTimeout saveNotebook , 2000$/;"	v
 setKeyMap	inote.coffee	/^    setKeyMap = (keyMap) ->$/;"	f
 setTheme	inote.coffee	/^    setTheme = (themeName) ->$/;"	f
 setXmlText	inote.coffee	/^    setXmlText = (xmlText) ->$/;"	f
 setXmlText0	inote.coffee	/^    setXmlText0 = (xmlText) ->$/;"	f
 setXmlText1	inote.coffee	/^    setXmlText1 = (xmlText) ->$/;"	f
-set_current_user_folder	notebook_list.coffee	/^set_current_user_folder = (folderName, selector) ->$/;"	f	line:13	language:coffee	object:window
-showMenu	inote.html.coffee	/^showMenu = ->$/;"	f	line:228	language:coffee	object:window
-showProperPane	index.html.coffee	/^showProperPane = () ->$/;"	f	line:19	language:coffee	object:window
-show_header	inote.html.coffee	/^    show_header =(hide_later=false) ->$/;"	f	line:326	language:coffee	object:hideMenu
-style	cell.coffee	/^                            style='right:0px; top:2px;;' $/;"	v
-success	notebook_list.coffee	/^        success: (d) ->  buld_public_table(d, selector)$/;"	f	line:6	language:coffee	object:@show_public_list
-success	notebook_list.coffee	/^        success: (d) ->$/;"	f	line:60	language:coffee	object:@show_user_list
+set_current_user_folder	notebook_list.coffee	/^set_current_user_folder = (folderName, selector) ->$/;"	f
+showMenu	inote.html.coffee	/^showMenu = ->$/;"	f
+showProperPane	index.html.coffee	/^showProperPane = () ->$/;"	f
+show_header	inote.html.coffee	/^    show_header =(hide_later=false) ->$/;"	f
+st	inote.html.coffee	/^        st = $(this).scrollTop()$/;"	v
 toXmlString	cell.coffee	/^    toXmlString = (data) ->$/;"	f
-unless	notebook_list.coffee	/^        unless \$(".user_name").text()==d.user_name and \$('.user_network').text()==d.user_network$/;"	b	line:131	language:coffee
-winHeight	cdmirror.coffee	/^winHeight = ->$/;"	f
-wrap.style.height	cdmirror.coffee	/^        wrap.style.height = ""$/;"	v
+userNameNetwork	inote.html.coffee	/^    userNameNetwork = "#{userName}|#{userNetwork}"$/;"	v
+user_columns	notebook_list.coffee	/^user_columns = [$/;"	v
+window.onbeforeunload	inote.html.coffee	/^    window.onbeforeunload = ->$/;"	f
 write_cookie	login.html.coffee	/^write_cookie = (r) ->$/;"	f
+xmlText	inote.html.coffee	/^    xmlText = page.html()$/;"	v

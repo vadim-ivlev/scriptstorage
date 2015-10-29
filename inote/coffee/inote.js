@@ -169,7 +169,8 @@
     };
     fullScreen = function(index) {
       var editor;
-      return editor = CELLS[index].getEditor();
+      editor = CELLS[index].getEditor();
+      return isFullScreen(editor);
     };
     _VER = "1";
     getXmlText = function(notebookName) {
@@ -292,5 +293,3 @@
   };
 
 }).call(this);
-
-//# sourceMappingURL=inote.js.map
