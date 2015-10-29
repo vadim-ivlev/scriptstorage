@@ -21,7 +21,7 @@ keyMap - default| vim | sublime | emac
   }
 
   this.Cell = function(cellNumber, themeName, keyMap) {
-    var _CPLTIME, _VER, _attachEvents, _call, _clearPrintArea, _codemirror, _compileLater, _compileTimeout, _compile_CoffeeScript, _compile_Markdown, _create, _createPrintArea, _cursorOnFirstLine, _cursorOnLastLine, _deleteCallback, _executeCode, _fullscreenButton, _getNumber, _getSelectedRange, _getXml, _getXml0, _getXml1, _hideJavascriptText, _inCollapsed, _inputCell, _insertAfterCallback, _insertBeforeCallback, _jQueryCell, _javascriptCell, _javascriptTextViewer, _keyHandler, _keyMap, _lock, _lockButton, _lockUnlock, _mode, _n, _onfirst, _onlast, _outCollapsed, _outputCell, _print, _printArea, _printError, _println, _removeFocus, _setCursorOnFirstLine, _setCursorOnLastLine, _setFocus, _setInputCollapsed, _setKeyMap, _setMode, _setNumber, _setOutputCollapsed, _setTheme, _setXml, _setXml0, _setXml1, _showJavascriptText, _switchFullsreen, _switchJavascriptText, _unlock, toXmlString;
+    var _CPLTIME, _VER, _attachEvents, _call, _clearPrintArea, _codemirror, _compileLater, _compileTimeout, _compile_CoffeeScript, _compile_Markdown, _create, _createPrintArea, _cursorOnFirstLine, _cursorOnLastLine, _deleteCallback, _executeCode, _fullscreenButton, _getNumber, _getSelectedRange, _getXml, _getXml0, _getXml1, _hideJavascriptText, _inCollapsed, _inputCell, _insertAfterCallback, _insertBeforeCallback, _isEditable, _isLocked, _jQueryCell, _javascriptCell, _javascriptTextViewer, _keyHandler, _keyMap, _lock, _lockButton, _lockUnlock, _mode, _n, _onfirst, _onlast, _outCollapsed, _outputCell, _print, _printArea, _printError, _println, _removeFocus, _setCursorOnFirstLine, _setCursorOnLastLine, _setFocus, _setInputCollapsed, _setKeyMap, _setMode, _setNumber, _setOutputCollapsed, _setTheme, _setXml, _setXml0, _setXml1, _showJavascriptText, _switchFullsreen, _switchJavascriptText, _unlock, toXmlString;
     _n = void 0;
     _jQueryCell = void 0;
     _codemirror = void 0;
@@ -37,6 +37,7 @@ keyMap - default| vim | sublime | emac
     _insertAfterCallback = null;
     _inCollapsed = false;
     _outCollapsed = false;
+    _isLocked = false;
     _onfirst = false;
     _onlast = false;
     _compileTimeout = void 0;
@@ -219,6 +220,7 @@ keyMap - default| vim | sublime | emac
       _codemirror.setOption("readOnly", "nocursor");
       _outputCell.removeClass('visibleBorder');
       _lockButton.removeClass('unlocked');
+      _isLocked = true;
       return typeof this.saveNotebookLater === "function" ? this.saveNotebookLater() : void 0;
     };
     _unlock = function() {
@@ -229,6 +231,7 @@ keyMap - default| vim | sublime | emac
       _codemirror.setOption("readOnly", false);
       _outputCell.addClass('visibleBorder');
       _lockButton.addClass('unlocked');
+      _isLocked = false;
       return typeof this.saveNotebookLater === "function" ? this.saveNotebookLater() : void 0;
     };
     _lockUnlock = function() {
@@ -237,6 +240,9 @@ keyMap - default| vim | sublime | emac
       } else {
         return _unlock();
       }
+    };
+    _isEditable = function() {
+      return !(_isLocked || _inCollapsed);
     };
     _attachEvents = function() {
       _inputCell.keydown(_keyHandler);
@@ -655,7 +661,8 @@ keyMap - default| vim | sublime | emac
       lock: _lock,
       unlock: _unlock,
       setKeyMap: _setKeyMap,
-      setTheme: _setTheme
+      setTheme: _setTheme,
+      isEditable: _isEditable
     };
   };
 

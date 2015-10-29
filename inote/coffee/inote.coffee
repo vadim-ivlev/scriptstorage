@@ -57,12 +57,15 @@
         
         #if(key == 13) saveNotebook();
         if key is 13 and event.shiftKey
-            appendNewCell getNewCellNumber()    if isCellLast(index)
+            if isCellLast(index)
+                appendNewCell getNewCellNumber()
             moveFocusToNextCell index
-        else if key is 38 and cell.cursorOnFirstLine() #arrow up
+        #arrow up
+        else if key is 38 and cell.cursorOnFirstLine()
             moveFocusToPreviousCell index
         #arrow down
-        else moveFocusToNextCell index    if key is 40 and cell.cursorOnLastLine()
+        else if key is 40 and cell.cursorOnLastLine()
+            moveFocusToNextCell index
         return
     
     
@@ -108,9 +111,11 @@
     moveFocusToNextCell = (index) ->
         return    if isCellLast(index)
         return    if fullScreen(index)
-        #removeFocusAll()
         c.removeFocus() for c in CELLS
-        nextCell = CELLS[index + 1]
+        #nextCell = CELLS[index + 1] # TODO find next EDITABLE CELL
+        nextCell = findNextEditableCell(index)
+        if not nextCell
+            return
         nextCell.setFocus()
         nextCell.setCursorOnFirstLine()
         return
@@ -119,20 +124,42 @@
     moveFocusToPreviousCell = (index) ->
         return    if isCellFirst(index)
         return    if fullScreen(index)
-        #removeFocusAll()
         c.removeFocus() for c in CELLS
-        prevCell = CELLS[index - 1]
+        #prevCell = CELLS[index - 1] # TODO find prev EDITABLE CELL
+        prevCell = findPrevEditableCell(index)
+        if not prevCell
+            return
         prevCell.setFocus()
         prevCell.setCursorOnLastLine()
         return
-    
+   
+    findNextEditableCell = (index) ->
+        if index >= CELLS.length-1
+            return null
+        for c in CELLS[(index+1)..]
+            if c.isEditable()
+                return c
+        null
+
+    findPrevEditableCell = (index) ->
+        if index <= 0
+            return null
+
+        for i in [(index-1)..0]
+            c=CELLS[i]
+            if c.isEditable()
+                return c
+        null
+
+
     
     fullScreen = (index) ->
         editor = CELLS[index].getEditor()
         
         #TODO Check for full screen mode
         #isFullScreen editor
-    
+        fs = editor.getOption("fullScreen")
+        fs
     
     
     

@@ -35,6 +35,8 @@ window?.clear = ->
     
     _inCollapsed = false
     _outCollapsed = false
+
+    _isLocked =false
     
     _onfirst = false
     _onlast = false
@@ -295,6 +297,7 @@ window?.clear = ->
         _codemirror.setOption "readOnly", "nocursor"
         _outputCell.removeClass('visibleBorder')
         _lockButton.removeClass('unlocked')
+        _isLocked = true
         @saveNotebookLater?()
 
 
@@ -309,6 +312,7 @@ window?.clear = ->
         _codemirror.setOption "readOnly", false
         _outputCell.addClass('visibleBorder')
         _lockButton.addClass('unlocked')
+        _isLocked = false
         @saveNotebookLater?()
     
 
@@ -318,6 +322,7 @@ window?.clear = ->
         else
             _unlock()
 
+    _isEditable = -> not (_isLocked or _inCollapsed )
 
     # attacgh events to buttons ================================================
     _attachEvents = ->
@@ -754,7 +759,7 @@ window?.clear = ->
     setKeyMap: _setKeyMap
     setTheme: _setTheme
 
-
+    isEditable: _isEditable
 
 
 
